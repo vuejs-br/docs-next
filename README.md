@@ -1,33 +1,31 @@
 # v3.vuejs.org
+Este site é produzido com [VuePress](https://vuepress.vuejs.org/). Todo seu conteúdo é escrito em Markdown e todos arquivos podem serem encontrados em `src`.
 
-This site is built with [VuePress](https://vuepress.vuejs.org/). Site content is written in Markdown format located in `src`.
+## Escrevendo
+Veja o [Guia de escrita do Vue](https://v3.vuejs.org/guide/writing-guide.html) para regras e recomendações sobre escrever e manter a documentação.
 
-## Writing
+>Neste momento a doc está em beta: O time esta atualmente no meio de uma mudanças, e não receberemos contribuições, não por em quanto. Todo conteúdo estará sujeito a mudanças, se você viu algum, por favor, traga nos a atenção, [criando uma issue](https://github.com/vuejs/docs-next/issues/new) e faremos o possível para compreender e mudar, provavelmente você vai precisar ou querer até que tudo esteja pronto.
 
-See the [Vue Docs Writing Guide](https://v3.vuejs.org/guide/writing-guide.html) for our rules and recommendations on writing and maintaining documentation.
+## Desenvolvendo
 
-> The docs are in beta: The team is currently in the midst of changes and we are not ready for additional contributions yet. All content is subject to change. If you see a problem that you would like to bring to our attention, please [create an issue](https://github.com/vuejs/docs-next/issues/new) and we will get to it when we can. You may want to wait until the content is finalized, though.
-
-## Developing
-
-1. Clone repository
+1. Clone este repositório
 
 ```bash
-git clone git@github.com:vuejs/docs-next.git
+git clone https://github.com/vuejs-br/docs-next.git
 ```
 
-2. Install dependencies
+2. Instale as dependências
 
 ```bash
 yarn # or npm install
 ```
 
-3. Start local development environment
+3. Iniciando um ambiente local de dev.
 
 ```bash
 yarn serve # or npm run serve
 ```
 
-## Deploying
+## Entrega em produção
 
-The site is automatically deployed when commits land in `master`, via [Netlify](https://www.netlify.com/).
+O site será automaticamente atualizado, quando os commits forem aceitos e mergeados para `master`, todo conteúdo é entregue via [Netlify](https://www.netlify.com/).
