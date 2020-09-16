@@ -1,5 +1,5 @@
 # v3.vuejs.org
-Este site é produzido com [VuePress](https://vuepress.vuejs.org/). Todo seu conteúdo é escrito em Markdown e todos arquivos podem serem encontrados em `src`.
+Este site é produzido com [VuePress](https://vuepress.vuejs.org/). Todo seu conteúdo é escrito em Markdown e todos arquivos podem ser encontrados em `src`.
 
 ## Escrevendo
 Veja o [Guia de escrita do Vue](https://v3.vuejs.org/guide/writing-guide.html) para regras e recomendações sobre escrever e manter a documentação.
