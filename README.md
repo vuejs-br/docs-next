@@ -4,7 +4,7 @@ Este site é produzido com [VuePress](https://vuepress.vuejs.org/). Todo seu con
 ## Escrevendo
 Veja o [Guia de escrita do Vue](https://v3.vuejs.org/guide/writing-guide.html) para regras e recomendações sobre escrever e manter a documentação.
 
->Neste momento a doc está em beta: O time esta atualmente no meio de mudanças e não receberemos contribuições, não por em quanto. Todo conteúdo está sujeito a mudanças, se você viu algo que precise de melhorias, por favor, traga nos a atenção, [criando uma issue](https://github.com/vuejs/docs-next/issues/new) e faremos o possível para compreender e mudar, no entando, provavelmente você vai precisar ou querer até que toda a doc esteja pronta.
+>Neste momento a doc está em beta: O time esta atualmente no meio de mudanças e não receberemos contribuições, não por em quanto. Todo conteúdo está sujeito a mudanças, se você viu algo que precise de melhorias, por favor, traga nos a atenção, [criando uma issue](https://github.com/vuejs-br/docs-next/issues/new) e faremos o possível para compreender e mudar, no entando, provavelmente você vai precisar ou querer esperar até que toda a doc esteja pronta.
 
 ## Desenvolvendo
 
