@@ -1,59 +1,59 @@
-# Documentation Style Guide
+# Guia de Estilização da Documentação
 
-This guide will provide an overview of different design elements that are available for your use in creating documentation.
+Este guia fornece uma visão geral dos diferentes elementos de _design_ que estão disponíveis para uso durante a criação de documentação.
 
-## Alerts
+## Alertas
 
-VuePress provides a custom container plugin to create alert boxes. There are four types:
+VuePress oferece um _plug-in_ de contêiner personalizado para blocos de alerta. Existem quatro tipos:
 
-- **Info**: Provide information that is neutral
-- **Tip**: Provide information that is positive and encouraged
-- **Warning**: Provide information that users should be aware of as there is a low to moderate
-- **Danger**: Provide information that is negative and has a high risk to the user
+- **Informações**: Para exibir informações neutras
+- **Dica**: Para exibir informações positivas e incentivadas
+- **Aviso**: Para exibir informações que os usuários devem estar cientes, pois há um baixo a moderado risco
+- **Perigo**: Para exibir informações negativas e/ou de alto risco para o usuário
 
-**Markdown Examples**
+**Markdown de Exemplo**
 
 ```
 ::: info
-You can find more information at this site.
+Você pode encontrar mais informações neste _site_.
 :::
 
 ::: tip
-This is a great tip to remember!
+Esta é uma ótima dica para se lembrar!
 :::
 
 ::: warning
-This is something to be cautious of.
+Isso é algo para ser cauteloso.
 :::
 
 ::: danger DANGER
-This is something we do not recommend. Use at your own risk.
+Isso é algo que não recomendamos. Use por sua conta e risco.
 :::
 ```
 
-**Rendered Markdown**
+**Resultado Renderizado**
 
 ::: info
-You can find more information at this site.
+Você pode encontrar mais informações neste _site_.
 :::
 
 ::: tip
-This is a great tip to remember!
+Esta é uma ótima dica para se lembrar!
 :::
 
 ::: warning
-This is something to be cautious of.
+Isso é algo para ser cauteloso.
 :::
 
 ::: danger DANGER
-This is something we do not recommend. Use at your own risk.
+Isso é algo que não recomendamos. Use por sua conta e risco.
 :::
 
-## Code Blocks
+## Blocos de Código
 
-VuePress uses Prism to provide language syntax highlighting by appending the language to the beginning backticks of a code block:
+VuePress usa o Prism para fornecer destaques de sintaxe de código-fonte (_syntax highlighting_), ao acrescentar a linguagem desejada após os três acentos graves de um bloco de código:
 
-**Markdown Example**
+**Markdown de Exemplo**
 
 ````
 ```js
@@ -63,20 +63,21 @@ export default {
 ```
 ````
 
-**Rendered Output**
+**Resultado Renderizado**
+
 ```js
 export default {
   name: 'MyComponent'
 }
 ```
 
-### Line Highlighting
+### Destacando Linhas
 
-To add line highlighting to your code blocks, you need to append the line number in curly braces.
+Para adicionar destaques de linha aos blocos de código, você precisa acrescentar o número da linha entre chaves.
 
-#### Single Line
+#### Linha Única
 
-**Markdown Example**
+**Markdown de Exemplo**
 
 ````
 ```js{2}
@@ -90,7 +91,7 @@ export default {
 ```
 ````
 
-**Rendered Markdown**
+**Resultado Renderizado**
 
 ```js{2}
 export default {
@@ -102,7 +103,9 @@ export default {
 }
 ```
 
-#### Group of Lines
+#### Grupos de Linhas
+
+**Markdown de Exemplo**
 
 ````
 ```js{4-5}
@@ -116,6 +119,8 @@ export default {
 ```
 ````
 
+**Resultado Renderizado**
+
 ```js{4-5}
 export default {
   name: 'MyComponent',
@@ -126,7 +131,9 @@ export default {
 }
 ```
 
-#### Multiple Sections
+#### Múltiplas Seções
+
+**Markdown de Exemplo**
 
 ````
 ```js{2,4-5}
@@ -139,6 +146,8 @@ export default {
 }
 ```
 ````
+
+**Resultado Renderizado**
 
 ```js{2,4-5}
 export default {
