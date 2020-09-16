@@ -1,14 +1,14 @@
-# Template refs
+# Template _refs_
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> Esta página assume que você já leu [Componentes Básicos](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
-Despite the existence of props and events, sometimes you might still need to directly access a child component in JavaScript. To achieve this you can assign a reference ID to the child component or HTML element using the `ref` attribute. For example:
+Apesar da existência de propriedades e eventos, às vezes você ainda pode precisar acessar diretamente um componente filho em JavaScript. Para isso, você pode atribuir um ID de referência ao componente filho ou elemento HTML usando o atributo `ref`. Por exemplo:
 
 ```html
 <input ref="input" />
 ```
 
-This may be useful when you want to, for example, programmatically focus this input on component mount:
+Isso pode ser útil quando você deseja, por exemplo, de forma programática, aplicar o _focus_ nesse _input_ na montagem do componente:
 
 ```js
 const app = Vue.createApp({})
@@ -28,7 +28,7 @@ app.component('base-input', {
 })
 ```
 
-Also, you can add another `ref` to the component itself and use it to trigger `focusInput` event from the parent component:
+Além disso, você pode adicionar outro `ref` ao próprio componente e usá-lo para acionar o evento `focusInput` a partir do componente pai:
 
 ```html
 <base-input ref="usernameInput"></base-input>
@@ -39,7 +39,7 @@ this.$refs.usernameInput.focusInput()
 ```
 
 ::: warning
-`$refs` are only populated after the component has been rendered. It is only meant as an escape hatch for direct child manipulation - you should avoid accessing `$refs` from within templates or computed properties.
+`$refs` são preenchidos apenas após o componente ter sido renderizado. Isso serve apenas como uma saída de emergência para a manipulação direta de elementos filhos - você deve evitar acessar `$refs` dentro de _templates_ ou dados computados.
 :::
 
-**See also**: [Using template refs in Composition API](/guide/composition-api-template-refs.html#template-refs)
+**Veja também**: [Usando _template refs_ em Composition API](/guide/composition-api-template-refs.html#template-refs)
