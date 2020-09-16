@@ -39,7 +39,7 @@ this.$refs.usernameInput.focusInput()
 ```
 
 ::: warning
-`$refs` são preenchidos apenas após o componente ter sido renderizado. Isso serve apenas como uma saída de emergência para a manipulação direta de elementos filhos - você deve evitar acessar `$refs` dentro de _templates_ ou dados computados.
+`$refs` é preenchido apenas após o componente ter sido renderizado. Isso serve apenas como uma saída de emergência para a manipulação direta de elementos filhos - você deve evitar acessar `$refs` dentro de _templates_ ou dados computados.
 :::
 
 **Veja também**: [Usando _template refs_ em Composition API](/guide/composition-api-template-refs.html#template-refs)
