@@ -1,6 +1,6 @@
-# Template _refs_
+# _refs_ de Template
 
-> Esta página assume que você já leu [Componentes Básicos](component-basics.md). Leia lá primeiro se você for novo em componentes.
+> Esta página assume que você já leu o [Básico de Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
 Apesar da existência de propriedades e eventos, às vezes você ainda pode precisar acessar diretamente um componente filho em JavaScript. Para isso, você pode atribuir um ID de referência ao componente filho ou elemento HTML usando o atributo `ref`. Por exemplo:
 
@@ -39,7 +39,7 @@ this.$refs.usernameInput.focusInput()
 ```
 
 ::: warning
-`$refs` é preenchido apenas após o componente ter sido renderizado. Isso serve apenas como uma saída de emergência para a manipulação direta de elementos filhos - você deve evitar acessar `$refs` dentro de _templates_ ou dados computados.
+`$refs` é preenchido apenas após o componente ter sido renderizado. Isso serve apenas como uma saída de emergência para a manipulação direta de elementos filhos - você deve evitar acessar `$refs` de dentro de _templates_ ou dados computados.
 :::
 
-**Veja também**: [Usando _template refs_ em Composition API](/guide/composition-api-template-refs.html#template-refs)
+**Veja também**: [Usando _refs_ de _templates_ na Composition API](/guide/composition-api-template-refs.html#template-refs)
