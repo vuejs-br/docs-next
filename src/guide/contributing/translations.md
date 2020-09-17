@@ -12,7 +12,7 @@ Digamos que você fale Esperanto e quer saber quais iniciativas de tradução j�
 
 ### Como colaborar com a versão em português?
 
-Mas se você está aqui, deve ser por falar português! Neste caso, para nos ajudar diretamente, intereja com a equipe em [nosso repositório de tradução](https://github.com/vuejs-br/docs-next).
+Mas se você está aqui, deve ser por falar português! Neste caso, para nos ajudar diretamente, interaja com a equipe em [nosso repositório de tradução](https://github.com/vuejs-br/docs-next).
 
 ::: tip
 Problemas pontuais em traduções já realizadas, como erros de grafia pequenos ou frases confusas, podem ser reportados apenas [criando uma _issue_](https://github.com/vuejs-br/docs-next/issues/new). Deixe claro sobre qual página se refere o problema e, preferencialmente, ofereça uma sugestão para a correção desejada.
@@ -40,7 +40,7 @@ Para uma documentação padronizada e de qualidade, seguimos alguns princípios 
 
 - Traduzir os comentários dos códigos-fonte, sejam eles _inline_ `//` ou de múltiplas-linhas `/* */`;
 - Traduzir textos informativos dos códigos-fonte, por exemplo: `<div id="level-1">Nível 1</div>`;
-- Seguir maiúsculas e minúsculas conforme o original em inglês sempre que possível, exceto quando existir claramente uma regra de notaçãoo diferente na língua portuguesa;
+- Seguir maiúsculas e minúsculas conforme o original em inglês sempre que possível, exceto quando existir claramente uma regra de notação diferente na língua portuguesa;
 - Usar itálico em expressões sem tradução (por exemplo, _view layer_), exceto em nomes próprios grafados em maiúsculas (por exemplo, Internet);
 - Utilizar alguma extensão de ortografia e gramática vinculada ao seu editor de código, para evitar que erros deste tipo sejam submetidos;
 - Quando for submeter seu trabalho, sempre escreva a descrição do _commit_ em inglês (recomendação do _core team_).
@@ -108,11 +108,11 @@ Atualmente, recomenda-se que os termos a seguir sejam mantidos em inglês, inclu
 
 **Traduzir mas manter o original**
 
-Em alguns casos, para facilitar a compressão tanta por desenvolvedores menos experiências quanto mais experiências, alguns termos podem ser traduzidos mas com o original em inglês entre parênteses, por exemplo:
+Em alguns casos, para facilitar a compreensão, tanto por desenvolvedores menos experientes quanto pelos mais experientes, alguns termos podem ser traduzidos mas com o original em inglês entre parênteses, por exemplo:
 
 > A biblioteca principal é focada exclusivamente na camada visual (_view layer_) das aplicações.
 
-Na dúvida, discuta na _issue_ correspondete ao arquivo que estiver trabalhando, para trocar opiniões com os mantenedores.
+Na dúvida, discuta na _issue_ correspondente ao arquivo que estiver trabalhando, para trocar opiniões com os mantenedores.
 
 ## Como escrever melhor?
 
