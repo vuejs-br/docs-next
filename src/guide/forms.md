@@ -27,7 +27,7 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: basic v-model">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/team/Vue/pen/eYNPEqj">
+  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/eYNPEqj">
   Handling forms: basic v-model</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
