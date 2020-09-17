@@ -1,33 +1,33 @@
 # v3.vuejs.org
 
-This site is built with [VuePress](https://vuepress.vuejs.org/). Site content is written in Markdown format located in `src`.
+Este site é produzido com [VuePress](https://vuepress.vuejs.org/). Todo o conteúdo do site é escrito em Markdown e todos os arquivos podem ser encontrados em `src`.
 
-## Writing
+## Escrevendo
 
-See the [Vue Docs Writing Guide](https://v3.vuejs.org/guide/writing-guide.html) for our rules and recommendations on writing and maintaining documentation.
+Veja o [Guia de escrita do Vue](https://v3.vuejs.org/guide/writing-guide.html) para regras e recomendações sobre escrever e manter a documentação.
 
-> The docs are in beta: The team is currently in the midst of changes and we are not ready for additional contributions yet. All content is subject to change. If you see a problem that you would like to bring to our attention, please [create an issue](https://github.com/vuejs/docs-next/issues/new) and we will get to it when we can. You may want to wait until the content is finalized, though.
+>Neste momento a documentação está em beta:  O time está atualmente no meio de mudanças e não receberemos contribuições por enquanto. Todo o conteúdo está sujeito a mudanças. Se você viu algo que gostaria de trazer à nossa atenção, por favor, [crie uma issue](https://github.com/vuejs-br/docs-next/issues/new) e nós faremos o possível para analisarmos ela quando pudermos. No entanto, provavelmente você precisará esperar até que toda o conteúdo esteja finalizado.
 
-## Developing
+## Desenvolvendo
 
-1. Clone repository
+1. Clone este repositório
 
 ```bash
-git clone git@github.com:vuejs/docs-next.git
+git clone https://github.com/vuejs-br/docs-next.git
 ```
 
-2. Install dependencies
+2. Instale as dependências
 
 ```bash
 yarn # or npm install
 ```
 
-3. Start local development environment
+3. Iniciando um ambiente de desenvolvimento local
 
 ```bash
 yarn serve # or npm run serve
 ```
 
-## Deploying
+## Publicando em produção
 
-The site is automatically deployed when commits land in `master`, via [Netlify](https://www.netlify.com/).
+O site será automaticamente publicado quando os commits forem aceitos e mergeados para `master`, via [Netlify](https://www.netlify.com/).
