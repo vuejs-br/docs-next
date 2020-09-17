@@ -61,13 +61,14 @@ Alguns termos recorrentes causam dúvidas aos novos colaboradores da tradução.
 
 Devem ser traduzidos sempre da mesma maneira (a menos que sua tradução atrapalhe demais o contexto da frase, o que deve ser discutido na _issue_ correspondente):
 
+_ _Bundler_ = Empacotador
 - _Bundle_ = Pacote
 - _Debug_ = Depuração
 - _Handling_ = Manipulação
 - _Event Listening_ = Escuta de Eventos
 - _Render Function_ = Função de Renderização
 - _Computed Properties_ = Dados Computados
-- _Single-File Components_ = Componentes Single-File
+- _Single File Components_ = Componentes Single File
 - _Custom Elements_ = Elementos Personalizados
 - _Performance_ = Desempenho
 - _Watchers_ = Observadores
@@ -76,6 +77,9 @@ Devem ser traduzidos sempre da mesma maneira (a menos que sua tradução atrapal
 - _Props_ = Propriedades
 - _Hooks_ = Gatilhos
 - _Bind_ = Vínculo ou Interligação
+_ _Build time_ = Processo de construção
+_ _Release notes_ = Notas de Lançamento
+_ _Build_ = Distribuição
 
 **Nunca traduzimos**
 
