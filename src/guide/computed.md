@@ -1,8 +1,10 @@
-# Computed Properties and Watchers
+# Dados Computados e Observadores
 
-## Computed Properties
+## Dados Computados
 
-In-template expressions are very convenient, but they are meant for simple operations. Putting too much logic in your templates can make them bloated and hard to maintain. For example, if we have an object with a nested array:
+> Originalmente, Propriedades Computadas _(Computed Properties)_. Entretanto, a adaptação "Dados Computados" foi eleita devido suas utilizações em _templates_ serem efetivamente similares às utilizações de `data`.
+
+Expressões dentro de _templates_ são muito convenientes, mas são destinadas à realização de operações simples. Adicionar muita lógica em seus _templates_ podem torná-los abarrotados de código e dificultar a manutenção. Vamos tomar como exemplo o seguinte objeto, com um vetor _(array)_ incluso:
 
 ```js
 Vue.createApp({
@@ -11,9 +13,9 @@ Vue.createApp({
       author: {
         name: 'John Doe',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Guia Avançado ',
+          'Vue 3 - Guia Básico',
+          'Vue 4 - O Mistério'
         ]
       }
     }
@@ -21,24 +23,24 @@ Vue.createApp({
 })
 ```
 
-And we want to display different messages depending on if `author` already has some books or not
+Desejamos mostrar diferentes mensagens, ao verificarmos se `author` possuir livros _(books)_ ou não:
 
 ```html
 <div id="computed-basics">
-  <p>Has published books:</p>
-  <span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span>
+  <p>Possui livros publicados:</p>
+  <span>{{ author.books.length > 0 ? 'Sim' : 'Não' }}</span>
 </div>
 ```
 
-At this point, the template is no longer simple and declarative. You have to look at it for a second before realizing that it performs a calculation depending on `author.books`. The problem is made worse when you want to include this calculation in your template more than once.
+Deste modo, o _template_ já não é mais simples e declarativo. Você sempre terá que observar este pedaço de código por um momento para, então, entender que ele realiza um cálculo baseando-se na quantidade de itens disponíveis em `author.books`. O problema se agravará ainda mais se você desejar incluir mais de uma vez este mesmo cálculo no seu _template_.
 
-That's why for complex logic that includes reactive data, you should use a **computed property**.
+É por razões como estas — para lógicas complexas que dependem de dados reativos — que você deve utilizar **dados computados** _(computed properties)_.
 
-### Basic Example
+### Exemplo Básico
 
 ```html
 <div id="computed-basics">
-  <p>Has published books:</p>
+  <p>Possui livros publicados:</p>
   <span>{{ publishedBooksMessage }}</span>
 </div>
 ```
@@ -50,48 +52,48 @@ Vue.createApp({
       author: {
         name: 'John Doe',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Guia Avançado',
+          'Vue 3 - Guia Básico',
+          'Vue 4 - O Mistério'
         ]
       }
     }
   },
   computed: {
-    // a computed getter
+    // uma função "getter" computada (computed getter)
     publishedBooksMessage() {
-      // `this` points to the vm instance
-      return this.author.books.length > 0 ? 'Yes' : 'No'
+      // `this` aponta para a instância Vue `vm` de `Vue.createApp(...)`
+      return this.author.books.length > 0 ? 'Sim' : 'Não'
     }
   }
 }).mount('#computed-basics')
 ```
 
-Result:
+Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="NWqzrjr" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Computed basic example">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqzrjr">
-  Computed basic example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="arthurbergmz" data-slug-hash="yLOxrdR" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de dados computados">
+  <span>See the Pen <a href="https://codepen.io/arthurbergmz/pen/yLOxrdR">
+  Exemplo básico de dados computados</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Here we have declared a computed property `publishedBooksMessage`.
+Aqui declaramos um dado computado _(computed property)_ chamado `publishedBooksMessage`.
 
-Try to change the value of `books` array in the application `data` and you will see how `publishedBooksMessage` is changing accordingly.
+Tente remover os valores do vetor _(array)_ `books`, encontrado dentro de `data`, e você visualizará o valor de `publishedBooksMessage` sendo atualizado.
 
-You can data-bind to computed properties in templates just like a normal property. Vue is aware that `vm.publishedBooksMessage` depends on `vm.author.books`, so it will update any bindings that depend on `vm.publishedBooksMessage` when `vm.author.books` changes. And the best part is that we've created this dependency relationship declaratively: the computed getter function has no side effects, which makes it easier to test and understand.
+É possível vincular dados computados em _templates_ como qualquer outro tipo de dado. Vue tem ciência de que `vm.publishedBooksMessage` depende de `vm.author.books` para prover seu valor, portanto, ele irá atualizar qualquer vínculo de `vm.publishedBooksMessage` sempre que `vm.author.books` sofrer alterações. A melhor parte disto é que criamos tal relação de dependência de forma declarativa: a função _getter_ computada não possui quaisquer efeitos colaterais, tornando-se mais fácil de testar e entender.
 
-### Computed Caching vs Methods
+### _Caching_ de `computed` vs. Métodos
 
-You may have noticed we can achieve the same result by invoking a method in the expression:
+Você pode ter notado que é possível obtermos o mesmo resultado ao chamarmos um método, como:
 
 ```html
 <p>{{ calculateBooksMessage() }}</p>
 ```
 
 ```js
-// in component
+// no componente
 methods: {
   calculateBooksMessage() {
     return this.author.books.length > 0 ? 'Yes' : 'No'
@@ -99,9 +101,9 @@ methods: {
 }
 ```
 
-Instead of a computed property, we can define the same function as a method. For the end result, the two approaches are indeed exactly the same. However, the difference is that **computed properties are cached based on their reactive dependencies.** A computed property will only re-evaluate when some of its reactive dependencies have changed. This means as long as `author.books` has not changed, multiple access to the `publishedBooksMessage` computed property will immediately return the previously computed result without having to run the function again.
+Ao invés de utilizar dados computados, podemos obter os mesmos resultados ao simplesmente utilizar métodos. No entanto, a diferença é que **dados computados possuem _cache_ de acordo com suas dependências reativas**. Um dado computado, portanto, apenas será atualizado quando alguma de suas dependências sofrer alteração. Isto significa, por exemplo, que enquanto `author.books` não for alterado, o dado computado `publishedBooksMessage` irá retornar, imediatamente, o último resultado calculado, independente da quantidade de acessos que obter, sem ter de executar a função novamente.
 
-This also means the following computed property will never update, because `Date.now()` is not a reactive dependency:
+Isto também significa que o dado computado a seguir nunca será atualizado, já que `Date.now()` não é reconhecido como uma dependência reativa:
 
 ```js
 computed: {
@@ -111,13 +113,13 @@ computed: {
 }
 ```
 
-In comparison, a method invocation will **always** run the function whenever a re-render happens.
+Por outro lado, invocar um método **sempre** irá executar sua função quando ocorrer uma nova renderização.
 
-Why do we need caching? Imagine we have an expensive computed property `list`, which requires looping through a huge array and doing a lot of computations. Then we may have other computed properties that in turn depend on `list`. Without caching, we would be executing `list`’s getter many more times than necessary! In cases where you do not want caching, use a `method` instead.
+Por que precisamos de _caching_? Imagine que temos um dado computado `list` extremamente custoso, que requer iterar por um extenso vetor _(array)_ e realizar cálculos com seus valores. Além disto, há outros dados computados que dependem de `list`. Sem realizarmos o _cache_, `list` seria executado muito mais vezes do que o necessário! Se você realmente não desejar realizar o _cache_ do valor calculado, utilize um método.
 
-### Computed Setter
+### Atribuição em Dados Computados
 
-Computed properties are by default getter-only, but you can also provide a setter when you need it:
+Dados computados _(computed properties)_ são, por padrão, _getter-only_ — ou seja, somente retornam valor. Entretanto, também é possível fornecer um _setter_ _(Computed Setter)_, se necessário:
 
 ```js
 // ...
@@ -138,18 +140,18 @@ computed: {
 // ...
 ```
 
-Now when you run `vm.fullName = 'John Doe'`, the setter will be invoked and `vm.firstName` and `vm.lastName` will be updated accordingly.
+Portanto, se executarmos `vm.fullName = 'John Doe'`, o _setter_ será executado e `vm.firstName` e `vm.lastName` serão atualizados, respectivamente.
 
-## Watchers
+## Observadores
 
-While computed properties are more appropriate in most cases, there are times when a custom watcher is necessary. That's why Vue provides a more generic way to react to data changes through the `watch` option. This is most useful when you want to perform asynchronous or expensive operations in response to changing data.
+Enquanto dados computados são mais adequados na maioria dos casos, há certos momentos em que um observador _(watcher)_ personalizado se faz necessário. É por isto que o Vue fornece uma maneira mais genérica de reagir à alteração de dados, `watch`, que se faz útil a partir do momento em que performamos operações assíncronas ou complexas quando certo dado sofre mudanças.
 
-For example:
+Por exemplo:
 
 ```html
 <div id="watch-example">
   <p>
-    Ask a yes/no question:
+    Faça uma pergunta de sim ou não:
     <input v-model="question" />
   </p>
   <p>{{ answer }}</p>
@@ -157,21 +159,22 @@ For example:
 ```
 
 ```html
-<!-- Since there is already a rich ecosystem of ajax libraries    -->
-<!-- and collections of general-purpose utility methods, Vue core -->
-<!-- is able to remain small by not reinventing them. This also   -->
-<!-- gives you the freedom to use what you're familiar with.      -->
+<!-- Como já existe coleções com métodos utilitários de     -->
+<!-- propósitos gerais e um ecossistema rico de bibliotecas -->
+<!-- Ajax, a base do Vue consegue se manter pequena por não -->
+<!-- reinventar a roda e dar liberdade para que você possa  -->
+<!-- utilizar o que ser mais familiar.                      -->
 <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script>
   const watchExampleVM = Vue.createApp({
     data() {
       return {
         question: '',
-        answer: 'Questions usually contain a question mark. ;-)'
+        answer: 'Perguntas possuem pontos de interrogação ;-)'
       }
     },
     watch: {
-      // whenever question changes, this function will run
+      // sempre que `question` sofrer alterações, esta função será executada
       question(newQuestion, oldQuestion) {
         if (newQuestion.indexOf('?') > -1) {
           this.getAnswer()
@@ -180,14 +183,16 @@ For example:
     },
     methods: {
       getAnswer() {
-        this.answer = 'Thinking...'
+        this.answer = 'Pensando...'
         axios
           .get('https://yesno.wtf/api')
           .then(response => {
-            this.answer = response.data.answer
+            const responseAnswer = response.data.answer
+            this.answer = responseAnswer === 'yes' ? 'Sim.' :
+                responseAnswer === 'no' ? 'Não.' : 'Talvez?'
           })
           .catch(error => {
-            this.answer = 'Error! Could not reach the API. ' + error
+            this.answer = 'Erro! Não foi possível adquirir resultados da API: ' + error
           })
       }
     }
@@ -195,22 +200,22 @@ For example:
 </script>
 ```
 
-Result:
+Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="GRJGqXp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Watch basic example">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/GRJGqXp">
-  Watch basic example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="arthurbergmz" data-slug-hash="GRZXarM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de observadores">
+  <span>See the Pen <a href="https://codepen.io/arthurbergmz/pen/GRZXarM">
+  Exemplo básico de observadores</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-In this case, using the `watch` option allows us to perform an asynchronous operation (accessing an API) and sets a condition for performing this operation. None of that would be possible with a computed property.
+Neste caso, ao usarmos `watch`, podemos executar uma operação assíncrona — como adquirir informações de uma _API_ — e, até mesmo, condições para executá-la. Isto não seria possível através da utilização de dados computados _(computed properties)_.
 
-In addition to the `watch` option, you can also use the imperative [vm.\$watch API](../api/instance-methods.html#watch).
+Além da opção `watch`, também é possível utilizar, de maneira imperativa, a [API vm.\$watch](../api/instance-methods.html#watch).
 
-### Computed vs Watched Property
+### Dados Computados vs Observadores
 
-Vue does provide a more generic way to observe and react to data changes on a current active instance: **watch properties**. When you have some data that needs to change based on some other data, it is tempting to overuse `watch` - especially if you are coming from an AngularJS background. However, it is often a better idea to use a computed property rather than an imperative `watch` callback. Consider this example:
+Devido ao Vue oferecer **observadores** _(watchers)_ como uma maneira mais genérica de observar e reagir à mudanças em dados de uma instância, é tentador utilizar, excessivamente, o `watch` — especialmente se você possui conhecimentos prévios em AngularJS, por exemplo. No entanto, às vezes, é melhor utilizar um dado computado ao invés de `watch`. Considere o seguinte exemplo:
 
 ```html
 <div id="demo">{{ fullName }}</div>
@@ -236,7 +241,7 @@ const vm = Vue.createApp({
 }).mount('#demo')
 ```
 
-The above code is imperative and repetitive. Compare it with a computed property version:
+O código acima é imperativo e repetitivo. A seguir, uma versão do código utilizando dados computados, a fim de compará-los:
 
 ```js
 const vm = Vue.createApp({
@@ -254,4 +259,4 @@ const vm = Vue.createApp({
 }).mount('#demo')
 ```
 
-Much better, isn't it?
+Muito melhor, não é?
