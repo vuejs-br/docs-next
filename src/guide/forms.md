@@ -5,7 +5,7 @@
 Você pode usar a diretiva `v-model` para criar interligações de dados de mão dupla (two-way data binding) em elementos input, textarea e select de formulários. Ele automaticamente escolhe a maneira correta de atualizar o elemento baseado no tipo do *input*. Embora um pouco mágico, `v-model` é essencialmente uma forma simplificada(syntax sugar) para atualizar dados nos eventos de entrada do usuário, além de cuidado especial com casos extremos.
 
 ::: tip Nota
-`v-model` will ignore the initial `value`, `checked` or `selected` attributes found on any form elements. It will always treat the current active instance data as the source of truth. You should declare the initial value on the JavaScript side, inside the `data` option of your component.
+`v-model` irá ignorar o estado inicial dos atributos `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Ele sempre irá tratar os dados da instância ativa com a fonte de verdade. Você pode declarar o valor inicial no lado do JavasScript, dentro da opção `data` do seu componente.
 :::
 
 `v-model` utiliza diferentes propriedades internamente e emite diferentes eventos para diferentes elementos input:
