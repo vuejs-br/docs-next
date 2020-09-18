@@ -116,7 +116,7 @@ const vm = Vue.createApp({
 vm.$data.a // => 1
 ```
 
-No futuro, você pode consultar a [documentação da API](../api/#Propriedades-de-Instancia) para a lista completa de propriedades e métodos da instância.
+No futuro, você pode consultar a [documentação da API](../api/instance-properties.html) para a lista completa de propriedades e métodos da instância.
 
 ## Ciclo de Vida da Instância
 
