@@ -26,7 +26,7 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 <p>A mensagem é: {{ message }}</p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários:básico v-model">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com formulários: v-model simples">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/bGpmqxR">
   Lidadndo com Fomulários: v-model simples</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
@@ -101,7 +101,7 @@ Vue.createApp({
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: multiplos checkboxes">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/YzqJZoq">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/zYqmwGV">
   Lidando com Formulários: múltiplos <i>checkboxes</i></a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
