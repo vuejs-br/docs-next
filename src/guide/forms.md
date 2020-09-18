@@ -26,10 +26,10 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 <p>A mensagem é: {{ message }}</p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: basic v-model">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/eYNPEqj">
-  Handling forms: basic v-model</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários:básico v-model">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/bGpmqxR">
+  Lidadndo com Fomulários: v-model simples</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -42,10 +42,10 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 <textarea v-model="message" placeholder="Escreva bastante"></textarea>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="xxGyXaG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: textarea">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/xxGyXaG">
-  Handling forms: textarea</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="xxGyXaG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: textarea">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/VwaEpNv">
+  Lidando com Formulários: textarea</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -68,10 +68,10 @@ Caixa de seleção única, valor booleano:
 <label for="checkbox">{{ checked }}</label>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="PoqyJVE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: checkbox">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/PoqyJVE">
-  Handling forms: checkbox</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="PoqyJVE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: checkbox">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/YzqJZoq">
+  Lidando com Formulários: checkbox</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -100,10 +100,10 @@ Vue.createApp({
 }).mount('#v-model-multiple-checkboxes')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: multiple checkboxes">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/bGdmoyj">
-  Handling forms: multiple checkboxes</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: multiplos checkboxes">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/YzqJZoq">
+  Lidando com Formulários: múltiplos <i>checkboxes</i></a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -131,10 +131,10 @@ Vue.createApp({
 }).mount('#v-model-radiobutton')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="MWwPEMM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: radiobutton">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/MWwPEMM">
-  Handling forms: radiobutton</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="MWwPEMM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: radiobutton">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/ExKdmjq">
+  Lidando com Formulários: radiobutton</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -164,10 +164,10 @@ Vue.createApp({
 }).mount('#v-model-select')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpGydL" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: select">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpGydL">
-  Handling forms: select</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpGydL" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/RwaeVgg">
+  Lidando com Formulários: select</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -187,10 +187,10 @@ Seleção de múltiplos itens (vinculando a um Array):
 <span>Selecionado: {{ selected }}</span>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="gOpBXPz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: select bound to array">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOpBXPz">
-  Handling forms: select bound to array</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="gOpBXPz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/team/Vue/pen/gOpBXPz">
+  Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -222,10 +222,10 @@ Vue.createApp({
 }).mount('#v-model-select-dynamic')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abORVZm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: select with dynamic options">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abORVZm">
-  Handling forms: select with dynamic options</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abORVZm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select com opções dinâmicas">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/JjXmNrG">
+  Lidando com Formulários: select com opções dinâmicas</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
