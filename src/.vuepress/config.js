@@ -107,10 +107,11 @@ const sidebar = {
       ]
     },
     {
-      title: 'Migration from Vue 2',
+      title: 'Migration Guide',
       collapsable: true,
       children: [
         'migration/introduction',
+        'migration/array-refs',
         'migration/async-components',
         'migration/attribute-coercion',
         'migration/custom-directives',
@@ -123,11 +124,15 @@ const sidebar = {
         'migration/global-api',
         'migration/global-api-treeshaking',
         'migration/inline-template-attribute',
+        'migration/key-attribute',
         'migration/keycode-modifiers',
+        'migration/props-default-this',
         'migration/render-function-api',
         'migration/slots-unification',
         'migration/transition',
-        'migration/v-model'
+        'migration/v-model',
+        'migration/v-if-v-for',
+        'migration/v-bind'
       ]
     },
     {
@@ -235,6 +240,10 @@ module.exports = {
             link: '/guide/introduction'
           },
           {
+            text: 'Migration Guide',
+            link: '/guide/migration/introduction'
+          },
+          {
             text: 'Style Guide',
             link: '/style-guide/'
           },
@@ -279,7 +288,7 @@ module.exports = {
             text: 'Official Projects',
             items: [{
                 text: 'Vue Router',
-                link: 'https://router.vuejs.org/'
+                link: 'https://next.router.vuejs.org/'
               },
               {
                 text: 'Vuex',
@@ -291,7 +300,7 @@ module.exports = {
               },
               {
                 text: 'Vue Test Utils',
-                link: 'https://vue-test-utils.vuejs.org/'
+                link: 'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
               },
               {
                 text: 'Devtools',
