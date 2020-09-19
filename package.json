@@ -5,7 +5,6 @@
     "vuepress": "^1.5.4"
   },
   "scripts": {
-    "dev": "yarn serve",
     "serve": "vuepress dev src",
     "build": "vuepress build src"
   },
