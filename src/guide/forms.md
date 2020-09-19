@@ -27,7 +27,7 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com formulários: v-model simples">
-  <span>Veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/bGpmqxR">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/rNeqvjd">
   Lidadndo com Fomulários: v-model simples</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -43,7 +43,7 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="xxGyXaG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: textarea">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/VwaEpNv">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/bGpmMqw">
   Lidando com Formulários: textarea</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -69,7 +69,7 @@ Caixa de seleção única, valor booleano:
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="PoqyJVE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: checkbox">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/YzqJZoq">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/details/KKzGRWq">
   Lidando com Formulários: checkbox</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -101,7 +101,7 @@ Vue.createApp({
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: multiplos checkboxes">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/zYqmwGV">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/ExKdLWp">
   Lidando com Formulários: múltiplos <i>checkboxes</i></a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -132,7 +132,7 @@ Vue.createApp({
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="MWwPEMM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: radiobutton">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/ExKdmjq">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/dyMgeRE">
   Lidando com Formulários: radiobutton</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -165,7 +165,7 @@ Vue.createApp({
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpGydL" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/RwaeVgg">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/VwaExpO">
   Lidando com Formulários: select</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -188,7 +188,7 @@ Seleção de múltiplos itens (vinculando a um Array):
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="gOpBXPz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/team/Vue/pen/gOpBXPz">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/abNRGWR">
   Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -223,7 +223,7 @@ Vue.createApp({
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abORVZm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select com opções dinâmicas">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/LucasFlaquer/pen/JjXmNrG">
+  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/BaKqxRK">
   Lidando com Formulários: select com opções dinâmicas</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
