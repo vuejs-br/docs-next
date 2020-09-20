@@ -71,9 +71,9 @@ Vue.createApp({
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="arthurbergmz" data-slug-hash="yLOxrdR" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de dados computados">
-  <span>See the Pen <a href="https://codepen.io/arthurbergmz/pen/yLOxrdR">
-  Exemplo básico de dados computados</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="vYGVjaO" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de Dados Computados">
+  <span>See the Pen <a href="https://codepen.io/vuejs-br/pen/vYGVjaO">
+  Exemplo básico de Dados Computados</a> by Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -202,9 +202,9 @@ Por exemplo:
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="arthurbergmz" data-slug-hash="GRZXarM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de observadores">
-  <span>See the Pen <a href="https://codepen.io/arthurbergmz/pen/GRZXarM">
-  Exemplo básico de observadores</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="XWdxqYx" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de Observadores">
+  <span>See the Pen <a href="https://codepen.io/vuejs-br/pen/XWdxqYx">
+  Exemplo básico de Observadores</a> by Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
