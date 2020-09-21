@@ -72,9 +72,9 @@ Vue.createApp({
 Resultado:
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="vYGVjaO" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de Dados Computados">
-  <span>See the Pen <a href="https://codepen.io/vuejs-br/pen/vYGVjaO">
-  Exemplo básico de Dados Computados</a> by Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  <span>Veja o exemplo <a href="https://codepen.io/vuejs-br/pen/vYGVjaO">
+  Exemplo básico de Dados Computados</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
@@ -84,7 +84,7 @@ Tente remover os valores do vetor _(array)_ `books`, encontrado dentro de `data`
 
 É possível vincular dados computados em _templates_ como qualquer outro tipo de dado. Vue tem ciência de que `vm.publishedBooksMessage` depende de `vm.author.books` para prover seu valor, portanto, ele irá atualizar qualquer vínculo de `vm.publishedBooksMessage` sempre que `vm.author.books` sofrer alterações. A melhor parte disto é que criamos tal relação de dependência de forma declarativa: a função _getter_ computada não possui quaisquer efeitos colaterais, tornando-se mais fácil de testar e entender.
 
-### _Caching_ de `computed` vs. Métodos
+### Cache de `computed` vs. Métodos
 
 Você pode ter notado que é possível obtermos o mesmo resultado ao chamarmos um método, como:
 
@@ -101,7 +101,7 @@ methods: {
 }
 ```
 
-Ao invés de utilizar dados computados, podemos obter os mesmos resultados ao simplesmente utilizar métodos. No entanto, a diferença é que **dados computados possuem _cache_ de acordo com suas dependências reativas**. Um dado computado, portanto, apenas será atualizado quando alguma de suas dependências sofrer alteração. Isto significa, por exemplo, que enquanto `author.books` não for alterado, o dado computado `publishedBooksMessage` irá retornar, imediatamente, o último resultado calculado, independente da quantidade de acessos que obter, sem ter de executar a função novamente.
+Ao invés de utilizar dados computados, podemos obter os mesmos resultados ao simplesmente utilizar métodos. No entanto, a diferença é que **dados computados possuem cache de acordo com suas dependências reativas**. Um dado computado, portanto, apenas será atualizado quando alguma de suas dependências sofrer alteração. Isto significa, por exemplo, que enquanto `author.books` não for alterado, o dado computado `publishedBooksMessage` irá retornar, imediatamente, o último resultado calculado, independente da quantidade de acessos que obter, sem ter de executar a função novamente.
 
 Isto também significa que o dado computado a seguir nunca será atualizado, já que `Date.now()` não é reconhecido como uma dependência reativa:
 
@@ -115,7 +115,7 @@ computed: {
 
 Por outro lado, invocar um método **sempre** irá executar sua função quando ocorrer uma nova renderização.
 
-Por que precisamos de _caching_? Imagine que temos um dado computado `list` extremamente custoso, que requer iterar por um extenso vetor _(array)_ e realizar cálculos com seus valores. Além disto, há outros dados computados que dependem de `list`. Sem realizarmos o _cache_, `list` seria executado muito mais vezes do que o necessário! Se você realmente não desejar realizar o _cache_ do valor calculado, utilize um método.
+Por que precisamos de _caching_? Imagine que temos um dado computado `list` extremamente custoso, que requer iterar por um extenso vetor _(array)_ e realizar cálculos com seus valores. Além disto, há outros dados computados que dependem de `list`. Sem realizarmos o cache, `list` seria executado muito mais vezes do que o necessário! Se você realmente não desejar realizar o cache do valor calculado, utilize um método.
 
 ### Atribuição em Dados Computados
 
@@ -203,9 +203,9 @@ Por exemplo:
 Resultado:
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="XWdxqYx" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de Observadores">
-  <span>See the Pen <a href="https://codepen.io/vuejs-br/pen/XWdxqYx">
-  Exemplo básico de Observadores</a> by Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  <span>Veja o exemplo <a href="https://codepen.io/vuejs-br/pen/XWdxqYx">
+  Exemplo básico de Observadores</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
