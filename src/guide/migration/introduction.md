@@ -1,6 +1,10 @@
 # Introduction
 
-This guide is primarily for users with prior Vue 2 experience who want to learn about the new features and changes in Vue 3. The lists may look long, but it is because we want to be as thorough as possible and provide detailed examples for every documented change. **This is not something you have to read from top to bottom before trying out Vue 3.**
+::: info 
+New to Vue.js? Check out our [Essentials Guide](/guide/introduction.html) to get started. 
+:::
+
+This guide is primarily for users with prior Vue 2 experience who want to learn about the new features and changes in Vue 3. **This is not something you have to read from top to bottom before trying out Vue 3.** While it looks like a lot has changed, a lot of what you know and love about Vue is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change. 
 
 - [Quickstart](#quickstart)
 - [Notable New Features](#notable-new-features)
@@ -92,7 +96,7 @@ The following consists a list of breaking changes from 2.x:
 - [The `data` option from mixins is now merged shallowly](/guide/migration/data-option.html#mixin-merge-behavior-change)
 - [Attributes coercion strategy changed](/guide/migration/attribute-coercion.html)
 - [Some transition classes got a rename](/guide/migration/transition.html)
-- [When watching an array, the callback will only trigger when the array is replaced. If you need to to trigger on mutation, the `deep` option must be specified.](/guide/migration/watch.html)
+- [When watching an array, the callback will only trigger when the array is replaced. If you need to trigger on mutation, the `deep` option must be specified.](/guide/migration/watch.html)
 - `<template>` tags with no special directives (`v-if/else-if/else`, `v-for`, or `v-slot`) are now treated as plain elements and will result in a native `<template>` element instead of rendering its inner content.
 - In Vue 2.x, application root container's `outerHTML` is replaced with root component template (or eventually compiled to a template, if root component has no template/render option). Vue 3.x now uses application container's `innerHTML` instead - this means the container itself is no longer considered part of the template.
 

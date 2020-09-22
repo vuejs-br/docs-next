@@ -30,7 +30,7 @@ Para produção, recomendamos vinculá-lo a uma versão e uma distribuição _(b
 
 ## NPM
 
-NPM é o método de instalação que recomendamos ao construir aplicações de larga escala com o Vue. Ele combina perfeitamente com empacotadores de módulos _(module bundlers)_, como o [Webpack](https://webpack.js.org/) ou o [Browserify](http://browserify.org/). Vue também oferece ferramentas que auxiliam na criação de [Componentes Single File](../guide/single-file-component.html).
+NPM é o método de instalação que recomendamos ao construir aplicações de larga escala com o Vue. Ele combina perfeitamente com empacotadores de módulos _(module bundlers)_, como o [Webpack](https://webpack.js.org/) ou o [Rollup](https://rollupjs.org/). Vue também oferece ferramentas que auxiliam na criação de [Componentes Single File](../guide/single-file-component.html).
 
 ```bash
 # última versão estável
@@ -45,12 +45,12 @@ Vue oferece uma [CLI oficial](https://github.com/vuejs/vue-cli) para projetar, r
 A CLI pressupõe que você já possui conhecimento prévio em Node.js e das ferramentas de distribuição _(build tools)_ associadas. Se Vue ou as ferramentas de distribuição _frontend_ associadas são assuntos novos para você, recomendamos fortemente que você passe por todo <a href="./">o guia</a> antes de utilizar a CLI.
 :::
 
-Para o Vue 3, você deve utilizar, no mínimo, a Vue CLI v4.5, disponível no `npm` através do `@vue/cli@next`. Para atualizar sua Vue CLI, você deve reinstalar o pacote `@vue/cli` globalmente, em sua última versão:
+Para o Vue 3, você deve utilizar, no mínimo, a Vue CLI v4.5, disponível no `npm` como `@vue/cli`. Para atualizá-lo, você deve reinstalar o pacote `@vue/cli` globalmente, em sua última versão:
 
 ```bash
-yarn global add @vue/cli@next
+yarn global add @vue/cli
 # OU
-npm install -g @vue/cli@next
+npm install -g @vue/cli
 ```
 
 Logo em seguida, em seus projetos Vue, execute:

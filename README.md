@@ -8,7 +8,7 @@ Este é o repositório oficial da tradução para português brasileiro da docum
 
 Se você quer participar da tradução, ajudando a traduzir conteúdos que ainda permanecem em inglês e/ou ajudando a revisar conteúdos já traduzidos, sinta-se em casa. Para entender como tudo funciona e saber por onde começar, leia nosso guia de [Contribuição com a Documentação](https://vuejsbr-docs-next.netlify.app/guide/contributing/translations.html).
 
-> O _workflow_ para a realização da tradução está detalhadamente descrito em [Como colaborar com a versão em português?](https://vuejsbr-docs-next.netlify.app/guide/contributing/translations.html#como-colaborar-com-a-versao-em-portugues). Ler é o primeiro passo para todo colaborador em potencial.
+> O _workflow_ para a realização da tradução está detalhadamente descrito em [Como colaborar com a versão em português?](https://vuejsbr-docs-next.netlify.app/guide/contributing/translations.html#como-colaborar-com-a-versao-em-portugues) Ler é o primeiro passo para todo colaborador em potencial.
 
 ## Escrevendo
 
