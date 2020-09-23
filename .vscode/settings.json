@@ -1,0 +1,16 @@
+{
+  "cSpell.language": "en,pt-BR",
+  "cSpell.enableFiletypes": [
+    "svg",
+    "vue",
+    "vue-html",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "cSpell.words": [
+    "vuejs",
+    "codepen",
+    "vuemastery"
+  ]
+}
