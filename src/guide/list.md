@@ -291,7 +291,7 @@ Em vez disso, se sua intenção for condicionalmente pular toda a execução da 
 
 ## Componentes com `v-for`
 
-> Esta seção pressupõe que você tem conhecimendo sobre [Components](component-basics.md). Sinta-se à vontade para pular e voltar depois.
+> Esta seção pressupõe que você tem conhecimendo sobre [Componentes](component-basics.md). Sinta-se à vontade para pular e voltar depois.
 
 Você pode usar `v-for` diretamente em um componente personalizado, assim como faz num elemento normal:
 
