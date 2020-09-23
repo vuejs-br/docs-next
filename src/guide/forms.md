@@ -2,7 +2,7 @@
 
 ## Uso Básico
 
-Você pode usar a diretiva `v-model` para criar interligações de dados de mão dupla (two-way data binding) em elementos input, textarea e select de formulários. Ele automaticamente escolhe a maneira correta de atualizar o elemento baseado no tipo do *input*. Embora um pouco mágico, `v-model` é essencialmente uma forma simplificada(syntax sugar) para atualizar dados nos eventos de entrada do usuário, além de cuidado especial com casos extremos.
+Você pode usar a diretiva `v-model` para criar interligações de dados de mão dupla (two-way data binding) em elementos input, textarea e select de formulários. Ele automaticamente escolhe a maneira correta de atualizar o elemento baseado no tipo do _input_. Embora um pouco mágico, `v-model` é essencialmente uma forma simplificada(syntax sugar) para atualizar dados nos eventos de entrada do usuário, além de cuidado especial com casos extremos.
 
 ::: tip Nota
 `v-model` irá ignorar o estado inicial dos atributos `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Ele sempre irá tratar os dados da instância ativa com a fonte de verdade. Você pode declarar o valor inicial no lado do JavasScript, dentro da opção `data` do seu componente.
@@ -10,8 +10,8 @@ Você pode usar a diretiva `v-model` para criar interligações de dados de mão
 
 `v-model` utiliza diferentes propriedades internamente e emite diferentes eventos para diferentes elementos input:
 
-- elementos *text* e *textarea* usam a propriedade `value` e o evento `input`;
-- *checkboxes* e *radiobuttons* utilizam a propriedade `checked` e o evento `change`;
+- elementos _text_ e _textarea_ usam a propriedade `value` e o evento `input`;
+- _checkboxes_ e _radiobuttons_ utilizam a propriedade `checked` e o evento `change`;
 - campos de seleção utilizam `value` como propriedade e `change` como um evento.
 
 <span id="vmodel-ime-tip"></span>
@@ -49,7 +49,7 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Interpolação em *textareas* (`<textarea>{{text}}</textarea>`) não funcionará. Em vez disso, use `v-model`.
+Interpolação em _textareas_ (`<textarea>{{text}}</textarea>`) não funcionará. Em vez disso, use `v-model`.
 
 ```html
 <!-- ruim -->
@@ -75,7 +75,7 @@ Caixa de seleção única, valor booleano:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Múltiplos *checkboxes*, associados ao mesmo Array:
+Múltiplos _checkboxes_, associados ao mesmo Array:
 
 ```html
 <div id="v-model-multiple-checkboxes">
@@ -172,7 +172,7 @@ Vue.createApp({
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 :::tip Nota
-Se o valor inicial da expressão `v-model` não corresponder match nenhuma das optções, o element `<select>` será renderizado em um estado "não selecionado". No iOS, isso impedirá o usuário de selecionar o primeiro item, pois não há disparo do evento `change` neste caso. Portanto é recomendado fornecer  uma opção desabilitada com um valor vazio, como demonstrado no exemplo acima.
+Se o valor inicial da expressão `v-model` não corresponder match nenhuma das optções, o element `<select>` será renderizado em um estado "não selecionado". No iOS, isso impedirá o usuário de selecionar o primeiro item, pois não há disparo do evento `change` neste caso. Portanto é recomendado fornecer uma opção desabilitada com um valor vazio, como demonstrado no exemplo acima.
 :::
 
 Seleção de múltiplos itens (vinculando a um Array):
@@ -194,7 +194,7 @@ Seleção de múltiplos itens (vinculando a um Array):
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Renderização dinâmica de *options* com `v-for`:
+Renderização dinâmica de _options_ com `v-for`:
 
 ```html
 <div id="v-model-select-dynamic" class="demo">
@@ -231,7 +231,7 @@ Vue.createApp({
 
 ## Interligação de Valores
 
-Para *radio*, *checkbox* e *select*, a interligação de valores do `v-model` são sempre strings estáticas (ou valores booleanos no caso do *checkbox*):
+Para _radio_, _checkbox_ e _select_, a interligação de valores do `v-model` são sempre strings estáticas (ou valores booleanos no caso do _checkbox_):
 
 ```html
 <!-- `picked` é uma string "a" quando assinalado -->
@@ -246,7 +246,7 @@ Para *radio*, *checkbox* e *select*, a interligação de valores do `v-model` s�
 </select>
 ```
 
-Mas  às vezes podemos querer vincular o valor à uma propriedade dinâmica na atual instância ativa. Nós podemos utilizar `v-bind` para alcançar isso. Além disso, utilizando `v-bind` nos permite vincular o valor de um *input* para valores que não são uma string (non-string values).
+Mas às vezes podemos querer vincular o valor à uma propriedade dinâmica na atual instância ativa. Nós podemos utilizar `v-bind` para alcançar isso. Além disso, utilizando `v-bind` nos permite vincular o valor de um _input_ para valores que não são uma string (non-string values).
 
 ### Checkbox
 
@@ -262,7 +262,7 @@ vm.toggle === 'no'
 ```
 
 :::tip Dica
-Os atributos `true-value` e `false-value` não afetam o atributo `value` dos *input's*, porque os browsers não incluem caixas de seleção não assinaladas nas submissões de formulários. Para garantir que um dos dois valores seja enviado em um formulário (p. ex. "sim" ou "não"), use *inputs* do tipo *radio*.
+Os atributos `true-value` e `false-value` não afetam o atributo `value` dos _input's_, porque os browsers não incluem caixas de seleção não assinaladas nas submissões de formulários. Para garantir que um dos dois valores seja enviado em um formulário (p. ex. "sim" ou "não"), use _inputs_ do tipo _radio_.
 :::
 
 ### Radio
@@ -295,7 +295,7 @@ vm.selected.number // => 123
 
 ### `.lazy`
 
-Por padrão, `v-model` sincroniza o elemento *input* com os dados após cada evento `input` (exceto para o caso de composição IME [descrito anteriormente](#vmodel-ime-tip)). Você pode adicionar o modificador `lazy` para sincronizar depois do evento `change`:
+Por padrão, `v-model` sincroniza o elemento _input_ com os dados após cada evento `input` (exceto para o caso de composição IME [descrito anteriormente](#vmodel-ime-tip)). Você pode adicionar o modificador `lazy` para sincronizar depois do evento `change`:
 
 ```html
 <!-- sincronizado depois do "change" ao invés de "input" -->
@@ -310,11 +310,11 @@ Se você deseja que a entrada do usuário seja automaticamente tipificada como u
 <input v-model.number="age" type="number" />
 ```
 
-Isto geralmente é útil, porque mesmo com `type="number"`, o valor do elemento HTML *input* sempre retorna uma string. Se o valor não puder ser convertido com `parseFloat()`, então o valor original é retornado.
+Isto geralmente é útil, porque mesmo com `type="number"`, o valor do elemento HTML _input_ sempre retorna uma string. Se o valor não puder ser convertido com `parseFloat()`, então o valor original é retornado.
 
 ### `.trim`
 
-Se você quiser que os espaços em branco do *input* do usuário sejam automaticamente cortados, pode adicionar o modificador `trim` ao `v-model` do elemento:
+Se você quiser que os espaços em branco do _input_ do usuário sejam automaticamente cortados, pode adicionar o modificador `trim` ao `v-model` do elemento:
 
 ```html
 <input v-model.trim="msg" />
@@ -324,4 +324,4 @@ Se você quiser que os espaços em branco do *input* do usuário sejam automatic
 
 > Se você ainda não está familiarizado com os componentes Vue, pode pular isto por enquanto.
 
-os tipos de *input* nativos do HTML nem sempre atendem as suas necessidades. Felizmente, os componentes Vue te permitem construir *inputs* reutilizáveis com comportamento completamente costumizável. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [inputs customizados](./component-basics.html#using-v-model-on-components) no guia de Componentes.
+os tipos de _input_ nativos do HTML nem sempre atendem as suas necessidades. Felizmente, os componentes Vue te permitem construir _inputs_ reutilizáveis com comportamento completamente costumizável. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [inputs customizados](./component-basics.html#using-v-model-on-components) no guia de Componentes.
