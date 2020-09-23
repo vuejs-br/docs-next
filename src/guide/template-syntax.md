@@ -1,209 +1,209 @@
-# Template Syntax
+# Sintaxe de Templates
 
-Vue.js uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying application instance's data. All Vue.js templates are valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+O Vue.js utiliza uma sintaxe de _templates_ baseada em HTML que permite que você vincule declarativamente o DOM renderizado aos dados da aplicação da instância que existe por baixo. Todos os _templates_ do Vue.js são compostos por HTML válido que pode ser _parseado_ por navegadores compatíveis com as especificações e também por _parsers_ de HTML.
 
-Under the hood, Vue compiles the templates into Virtual DOM render functions. Combined with the reactivity system, Vue is able to intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+Internamente, o Vue compila os _templates_ em funções de renderização do Virtual DOM. Combinado com o sistema de reatividade, Vue é capaz de identificar de forma inteligente a menor quantidade possível de componentes a serem “re-renderizados” e aplica o mínimo possível de manipulações do DOM quando o estado da aplicação muda.
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](render-function.html) instead of templates, with optional JSX support.
+Se você é familiarizado com os conceitos de Virtual DOM e prefere o poder do JavaScript puro, você também pode escrever [funções de renderização](render-function.html) ao invés de _templates_, com suporte opcional ao JSX.
 
-## Interpolations
+## Interpolações
 
-### Text
+### Texto
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
+A forma mais básica de vinculação de dados é interpolação de texto utilizando a sintaxe _"Mustache"_ (chaves duplas):
 
 ```html
-<span>Message: {{ msg }}</span>
+<span>Mensagem: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property on the corresponding data object. It will also be updated whenever the data object's `msg` property changes.
+As chaves duplas serão substituídas pelo valor da propriedade `msg` do objeto de dados correspondente. Esse texto também será atualizado sempre que a propriedade `msg` for modificada.
 
-You can also perform one-time interpolations that do not update on data change by using the [v-once directive](../api/directives.html#v-once), but keep in mind this will also affect any other bindings on the same node:
+Você também pode realizar interpolações únicas que não são atualizadas quando os dados mudam através da [diretiva `v-once`](../api/directives.html#v-once), mas mantenha em mente que isso afetará qualquer vinculação realizada no mesmo nó:
 
 ```html
-<span v-once>This will never change: {{ msg }}</span>
+<span v-once>Este valor nunca será modificado: {{ msg }}</span>
 ```
 
-### Raw HTML
+### HTML Puro
 
-The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](../api/directives.html#v-html):
+As chaves duplas interpretam os dados como texto simples, não HTML. Para que você exiba HTML, utilize a [diretiva `v-html`](../api/directives.html#v-html):
 
 ```html
-<p>Using mustaches: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>Interpolação textual: {{ rawHtml }}</p>
+<p>Diretiva v-html: <span v-html="rawHtml"></span></p>
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="yLNEJJM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Rendering v-html">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/yLNEJJM">
-  Rendering v-html</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  <span>Veja no Codepen <a href="https://codepen.io/team/Vue/pen/yLNEJJM">
+  Renderizando v-html</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
+Os conteúdos do `span` serão substituídos pelo valor da propriedade `rawHtml`, interpretada como HTML puro - vínculos de dados são ignorados. Note que você não pode utilizar a diretiva `v-html` para compor templates parciais, porque o Vue não é uma _engine_ de _templates_ baseada em Strings. Ao invés disso, componentes são a maneira indicada como unidade fundamental de composição e reutilização de elementos de interface.
 
 ::: tip
-Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use HTML interpolation on trusted content and **never** on user-provided content
+Renderizar dinamicamente HTML arbitrário no seu _site_ pode ser muito perigoso, pois pode facilmente levar a [ataques XSS](https://pt.wikipedia.org/wiki/Cross-site_scripting). Utilize a interpolação de HTML apenas em conteúdos que você confia e **nunca** em conteúdos enviados por usuários.
 :::
 
-### Attributes
+### Atributos
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](../api/#v-bind):
+Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a [diretiva v-bind]((../api/#v-bind)):
 
 ```html
 <div v-bind:id="dynamicId"></div>
 ```
 
-In the case of boolean attributes, where their mere existence implies `true`, `v-bind` works a little differently. In this example:
+No caso de atributos _booleanos_, onde sua mera existência implica em `true`, `v-bind` funciona um pouco diferente. Neste exemplo:
 
 ```html
-<button v-bind:disabled="isButtonDisabled">Button</button>
+<button v-bind:disabled="isButtonDisabled">Botão</button>
 ```
 
-If `isButtonDisabled` has the value of `null` or `undefined`, the `disabled` attribute will not even be included in the rendered `<button>` element.
+Se `isButtonDisabled` possui um valor `null` ou `undefined`, o atributo `disabled` nem mesmo será incluído no elemento `<button>` renderizado.
 
-### Using JavaScript Expressions
+### Usando Expressões JavaScript
 
-So far we've only been binding to simple property keys in our templates. But Vue.js actually supports the full power of JavaScript expressions inside all data bindings:
+Até aqui nós apenas vinculamos valores a chaves simples em nossos _templates_. Mas o Vue.js suporta todo o poder das expressões JavaScript dentro de todo tipo de vinculação de dados:
 
 ```html
-{{ number + 1 }} {{ ok ? 'YES' : 'NO' }} {{ message.split('').reverse().join('')
+{{ number + 1 }} {{ ok ? 'SIM' : 'NÃO' }} {{ message.split('').reverse().join('')
 }}
 
 <div v-bind:id="'list-' + id"></div>
 ```
 
-These expressions will be evaluated as JavaScript in the data scope of the current active instance. One restriction is that each binding can only contain **one single expression**, so the following will **NOT** work:
+Estas expressões serão compiladas como JavaScript no escopo de dados da atual instância ativa do Vue. A única restrição é que cada vínculo pode conter **apenas uma expressão** - desta forma, os códigos a seguir são exemplos de coisas que **NÃO** funcionarão:
 
 ```html
-<!-- this is a statement, not an expression: -->
+<!-- isso é uma atribuição, não uma expressão: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- ifs também não funcionarão, use expressões ternárias -->
 {{ if (ok) { return message } }}
 ```
 
-## Directives
+### Diretivas
 
-Directives are special attributes with the `v-` prefix. Directive attribute values are expected to be **a single JavaScript expression** (with the exception of `v-for` and `v-on`, which will be discussed later). A directive's job is to reactively apply side effects to the DOM when the value of its expression changes. Let's review the example we saw in the introduction:
+Diretivas são atributos especiais com o prefixo `v-`. Espera-se que os valores atribuídos às diretivas sejam **uma única expressão JavaScript** (com a exceção do `v-for` e do `v-on`, que serão discutidos posteriormente). O trabalho de uma diretiva é aplicar reativamente efeitos colaterais ao DOM quando o valor de sua expressão muda. Vamos revisar o exemplo que vimos na introdução:
 
 ```html
-<p v-if="seen">Now you see me</p>
+<p v-if="seen">Agora você me vê</p>
 ```
 
-Here, the `v-if` directive would remove/insert the `<p>` element based on the truthiness of the value of the expression `seen`.
+Aqui, a diretiva `v-if` irá remover/inserir o elemento `<p>` baseado na veracidade do valor da expressão `seen`.
 
-### Arguments
+### Parâmetros
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+Algumas diretivas podem aceitar um “parâmetro”, denotado pelo símbolo de dois pontos após o nome da diretiva. Por exemplo, a diretiva `v-bind` é utilizada para atualizar um atributo HTML reativamente:
 
 ```html
 <a v-bind:href="url"> ... </a>
 ```
 
-Here `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`.
+Aqui, `href` é o parâmetro que informará a diretiva `v-bind` para interligar o atributo `href` do elemento ao valor da expressão `url`.
 
-Another example is the `v-on` directive, which listens to DOM events:
+Outro exemplo é a diretiva `v-on`, que observa eventos do DOM:
 
 ```html
 <a v-on:click="doSomething"> ... </a>
 ```
 
-Here the argument is the event name to listen to. We will talk about event handling in more detail too.
+Aqui, o argumento é o nome do evento do DOM que ela deverá escutar. Falaremos sobre gerenciamento de eventos em mais detalhes também.
 
-### Dynamic Arguments
+### Argumentos Dinâmicos
 
-It is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+Também é possível usar uma expressão JavaScript no argumento de uma diretiva envolvendo-a em colchetes:
 
 ```html
 <!--
-Note that there are some constraints to the argument expression, as explained
-in the "Dynamic Argument Expression Constraints" section below.
+Note que existem algumas restrições à expressão do argumento, como explicado na seção
+"Restrições da Expressão de Argumento Dinâmico" abaixo.
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 ```
 
-Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your application instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
+Aqui, `attributeName` será dinamicamente processado como uma expressão JavaScript, e seu valor processado será usado como o valor final para o argumento. Por exemplo, se a instância da sua aplicação possui uma propriedade de dados `attributeName` cujo valor é `"href"`, então essa ligação irá ser equivalente a `v-bind:href`.
 
-Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+Da mesma forma, você pode usar argumentos dinâmicos para vincular um manipulador (_handler_) a um nome de evento dinâmico:
 
 ```html
 <a v-on:[eventName]="doSomething"> ... </a>
 ```
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+Neste exemplo, quando o valor de `eventName` for `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
 
-### Modifiers
+### Modificadores
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
+Modificadores são sufixos especiais denotados por um ponto `.`, que indicam que a diretiva deve ser aplicada de alguma maneira especial. Por exemplo, o modificador `.prevent` diz para a diretiva `v-on` chamar `event.preventDefault()` no evento desencadeado:
 
 ```html
 <form v-on:submit.prevent="onSubmit">...</form>
 ```
 
-You'll see other examples of modifiers later, [for `v-on`](events.md#event-modifiers) and [for `v-model`](forms.md#modifiers), when we explore those features.
+Você verá outros exemplos de modificadores posteriormente, [para a diretiva `v-on`](events.md#event-modifiers) e [para a diretiva `v-model`](forms.md#modifiers), quando explorarmos essas _features_.
 
-## Shorthands
+### Abreviações
 
-The `v-` prefix serves as a visual cue for identifying Vue-specific attributes in your templates. This is useful when you are using Vue.js to apply dynamic behavior to some existing markup, but can feel verbose for some frequently used directives. At the same time, the need for the `v-` prefix becomes less important when you are building a [SPA](https://en.wikipedia.org/wiki/Single-page_application), where Vue manages every template. Therefore, Vue provides special shorthands for two of the most often used directives, `v-bind` and `v-on`:
+O prefixo `v-` serve como uma dica visual para identificar atributos específicos do Vue em suas _templates_. Isso é útil quando você está utilizando Vue.js para aplicar comportamentos dinâmicos a alguma marcação existente, mas pode ser verboso para algumas diretivas usadas com frequência. Ao mesmo tempo, a necessidade do prefixo `v-` se torna menos importante quando você está construindo uma [SPA](https://en.wikipedia.org/wiki/Single-page_application), onde o Vue gerencia todas as _templates_. Desta forma, o Vue fornece abreviações especiais para duas das diretivas mais usadas, `v-bind` e `v-on`:
 
-### `v-bind` Shorthand
+### Abreviação de `v-bind`
 
 ```html
-<!-- full syntax -->
+<!-- sintaxe completa -->
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- forma abreviada -->
 <a :href="url"> ... </a>
 
-<!-- shorthand with dynamic argument -->
+<!-- forma abreviada com argumento dinâmico -->
 <a :[key]="url"> ... </a>
 ```
 
-### `v-on` Shorthand
+### Abreviação de `v-on`
 
 ```html
-<!-- full syntax -->
+<!-- sintaxe completa -->
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- forma abreviada -->
 <a @click="doSomething"> ... </a>
 
-<!-- shorthand with dynamic argument (2.6.0+) -->
+<!-- forma abreviada com argumento dinâmico (2.6.0+) -->
 <a @[event]="doSomething"> ... </a>
 ```
 
-They may look a bit different from normal HTML, but `:` and `@` are valid characters for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is totally optional, but you will likely appreciate it when you learn more about its usage later.
+Eles podem parecer um pouco diferentes de HTML normal, mas `:` e `@` são caracteres válidos para nomes de atributos e todos os navegadores que suportam o Vue podem _parseá-los_ corretamente. Além do mais, eles não aparecem na marcação renderizada final. A sintaxe abreviada é totalmente opcional, mas você provavelmente vai preferir utilizá-la quando aprender mais sobre seu uso posteriormente.
 
-> From the next page on, we'll use the shorthand in our examples, as that's the most common usage for Vue developers.
+> A partir da próxima página e em diante, iremos utilizar as formas abreviadas em nossos exemplos, já que é o uso mais comum para os desenvolvedores Vue.
 
-### Caveats
+### Ressalvas
 
-#### Dynamic Argument Value Constraints
+#### Restrições de Valores de Argumentos Dinâmicos
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+Espera-se que argumentos dinâmicos sejam avaliados resultando-se em uma String, com exceção do `null`. O valor especial `null` pode ser usado para explicitamente remover um vínculo. Qualquer outro valor que não seja uma String acionará um aviso.
 
-#### Dynamic Argument Expression Constraints
+#### Restrições de Expressões de Argumentos Dinâmicos
 
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres, como espaços e aspas, os quais são inválidos dentro de nomes de atributos HTML. Por exemplo, o seguinte é inválido:
 
 ```html
-<!-- This will trigger a compiler warning. -->
+<!-- Isto irá provocar um aviso do compilador. -->
 <a v-bind:['foo' + bar]="value"> ... </a>
 ```
 
-We recommend replacing any complex expressions with a [computed property](computed.html), one of the most fundamental pieces of Vue, which we'll cover shortly.
+Nós recomendamos trocar quaisquer expressões complexas por [dados computados](computed.html), uma das partes mais fundamentais do Vue, que cobriremos em breve.
 
-When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+Quando estiver usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você também deve evitar nomear suas chaves de argumentos com caracteres maiúsculos, já que os navegadores forçarão os nomes dos atributos a ficarem em minúsculas:
 
 ```html
 <!--
-This will be converted to v-bind:[someattr] in in-DOM templates.
-Unless you have a "someattr" property in your instance, your code won't work.
+Isso será convertido em v-bind:[someattr] em templates no DOM.
+A menos que você tenha uma propriedade "someattr" (totalmente em minúsculas) em sua instância, tal código não funcionará.
 -->
 <a v-bind:[someAttr]="value"> ... </a>
 ```
 
-#### JavaScript Expressions
+#### Expressões JavaScript
 
-Template expressions are sandboxed and only have access to a [whitelist of globals](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3) such as `Math` and `Date`. You should not attempt to access user defined globals in template expressions.
+Expressões de _template_ são isoladas e possuem acesso apenas à uma [lista de variáveis globais permitidas](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3), tais como `Math` e `Date`. Você não deve tentar acessar variáveis globais definidas pelo usuário em expressões de _template_.
