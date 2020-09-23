@@ -1,8 +1,8 @@
-# List Rendering
+# Renderização de Listas
 
-## Mapping an Array to Elements with `v-for`
+## Mapeando um Array de Elementos com `v-for`
 
-We can use the `v-for` directive to render a list of items based on an array. The `v-for` directive requires a special syntax in the form of `item in items`, where `items` is the source data array and `item` is an **alias** for the array element being iterated on:
+Podemos utilizar a diretiva `v-for` para renderizar uma lista de elementos com base nos dados de um Array. A diretiva `v-for` requer uma sintaxe especial na forma de `item in items`, onde `items` é a fonte de dados e `item` é um **apelido** para o elemento que estiver sendo iterado:
 
 ```html
 <ul id="array-rendering">
@@ -16,22 +16,22 @@ We can use the `v-for` directive to render a list of items based on an array. Th
 Vue.createApp({
   data() {
     return {
-      items: [{ message: 'Foo' }, { message: 'Bar' }]
+      items: [{ message: 'Vue' }, { message: 'JavaScript' }]
     }
   }
 }).mount('#array-rendering')
 ```
 
-Result:
+Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="VwLGbwa" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/VwLGbwa">
-  v-for with Array</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="WNwPbmx" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com Array">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/WNwPbmx">
+  Exemplo de v-for com Array</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Inside `v-for` blocks we have full access to parent scope properties. `v-for` also supports an optional second argument for the index of the current item.
+Dentro de blocos `v-for` temos acesso completo às propriedades do escopo pai. `v-for` também suporta um segundo argumento opcional para o índice do item atual.
 
 ```html
 <ul id="array-with-index">
@@ -45,31 +45,30 @@ Inside `v-for` blocks we have full access to parent scope properties. `v-for` al
 Vue.createApp({
   data() {
     return {
-      parentMessage: 'Parent',
-      items: [{ message: 'Foo' }, { message: 'Bar' }]
+      parentMessage: 'Pai',
+      items: [{ message: 'Vue' }, { message: 'JavaScript' }]
     }
   }
 }).mount('#array-with-index')
 ```
 
-Result:
-
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="wvaEdBP" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array and index">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/wvaEdBP">
-  v-for with Array and index</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+Resultado:
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="vuejs-br" data-slug-hash="wvGNBOK" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com Array e índice">
+   <span>Veja o <a href="https://codepen.io/vuejs-br/pen/wvGNBOK">
+  Exemplo de v-for com Array e índice</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-You can also use `of` as the delimiter instead of `in`, so that it is closer to JavaScript's syntax for iterators:
+Também é possível utilizar `of` como delimitador em vez de `in`, de forma que fique mais próximo da sintaxe de iteradores do JavaScript:
 
 ```html
 <div v-for="item of items"></div>
 ```
 
-## `v-for` with an Object
+## `v-for` com Objetos
 
-You can also use `v-for` to iterate through the properties of an object.
+Você também pode utilizar `v-for` para iterar pelas propriedades de um objeto.
 
 ```html
 <ul id="v-for-object" class="demo">
@@ -84,25 +83,25 @@ Vue.createApp({
   data() {
     return {
       myObject: {
-        title: 'How to do lists in Vue',
-        author: 'Jane Doe',
-        publishedAt: '2016-04-10'
+        titulo: 'Como fazer listas no Vue',
+        autor: 'Jane Doe',
+        publicadoEm: '2020-03-22'
       }
     }
   }
 }).mount('#v-for-object')
 ```
 
-Result:
+Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="NWqLjqy" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqLjqy">
-  v-for with Object</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="wvGNBNa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto">
+   <span>Veja o <a href="https://codepen.io/vuejs-br/pen/wvGNBNa">
+  Exemplo de v-for com objeto</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-You can also provide a second argument for the property's name (a.k.a. key):
+Você também pode fornecer um segundo argumento para o nome da propriedade (também conhecido como chave):
 
 ```html
 <li v-for="(value, name) in myObject">
@@ -110,14 +109,14 @@ You can also provide a second argument for the property's name (a.k.a. key):
 </li>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="poJOPjx" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object and key">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/poJOPjx">
-  v-for with Object and key</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="RwavNvm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto e chave">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/RwavNvm">
+  Exemplo de v-for com objeto e chave</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-And another for the index:
+E ainda um terceiro para o índice:
 
 ```html
 <li v-for="(value, name, index) in myObject">
@@ -125,46 +124,46 @@ And another for the index:
 </li>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="abOaWdo" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object key and index">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abOaWdo">
-  v-for with Object key and index</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="qBZgEgM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto, chave e índice">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/qBZgEgM">
+  Exemplo de v-for com objeto, chave e índice</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-:::tip Note
-When iterating over an object, the order is based on the enumeration order of `Object.keys()`, which isn't guaranteed to be consistent across JavaScript engine implementations.
+:::tip
+Quando estiver iterando sobre um objeto, a ordem é baseada na ordem de enumeração do `Object.keys()`, que não tem garantia de consistência entre implementações distintas de motores JavaScript.
 :::
 
-## Maintaining State
+## Manutenção de Estado
 
-When Vue is updating a list of elements rendered with `v-for`, by default it uses an "in-place patch" strategy. If the order of the data items has changed, instead of moving the DOM elements to match the order of the items, Vue will patch each element in-place and make sure it reflects what should be rendered at that particular index.
+Quando Vue está atualizando uma lista de elementos renderizados com `v-for`, por padrão se utiliza de uma estratégia de "remendo local" (_in-place patch_). Se a ordem dos itens de dados tiver mudado, em vez de mover os elementos do DOM para corresponder à nova ordem, Vue simplesmente remendará o conteúdo de cada elemento em seu local atual, garantindo que o resultado reflita o que precisa ser renderizado em cada índice em particular.
 
-This default mode is efficient, but **only suitable when your list render output does not rely on child component state or temporary DOM state (e.g. form input values)**.
+Este modo padrão é eficiente, mas **adequado apenas quando seu resultado de renderização não se apoiar em estado de componentes filhos ou estado de DOM temporário (como valores de campos de formulário)**.
 
-To give Vue a hint so that it can track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item:
+Para dar ao Vue uma dica de modo que ele possa rastrear a identidade de cada nó e, assim, reutilizar e reordenar os elementos existentes, você precisa fornecer um atributo `key` exclusivo para cada item:
 
 ```html
 <div v-for="item in items" :key="item.id">
-  <!-- content -->
+  <!-- conteúdo -->
 </div>
 ```
 
-It is recommended to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.
+É recomendado oferecer um atributo `key` para `v-for` sempre que possível, a menos que esteja iterando sobre um conteúdo DOM simples, ou esteja intencionalmente se apoiando no comportamento padrão para ganho de desempenho.
 
-Since it's a generic mechanism for Vue to identify nodes, the `key` also has other uses that are not specifically tied to `v-for`, as we will see later in the guide.
+Por ser um mecanismo genérico do Vue para identificar nós, `key` também tem outras utilidades não especificamente associadas ao `v-for`, como veremos futuramente neste guia.
 
 :::tip Note
-Don't use non-primitive values like objects and arrays as `v-for` keys. Use string or numeric values instead.
+Não use valores não primitivos como objetos e arrays como chaves para `v-for`. Em vez disso, use String ou valores numéricos
 :::
 
-For detailed usage of the `key` attribute, please see the [`key` API documentation](../api/special-attributes.html#key).
+Para uso detalhado do atributo `key`, por favor veja a [documentação da API `key`](../api/special-attributes.html#key).
 
-## Array Change Detection
+## Detecção de Mudanças em Arrays
 
-### Mutation Methods
+### Métodos de Mutação
 
-Vue wraps an observed array's mutation methods so they will also trigger view updates. The wrapped methods are:
+Vue envolve automaticamente os métodos de mutação de um Array observado, de forma que dispare alterações na interface. Os métodos englobados são:
 
 - `push()`
 - `pop()`
@@ -174,23 +173,23 @@ Vue wraps an observed array's mutation methods so they will also trigger view up
 - `sort()`
 - `reverse()`
 
-You can open the console and play with the previous examples' `items` array by calling their mutation methods. For example: `example1.items.push({ message: 'Baz' })`.
+Você pode abrir o _console_ e brincar com os `items` dos exemplos anteriores, chamando seus métodos de mutação. Por exemplo: `example1.items.push({ message: 'Baz' })`.
 
-### Replacing an Array
+### Substituindo um Array
 
-Mutation methods, as the name suggests, mutate the original array they are called on. In comparison, there are also non-mutating methods, e.g. `filter()`, `concat()` and `slice()`, which do not mutate the original array but **always return a new array**. When working with non-mutating methods, you can replace the old array with the new one:
+Métodos de mutação, como o nome sugere, mudam o Array original no qual são chamados. Em comparação, também há métodos sem mutação, como `filter()`, `concat()` e `slice()`, que não modificam o Array original, mas sim **retornam um novo Array**. Ao trabalhar com métodos sem mutação, você pode substituir o Array antigo pelo novo:
 
 ```js
 example1.items = example1.items.filter(item => item.message.match(/Foo/))
 ```
 
-You might think this will cause Vue to throw away the existing DOM and re-render the entire list - luckily, that is not the case. Vue implements some smart heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.
+Você pode pensar que isto fará o Vue jogar fora todo o DOM existente e "re-renderizar" a lista inteira - por sorte, não é o caso. Vue implementa algumas heurísticas inteligentes para maximizar a reutilização dos elementos DOM, assim, sobrescrever um Array com outro, contendo elementos subjacentes, é uma operação muito eficiente.
 
-## Displaying Filtered/Sorted Results
+## Exibindo Resultados Filtrados/Ordenados
 
-Sometimes we want to display a filtered or sorted version of an array without actually mutating or resetting the original data. In this case, you can create a computed property that returns the filtered or sorted array.
+Às vezes, queremos exibir uma versão filtrada ou ordenada de um Array sem efetivamente mudar ou reiniciar seus dados originais. Neste caso, você pode criar um dado computado que retorna um Array filtrado ou ordenado.
 
-For example:
+Por exemplo:
 
 ```html
 <li v-for="n in evenNumbers">{{ n }}</li>
@@ -209,7 +208,7 @@ computed: {
 }
 ```
 
-In situations where computed properties are not feasible (e.g. inside nested `v-for` loops), you can use a method:
+Em situações onde dados computados não são factíveis (por exemplo, em repetições `v-for` aninhadas), você pode usar um método:
 
 ```html
 <ul v-for="numbers in sets">
@@ -230,9 +229,9 @@ methods: {
 }
 ```
 
-## `v-for` with a Range
+## Intervalo Numérico no `v-for`
 
-`v-for` can also take an integer. In this case it will repeat the template that many times.
+O `v-for` pode aceitar um número inteiro. Nesse caso, o _template_ se repetirá este número de vezes.
 
 ```html
 <div id="range" class="demo">
@@ -240,18 +239,19 @@ methods: {
 </div>
 ```
 
-Result:
+Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="NWqLjNY" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with a range">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqLjNY">
-  v-for with a range</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="vuejs-br" data-slug-hash="ExKrarE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com intervalo numérico">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/ExKrarE">
+  Exemplo de v-for com intervalo numérico</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## `v-for` on a `<template>`
 
-Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elements. For example:
+## Utilizando `<template>` com `v-for`
+
+Similar ao uso de _template_ com `v-if`, você também pode usar a tag `<template>` com `v-for` para renderizar um bloco de múltiplos elementos. Por exemplo:
 
 ```html
 <ul>
@@ -262,13 +262,13 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 </ul>
 ```
 
-## `v-for` with `v-if`
+## Utilizando `v-if` com `v-for`
 
 :::tip
-Note that it's **not** recommended to use `v-if` and `v-for` together. Refer to [style guide](../style-guide/#avoid-v-if-with-v-for-essential) for details.
+Note que **não** é recomendado usar `v-if` e `v-for` juntos. Consulte o [guia de estilos](../style-guide/#avoid-v-if-with-v-for-essential) para detalhes.
 :::
 
-When they exist on the same node, `v-for` has a higher priority than `v-if`. That means the `v-if` will be run on each iteration of the loop separately. This can be useful when you want to render nodes for only _some_ items, like below:
+Quando presentes em um mesmo nó, `v-for` tem maior prioridade que `v-if`. Isto significa que `v-if` será executado separadamente a cada iteração da repetição. Isto pode ser útil se quiser renderizar nós condicionalmente para apenas _alguns_ itens, como abaixo:
 
 ```html
 <li v-for="todo in todos" v-if="!todo.isComplete">
@@ -276,9 +276,9 @@ When they exist on the same node, `v-for` has a higher priority than `v-if`. Tha
 </li>
 ```
 
-The above only renders the todos that are not complete.
+O exemplo acima só renderiza apenas as tarefas que não estão completas.
 
-If instead, your intent is to conditionally skip execution of the loop, you can place the `v-if` on a wrapper element (or [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)). For example:
+Em vez disso, se sua intenção for condicionalmente pular toda a execução da repetição, você pode colocar o `v-if` em um elemento envolvendo o bloco (ou [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)). Por exemplo:
 
 ```html
 <ul v-if="todos.length">
@@ -286,20 +286,20 @@ If instead, your intent is to conditionally skip execution of the loop, you can 
     {{ todo }}
   </li>
 </ul>
-<p v-else>No todos left!</p>
+<p v-else>Não há tarefas a fazer!</p>
 ```
 
-## `v-for` with a Component
+## Componentes com `v-for`
 
-> This section assumes knowledge of [Components](component-basics.md). Feel free to skip it and come back later.
+> Esta seção pressupõe que você tem conhecimendo sobre [Componentes](component-basics.md). Sinta-se à vontade para pular e voltar depois.
 
-You can directly use `v-for` on a custom component, like any normal element:
+Você pode usar `v-for` diretamente em um componente personalizado, assim como faz num elemento normal:
 
 ```html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-However, this won't automatically pass any data to the component, because components have isolated scopes of their own. In order to pass the iterated data into the component, we should also use props:
+No entanto, isso não passará automaticamente nenhum dado ao componente, pois componentes possuem seus próprios escopos isolados. Para passar dados iterados para dentro do componente, devemos utilizar propriedades.
 
 ```html
 <my-component
@@ -310,20 +310,20 @@ However, this won't automatically pass any data to the component, because compon
 ></my-component>
 ```
 
-The reason for not automatically injecting `item` into the component is because that makes the component tightly coupled to how `v-for` works. Being explicit about where its data comes from makes the component reusable in other situations.
+A razão para não injetarmos automaticamente `item` dentro do componente é para evitar que ele fique fortemente acoplado ao funcionamento do `v-for`. Explicitar a origem de seus dados torna o componente reutilizável em outras situações.
 
-Here's a complete example of a simple todo list:
+Aqui temos um exemplo de uma lista de tarefas simples usando componentes:
 
 ```html
 <div id="todo-list-example">
   <form v-on:submit.prevent="addNewTodo">
-    <label for="new-todo">Add a todo</label>
+    <label for="new-todo">Adicionar tarefa:</label>
     <input
       v-model="newTodoText"
       id="new-todo"
-      placeholder="E.g. Feed the cat"
+      placeholder="Ex.: Alimentar o gato"
     />
-    <button>Add</button>
+    <button>Adicionar</button>
   </form>
   <ul>
     <todo-item
@@ -344,15 +344,15 @@ const app = Vue.createApp({
       todos: [
         {
           id: 1,
-          title: 'Do the dishes'
+          title: 'Lavar a louça'
         },
         {
           id: 2,
-          title: 'Take out the trash'
+          title: 'Tirar o lixo'
         },
         {
           id: 3,
-          title: 'Mow the lawn'
+          title: 'Cortar a grama'
         }
       ],
       nextTodoId: 4
@@ -373,7 +373,7 @@ app.component('todo-item', {
   template: `
     <li>
       {{ title }}
-      <button @click="$emit('remove')">Remove</button>
+      <button @click="$emit('remove')">Remover</button>
     </li>
   `,
   props: ['title']
@@ -382,9 +382,9 @@ app.component('todo-item', {
 app.mount('#todo-list-example')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="abOaWpz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with components">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abOaWpz">
-  v-for with components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="KKzJwYa" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com componentes">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/KKzJwYa">
+  Exemplo de v-for com componentes</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
