@@ -1,6 +1,6 @@
 # Sintaxe de Templates
 
-O Vue.js utiliza uma sintaxe de _templates_ baseada em HTML que permite que você vincule declarativamente o DOM renderizado aos dados da aplicação da instância que existe por baixo. Todos os _templates_ do Vue.js são compostos por HTML válido que pode ser _parseado_ por navegadores compatíveis com as especificações e também por _parsers_ de HTML.
+O Vue.js utiliza uma sintaxe de _templates_ baseada em HTML que permite que você vincule declarativamente o DOM renderizado aos dados da aplicação da instância que existe por baixo. Todos os _templates_ do Vue.js são compostos por HTML válido que pode ser interpretado por navegadores compatíveis com as especificações e também por _parsers_ de HTML.
 
 Internamente, o Vue compila os _templates_ em funções de renderização do Virtual DOM. Combinado com o sistema de reatividade, Vue é capaz de identificar de forma inteligente a menor quantidade possível de componentes a serem “re-renderizados” e aplica o mínimo possível de manipulações do DOM quando o estado da aplicação muda.
 
@@ -33,9 +33,9 @@ As chaves duplas interpretam os dados como texto simples, não HTML. Para que vo
 <p>Diretiva v-html: <span v-html="rawHtml"></span></p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="yLNEJJM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Rendering v-html">
-  <span>Veja no Codepen <a href="https://codepen.io/team/Vue/pen/yLNEJJM">
-  Renderizando v-html</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="yLNEJJM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Renderizando v-html">
+  <span>Veja o exemplo <a href="https://codepen.io/vuejs-br/pen/MWyZLyQ">
+  Renderizando v-html</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -83,7 +83,7 @@ Estas expressões serão compiladas como JavaScript no escopo de dados da atual 
 {{ if (ok) { return message } }}
 ```
 
-### Diretivas
+## Diretivas
 
 Diretivas são atributos especiais com o prefixo `v-`. Espera-se que os valores atribuídos às diretivas sejam **uma única expressão JavaScript** (com a exceção do `v-for` e do `v-on`, que serão discutidos posteriormente). O trabalho de uma diretiva é aplicar reativamente efeitos colaterais ao DOM quando o valor de sua expressão muda. Vamos revisar o exemplo que vimos na introdução:
 
@@ -95,7 +95,7 @@ Aqui, a diretiva `v-if` irá remover/inserir o elemento `<p>` baseado na veracid
 
 ### Parâmetros
 
-Algumas diretivas podem aceitar um “parâmetro”, denotado pelo símbolo de dois pontos após o nome da diretiva. Por exemplo, a diretiva `v-bind` é utilizada para atualizar um atributo HTML reativamente:
+Algumas diretivas podem aceitar um parâmetro, denotado pelo símbolo de dois pontos após o nome da diretiva. Por exemplo, a diretiva `v-bind` é utilizada para atualizar um atributo HTML reativamente:
 
 ```html
 <a v-bind:href="url"> ... </a>
@@ -141,11 +141,11 @@ Modificadores são sufixos especiais denotados por um ponto `.`, que indicam que
 <form v-on:submit.prevent="onSubmit">...</form>
 ```
 
-Você verá outros exemplos de modificadores posteriormente, [para a diretiva `v-on`](events.md#event-modifiers) e [para a diretiva `v-model`](forms.md#modifiers), quando explorarmos essas _features_.
+Você verá outros exemplos de modificadores posteriormente, [para a diretiva `v-on`](events.md#event-modifiers) e [para a diretiva `v-model`](forms.md#modifiers), quando explorarmos tais recursos.
 
-### Abreviações
+## Abreviações
 
-O prefixo `v-` serve como uma dica visual para identificar atributos específicos do Vue em suas _templates_. Isso é útil quando você está utilizando Vue.js para aplicar comportamentos dinâmicos a alguma marcação existente, mas pode ser verboso para algumas diretivas usadas com frequência. Ao mesmo tempo, a necessidade do prefixo `v-` se torna menos importante quando você está construindo uma [SPA](https://en.wikipedia.org/wiki/Single-page_application), onde o Vue gerencia todas as _templates_. Desta forma, o Vue fornece abreviações especiais para duas das diretivas mais usadas, `v-bind` e `v-on`:
+O prefixo `v-` serve como uma dica visual para identificar atributos específicos do Vue em seus _templates_. Isso é útil quando você está utilizando Vue.js para aplicar comportamentos dinâmicos a alguma marcação existente, mas pode ser verboso para algumas diretivas usadas com frequência. Ao mesmo tempo, a necessidade do prefixo `v-` se torna menos importante quando você está construindo uma [SPA](https://en.wikipedia.org/wiki/Single-page_application), onde o Vue gerencia todas os _templates_. Desta forma, o Vue fornece abreviações especiais para duas das diretivas mais usadas, `v-bind` e `v-on`:
 
 ### Abreviação de `v-bind`
 
@@ -173,7 +173,7 @@ O prefixo `v-` serve como uma dica visual para identificar atributos específico
 <a @[event]="doSomething"> ... </a>
 ```
 
-Eles podem parecer um pouco diferentes de HTML normal, mas `:` e `@` são caracteres válidos para nomes de atributos e todos os navegadores que suportam o Vue podem _parseá-los_ corretamente. Além do mais, eles não aparecem na marcação renderizada final. A sintaxe abreviada é totalmente opcional, mas você provavelmente vai preferir utilizá-la quando aprender mais sobre seu uso posteriormente.
+Eles podem parecer um pouco diferentes de HTML normal, mas `:` e `@` são caracteres válidos para nomes de atributos e todos os navegadores que suportam o Vue podem lê-los corretamente. Além do mais, eles não aparecem na marcação renderizada final. A sintaxe abreviada é totalmente opcional, mas você provavelmente vai preferir utilizá-la quando aprender mais sobre seu uso posteriormente.
 
 > A partir da próxima página e em diante, iremos utilizar as formas abreviadas em nossos exemplos, já que é o uso mais comum para os desenvolvedores Vue.
 
