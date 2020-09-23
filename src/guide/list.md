@@ -16,7 +16,7 @@ Podemos utilizar a diretiva `v-for` para renderizar uma lista de elementos com b
 Vue.createApp({
   data() {
     return {
-      items: [{ message: 'Foo' }, { message: 'Bar' }]
+      items: [{ message: 'Vue' }, { message: 'JavaScript' }]
     }
   }
 }).mount('#array-rendering')
@@ -24,8 +24,8 @@ Vue.createApp({
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="VwaqNPB" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com Array">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/VwaqNPB">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="WNwPbmx" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com Array">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/WNwPbmx">
   Exemplo de v-for com Array</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -46,15 +46,15 @@ Vue.createApp({
   data() {
     return {
       parentMessage: 'Pai',
-      items: [{ message: 'Foo' }, { message: 'Bar' }]
+      items: [{ message: 'Vue' }, { message: 'JavaScript' }]
     }
   }
 }).mount('#array-with-index')
 ```
 
 Resultado:
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="vuejs-br" data-slug-hash="xxVmNvx" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com Array e índice">
-   <span>Veja o <a href="https://codepen.io/edumedeiros/pen/xxVmNvx">
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="css,result" data-user="vuejs-br" data-slug-hash="wvGNBOK" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com Array e índice">
+   <span>Veja o <a href="https://codepen.io/vuejs-br/pen/wvGNBOK">
   Exemplo de v-for com Array e índice</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -94,8 +94,8 @@ Vue.createApp({
 
 Resultado:
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="ZEWVdEP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto">
-   <span>Veja o <a href="https://codepen.io/edumedeiros/pen/ZEWVdEP">
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="wvGNBNa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto">
+   <span>Veja o <a href="https://codepen.io/vuejs-br/pen/wvGNBNa">
   Exemplo de v-for com objeto</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -109,8 +109,8 @@ Você também pode fornecer um segundo argumento para o nome da propriedade (tam
 </li>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="xxVmoOG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto e chave">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/xxVmoOG">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="RwavNvm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto e chave">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/RwavNvm">
   Exemplo de v-for com objeto e chave</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -124,8 +124,8 @@ E ainda um terceiro para o índice:
 </li>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="eYZbwvq" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto, chave e índice">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/eYZbwvq">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="qBZgEgM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com objeto, chave e índice">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/qBZgEgM">
   Exemplo de v-for com objeto, chave e índice</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -241,8 +241,8 @@ O `v-for` pode aceitar um número inteiro. Nesse caso, o _template_ se repetirá
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="vuejs-br" data-slug-hash="dyMwBzv" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com intervalo numérico">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/dyMwBzv">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="vuejs-br" data-slug-hash="ExKrarE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com intervalo numérico">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/ExKrarE">
   Exemplo de v-for com intervalo numérico</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -317,7 +317,7 @@ Aqui temos um exemplo de uma lista de tarefas simples usando componentes:
 ```html
 <div id="todo-list-example">
   <form v-on:submit.prevent="addNewTodo">
-    <label for="new-todo">Adicione uma tarefa</label>
+    <label for="new-todo">Adicionar tarefa:</label>
     <input
       v-model="newTodoText"
       id="new-todo"
@@ -344,7 +344,7 @@ const app = Vue.createApp({
       todos: [
         {
           id: 1,
-          title: 'Lavar os pratos'
+          title: 'Lavar a louça'
         },
         {
           id: 2,
@@ -382,8 +382,8 @@ app.component('todo-item', {
 app.mount('#todo-list-example')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="yLOGdzW" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com componentes">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/yLOGdzW">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="KKzJwYa" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de v-for com componentes">
+  <span>Veja o <a href="https://codepen.io/vuejs-br/pen/KKzJwYa">
   Exemplo de v-for com componentes</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
