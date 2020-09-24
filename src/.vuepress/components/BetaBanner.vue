@@ -1,7 +1,11 @@
 <template>
   <ClientOnly>
-    <aside class="app-banner" v-if="shouldShow">
-      <slot></slot>
+    <aside class="beta-banner" v-if="shouldShow">
+      <p>
+        <span class="hide-sm">⚠️ Beta Version:</span>
+        Docs
+        <span class="hide-sm">are</span> in development and subject to change.
+      </p>
       <button ref="closeButton" @click="close">Close</button>
     </aside>
   </ClientOnly>
@@ -35,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 @import '../theme/styles/mixins.scss';
 
-.app-banner {
+.beta-banner {
   position: fixed;
   z-index: 21;
   top: 0;
