@@ -12,12 +12,7 @@ Anteriormente, usamos o atributo `is` para alternar entre os componentes em uma 
 
 Ao alternar entre esses componentes, às vezes, você desejará manter seu estado ou evitar uma nova renderização, por motivos de desempenho. Por exemplo, ao expandir nossa interface com guias um pouco:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="jOPjZOe" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Dynamic components: without keep-alive">
-  <span>Veja o Pen <a href="https://codepen.io/team/Vue/pen/jOPjZOe">
-  Componentes Dinâmicos: sem keep-alive</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Componentes Dinâmicos: sem keep-alive" slug="jOPjZOe" />
 
 Você notará que, se selecionar uma postagem, alternar para a guia _Arquivo_ e, em seguida, voltar para _Postagens_, ela não estará mais mostrando a postagem selecionada. Isso acontece pois, cada vez que você muda para uma nova guia, o Vue cria uma nova instância do componente `currentTabComponent`.
 
@@ -32,12 +27,7 @@ Recriar componentes dinâmicos normalmente é um comportamento útil, mas, nesse
 
 Confira o resultado abaixo:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="VwLJQvP" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Dynamic components: with keep-alive">
-  <span>Veja o Pen <a href="https://codepen.io/team/Vue/pen/VwLJQvP">
-  Componentes Dinâmicos: com keep-alive</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Componentes Dinâmicos: com keep-alive" slug="VwLJQvP" />
 
 Agora, a guia _Postagens_ mantém seu estado (a postagem selecionada) mesmo quando não é renderizada.
 
