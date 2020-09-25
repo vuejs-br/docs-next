@@ -1,25 +1,25 @@
-# Custom Events
+# Eventos customizados
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> Esta página pressupõe que você já leu o [Básico sobre Componentes](component-basics.md). Leia isso antes se você está iniciando com componentes.
 
-## Event Names
+## Nomes de Eventos
 
-Unlike components and props, event names don't provide any automatic case transformation. Instead, the name of an emitted event must exactly match the name used to listen to that event. For example, if emitting a camelCased event name:
+Diferente de componentes e propriedades, os nomes de eventos não convertem automaticamente maiúsculas e minúsculas. Em vez disso, o nome de um evento emitido deve corresponder exatamente ao nome usado para ouvir este evento. Por exemplo, se emitir um evento com nome em camelCase:
 
 ```js
 this.$emit('myEvent')
 ```
 
-Listening to the kebab-cased version will have no effect:
+Ouvir com kebab-case não funcionará:
 
 ```html
-<!-- Won't work -->
+<!-- Não funcionará -->
 <my-component @my-event="doSomething"></my-component>
 ```
 
-Since event names will never be used as variable or property names in JavaScript, there is no reason to use camelCase or PascalCase. Additionally, `v-on` event listeners inside DOM templates will be automatically transformed to lowercase (due to HTML's case-insensitivity), so `@myEvent` would become `@myevent` -- making `myEvent` impossible to listen to.
+Considerando que os nomes de eventos nunca serão usados como nomes de variáveis ou de propriedades no JavaScript, não há razão para usar camelCase ou PascalCase. Além disso, os ouvintes de eventos `v-on` dentro dos templates DOM serão automaticamente transformados em minúsculas (devido ao HTML ser insensível a maiúsculas e minúsculas), então `@myEvent` se tornará `@myevent` -- fazendo `myEvent` impossível de ser ouvido.
 
-For these reasons, we recommend you **always use kebab-case for event names**.
+Por estas razões, nós recomendamos que você **sempre use kebab-case para nomes de eventos**.
 
 ## Defining Custom Events
 
