@@ -1,4 +1,4 @@
-# Eventos customizados
+# Eventos Personalizados
 
 > Esta página pressupõe que você já leu o [Básico sobre Componentes](component-basics.md). Leia isso antes se você está iniciando com componentes.
 
@@ -21,9 +21,9 @@ Considerando que os nomes de eventos nunca serão usados como nomes de variávei
 
 Por estas razões, nós recomendamos que você **sempre use kebab-case para nomes de eventos**.
 
-## Definindo Eventos Customizados
+## Definindo Eventos Personalizados
 
-<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Aprenda a definir quais eventos um componente pode emitir com a Vue School (em inglês)">Assista a um vídeo grátis sobre como definir Eventos Customizados na Vue School (em inglês)</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Aprenda a definir quais eventos um componente pode emitir com a Vue School (em inglês)">Assista a um vídeo grátis sobre como definir Eventos Personalizados na Vue School (em inglês)</VideoLesson>
 
 Os eventos emitidos podem ser definidos no componente através da opção `emits`.
 
@@ -36,7 +36,7 @@ app.component('custom-form', {
 No caso de um evento nativo (por exemplo, `click`) ser definido na opção `emits`, ele será substituído pelo evento do componente em vez de ser tratado como um ouvinte nativo.
 
 ::: tip DICA
-Recomenda-se definir todos os eventos emitidos para documentar melhor como um componente deve funcionar.
+Recomenda-se definir todos os eventos emitidos para documentar melhor como o componente deve funcionar.
 :::
 
 ### Validar Eventos Emitidos
