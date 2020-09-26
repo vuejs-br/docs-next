@@ -39,19 +39,19 @@ No caso de um evento nativo (por exemplo, `click`) ser definido na opção `emit
 Recomenda-se definir todos os eventos emitidos para documentar melhor como um componente deve funcionar.
 :::
 
-### Validate Emitted Events
+### Validar Eventos Emitidos
 
-Similar to prop type validation, an emitted event can be validated if it is defined with the Object syntax instead of the Array syntax.
+Semelhante à validação de propriedades, um evento emitido pode ser validado se for definido com a sintaxe Object em vez da sintaxe Array.
 
-To add validation, the event is assigned a function that receives the arguments passed to the `$emit` call and returns a boolean to indicate whether the event is valid or not.
+Para adicionar validação, o evento recebe uma função que recebe os argumentos passados ​​para a chamada `$emit` e retorna um booleano para indicar se o evento é válido ou não.
 
 ```js
 app.component('custom-form', {
   emits: {
-    // No validation
+    // Sem validação
     click: null,
 
-    // Validate submit event
+    // Validar evento submit
     submit: ({ email, password }) => {
       if (email && password) {
         return true
@@ -69,15 +69,15 @@ app.component('custom-form', {
 })
 ```
 
-## `v-model` arguments
+## Argumentos `v-model`
 
-By default, `v-model` on a component uses `modelValue` as the prop and `update:modelValue` as the event. We can modify these names passing an argument to `v-model`:
+Por padrão, `v-model` em um componente usa `modelValue` como propriedade e `update:modelValue` como evento. Podemos modificar esses nomes passando um argumento para `v-model`:
 
 ```html
 <my-component v-model:foo="bar"></my-component>
 ```
 
-In this case, child component will expect a `foo` prop and emits `update:foo` event to sync:
+Nesse caso, o componente filho espera a propriedade `foo` e emite o evento `update:foo` para sincronizar:
 
 ```js
 const app = Vue.createApp({})
