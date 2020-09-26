@@ -71,7 +71,7 @@ app.component('custom-form', {
 
 ## Argumentos `v-model`
 
-Por padrão, `v-model` em um componente usa `modelValue` como propriedade e `update:modelValue` como evento. Podemos modificar esses nomes passando um argumento para `v-model`:
+Por padrão, em um componente `v-model` usa `modelValue` como propriedade e `update:modelValue` como evento. Podemos modificar esses nomes passando um argumento para `v-model`:
 
 ```html
 <my-component v-model:foo="bar"></my-component>
@@ -99,11 +99,11 @@ app.component('my-component', {
 <my-component v-model:foo="bar"></my-component>
 ```
 
-## Multiple `v-model` bindings
+## Vários vínculos `v-model`
 
-By leveraging the ability to target a particular prop and event as we learned before with [`v-model` arguments](#v-model-arguments), we can now create multiple v-model bindings on a single component instance.
+Aproveitando a capacidade de direcionar uma determinada propriedade e evento como aprendemos antes em [argumentos `v-model`](#argumentos-v-model), agora podemos criar vários vínculos de v-model em uma única instância do componente.
 
-Each v-model will sync to a different prop, without the need for extra options in the component:
+Cada v-model será sincronizado com uma propriedade diferente, sem a necessidade de opções extras no componente:
 
 ```html
 <user-name
@@ -134,10 +134,10 @@ app.component('user-name', {
 })
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="GRoPPrM" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Multiple v-models">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/GRoPPrM">
-  Multiple v-models</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="lucianotonet" data-slug-hash="bGpZrLy" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Múltiplos v-models">
+  <span>Veja o exemplo <a href="https://codepen.io/lucianotonet/pen/bGpZrLy">
+  Múltiplos v-models</a> por L. Tonet (<a href="https://codepen.io/lucianotonet">@lucianotonet</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
