@@ -21,11 +21,11 @@ Considerando que os nomes de eventos nunca serão usados como nomes de variávei
 
 Por estas razões, nós recomendamos que você **sempre use kebab-case para nomes de eventos**.
 
-## Defining Custom Events
+## Definindo Eventos Customizados
 
-<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Learn how to define which events a component can emit with Vue School">Watch a free video about Defining Custom Events on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Aprenda a definir quais eventos um componente pode emitir com a Vue School (em inglês)">Assista a um vídeo grátis sobre como definir Eventos Customizados na Vue School (em inglês)</VideoLesson>
 
-Emitted events can be defined on the component via the `emits` option.
+Os eventos emitidos podem ser definidos no componente através da opção `emits`.
 
 ```js
 app.component('custom-form', {
@@ -33,10 +33,10 @@ app.component('custom-form', {
 })
 ```
 
-In the event a native event (e.g., `click`) is defined in the `emits` option, it will be overwritten by the event in the component instead of being treated as a native listener.
+No caso de um evento nativo (por exemplo, `click`) ser definido na opção `emits`, ele será substituído pelo evento do componente em vez de ser tratado como um ouvinte nativo.
 
-::: tip
-It is recommended to define all emitted events in order to better document how a component should work.
+::: tip DICA
+Recomenda-se definir todos os eventos emitidos para documentar melhor como um componente deve funcionar.
 :::
 
 ### Validate Emitted Events
