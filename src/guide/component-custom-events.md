@@ -141,15 +141,15 @@ app.component('user-name', {
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Handling `v-model` modifiers
+## Manipulando modificadores `v-model`
 
-When we were learning about form input bindings, we saw that `v-model` has [built-in modifiers](/guide/forms.html#modifiers) - `.trim`, `.number` and `.lazy`. In some cases, however, you might also want to add your own custom modifiers.
+Quando estávamos aprendendo sobre interligações em elementos *input*, vimos que `v-model` tem [modificadores embutidos](/guide/forms.html#modifiers) - `.trim`, `.number` e `.lazy`. Em alguns casos, entretanto, você também pode querer adicionar seus próprios modificadores personalizados.
 
-Let's create an example custom modifier, `capitalize`, that capitalizes the first letter of the string provided by the `v-model` binding.
+Vamos criar um modificador personalizado de exemplo, `capitalize`, que coloca em maiúscula a primeira letra da string fornecida pela vinculação `v-model`.
 
-Modifiers added to a component `v-model` will be provided to the component via the `modelModifiers` prop. In the below example, we have created a component that contains a `modelModifiers` prop that defaults to an empty object.
+Modificadores adicionados a um componente `v-model` serão fornecidos ao componente por meio da propriedade `modelModifiers`. No exemplo abaixo, criamos um componente que contém uma propriedade `modelModifiers` cujo padrão é um objeto vazio.
 
-Notice that when the component's `created` lifecycle hook triggers, the `modelModifiers` prop contains `capitalize` and its value is `true` - due to it being set on the `v-model` binding `v-model.capitalize="bar"`.
+Observe que quando o gancho do ciclo de vida `created` do componente é acionado, a propriedade `modelModifiers` contém `capitalize` e seu valor é `true` - devido ao fato de ser definido na vinculação `v-model.capitalize="bar"`.
 
 ```html
 <my-component v-model.capitalize="bar"></my-component>
@@ -174,7 +174,7 @@ app.component('my-component', {
 })
 ```
 
-Now that we have our prop set up, we can check the `modelModifiers` object keys and write a handler to change the emitted value. In the code below we will capitalize the string whenever the `<input />` element fires an `input` event.
+Agora que temos nossa propriedade configurada, podemos verificar as chaves do objeto `modelModifiers` e escrever um manipulador para alterar o valor emitido. No código a seguir, colocaremos a string em maiúscula sempre que o elemento `<input />` disparar um evento `input`.
 
 ```html
 <div id="app">
@@ -217,7 +217,7 @@ app.component('my-component', {
 app.mount('#app')
 ```
 
-For `v-model` bindings with arguments, the generated prop name will be `arg + "Modifiers"`:
+Para as ligações `v-model` com argumentos, o nome da propriedade gerada será `arg + "Modifiers"`:
 
 ```html
 <my-component v-model:foo.capitalize="bar"></my-component>
