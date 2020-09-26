@@ -119,7 +119,7 @@ No entanto, isso pode ser um tanto prolixo se você tiver várias classes condic
 <div :class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### Com Componentes
+### Em Componentes
 
 > Esta seção assume conhecimento sobre [Componentes Vue](component-basics.md). Pode pular esta parte e voltar depois.
 
