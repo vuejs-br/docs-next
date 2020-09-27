@@ -2,7 +2,7 @@
 
 ## Escutando Eventos
 
-Podemos usar a diretiva `v-on`, que normalmente abreviamos para o símbolo `@`, para escutar eventos do DOM e rodar algum JavaScript quando tal evento for disparado. A maneira de usar seria `v-on:click="methodName"` ou com o atalho, `@click="methodName"`
+Podemos usar a diretiva `v-on`, que normalmente abreviamos para o símbolo `@`, para escutar eventos do DOM e rodar algum JavaScript quando tal evento for disparado. A maneira de usar seria `v-on:click="nomeDoMétodo"` ou com o atalho, `@click="nomeDoMétodo"`
 
 Por exemplo:
 
@@ -25,12 +25,7 @@ Vue.createApp({
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="vuejs-br" data-slug-hash="OJNqgmj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo básico de manipulação de eventos">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/OJNqgmj">
-  Exemplo básico de manipulação de eventos</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Manipulação de eventos: básico" slug="OJNqgmj" />
 
 ## Métodos em Manipuladores
 
@@ -67,12 +62,7 @@ Vue.createApp({
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="vuejs-br" data-slug-hash="gOrERRW" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de manipulação de eventos com um método">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/gOrERRW">
-  Exemplo de manipulação de eventos com um método</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Manipulação de eventos: com um método" slug="gOrERRW" />
 
 ## Chamada Direta de Métodos
 
@@ -97,12 +87,7 @@ Vue.createApp({
 
 Resultado:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="vuejs-br" data-slug-hash="abNMwLo" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de evento com chamada direta de método">
-  <span>Veja o <a href="https://codepen.io/edumedeiros/pen/abNMwLo">
-  Exemplo de evento com chamada direta de método</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Manipulação de eventos: com chamada direta de método" slug="abNMwLo" />
 
 Às vezes, também precisamos acessar o evento original do DOM em um manipulador. Você pode passá-lo a um método usando a variável especial `$event`:
 
