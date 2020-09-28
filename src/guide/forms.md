@@ -43,7 +43,7 @@ Para idiomas que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="xxGyXaG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: textarea">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/bGpmMqw">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/bGpmMqw">
   Lidando com Formulários: textarea</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -69,7 +69,7 @@ Caixa de seleção única, valor booleano:
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="PoqyJVE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: checkbox">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/details/KKzGRWq">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/details/KKzGRWq">
   Lidando com Formulários: checkbox</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -96,12 +96,12 @@ Vue.createApp({
     return {
       checkedNames: []
     }
-  },
+  }
 }).mount('#v-model-multiple-checkboxes')
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: multiplos checkboxes">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/ExKdLWp">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/ExKdLWp">
   Lidando com Formulários: múltiplos <i>checkboxes</i></a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -127,12 +127,12 @@ Vue.createApp({
     return {
       picked: ''
     }
-  },
+  }
 }).mount('#v-model-radiobutton')
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="MWwPEMM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: radiobutton">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/dyMgeRE">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/dyMgeRE">
   Lidando com Formulários: radiobutton</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -158,14 +158,14 @@ Seleção de um único item:
 Vue.createApp({
   data() {
     return {
-      selected: '',
+      selected: ''
     }
-  },
+  }
 }).mount('#v-model-select')
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpGydL" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/VwaExpO">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/VwaExpO">
   Lidando com Formulários: select</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -188,7 +188,7 @@ Seleção de múltiplos itens (vinculando a um Array):
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="gOpBXPz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/abNRGWR">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/abNRGWR">
   Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -216,14 +216,14 @@ Vue.createApp({
         { text: 'Um', value: 'A' },
         { text: 'Dois', value: 'B' },
         { text: 'Três', value: 'C' },
-      ],
+      ]
     }
-  },
+  }
 }).mount('#v-model-select-dynamic')
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abORVZm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select com opções dinâmicas">
-  <span>veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/BaKqxRK">
+  <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/BaKqxRK">
   Lidando com Formulários: select com opções dinâmicas</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
@@ -231,7 +231,7 @@ Vue.createApp({
 
 ## Interligação de Valores
 
-Para _radio_, _checkbox_ e _select_, a interligação de valores do `v-model` são sempre strings estáticas (ou valores booleanos no caso do _checkbox_):
+Para _radio_, _checkbox_ e _select_, a interligação de valores do `v-model` são sempre _strings_ estáticas (ou valores _boolean_ no caso do _checkbox_):
 
 ```html
 <!-- `picked` é uma string "a" quando assinalado -->
@@ -246,7 +246,7 @@ Para _radio_, _checkbox_ e _select_, a interligação de valores do `v-model` s�
 </select>
 ```
 
-Mas às vezes podemos querer vincular o valor à uma propriedade dinâmica na atual instância ativa. Nós podemos utilizar `v-bind` para alcançar isso. Além disso, utilizando `v-bind` nos permite vincular o valor de um _input_ para valores que não são uma string (non-string values).
+Mas às vezes podemos querer vincular o valor à uma propriedade dinâmica na atual instância ativa. Nós podemos utilizar `v-bind` para alcançar isso. Além disso, utilizando `v-bind` nos permite vincular o valor de um _input_ para valores que não são uma _string_ _(non-string values)_.
 
 ### Checkbox
 
@@ -262,7 +262,7 @@ vm.toggle === 'no'
 ```
 
 :::tip Dica
-Os atributos `true-value` e `false-value` não afetam o atributo `value` dos _input's_, porque os browsers não incluem caixas de seleção não assinaladas nas submissões de formulários. Para garantir que um dos dois valores seja enviado em um formulário (p. ex. "sim" ou "não"), use _inputs_ do tipo _radio_.
+Os atributos `true-value` e `false-value` não afetam o atributo `value` dos _inputs_, porque os browsers não incluem caixas de seleção não assinaladas nas submissões de formulários. Para garantir que um dos dois valores seja enviado em um formulário (p. ex. "sim" ou "não"), use _inputs_ do tipo _radio_.
 :::
 
 ### Radio
@@ -314,7 +314,7 @@ Isto geralmente é útil, porque mesmo com `type="number"`, o valor do elemento 
 
 ### `.trim`
 
-Se você quiser que os espaços em branco do _input_ do usuário sejam automaticamente cortados, pode adicionar o modificador `trim` ao `v-model` do elemento:
+Se você quiser que os espaços em branco excedentes de um _input_ sejam automaticamente removidos, é possível adicionar o modificador `trim` ao `v-model` do elemento:
 
 ```html
 <input v-model.trim="msg" />
@@ -324,4 +324,4 @@ Se você quiser que os espaços em branco do _input_ do usuário sejam automatic
 
 > Se você ainda não está familiarizado com os componentes Vue, pode pular isto por enquanto.
 
-os tipos de _input_ nativos do HTML nem sempre atendem as suas necessidades. Felizmente, os componentes Vue te permitem construir _inputs_ reutilizáveis com comportamento completamente costumizável. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [inputs customizados](./component-basics.html#using-v-model-on-components) no guia de Componentes.
+Os tipos de _input_ nativos do HTML nem sempre atendem as suas necessidades. Felizmente, os componentes Vue te permitem construir _inputs_ reutilizáveis com comportamento completamente costumizável. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [_inputs_ customizados](./component-basics.html#using-v-model-on-components) no guia de Componentes.
