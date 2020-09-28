@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
-    <p>Counter: {{ counter }}</p>
-    <button @click="clearInterval">Stop timer</button>
+    <p>Contador: {{ counter }}</p>
+    <button @click="clearInterval">Parar</button>
   </div>
 </template>
 
