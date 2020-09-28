@@ -2,13 +2,13 @@
 
 ## `v-if`
 
-A diretiva `v-if` é usada para renderizar condicionalmente um bloco. O bloco só será renderizado se a expressão da diretiva retornar um valor verdadeiro.
+A diretiva `v-if` é usada para renderizar condicionalmente um bloco. O bloco só será renderizado se a expressão na diretiva retornar um valor verdadeiro.
 
 ```html
 <h1 v-if="awesome">Vue é incrível!</h1>
 ```
 
-Também é possível adicionar um "bloco senão" usando `v-else`:
+Também é possível adicionar um "bloco _else_" usando `v-else`:
 
 ```html
 <h1 v-if="awesome">Vue é incrível!</h1>
@@ -17,7 +17,7 @@ Também é possível adicionar um "bloco senão" usando `v-else`:
 
 ### Grupos Condicionais com `v-if` em `<template>`
 
-Como `v-if` é uma diretiva, então deve ser anexado a um único elemento. E se quisermos alternar mais de um elemento? Nesse caso podemos usar `v-if` em um elemento `<template>`, que serve como um invólucro invisível. O resultado final renderizado não incluirá o elemento `<template>`.
+Como `v-if` é uma diretiva, então deve ser anexado à um único elemento. E se quisermos alternar mais de um elemento? Nesse caso podemos usar `v-if` em um elemento `<template>`, que serve como um _wrapper_ invisível. O resultado final renderizado não incluirá o elemento `<template>`.
 
 ```html
 <template v-if="ok">
@@ -65,7 +65,7 @@ Similar ao `v-else`, um `v-else-if` deve vir imediatamente após um elemento `v-
 
 ## `v-show`
 
-Outra opção para exibir condicionalmente um elemento é a diretiva `v-show`. A utilização é basicamente a mesma.
+Outra opção para exibir condicionalmente um elemento é a diretiva `v-show`. A utilização é basicamente a mesma:
 
 ```html
 <h1 v-show="ok">Olá!</h1>
@@ -83,12 +83,12 @@ A diferença é que um elemento com `v-show` sempre será renderizado e permanec
 
 Em comparação, `v-show` é mais simples - o elemento sempre será renderizado independentemente da condição inicial, com alternância baseada em CSS.
 
-De modo geral, `v-if` tem custo maior nas alternâncias de renderização, enquanto que `v-show` tem custo maior na renderização inicial. Então prefira `v-show` se precisar alternar a visibilidade de algo com muita frequência, e prefira `v-if` se não é muito provável que a condição se altere durante a execução.
+De modo geral, `v-if` tem custo maior nas alternâncias de renderização, enquanto que `v-show` tem custo maior na renderização inicial. Então prefira `v-show` se precisar alternar a visibilidade de algo com muita frequência, e prefira `v-if` se a condição não for se alterar muito durante _runtime_.
 
-## `v-if` with `v-for`
+## `v-if` com `v-for`
 
-::: tip Note
+::: tip Nota
 Usar `v-if` e `v-for` juntos **não é recomendado**. Veja o [guia de estilos](../style-guide/#avoid-v-if-with-v-for-essential) para mais informações.
 :::
 
-Quando usado em conjunto com `v-if`, `v-for` possui maior prioridade do que `v-if`. Veja o [guia renderização de listas](list#v-for-with-v-if) para mais detalhes.
+Quando usado em conjunto com `v-if`, `v-for` possui maior prioridade do que `v-if`. Veja o [guia de renderização de listas](list#v-for-with-v-if) para mais detalhes.

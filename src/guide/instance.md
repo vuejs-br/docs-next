@@ -1,8 +1,8 @@
-# A instância da Aplicação
+# A Instância da Aplicação
 
 ## Criando uma instância
 
-Toda aplicação Vue começa com a criação de uma nova **instância Vue** com a função `Vue`:
+Toda aplicação Vue começa com a criação de uma nova **instância** com a função `createApp`:
 
 ```js
 Vue.createApp(/* opções */)
@@ -11,17 +11,17 @@ Vue.createApp(/* opções */)
 Após a instância ser criada, podemos _montá-la_, passando um contêiner para o método `mount`. Por exemplo, se quisermos montar um aplicativo Vue em `<div id="app"></div>`, devemos passar `#app`:
 
 ```js
-Vue.createApp(/* options */).mount('#app')
+Vue.createApp(/* opções */).mount('#app')
 ```
 
-Embora não seja estritamente associado com o [padrão MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), o _design_ do Vue foi parcialmente inspirado por ele. Como convenção, muitas vezes usamos a variável `vm` (abreviação de _ViewModel_) para se referir à instância Vue.
+Embora não seja estritamente associado com o [padrão MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), o _design_ do Vue foi parcialmente inspirado por ele. Por convenção, muitas vezes usamos a variável `vm` (abreviação de _ViewModel_) para se referir à instância Vue.
 
 Quando você cria uma instância Vue, é necessário passar um **objeto de opções**. A maior parte deste guia descreve como você pode utilizar estas opções para criar os comportamentos desejados. Para referência, você também pode navegar pela lista completa de opções na [documentação da API](../api/options-data.html).
 
-Uma aplicação Vue consiste em uma **instância Vue raiz** criada com `createApp`, opcionalmente organizada em uma árvore de componentes reutilizáveis aninhados. Por exemplo, um aplicativo de tarefas a realizar (do tipo _todo list_) poderia ter uma árvore de componentes como esta:
+Uma aplicação Vue consiste em uma **instância raiz** criada com `createApp`, opcionalmente organizada em uma árvore de componentes reutilizáveis aninhados. Por exemplo, um aplicativo de tarefas a realizar (do tipo _todo list_) poderia ter uma árvore de componentes como esta:
 
 ```
-Root Instance
+Instância Raiz
 └─ TodoList
    ├─ TodoItem
    │  ├─ DeleteTodoButton
@@ -31,7 +31,7 @@ Root Instance
       └─ TodoListStatistics
 ```
 
-Falaremos sobre [o sistema de componentes](component-basics.html) em detalhes futuramente. Por enquanto, saiba apenas que todos os componentes Vue também são instâncias, e assim aceitam o mesmo objeto de opções.
+Falaremos sobre [o sistema de componentes](component-basics.html) em detalhes futuramente. Por enquanto, apenas saiba que todos os componentes Vue também são instâncias, e assim aceitam o mesmo objeto de opções.
 
 ## Dados e Métodos
 
@@ -41,7 +41,7 @@ Quando uma instância é criada, ela adiciona todas as propriedades encontradas 
 // Nosso objeto de dados
 const data = { a: 1 }
 
-// O objeto é adicionado à raiz da instância
+// O objeto é adicionado à instância raiz
 const vm = Vue.createApp({
   data() {
     return data
@@ -118,11 +118,11 @@ vm.$data.a // => 1
 
 No futuro, você pode consultar a [documentação da API](../api/instance-properties.html) para a lista completa de propriedades e métodos da instância.
 
-## Ciclo de Vida da Instância
+## Gatilhos de Ciclo de Vida da Instância
 
 Cada instância Vue passa por uma série de etapas em sua inicialização - por exemplo, é necessário configurar a observação de dados, compilar o _template_, montar a instância no DOM, e atualizar o DOM quando os dados forem alterados. Ao longo do caminho, também ocorre a invocação de algumas funções chamadas de **gatilhos de ciclo de vida** (em inglês, _lifecycle hooks_), oferecendo a oportunidade de executar lógicas personalizadas em etapas específicas.
 
-Por exemplo, o gatilho [`created`](../api/#created) pode ser utilizado para executar código logo após a instância ser criada:
+Por exemplo, o gatilho [`created`](../api/options-lifecycle-hooks.html#created) pode ser utilizado para executar código logo após a instância ser criada:
 
 ```js
 Vue.createApp({
@@ -140,12 +140,12 @@ Vue.createApp({
 
 Existem também outros gatilhos que serão chamados em diferentes etapas do ciclo de vida da instância, como [`mounted`](../api/options-lifecycle-hooks.html#mounted), [`updated`](../api/options-lifecycle-hooks.html#updated), e [`unmounted`](../api/options-lifecycle-hooks.html#unmounted). Todos os gatilhos de ciclo de vida são executados com seu contexto `this` apontando para a atual instância ativa que o invoca.
 
-::: tip
+::: tip Nota
 Não utilize [_arrow functions_](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions) em propriedades de opções ou _callback_, como em `created: () => console.log(this.a)` ou `vm.$watch('a', newValue => this.myMethod())`. Como as _arrow functions_ não possuem um `this`,`this` será tratado como qualquer outra variável e lexicamente pesquisada através de escopos parentais até ser encontrada, frequentemente resultando em erros como `Uncaught TypeError: Cannot read property of undefined` ou `Uncaught TypeError: this.myMethod is not a function`.
 :::
 
 ## Diagrama do Ciclo de Vida
 
-Abaixo está um diagrama para o ciclo de vida da instância. Você não precisa entender completamente tudo o que está acontecendo neste momento, mas conforme você for aprendendo e construindo mais coisas, este diagrama se tornará uma referência útil.
+Abaixo está um diagrama para o ciclo de vida da instância. Neste momento você não precisa entender completamente tudo o que está acontecendo, mas conforme você for aprendendo e construindo mais coisas, este diagrama se tornará uma referência útil.
 
 <img src="/images/lifecycle.png" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="Diagrama do ciclo de vida">
