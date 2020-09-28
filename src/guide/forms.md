@@ -2,7 +2,7 @@
 
 ## Uso Básico
 
-Você pode usar a diretiva `v-model` para criar interligações de dados de mão dupla (two-way data binding) em elementos input, textarea e select de formulários. Ele automaticamente escolhe a maneira correta de atualizar o elemento baseado no tipo do _input_. Embora um pouco mágico, `v-model` é essencialmente uma forma simplificada(syntax sugar) para atualizar dados nos eventos de entrada do usuário, além de cuidado especial com casos extremos.
+Você pode usar a diretiva `v-model` para criar interligações de dados de mão dupla _(two-way data binding)_ em elementos input, textarea e select de formulários. Ele automaticamente escolhe a maneira correta de atualizar o elemento baseado no tipo do _input_. Embora um pouco mágico, `v-model` é essencialmente uma forma simplificada _(syntax sugar)_ para atualizar dados nos eventos de entrada do usuário, além de cuidado especial com casos extremos.
 
 ::: tip Nota
 `v-model` irá ignorar o estado inicial dos atributos `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Ele sempre irá tratar os dados da instância ativa com a fonte de verdade. Você pode declarar o valor inicial no lado do JavasScript, dentro da opção `data` do seu componente.
@@ -94,7 +94,7 @@ Múltiplos _checkboxes_, associados ao mesmo Array:
 Vue.createApp({
   data() {
     return {
-      checkedNames: [],
+      checkedNames: []
     }
   },
 }).mount('#v-model-multiple-checkboxes')
@@ -125,7 +125,7 @@ Vue.createApp({
 Vue.createApp({
   data() {
     return {
-      picked: '',
+      picked: ''
     }
   },
 }).mount('#v-model-radiobutton')
