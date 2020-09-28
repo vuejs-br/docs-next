@@ -25,7 +25,7 @@ Vue.createApp({
 
 Resultado:
 
-<common-codepen-snippet title="Manipulação de eventos: básico" slug="OJNqgmj" />
+<common-codepen-snippet title="Exemplo básico de manipulação de eventos" slug="YzqMRBW" />
 
 ## Métodos em Manipuladores
 
@@ -62,7 +62,7 @@ Vue.createApp({
 
 Resultado:
 
-<common-codepen-snippet title="Manipulação de eventos: com um método" slug="gOrERRW" />
+<common-codepen-snippet title="Exemplo de manipulação de eventos com um método" slug="RwaOqvo" />
 
 ## Chamada Direta de Métodos
 
@@ -87,7 +87,7 @@ Vue.createApp({
 
 Resultado:
 
-<common-codepen-snippet title="Manipulação de eventos: com chamada direta de método" slug="abNMwLo" />
+<common-codepen-snippet title="Exemplo de evento com chamada direta de métodoo" slug="mdPgQvR" />
 
 Às vezes, também precisamos acessar o evento original do DOM em um manipulador. Você pode passá-lo a um método usando a variável especial `$event`:
 
