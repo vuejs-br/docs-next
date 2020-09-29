@@ -295,7 +295,7 @@ vm.selected.number // => 123
 
 ### `.lazy`
 
-Por padrão, `v-model` sincroniza o elemento _input_ com os dados após cada evento `input` (exceto para o caso de composição _IME_ [como descrito anteriormente](#vmodel-ime-tip)). Você pode adicionar o modificador `lazy` para sincronizar depois do evento `change`:
+Por padrão, `v-model` sincroniza o elemento _input_ com os dados após cada evento `input` (exceto para o caso de composição _IME_, [como descrito anteriormente](#vmodel-ime-tip)). Você pode adicionar o modificador `lazy` para sincronizar depois do evento `change`:
 
 ```html
 <!-- sincronizado depois do "change" ao invés de "input" -->
