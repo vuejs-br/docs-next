@@ -22,13 +22,13 @@ Você pode notar que `v-model` não é atualizada durante a composição atravé
 ### Input
 
 ```html
-<input v-model="message" placeholder="me edite" />
+<input v-model="message" placeholder="Me edite" />
 <p>A mensagem é: {{ message }}</p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com formulários: v-model simples">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="rNeqvjd" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com formulários: v-model simples">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/rNeqvjd">
-  Lidando com Fomulários: v-model simples</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Fomulários: v-model simples</a> Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -42,9 +42,9 @@ Você pode notar que `v-model` não é atualizada durante a composição atravé
 <textarea v-model="message" placeholder="Escreva bastante"></textarea>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="xxGyXaG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: textarea">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="bGpmMqw" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: textarea">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/bGpmMqw">
-  Lidando com Formulários: textarea</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: textarea</a> Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -68,9 +68,9 @@ Caixa de seleção única, valor do tipo _boolean_:
 <label for="checkbox">{{ checked }}</label>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="PoqyJVE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: checkbox">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="KKzGRWq" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: checkbox">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/details/KKzGRWq">
-  Lidando com Formulários: checkbox</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: checkbox</a> Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -100,9 +100,9 @@ Vue.createApp({
 }).mount('#v-model-multiple-checkboxes')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: múltiplos checkboxes">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="ExKdLWp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: múltiplos checkboxes">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/ExKdLWp">
-  Lidando com Formulários: múltiplos <i>checkboxes</i></a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: múltiplos <i>checkboxes</i></a> Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -111,10 +111,10 @@ Vue.createApp({
 
 ```html
 <div id="v-model-radiobutton">
-  <input type="radio" id="one" value="Um" v-model="picked" />
+  <input type="radio" id="one" value="Primeiro" v-model="picked" />
   <label for="one">Um</label>
   <br />
-  <input type="radio" id="two" value="Dois" v-model="picked" />
+  <input type="radio" id="two" value="Segundo" v-model="picked" />
   <label for="two">Dois</label>
   <br />
   <span>Escolhido: {{ picked }}</span>
@@ -131,9 +131,9 @@ Vue.createApp({
 }).mount('#v-model-radiobutton')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="MWwPEMM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: radiobutton">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="dyMgeRE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: radiobutton">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/dyMgeRE">
-  Lidando com Formulários: radiobutton</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: radiobutton</a> Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -164,9 +164,9 @@ Vue.createApp({
 }).mount('#v-model-select')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpGydL" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="VwaExpO" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/VwaExpO">
-  Lidando com Formulários: select</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: select</a> Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -187,9 +187,9 @@ Seleção de múltiplos itens (vinculando a um _array_):
 <span>Selecionado: {{ selected }}</span>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="gOpBXPz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="vuejs-br" data-slug-hash="abNRGWR" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/abNRGWR">
-  Lidando com Formulários: seleção de múltiplos itens (vinculando a um Array)</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: seleção de múltiplos itens (vinculando a um array)</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
@@ -222,9 +222,9 @@ Vue.createApp({
 }).mount('#v-model-select-dynamic')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abORVZm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select com opções dinâmicas">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="vuejs-br" data-slug-hash="BaKqxRK" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Lidando com Formulários: select com opções dinâmicas">
   <span>Veja o <i>Pen</i> <a href="https://codepen.io/vuejs-br/pen/BaKqxRK">
-  Lidando com Formulários: select com opções dinâmicas</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Lidando com Formulários: select com opções dinâmicas</a> por Vue.js Brasil (<a href="https://codepen.io/vuejs-br">@vuejs-br</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
