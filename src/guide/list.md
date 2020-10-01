@@ -268,25 +268,39 @@ Similar ao uso de _template_ com `v-if`, você também pode usar a tag `<templat
 Note que **não** é recomendado usar `v-if` e `v-for` juntos. Consulte o [guia de estilos](../style-guide/#avoid-v-if-with-v-for-essential) para detalhes.
 :::
 
+<<<<<<< HEAD
 Quando presentes em um mesmo nó, `v-for` tem maior prioridade que `v-if`. Isto significa que `v-if` será executado separadamente a cada iteração da repetição. Isto pode ser útil se quiser renderizar nós condicionalmente para apenas _alguns_ itens, como abaixo:
+=======
+When they exist on the same node, `v-if` has a higher priority than `v-for`. That means the `v-if` condition will not have access to variables from the scope of the `v-for`:
+>>>>>>> 84d3484c8edff3aff5e832d69ace073ea0e182a0
 
 ```html
+<!-- This will throw an error because property "todo" is not defined on instance. -->
+
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo }}
 </li>
 ```
 
+<<<<<<< HEAD
 O exemplo acima só renderiza apenas as tarefas que não estão completas.
 
 Em vez disso, se sua intenção for condicionalmente pular toda a execução da repetição, você pode colocar o `v-if` em um elemento envolvendo o bloco (ou [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)). Por exemplo:
+=======
+This can be fixed by moving `v-for` to a wrapping `<template>` tag:
+>>>>>>> 84d3484c8edff3aff5e832d69ace073ea0e182a0
 
 ```html
-<ul v-if="todos.length">
-  <li v-for="todo in todos">
+<template v-for="todo in todos">
+  <li v-if="!todo.isComplete">
     {{ todo }}
   </li>
+<<<<<<< HEAD
 </ul>
 <p v-else>Não há tarefas a fazer!</p>
+=======
+</template>
+>>>>>>> 84d3484c8edff3aff5e832d69ace073ea0e182a0
 ```
 
 ## Componentes com `v-for`
