@@ -265,13 +265,13 @@ Similar ao uso de _template_ com `v-if`, você também pode usar a tag `<templat
 ## Utilizando `v-if` com `v-for`
 
 :::tip
-Note que **não** é recomendado usar `v-if` e `v-for` juntos. Consulte o [guia de estilos](../style-guide/#avoid-v-if-with-v-for-essential) para detalhes.
+**Não** é recomendado usar `v-if` e `v-for` juntos. Consulte o [guia de estilos](../style-guide/#avoid-v-if-with-v-for-essential) para detalhes.
 :::
 
 Quando presentes em um mesmo nó, `v-if` tem maior prioridade que `v-for`. Isto significa que o `v-if` não terá acesso às variáveis criadas no escopo do `v-for`:
 
 ```html
-<!-- This will throw an error because property "todo" is not defined on instance. -->
+<!-- Um erro será lançado pois o dado "todo" não está definido nesta instância. -->
 
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo }}
