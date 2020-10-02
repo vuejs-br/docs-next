@@ -1762,7 +1762,7 @@ h3 {
   a.header-anchor {
     // as we have too many h3 elements on this page, set the anchor to be always visible
     // to make them stand out more from paragraph texts.
-    opacity: 1; 
+    opacity: 1;
   }
 
   sup {
