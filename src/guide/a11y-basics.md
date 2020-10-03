@@ -1,26 +1,26 @@
-# Basics
+# Básico sobre acessibilidade
 
-Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.
+Acessibilidade web (também conhecida como a11y) refere-se a práticas na criação de websites que podem ser usados por qualquer pessoa - seja uma pessoa com uma incapacidade, uma conexão baixa, hardware desatualizado ou não funcionando corretamente ou simplesmente alguém em um ambiente adverso. Por exemplo, adicionar legendas a um vídeo ajudaria seus usuários surdos e com deficiência auditiva e aqueles que estão em um ambiente barulhento e não podem ouvir o telefone. Da mesma forma, certificar-se de que o seu texto não tenha um contraste muito baixo ajudará tanto os usuários com visão reduzida quanto os usuários que estão tentando usar o telefone sob luz solar intensa.
 
-Ready start but aren’t sure where?
+Pronto para começar, mas não tem certeza por onde?
 
-Checkout the [Planning and managing web accessibility guide](https://www.w3.org/WAI/planning-and-managing/) provided by [World Wide Web Consortium (W3C)](https://www.w3.org/)
+Confira o [Guia de planejamento e gerenciamento de acessibilidade web](https://www.w3.org/WAI/planning-and-managing/) fornecido pelo [World Wide Web Consortium (W3C)](https://www.w3.org/)
 
-## Skip link
+## Link pular conteúdo
 
-You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
+Você deve adicionar um link na parte superior de cada página que vai diretamente para a área de conteúdo principal para que os usuários possam pular o conteúdo que se repete em várias páginas web.
 
-Typically this is done on the top of `App.vue` as it will be the first focusable element on all your pages:
+Normalmente, isso é feito no topo do `App.vue` pois será o primeiro elemento focável em todas as suas páginas:
 
 ``` html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink">Skip to main content</a>
+    <a href="#main" ref="skipLink">Pular para o conteúdo principal</a>
   </li>
 </ul>
 ```
 
-To hide the link unless it is focused, you can add the following style:
+Para esconder o link a menos que ele esteja focado, você pode adicionar o seguinte estilo:
 
 ``` css
 .skipLink {
@@ -40,7 +40,7 @@ To hide the link unless it is focused, you can add the following style:
 }
 ```
 
-Once a user changes route, bring focus back to the skip link. This can be achieved by calling focus to the `ref` provided below:
+Depois que um usuário muda de rota, traga o foco de volta para o link de pular. Isso pode ser feito chamando a função _focus_ para a `ref` do elemento como exemplificado abaixo:
 
 ``` vue
 <script>
@@ -61,57 +61,57 @@ export default {
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-[Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[Leia a documentação sobre pular para o conteúdo principal](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## Structure Your Content
+## Estruture seu conteúdo
 
-One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
+Uma das peças mais importantes da acessibilidade é garantir que o design possa oferecer suporte à implementação acessível. O design não deve considerar apenas o contraste das cores, a seleção das fontes, o tamanho dos textos e o idioma, mas também como o conteúdo é estruturado na aplicação.
 
-### Headings
+### Títulos
 
-Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
+Os usuários podem navegar em uma aplicação por meio de títulos. Ter títulos descritivos para cada seção de sua aplicação torna mais fácil para os usuários preverem o conteúdo de cada seção. Quando se trata de títulos, existem algumas práticas de acessibilidade recomendadas:
 
-- Nest headings in their ranking order: `<h1>` - `<h6>`
-- Don’t skip headings within a section
-- Use actual heading tags instead of styling text to give the visual appearance of headings
+- Aninhar títulos em sua ordem de classificação: `<h1>` - `<h6>`
+- Não pular títulos dentro de uma seção
+- Usar tags de títulos reais em vez de estilizar o texto para dar a aparência visual de títulos
 
-[Read more about headings](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[Leia mais sobre títulos](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```html
 <main role="main" aria-labelledby="main-title">
-  <h1 id="main-title">Main title</h1>
+  <h1 id="main-title">Título Principal</h1>
   <section aria-labelledby="section-title">
-    <h2 id="section-title"> Section Title </h2>
-    <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <h2 id="section-title"> Título da Seção </h2>
+    <h3>Título da Seção</h3>
+    <!-- Conteúdo -->
   </section>
   <section aria-labelledby="section-title">
-    <h2 id="section-title"> Section Title </h2>
-    <h3>Section Subtitle</h3>
-    <!-- Content -->
-    <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <h2 id="section-title"> Título da Seção </h2>
+    <h3>Título da Seção</h3>
+    <!-- Conteúdo -->
+    <h3>Título da Seção</h3>
+    <!-- Conteúdo -->
   </section>
 </main>
 ```
 
 ### Landmarks
 
-Landmarks provide programmatic access to sections within an application. Users who rely on assistive technology can navigate to each section of the application and skip over content. You can use [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) to help you achieve this.
+_Landmarks_ fornecem acesso programável às seções de uma aplicação. Os usuários que dependem de tecnologias assistivas podem navegar para cada seção da aplicação e pular seu conteúdo. Você pode usar [_ARIA roles_](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) para te ajudar a atingir isso.
 
-| HTML            | ARIA Role                                                         | Landmark Purpose                                                                       |
+| HTML            | _ARIA Role_                                                         | Propósito da _Landmark_                                                                       |
 | --------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| header          | role="banner"                                                     | Prime heading: title of the page                                                       |
-| nav             | role="navigation"                                                 | Collection of links suitable for use when navigating the document or related documents |
-| main            | role="main"                                                       | The main or central content of the document.                                           |
-| footer          | role="contentinfo"                                                | Information about the parent document: footnotes/copyrights/links to privacy statement |
-| aside           | role="complementary"                                              | Supports the main content, yet is separated and meaningful on its own content            |
-| _Not available_ | role="search"                                                     | This section contains the search functionality for the application                     |
-| form            | role="form"                                                       | Collection of form-associated elements                                                 |
-| section         | role="region"  | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element                |
+| header          | role="banner"                                                     | Título principal: título da página                                                       |
+| nav             | role="navigation"                                                 | Coleção de links adequados para uso ao navegar no documento ou documentos relacionados |
+| main            | role="main"                                                       | O conteúdo principal ou central do documento.                                           |
+| footer          | role="contentinfo"                                                | Informações sobre o documento principal: notas de rodapé/direitos autorais/links para declaração de privacidade |
+| aside           | role="complementary"                                              | Suporta o conteúdo principal, mas é separado e significativo em seu próprio conteúdo            |
+| _Não disponível_ | role="search"                                                     | Esta seção contém a funcionalidade de pesquisa para a aplicação                     |
+| form            | role="form"                                                       | Coleção de elementos associados a formulários                                                 |
+| section         | role="region"  | Conteúdo relevante e para o qual os usuários provavelmente desejam navegar. Um rótulo deve ser fornecido para este elemento                |
 
 :::tip Tip:
-It is recommended to use landmark HTML elements with redundant landmark role attributes in order to maximize compatibility with legacy [browsers that don’t support HTML5 semantic elements](https://caniuse.com/#feat=html5semantic).
+É recomendado o uso de elementos HTML com atributos _role_ de referência redundantes para maximizar a compatibilidade com navegadores legados [que não oferecem suporte a elementos semânticos do HTML5](https://caniuse.com/#feat=html5semantic).
 :::
 
-[Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[Leia mais sobre _landmarks_](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
