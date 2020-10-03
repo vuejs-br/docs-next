@@ -2,20 +2,20 @@
 
 Agora é o momento de mergulhar fundo! Uma das características mais distintas do Vue é o seu discreto sistema de reatividade. Models são _proxies_ de objetos JavaScript. Quando você os modifica, a _view_ é atualizada. Isso faz com que a administração de estado seja simples e intuitiva, porém é importante entender como isso funciona para evitar algumas pegadinhas. Nesta seção, vamos nos aprofundar em alguns dos detalhes de baixo nível do sistema de reatividade do Vue.
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity" title="Learn how how reactivity works in depth with Vue Mastery">Assista um vídeo gratuito sobre Aprofundando-se na Reatividade no Vue Mastery</VideoLesson>
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity" title="Aprenda a fundo como a reatividade funciona com o Vue Mastery">Assista um vídeo gratuito sobre Aprofundando-se na Reatividade no Vue Mastery</VideoLesson>
 
-## What is Reactivity?
+## O que é Reatividade?
 
-This term comes up in programming quite a bit these days, but what do people mean when they say it? Reactivity is a programming paradigm that allows us to adjust to changes in a declarative manner. The canonical example that people usually show, because it’s a great one, is an excel spreadsheet.
+Esse termo aparece na programação com uma certa frequência atualmente, mas o que as pessoas entendem por isso? Reatividade é um paradigma de programação que nos permite nos ajustar a mudanças de uma maneira declarativa. O exemplo canônico que as pessoas geralmente mostram, por ser um ótimo exemplo, é uma planilha do excel.
 
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+  Seu navegador não possui suporte para a tag video.
 </video>
 
-If you put the number two in the first cell, and the number 3 in the second and asked for the SUM, the spreadsheet would give it to you. No surprises there. But if you update that first number, the SUM automagically updates too.
+Se você colocar o número dois na primeira célula, e o número 3 na segunda e então utilizar o SUM, a planilha te dará o resultado. Nenhuma surpresa aqui. Mas se você atualizar o primeiro número, o SUM é automagicamente atualizado.
 
-JavaScript doesn’t usually work like this -- If we were to write something comparable in JavaScript:
+O JavaScript, geralmente, não funciona assim -- Se escrevêssemos algo semelhante em Javascript:
 
 ```js
 var val1 = 2
@@ -31,13 +31,13 @@ val1 = 3
 // 5
 ```
 
-If we update the first value, the sum is not adjusted.
+Se atualizarmos o primeiro valor, a soma não é ajustada.
 
-So how would we do this in JavaScript?
+Então como fazemos isso em JavaScript?
 
-- Detect when there’s a change in one of the values
-- Track the function that changes it
-- Trigger the function so it can update the final value
+- Detecte quando há uma mudança em algum dos valores
+- Rastreie a função que o modifica
+- Dispare a função de modo que ela possa atualizar o valor final
 
 ## How Vue Tracks These Changes
 
