@@ -4,26 +4,26 @@ badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# v-if vs. v-for Precedência
 
-## Overview
+## Visão Geral
 
-- **BREAKING**: If used on the same element, `v-if` will have higher precedence than `v-for`
+- **QUEBRA**: Se usado no mesmo elemento, `v-if` terá uma maior precedência do que `v-for`
 
-## Introduction
+## Introdução
 
-Two of the most commonly used directives in Vue.js are `v-if` and `v-for`. So it's no surprise that there comes a time when developers want to use both together. While this is not a recommended practice, there may be times when this is necessary, so we wanted to provide guidance for how it works.
+Duas das diretivas mais comumente usadas em Vue.js são `v-if` e `v-for`. Portanto, não é surpresa que chegue um momento em que os desenvolvedores desejem usar os dois juntos. Embora não seja uma prática recomendada, pode haver momentos em que isso seja necessário, por isso gostaríamos de fornecer orientações sobre como isso funciona.
 
-## 2.x Syntax
+## 2.x Sintaxe
 
-In 2.x, when using `v-if` and `v-for` on the same element, `v-for` would take precedence.
+No 2.x, quando utilizado `v-if` e `v-for` no mesmo elemento, `v-for` teria precedência.
 
-## 3.x Syntax
+## 3.x Sintaxe
 
-In 3.x, `v-if` will always have the higher precedence than `v-for`.
+No 3.x, `v-if` terá sempre uma maior precedência do que `v-for`.
 
-## Migration Strategy
+## Estratégia de migração
 
-It is recommended to avoid using both on the same element due to the syntax ambiguity.
+Recomenda-se evitar o uso de ambos no mesmo elemento devido à ambiguidade da sintaxe.
 
-Rather than managing this at the template level, one method for accomplishing this is to create a computed property that filters out a list for the visible elements.
+Em vez de gerenciar isso no nível do modelo, um método para realizar isso é criar uma propriedade computada (computed property) que filtre uma lista para os elementos visíveis.
