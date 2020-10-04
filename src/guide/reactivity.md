@@ -1,19 +1,19 @@
 # Aprofundando-se na Reatividade
 
-Agora é o momento de mergulhar fundo! Uma das características mais distintas do Vue é o seu discreto sistema de reatividade. _Models_ são _proxies_ de objetos JavaScript. Quando você os modifica, a _view_ é atualizada. Isso faz com que a administração de estado seja simples e intuitiva, porém é importante entender como isso funciona para evitar algumas pegadinhas. Nesta seção, vamos nos aprofundar em alguns dos detalhes de baixo nível do sistema de reatividade do Vue.
+Agora é o momento de mergulhar fundo! Uma das características mais distintas do Vue é o seu discreto sistema de reatividade. Models são _proxies_ de objetos JavaScript. Quando você os modifica, a _view_ é atualizada. Isso faz com que a administração de estado seja simples e intuitiva, porém é importante entender como isso funciona para evitar algumas pegadinhas. Nesta seção, vamos nos aprofundar em alguns dos detalhes de baixo nível do sistema de reatividade do Vue.
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity" title="Aprenda a fundo como a reatividade funciona com o Vue Mastery">Assista um vídeo gratuito sobre Aprofundando-se na Reatividade no Vue Mastery</VideoLesson>
 
 ## O Que é Reatividade?
 
-Esse termo aparece na programação com uma certa frequência atualmente, mas o que as pessoas entendem por isso? Reatividade é um paradigma de programação que nos permite nos ajustar a mudanças de uma maneira declarativa. O exemplo canônico que as pessoas geralmente mostram, por ser um ótimo exemplo, é uma planilha do excel.
+Esse termo aparece na programação com uma certa frequência atualmente, mas o que é que as pessoas entendem por isso? Reatividade é um paradigma de programação que nos permite nos ajustar a mudanças de uma maneira declarativa. O exemplo canônico geralmente mostrado, por ser um ótimo exemplo, é uma planilha do excel.
 
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
   Seu navegador não possui suporte para a tag video.
 </video>
 
-Se você colocar o número dois na primeira célula, e o número 3 na segunda e então utilizar o SUM, a planilha te dará o resultado. Nenhuma surpresa aqui. Mas se você atualizar o primeiro número, o SUM é automagicamente atualizado.
+Se você colocar o número dois na primeira célula, e o número 3 na segunda e então utilizar o SUM, a planilha te dará o resultado. Até aqui nada demais. Mas se você atualizar o primeiro número, o SUM é automagicamente atualizado.
 
 O JavaScript, geralmente, não funciona assim -- Se escrevêssemos algo semelhante em Javascript:
 
@@ -31,9 +31,9 @@ val1 = 3
 // 5
 ```
 
-Se atualizarmos o primeiro valor, a soma não é ajustada.
+Ao atualizarmos o primeiro valor, a soma não é ajustada.
 
-Então como fazemos isso em JavaScript?
+Então, como fazemos isso em JavaScript?
 
 - Detecte quando há uma mudança em algum dos valores
 - Rastreie a função que o modifica
@@ -41,7 +41,7 @@ Então como fazemos isso em JavaScript?
 
 ## Como o Vue Rastreia Essas Mudanças
 
-Quando você passa um objeto Javascript simples para uma aplicação ou instância de componente, como sua opção `data`, o Vue irá iterar sobre todas as suas propriedades e irá convertê-las em [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) utilizando um _handler_ com getters e setters. Isso é uma _feature_ do ES6, somente, mas nos oferecemos uma versão do Vue 3 que utiliza o `Object.defineProperty` mais antigo, para dar suporte a navegadores IE. Ambas possuem a mesma API, na superfície, mas a versão com Proxy é mais elegante e oferece melhor performance.
+Quando você passa um objeto Javascript simples para uma aplicação ou instância de componente, como sua opção `data`, o Vue irá iterar sobre todas as suas propriedades e irá convertê-las em [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) utilizando um _handler_ com getters e setters. Isso é uma _feature_ do ES6, somente, mas nós oferecemos uma versão do Vue 3 que utiliza o `Object.defineProperty` mais antigo, para dar suporte a navegadores IE. Ambas possuem a mesma API, na superfície, mas a versão com Proxy é mais elegante e oferece melhor performance.
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Proxies e a Reatividade do Vue Explicados Visualmente" src="https://codepen.io/sdras/embed/zYYzjBg?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -71,7 +71,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-Ok, até agora, estamos apenas encapsulando o objeto e o retornando. Legal, mas ainda não muito útil. Mas observe isso, nós também podemos interceptar este objetos enquanto temos ele encapsulado no Proxy. Essa interceptação é chamada de armadilha (_trap_).
+Ok, até agora, estamos apenas encapsulando o objeto e o retornando. Legal, mas ainda não muito útil. Mas observe isso, nós também podemos interceptar esse objeto enquanto temos ele encapsulado no Proxy. Essa interceptação é chamada de armadilha (_trap_).
 
 ```js
 const dinner = {
@@ -170,7 +170,7 @@ O objeto com o _proxy_ aplicado é invisível para o usuário, mas por baixo dos
 
 ### Objetos com o Proxy aplicado
 
-O Vue rastreia internamente todos os objetos que foram transformados em reativos, então ele sempre retorna o mesmo proxy para o mesmo objeto.
+O Vue rastreia internamente todos os objetos que foram transformados em reativos, então ele sempre retorna o mesmo proxy de um mesmo objeto.
 
 Quando um objeto aninhado é acessado através de um proxy reativo, esse objeto é _também_ convertido em um proxy antes de ser retornado:
 
@@ -200,9 +200,9 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-A versão original e a versão encapsulada se comportarão da mesma forma na maioria dos casos, mas esteja ciente de que elas irão falhar em operações que dependem de comparações fortes de identidade, como `.filter()` ou `.map()`. Esse empecilho tem pouca chance de ocorrer quando da utilização a API de opções, porque todo o estado reativo é acessado a partir do `this` e é garantido que já sejam _proxies_.
+A versão original e a versão encapsulada se comportarão da mesma forma na maioria dos casos, mas esteja ciente de que elas irão falhar em operações que dependem de comparações fortes de identidade, como `.filter()` ou `.map()`. Esse empecilho tem pouca chance de ocorrer quando a API de opções estiver sendo utilizada, porque todo o estado reativo é acessado a partir do `this` e é garantido que já sejam _proxies_.
 
-Entretanto, quanto utilizando a API de composição para criar objetos reativos explicitamente, a melhor prática é a de nunca guardar uma referência para o objeto cru original e trabalhar somente com a versão reativa:
+Entretanto, quanto estiver utilizando a API de composição para criar objetos reativos explicitamente, a melhor prática é a de nunca guardar uma referência para o objeto cru original e trabalhar somente com a versão reativa:
 
 ```js
 const obj = reactive({
@@ -216,7 +216,7 @@ Toda instância de componente tem uma instância de observador correspondente, q
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Explicação da Segunda Reatividade com Proxies no Vue 3" src="https://codepen.io/sdras/embed/GRJZddR?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-    See the Pen <a href='https://codepen.io/sdras/pen/GRJZddR'>Explicação da Segunda Reatividade com Proxies no Vue 3</a> por Sarah Drasner
+    Veja o Pen <a href='https://codepen.io/sdras/pen/GRJZddR'>Explicação da Segunda Reatividade com Proxies no Vue 3</a> por Sarah Drasner
     (<a href='https://codepen.io/sdras'>@sdras</a>) no <a href='https://codepen.io'>CodePen</a>.
   </iframe>
 </div>
