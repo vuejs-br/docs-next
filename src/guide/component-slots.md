@@ -283,7 +283,7 @@ Atributos passados para um elemento `<slot>` são chamados de **_props_ do _slot
 
 Neste exemplo, escolhemos `slotProps` como valor, a fim de tê-lo como o nome de acesso aos _props_ do _slot_. É possível utilizar qualquer nome que desejar.
 
-### Sintaxe abreviada para Slot Único e _Default_
+### Sintaxe Abreviada para Slot Único e _Default_
 
 Em casos como o acima, quando _apenas_ o _slot_ padrão _(default)_ é fornecido, podemos utilizar o próprio conteúdo do componente como o _template_ do _slot_. Deste modo, utilizamos `v-slot` diretamente no componente:
 
