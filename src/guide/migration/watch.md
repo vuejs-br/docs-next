@@ -1,30 +1,29 @@
 ---
-title: Watch on Arrays
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Observar Arrays
 
-## Overview
+## Visão Geral
 
-- **BREAKING**: When watching an array, the callback will only trigger when the array is replaced. If you need to to trigger on mutation, the `deep` option must be specified.
+- **QUEBRA**: Ao observar uma Array, o retorno de chamada só será acionado quando a Array for substituída. Se você precisar acionar na mutação, a opção `deep` deve ser especificada.
 
-## 3.x Syntax
+## 3.x Sintaxe
 
-When using [the `watch` option](/api/options-data.html#watch) to watch an array, the callback will only trigger when the array is replaced. In other words, the watch callback will no longer be triggered on array mutation. To trigger on mutation, the `deep` option must be specified.
+Ao usar [a opção `watch`] (/api/options-data.html#watch) para observar uma Array, o retorno de chamada só será disparado quando a Array for substituída. Em outras palavras, o observador do retorno da chamada não será mais acionado na mutação da Array. Para acionar a mutação, a opção `deep` deve ser especificada.
 
 ```js
 watch: {
   bookList: {
     handler(val, oldVal) {
-      console.log('book list changed')
+      console.log('book list alterado')
     },
     deep: true
   },
 }
 ```
 
-## Migration Strategy
+## Estratégia de Migração
 
-If you rely on watching array mutations, add the `deep` property to ensure that your callback is triggered correctly.
+Se você depende da observação de mutações de Array, adicione a propriedade `deep` para garantir que seu retorno de chamada seja disparado corretamente.
