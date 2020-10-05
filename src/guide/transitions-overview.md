@@ -1,15 +1,15 @@
-# Overview
+# Visão Geral
 
-Vue offers some abstractions that can help work with transitions and animations, particularly in response to something changing. Some of these abstractions include:
+Vue oferece algumas abstrações que podem lhe ajudar a trabalhar com transições e animações, particularmente em resposta à mudança de algo. Algumas dessas abstrações incluem:
 
-- Hooks for components entering and leaving the DOM, in both CSS and JS, using the built-in `<transition>` component.
-- Transition Modes so that you can orchestrate ordering during a transition.
-- Hooks for when multiple elements are updating in position, with FLIP techniques applied under the hood to increase performance, using the `<transition-group>` component.
-- Transitioning different states in an application, with `watchers`.
+- Hooks para componentes entrando e saindo do DOM, em CSS e JS, usando o  componente interno `<transition>`.
+- Modos de Transição para que você possa orquestrar a ordenação durante a transição. 
+- Hooks para quando multiplos elementos estão atualizando em posição  com técnicas FLIP aplicadas secundariamente para aumentar a performance, usando o componente `<transition-group>`.
+- Transição de diferentes estados em uma aplicação, com `watchers`.
 
-We will cover all of these and more in the next three sections in this Guide. However, aside from these useful API offerings, it's worth mentioning that the class and style declarations we covered earlier can be used to apply animations and transitions as well, for more simple use cases.
+Vamos cobrir todos esses e mais nas próximas seções neste guia. Contudo, além dessas ofertas úteis de API, é importante mencionar que as declarações de classe e estilo mencionadas antes podem também ser usadas para aplicar animações e transições, para casos de uso simplificados. 
 
-In this next section, we'll go over some web animation and transitions basics, and link off to some resources for further exploration. If you're already familiar with web animation and how those principles might work with some of Vue's directives, feel free to skip this next section. For anyone else looking to learn a little more about web animation basics before diving in, read on.
+Na próxima seção, vamos passar por conceitos básicos de transições e animações web, assim como oferecer links para alguns destes recursos para exploração posterior. Se você já estiver familiarizado com animação web e como estes princípios podem funcionar com algumas das directivas do Vue, sinta-se livre para pular a próxima seção. Para quem estiver buscando aprender mais sobre os básicos de animação web, continue a leitura. 
 
 ## Class-based Animations & Transitions
 
