@@ -1,3 +1,3 @@
-# Meet the Team
+# Conheça a Equipe
 
 <community-team-index/>
