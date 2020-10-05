@@ -1,48 +1,99 @@
 <template>
-  <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-preview="true" data-editable="true"
-  :data-user="user.slug"
-  :data-slug-hash="slug"
-  :data-pen-title="title">
-    <span>Veja o exemplo <a :href="`https://codepen.io/${user.slug}/pen/${slug}`">
-    {{ title }}</a> por {{ user.name }} (<a :href="`https://codepen.io/${user.slug}`">@${user.slug}</a>)
-    no <a href="https://codepen.io">CodePen</a>.</span>
+  <p
+    class="codepen"
+    :data-theme-id="theme"
+    :data-preview="preview || null"
+    :data-editable="editable || null"
+    :data-height="height"
+    :data-default-tab="tab"
+    :data-user="user"
+    :data-slug-hash="slug"
+    :data-pen-title="title"
+    :data-embed-version="version"
+    :style="`height: ${height}px`">
+    <span>See the Pen <a :href="href">{{ title }}</a>
+    by {{ name || user }} (<a :href="`https://codepen.io/${user}`">@{{user}}</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
   </p>
 </template>
 
 <script>
 export default {
   props: {
-    user: {
-      type: Object,
-      default: () => ({
-        slug: 'vuejs-br',
-        name: 'Vue.js Brasil'
-      }),
-    },
-
     title: {
       type: String,
       default: null,
+      required: true,
     },
 
     slug: {
       type: String,
       default: null,
+      required: true,
     },
+
+    tab: {
+      type: String,
+      default: 'result',
+    },
+
+    team: {
+      type: Boolean,
+      default: true,
+    },
+
+    user: {
+      type: String,
+      default: 'Vue',
+    },
+
+    name: {
+      type: String,
+      default: null,
+    },
+
+    height: {
+      type: Number,
+      default: 300,
+    },
+
+    theme: {
+      type: String,
+      default: '39028',
+    },
+
+    preview: {
+      type: Boolean,
+      default: true,
+    },
+
+    editable: {
+      type: Boolean,
+      default: true,
+    },
+
+    version: {
+      type: String,
+      default: null,
+    }
   },
   mounted() {
     const codepenScript = document.createElement('script')
     codepenScript.setAttribute('src', 'https://static.codepen.io/assets/embed/ei.js')
     codepenScript.async = true
     this.$el.appendChild(codepenScript)
-  }
+  },
+  computed: {
+    href() {
+      return `https://codepen.io/${this.team ? 'team' : ''}${this.user}/pen/${this.slug}`
+    }
+  },
 }
 </script>
 
 <style lang="scss">
 .codepen {
   box-sizing: border-box;
-  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
