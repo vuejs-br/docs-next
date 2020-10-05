@@ -126,7 +126,7 @@ Uma vez que uma propriedade é registrada, você pode passar dados para ela como
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Em um aplicação comum, no entanto, você provavelmente terá uma série de postagens em `data`:
+Em uma aplicação comum, no entanto, você provavelmente terá uma série de postagens em `data`:
 
 ```js
 const App = {
