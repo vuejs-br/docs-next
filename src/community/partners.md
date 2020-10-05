@@ -1,7 +1,7 @@
 # Vue Partners
 
-Vue Partners are premium shops that provide first-class Vue consulting and development. If your company is interested in being listed as a partner, please contact us at [partners@vuejs.org](mailto:partners@vuejs.org).
+Vue Partners são lojas premium que fornecem consultoria e desenvolvimento Vue de primeira classe. Se sua empresa estiver interessada em ser listada como parceira, entre em contato conosco pelo e-mail [partners@vuejs.org](mailto:partners@vuejs.org).
 
-## Active Partners
+## Parceiros Ativos
 
 <community-partners-index/>
