@@ -1,17 +1,18 @@
-# State Transitions
+# Transições de Estado
 
-Vue's transition system offers many simple ways to animate entering, leaving, and lists, but what about animating your data itself? For example:
+O sistema de transição do Vue oferece muitas maneiras simples de animar entradas, saídas e listas, mas que tal animar seus próprios dados? Por exemplo:
 
-- numbers and calculations
-- colors displayed
-- the positions of SVG nodes
-- the sizes and other properties of elements
+- números e cálculos
+- cores exibidas
+- as posições dos nós (*nodes*) SVG
+- os tamanhos e outras propriedades dos elementos
 
-All of these are either already stored as raw numbers or can be converted into numbers. Once we do that, we can animate these state changes using 3rd-party libraries to tween state, in combination with Vue's reactivity and component systems.
+Todos eles já estão armazenados como números brutos ou podem ser convertidos em números. Depois de fazer isso, podemos animar essas mudanças de estado usando bibliotecas de terceiros para interpolar o estado, em combinação com a reatividade e os sistemas de componentes do Vue.
 
-## Animating State with Watchers
+## Animando Estado com Observadores
 
-Watchers allow us to animate changes of any numerical property into another property. That may sound complicated in the abstract, so let's dive into an example using [GreenSock](https://greensock.com/):
+
+Os observadores nos permitem animar mudanças de qualquer propriedade numérica em outra propriedade. Isso pode parecer complicado no abstrato, então vamos mergulhar em um exemplo usando [GreenSock](https://greensock.com/):
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -46,28 +47,28 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="22903bc3b53eb5b7817378ecb985ce96" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transitioning State 1">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/22903bc3b53eb5b7817378ecb985ce96">
-  Transitioning State 1</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  <span>Veja o exemplo <a href="https://codepen.io/team/Vue/pen/22903bc3b53eb5b7817378ecb985ce96">
+  Estado de Transição 1</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-When you update the number, the change is animated below the input.
+Quando você atualiza o número, a mudança é animada abaixo da entrada.
 
-## Dynamic State Transitions
+## Transições de Estado Dinâmico
 
-As with Vue's transition components, the data backing state transitions can be updated in real time, which is especially useful for prototyping! Even using a simple SVG polygon, you can achieve many effects that would be difficult to conceive of until you've played with the variables a little.
+Tal como acontece com os componentes de transição do Vue, as transições de estado de suporte de dados podem ser atualizadas em tempo real, o que é especialmente útil para prototipagem! Mesmo usando um polígono SVG simples, você pode obter muitos efeitos que seriam difíceis de conceber até que você jogasse um pouco com as variáveis.
 
 <p class="codepen" data-height="500" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="a8e00648d4df6baa1b19fb6c31c8d17e" data-preview="true" style="height: 493px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Updating SVG">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/a8e00648d4df6baa1b19fb6c31c8d17e">
-  Updating SVG</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  <span>Veja o exemplo<a href="https://codepen.io/team/Vue/pen/a8e00648d4df6baa1b19fb6c31c8d17e">
+  Atualizando SVG</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Organizing Transitions into Components
+## Organizando Transições em Componentes
 
-Managing many state transitions can quickly increase the complexity of a component instance. Fortunately, many animations can be extracted out into dedicated child components. Let's do this with the animated integer from our earlier example:
+Gerenciar muitas transições de estado pode aumentar rapidamente a complexidade de uma instância de componente. Felizmente, muitas animações podem ser extraídas em componentes filhos dedicados. Vamos fazer isso com o inteiro animado de nosso exemplo anterior:
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -139,23 +140,23 @@ app.mount('#app')
 ```
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="e9ef8ac7e32e0d0337e03d20949b4d17" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="State Transition Components">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/e9ef8ac7e32e0d0337e03d20949b4d17">
-  State Transition Components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  <span>Veja o exemplo <a href="https://codepen.io/team/Vue/pen/e9ef8ac7e32e0d0337e03d20949b4d17">
+  Componentes de Transição de Estado</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Now we can compose multiple states with these child components. It's exciting- we can use any combination of transition strategies that have been covered on this page, along with those offered by Vue's [built-in transition system](transitions.html). Together, there are very few limits to what can be accomplished.
+Agora podemos compor vários estados com esses componentes filhos. É empolgante - podemos usar qualquer combinação de estratégias de transição que foram abordadas nesta página, junto com as oferecidas pelo [sistema de transição integrado](transitions.html) do Vue. Juntos, existem poucos limites para o que pode ser realizado.
 
-You can see how we could use this for data visualization, for physics effects, for character animations and interactions, the sky's the limit.
+Você pode ver como podemos usar isso para visualização de dados, para efeitos físicos, para animações e interações de personagens, o céu é o limite.
 
-## Bringing Designs to Life
+## Dando Vida aos Designs
 
-To animate, by one definition, means to bring to life. Unfortunately, when designers create icons, logos, and mascots, they're usually delivered as images or static SVGs. So although GitHub's octocat, Twitter's bird, and many other logos resemble living creatures, they don't really seem alive.
+Para animar, por uma definição, significa trazer à vida. Infelizmente, quando os designers criam ícones, logotipos e mascotes, eles geralmente são entregues como imagens ou SVGs estáticos. Portanto, embora o  polvo-gato do GitHub, o pássaro do Twitter e muitos outros logotipos se assemelhem a criaturas vivas, eles não parecem realmente vivos.
 
-Vue can help. Since SVGs are just data, we only need examples of what these creatures look like when excited, thinking, or alarmed. Then Vue can help transition between these states, making your welcome pages, loading indicators, and notifications more emotionally compelling.
+O Vue pode ajudar. Como os SVGs são apenas dados, precisamos apenas de exemplos de como essas criaturas se parecem quando empolgadas, pensando ou alarmadas. O Vue pode ajudar na transição entre esses estados, tornando suas páginas de boas-vindas, indicadores de carregamento e notificações mais emocionalmente atraentes.
 
-Sarah Drasner demonstrates this in the demo below, using a combination of timed and interactivity-driven state changes:
+Sarah Drasner demonstra isso na demonstração abaixo, usando uma combinação de mudanças de estado cronometradas e orientadas à interatividade:
 
-<p data-height="400" data-theme-id="light" data-slug-hash="YZBGNp" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Vue-controlled Wall-E" class="codepen">See the Pen <a href="https://codepen.io/sdras/pen/YZBGNp/">Vue-controlled Wall-E</a> by Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="400" data-theme-id="light" data-slug-hash="YZBGNp" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Vue-controlled Wall-E" class="codepen">Veja o exemplo <a href="https://codepen.io/sdras/pen/YZBGNp/">Vue-controlled Wall-E</a> por Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
