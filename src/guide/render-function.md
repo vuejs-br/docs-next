@@ -164,14 +164,14 @@ h(
 )
 ```
 
-## Complete Example
+## Exemplo completo
 
-With this knowledge, we can now finish the component we started:
+Com este conhecimento, podemos agora finalizar o componente que começamos:
 
 ```js
 const app = Vue.createApp({})
 
-/** Recursively get text from children nodes */
+/** Recupera o texto dos nós filhos recursivamente */
 function getChildrenTextContent(children) {
   return children
     .map(node => {
@@ -186,11 +186,11 @@ function getChildrenTextContent(children) {
 
 app.component('anchored-heading', {
   render() {
-    // create kebab-case id from the text contents of the children
+    // cria um id em kebab-case a partir do texto dos filhos
     const headingId = getChildrenTextContent(this.$slots.default())
       .toLowerCase()
-      .replace(/\W+/g, '-') // replace non-word characters with dash
-      .replace(/(^-|-$)/g, '') // remove leading and trailing dashes
+      .replace(/\W+/g, '-') // substitui caracteres não-texto por traços
+      .replace(/(^-|-$)/g, '') // remove os traços iniciais e finais
 
     return Vue.h('h' + this.level, [
       Vue.h(
