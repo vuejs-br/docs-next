@@ -1,43 +1,43 @@
 # Mixins
 
-## Basics
+## Fundamentos
 
-Mixins distribute reusable functionalities for Vue components. A mixin object can contain any component options. When a component uses a mixin, all options in the mixin will be "mixed" into the component's own options.
+Mixins distribuem funcionalidades reutilizáveis ​​para componentes Vue. Um objeto mixin pode conter qualquer opção de componente. Quando um componente usa um mixin, todas as opções do mixin serão "combinadas" com as opções do próprio componente.
 
-Example:
+Exemplo:
 
 ```js
-// define a mixin object
+// define um objeto mixin
 const myMixin = {
   created() {
     this.hello()
   },
   methods: {
     hello() {
-      console.log('hello from mixin!')
+      console.log('olá do mixin!')
     }
   }
 }
 
-// define an app that uses this mixin
+// definir um aplicativo que usa este mixin
 const app = Vue.createApp({
   mixins: [myMixin]
 })
 
-app.mount('#mixins-basic') // => "hello from mixin!"
+app.mount('#mixins-basic') // => "olá do mixin!"
 ```
 
-## Option Merging
+## Opção de mesclagem
 
-When a mixin and the component itself contain overlapping options, they will be "merged" using appropriate strategies.
+Quando um mixin e o próprio componente contêm opções de sobreposição, eles serão "mesclados" usando estratégias apropriadas.
 
-For example, data objects undergo a recursive merge, with the component's data taking priority in cases of conflicts.
+Por exemplo, objetos de dados passam por uma mesclagem recursiva, com os dados do componente tendo prioridade em casos de conflito.
 
 ```js
 const myMixin = {
   data() {
     return {
-      message: 'hello',
+      message: 'olá',
       foo: 'abc'
     }
   }
@@ -47,37 +47,37 @@ const app = Vue.createApp({
   mixins: [myMixin],
   data() {
     return {
-      message: 'goodbye',
+      message: 'Tchau',
       bar: 'def'
     }
   },
   created() {
-    console.log(this.$data) // => { message: "goodbye", foo: "abc", bar: "def" }
+    console.log(this.$data) // => { message: "Tchau", foo: "abc", bar: "def" }
   }
 })
 ```
 
-Hook functions with the same name are merged into an array so that all of them will be called. Mixin hooks will be called **before** the component's own hooks.
+Funções hoocks com o mesmo nome são mescladas em um array para que todas sejam chamadas. Os hoocks do Mixin serão chamados **antes** dos próprios hoocks do componente.
 
 ```js
 const myMixin = {
   created() {
-    console.log('mixin hook called')
+    console.log('hook do mixin chamando')
   }
 }
 
 const app = Vue.createApp({
   mixins: [myMixin],
   created() {
-    console.log('component hook called')
+    console.log('hook do componente chamando')
   }
 })
 
-// => "mixin hook called"
-// => "component hook called"
+// => "hook do mixin chamando"
+// => "hook do componente chamando"
 ```
 
-Options that expect object values, for example `methods`, `components` and `directives`, will be merged into the same object. The component's options will take priority when there are conflicting keys in these objects:
+Opções que esperam valores de objeto, por exemplo `methods`, `components` e `directives`, será mesclado no mesmo objeto. As opções do componente terão prioridade quando houver chaves conflitantes nestes objetos:
 
 ```js
 const myMixin = {
@@ -86,7 +86,7 @@ const myMixin = {
       console.log('foo')
     },
     conflicting() {
-      console.log('from mixin')
+      console.log('do mixin')
     }
   }
 }
@@ -98,7 +98,7 @@ const app = Vue.createApp({
       console.log('bar')
     },
     conflicting() {
-      console.log('from self')
+      console.log('de si mesmo')
     }
   }
 })
@@ -107,19 +107,19 @@ const vm = app.mount('#mixins-basic')
 
 vm.foo() // => "foo"
 vm.bar() // => "bar"
-vm.conflicting() // => "from self"
+vm.conflicting() // => "de si mesmo"
 ```
 
-## Global Mixin
+## Mixin Global
 
-You can also apply a mixin globally for a Vue application:
+Você também pode aplicar um mixin globalmente para um aplicativo Vue:
 
 ```js
 const app = Vue.createApp({
-  myOption: 'hello!'
+  myOption: 'Olá!'
 })
 
-// inject a handler for `myOption` custom option
+// injetar um handler para `myOption` opção personalizada
 app.mixin({
   created() {
     const myOption = this.$options.myOption
@@ -129,17 +129,17 @@ app.mixin({
   }
 })
 
-app.mount('#mixins-global') // => "hello!"
+app.mount('#mixins-global') // => "Olá!"
 ```
 
-Use with caution! Once you apply a mixin globally, it will affect **every** component instance created afterwards in the given app (for example, child components):
+Use com cuidado! Depois de aplicar um mixin globalmente, ele afetará **cada** instância de componente criada posteriormente no aplicativo fornecido (por exemplo, componentes filhos):
 
 ```js
 const app = Vue.createApp({
-  myOption: 'hello!'
+  myOption: 'Olá!'
 })
 
-// inject a handler for `myOption` custom option
+// injetar um handler para `myOption` opção personalizada
 app.mixin({
   created() {
     const myOption = this.$options.myOption
@@ -149,76 +149,78 @@ app.mixin({
   }
 })
 
-// add myOption also to child component
+// adicione myOption também ao componente filho
 app.component('test-component', {
-  myOption: 'hello from component!'
+  myOption: 'Olá do componente!'
 })
 
 app.mount('#mixins-global')
 
-// => "hello!"
-// => "hello from component!"
+// => "Olá!"
+// => "Olá do componente"
 ```
 
-In most cases, you should only use it for custom option handling like demonstrated in the example above. It's also a good idea to ship them as [Plugins](plugins.html) to avoid duplicate application.
+Na maioria dos casos, você só deve usá-lo para manipulação de opções personalizadas, conforme demonstrado no exemplo acima. Também é uma boa ideia enviá-los como [Plugins](plugins.html) para evitar a aplicação duplicada.
 
-## Custom Option Merge Strategies
+## Estratégias de combinação de opções personalizadas
 
-When custom options are merged, they use the default strategy which overwrites the existing value. If you want a custom option to be merged using custom logic, you need to attach a function to `app.config.optionMergeStrategies`:
+Quando as opções personalizadas são mescladas, elas usam a estratégia padrão que substitui o valor existente. Se você deseja que uma opção personalizada seja mesclada usando uma lógica personalizada, você precisa anexar uma função `app.config.optionMergeStrategies`:
 
 ```js
 const app = Vue.createApp({})
 
 app.config.optionMergeStrategies.customOption = (toVal, fromVal) => {
-  // return mergedVal
+  // retorna mergedVal
 }
 ```
 
-The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. Let's try to check what do we have in these parameters when we use a mixin:
+A estratégia de mesclagem recebe o valor dessa opção definida nas instâncias pai e filho como o primeiro e segundo argumentos, respectivamente. Vamos tentar verificar o que temos nesses parâmetros quando usamos um mixin:
 
 ```js
 const app = Vue.createApp({
-  custom: 'hello!'
+  custom: 'Olá!'
 })
 
 app.config.optionMergeStrategies.custom = (toVal, fromVal) => {
   console.log(fromVal, toVal)
-  // => "goodbye!", undefined
-  // => "hello", "goodbye!"
+  // => "Tchau!", undefined
+  // => "Olá", "Tchau!"
   return fromVal || toVal
 }
 
 app.mixin({
-  custom: 'goodbye!',
+  custom: 'Tchau!',
   created() {
-    console.log(this.$options.custom) // => "hello!"
+    console.log(this.$options.custom) // => "Olá!"
   }
 })
 ```
 
-As you can see, in the console we have `toVal` and `fromVal` printed first from the mixin and then from the `app`. We always return `fromVal` if it exists, that's why `this.$options.custom` is set to `hello!` in the end. Let's try to change a strategy to _always return a value from the child instance_:
+Como você pode ver, no console temos `toVal` e `fromVal` impresso primeiro no mixin e depois no `app`. 
+Nós sempre voltamos `fromVal` se existe é por isso `this.$options.custom` está configurado para `hello!` 
+No final. Vamos tentar mudar uma estratégia para sempre retornar um valor da instância filha:
 
 ```js
 const app = Vue.createApp({
-  custom: 'hello!'
+  custom: 'Olá!'
 })
 
 app.config.optionMergeStrategies.custom = (toVal, fromVal) => toVal || fromVal
 
 app.mixin({
-  custom: 'goodbye!',
+  custom: 'Tchau!',
   created() {
-    console.log(this.$options.custom) // => "goodbye!"
+    console.log(this.$options.custom) // => "Tchau!"
   }
 })
 ```
 
-## Precautions
+## Precauções
 
-In Vue 2, mixins were the primary tool to abstract parts of component logic into reusable chunks. However, they have a few issues:
+No Vue 2, os mixins eram a principal ferramenta para abstrair partes da lógica de componentes em blocos reutilizáveis. No entanto, eles têm alguns problemas:
 
-- Mixins are conflict-prone: Since properties from each feature are merged into the same component, you still have to know about every other feature to avoid property name conflicts and for debugging.
+- Mixins são propensos a conflitos: como as propriedades de cada recurso são mescladas no mesmo componente, você ainda precisa conhecer todos os outros recursos para evitar conflitos de nome de propriedade e para depuração.
 
-- Reusability is limited: we cannot pass any parameters to the mixin to change its logic which reduces their flexibility in terms of abstracting logic
+- Reutilização é limitada: não podemos passar nenhum parâmetro ao mixin para alterar sua lógica, o que reduz sua flexibilidade em termos de abstração da lógica
 
-To address these issues, we added a new way to organize code by logical concerns: the [Composition API](composition-api-introduction.html).
+Para resolver esses problemas, adicionamos uma nova maneira de organizar o código por questões lógicas: [API de composição](composition-api-introduction.html).
