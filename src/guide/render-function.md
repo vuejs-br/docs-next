@@ -380,7 +380,7 @@ render() {
 
 ## JSX
 
-If we're writing a lot of `render` functions, it might feel painful to write something like this:
+Se estivermos escrevendo muitas funções `render`, pode ficar doloroso escrever algo assim:
 
 ```js
 Vue.h(
@@ -392,13 +392,13 @@ Vue.h(
 )
 ```
 
-Especially when the template version is so concise in comparison:
+Especialmente quando a versão usando template é mais concisa em comparação:
 
 ```vue-html
 <anchored-heading :level="1"> <span>Hello</span> world! </anchored-heading>
 ```
 
-That's why there's a [Babel plugin](https://github.com/vuejs/jsx-next) to use JSX with Vue, getting us back to a syntax that's closer to templates:
+É por isso que existe um [_plugin_ Babel](https://github.com/vuejs/jsx-next) para usar JSX com Vue, nos colocando em uma sintaxe que é mais próxima dos templates:
 
 ```jsx
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -416,7 +416,7 @@ const app = createApp({
 app.mount('#demo')
 ```
 
-For more on how JSX maps to JavaScript, see the [usage docs](https://github.com/vuejs/jsx-next#installation).
+Para saber mais sobre como JSX mapeia para o JavaScript, veja a [documentação de uso](https://github.com/vuejs/jsx-next#installation).
 
 ## Template Compilation
 
