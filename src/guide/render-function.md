@@ -418,8 +418,8 @@ app.mount('#demo')
 
 Para saber mais sobre como JSX mapeia para o JavaScript, veja a [documentação de uso](https://github.com/vuejs/jsx-next#installation).
 
-## Template Compilation
+## Compilação de Template
 
-You may be interested to know that Vue's templates actually compile to render functions. This is an implementation detail you usually don't need to know about, but if you'd like to see how specific template features are compiled, you may find it interesting. Below is a little demo using `Vue.compile` to live-compile a template string:
+Pode ser que você esteja interessando em saber que o Vue, na verdade, compila os templates em funções de renderização. Isso é um detalhe de implementação que, geralmente, você não precisa saber, porém, se você quiser ver como especificamente templates são compilados, você pode achar interessante. Abaixo temos uma pequena demonstração de uso de `Vue.compile` para compilar em tempo real (_live-compile_) uma string de template:
 
 <iframe src="https://vue-next-template-explorer.netlify.app/" width="100%" height="420"></iframe>
