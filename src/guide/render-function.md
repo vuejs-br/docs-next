@@ -212,23 +212,23 @@ app.component('anchored-heading', {
 })
 ```
 
-## Constraints
+## Restrições
 
-### VNodes Must Be Unique
+### VNodes devem ser únicos
 
-All VNodes in the component tree must be unique. That means the following render function is invalid:
+Todos os _VNodes_ na árvore de componentes devem ser únicos. Isso significa que a função de renderização a seguir é inválida:
 
 ```js
 render() {
   const myParagraphVNode = Vue.h('p', 'hi')
   return Vue.h('div', [
-    // Yikes - duplicate VNodes!
+    // Éca - VNodes duplicados!
     myParagraphVNode, myParagraphVNode
   ])
 }
 ```
 
-If you really want to duplicate the same element/component many times, you can do so with a factory function. For example, the following render function is a perfectly valid way of rendering 20 identical paragraphs:
+Se você realmente quiser duplicar o mesmo elemento/componente várias vezes, você pode fazê-lo com uma função fábrica (_factory function_). Por exemplo, a função de renderização a seguir é uma forma perfeitamente válida de renderizar 20 parágrafos idênticos:
 
 ```js
 render() {
