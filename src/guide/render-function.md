@@ -81,9 +81,9 @@ app.component('anchored-heading', {
 
 A implementação da função `render()` é muito mais simples, mas também requer mais familiaridade com as propriedades das instâncias de componentes. Nesse caso, você deve saber que quando você passar filhos sem uma diretiva `v-slot` para um componente, como o `Hello world!` dentro do `anchored-heading`, esses filhos serão armazenados na instância do componente em `$slots.default()`. Se você já não tiver feito ainda. **é recomendado ler a [API de propriedades de instância](../api/instance-properties.html) antes de mergulhar nas funções de renderização.**
 
-## The DOM tree
+## A árvore DOM
 
-Before we dive into render functions, it’s important to know a little about how browsers work. Take this HTML for example:
+Antes de adentrarmos nas funções de renderização, é importante conhecer um pouco sobre como os navegadores funcionam. Veja esse exemplo de HTML:
 
 ```html
 <div>
@@ -93,21 +93,21 @@ Before we dive into render functions, it’s important to know a little about ho
 </div>
 ```
 
-When a browser reads this code, it builds a [tree of "DOM nodes"](https://javascript.info/dom-nodes) to help it keep track of everything.
+Quando um navegador lê este código, ele compila uma [árvore de "nós DOM"](https://javascript.info/dom-nodes) para ajudá-lo a acompanhar tudo.
 
-The tree of DOM nodes for the HTML above looks like this:
+A árvore de nós DOM para o HTML acima se parece com isso:
 
 ![DOM Tree Visualization](/images/dom-tree.png)
 
-Every element is a node. Every piece of text is a node. Even comments are nodes! Each node can have children (i.e. each node can contain other nodes).
+Cada elemento é uma nó. Cada trecho de texto é um nó. Até mesmo comentários são nós! Cada nó pode possuír filhos (i.e. cada nó pode conter outros nós).
 
-Updating all these nodes efficiently can be difficult, but thankfully, we never have to do it manually. Instead, we tell Vue what HTML we want on the page, in a template:
+Atualizar todos esses nós eficientemente pode ser difícil, mas felizmente, nós nunca precisamos fazê-lo manualmente. Ao invés disso, nós dizemos ao Vue qual HTML nós queremos na página, em um template:
 
 ```html
 <h1>{{ blogTitle }}</h1>
 ```
 
-Or in a render function:
+Ou em uma função de renderização:
 
 ```js
 render() {
@@ -115,7 +115,7 @@ render() {
 }
 ```
 
-And in both cases, Vue automatically keeps the page updated, even when `blogTitle` changes.
+E em ambos os casos, o Vue automaticamente mantem a página atualizada, até mesmo quando o `blogTitle` muda.
 
 ## The Virtual DOM tree
 
