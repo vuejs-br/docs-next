@@ -11,30 +11,30 @@ Vamos cobrir todos esses e mais nas próximas seções neste guia. Contudo, alé
 
 Na próxima seção, vamos passar por conceitos básicos de transições e animações web, assim como oferecer links para alguns destes recursos para exploração posterior. Se você já estiver familiarizado com animação web e como estes princípios podem funcionar com algumas das directivas do Vue, sinta-se livre para pular a próxima seção. Para quem estiver buscando aprender mais sobre os básicos de animação web, continue a leitura. 
 
-## Class-based Animations & Transitions
+## Animações & Transições baseadas em classes
 
-Though the `<transition>` component can be wonderful for components entering and leaving, you can also activate an animation without mounting a component, by adding a conditional class.
+Ainda que o componente `<transition>` pode ser maravilhoso para componentes que entram e saem, você também pode ativar uma animação sem montar um componente, adicionando uma classe condicional.
 
 ```html
 <div id="demo">
-  Push this button to do something you shouldn't be doing:<br />
+  Aperte este botão para faer algo que você não deveria estar fazendo:<br />
 
-  <div :class="{ shake: noActivated }">
-    <button @click="noActivated = true">Click me</button>
-    <span v-if="noActivated">Oh no!</span>
+  <div :class="{ mexer: ativado }">
+    <button @click="ativado = true">Clique-me</button>
+    <span v-if="ativado">Ah não!</span>
   </div>
 </div>
 ```
 
 ```css
-.shake {
+.mexer {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
 
-@keyframes shake {
+@keyframes mexer {
   10%,
   90% {
     transform: translate3d(-1px, 0, 0);
@@ -62,7 +62,7 @@ Though the `<transition>` component can be wonderful for components entering and
 const Demo = {
   data() {
     return {
-      noActivated: false
+      ativado: false
     }
   }
 }
@@ -70,32 +70,33 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="ff45b91caf7a98c8c9077ad8ab539260" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Create animation with a class">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="ff45b91caf7a98c8c9077ad8ab539260" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Criar a animação por meio de uma classe">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/ff45b91caf7a98c8c9077ad8ab539260">
-  Create animation with a class</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  Criar a animação por meio de uma classe</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-# Transitions with Style Bindings
+# Transições com ligações de estilo
 
-Some transition affects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
+Anguns efeitos de transições podem ser aplicados pela interpolação de valores, por exemplo, por ligar um estilo com um elemento enquanto ocorre uma interação. 
+Veja o seguinte exemplo:
 
 ```html
 <div id="demo">
   <div
-    @mousemove="xCoordinate"
+    @mousemove="coordenadaX"
     :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
-    class="movearea"
+    class="areaDeMovimento"
   >
-    <h3>Move your mouse across the screen...</h3>
+    <h3>Mexa o seu mouse pela tela...</h3>
     <p>x: {{x}}</p>
   </div>
 </div>
 ```
 
 ```css
-.movearea {
+.areaDeMovimento {
   transition: 0.2s background-color ease;
 }
 ```
@@ -108,7 +109,7 @@ const Demo = {
     }
   },
   methods: {
-    xCoordinate(e) {
+    coordenadaX(e) {
       this.x = e.clientX
     }
   }
@@ -117,28 +118,28 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="JjGezQY" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Interpolation with style bindings">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/JjGezQY">
-  Interpolation with style bindings</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="JjGezQY" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Interpolação com ligações por estilo">
+  <span>Veja o Pen <a href="https://codepen.io/team/Vue/pen/JjGezQY">
+  Interpolação com ligações por estilo</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-In this example, we are creating animation through the use of interpolation, attached to the mouse movement. The CSS transition is applied to the element as well, to let the element know what kind of easing to use while it's updating.
+Neste exemplo, estamos criando uma animação por meio do uso de interpolação, adjunto ao movimento do mouse. A transição CSS é aplicada para o elemento também, permitindo que o elemento saiba que tipo de atenuação é usada ao se atualizar. 
 
 ## Performance
 
-You may notice that the animations shown above are using things like `transforms`, and applying strange properties like `perspective`- why were they built that way instead of just using `margin` and `top` etc?
+Você pode perceber que as animações mostradas acima estão usando coisas como `transforms`, e aplicando propriedades estranhas como `perspective` - por que foram construídos assim em vez de simplemente usar `margin` e `top`, etc?
 
-We can create extremely smooth animations on the web by being aware of performance. We want to hardware accelerate elements when we can, and use properties that don't trigger repaints. Let's go over some of how we can accomplish this.
+Podemos criar animações extremamente lisas para a web estando cientes da performance. Queremos que o hardware acelere elementos quando pudermos, e que use as propriedades que não disparem a repintura dos mesmos. Vamos ver como podemos fazer isso.
 
-### Transform and Opacity
+### Transform e Opacidade
 
-We can check resources like [CSS-Triggers](https://csstriggers.com/) to see which properties will trigger repaints if we animate them. Here, if you look under `transform`, you will see:
+Podemos verificar recursos como [Gatilhos CSS](https://csstriggers.com) para vermos quais propriedades vão desencadear repinturas se nós a animarmos. Aqui, caso você olhe a parte de `transform`, você verá: 
 
-> Changing transform does not trigger any geometry changes or painting, which is very good. This means that the operation can likely be carried out by the compositor thread with the help of the GPU.
+> As mudanças do transform não desencadeam em mudanças geométricas ou de pintura, o que é muito bom. Isso significa que a operação pode provavelmente ser realizada por pela thread de composição com o auxílio da GPU.
 
-Opacity behaves similarly. Thus, they are ideal candidates for movement on the web.
+A opacidade se comporta de maneira similar. Assim, são candidatos ideais para movimentos na web.
 
 ### Hardware Acceleration
 
@@ -183,7 +184,7 @@ If we were to apply these states to a transition, it would look something like t
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="996a9665131e7902327d350ca8a655ac" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Ease Example">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/996a9665131e7902327d350ca8a655ac">
   Transition Ease Example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+  no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
