@@ -240,20 +240,19 @@ render() {
 }
 ```
 
-## Replacing Template Features with Plain JavaScript
+## Substituíndo Templates de recursos por JavaScript Simples
+### `v-if` e `v-for`
 
-### `v-if` and `v-for`
-
-Wherever something can be easily accomplished in plain JavaScript, Vue render functions do not provide a proprietary alternative. For example, in a template using `v-if` and `v-for`:
+Sempre que algo for facilmente realizado usando JavaScript simples, as funções de renderização do Vue não são uma alternativa apropriada. Por exemplo, em um template usando `v-if` e `v-for`:
 
 ```html
 <ul v-if="items.length">
   <li v-for="item in items">{{ item.name }}</li>
 </ul>
-<p v-else>No items found.</p>
+<p v-else>Não foram encontrados itens.</p>
 ```
 
-This could be rewritten with JavaScript's `if`/`else` and `map()` in a render function:
+Pode ser rescrito usando usando `if`/`else` e `map()` com JavaScript em uma função de renderização:
 
 ```js
 props: ['items'],
@@ -263,14 +262,14 @@ render() {
       return Vue.h('li', item.name)
     }))
   } else {
-    return Vue.h('p', 'No items found.')
+    return Vue.h('p', 'Não foram encontrados itens.')
   }
 }
 ```
 
 ### `v-model`
 
-The `v-model` directive is expanded to `modelValue` and `onUpdate:modelValue` props during template compilation—we will have to provide these props ourselves:
+A diretiva `v-model` é expandida para as propriedades `modelValue`e `onUpdate:modelValue` durante a compilação do template - nós mesmos teremos que prover essas propriedades:
 
 ```js
 props: ['modelValue'],
@@ -284,7 +283,7 @@ render() {
 
 ### `v-on`
 
-We have to provide a proper prop name for the event handler, e.g., to handle `click` events, the prop name would be `onClick`.
+Temos que prover o propriedade com nome apropriado para o manipulador do evento, e.g., para manipular um evento de `click`, o nome da propriedade deve ser `onClick`.
 
 ```js
 render() {
@@ -294,11 +293,11 @@ render() {
 }
 ```
 
-#### Event Modifiers
+#### Modificadores de Eventos
 
-For the `.passive`, `.capture`, and `.once` event modifiers, they can be concatenated after event name using camel case.
+Os modificadores de evento `.passive`, `.capture` e `.once`, podem ser concatenados após o nome do evento usando grafia camelo (_camel case_).
 
-For example:
+Por exemplo:
 
 ```javascript
 render() {
@@ -310,32 +309,32 @@ render() {
 }
 ```
 
-For all other event and key modifiers, no special API is necessary, because we can use event methods in the handler:
+Para todos os outros modificadores de evento, não é necessária nenhuma API especial, pois podemos usar métodos de evento no manipulador:
 
-| Modifier(s)                                           | Equivalent in Handler                                                                                                |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `.stop`                                               | `event.stopPropagation()`                                                                                            |
-| `.prevent`                                            | `event.preventDefault()`                                                                                             |
-| `.self`                                               | `if (event.target !== event.currentTarget) return`                                                                   |
-| Keys:<br>`.enter`, `.13`                              | `if (event.keyCode !== 13) return` (change `13` to [another key code](http://keycode.info/) for other key modifiers) |
-| Modifiers Keys:<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (change `ctrlKey` to `altKey`, `shiftKey`, or `metaKey`, respectively)                  |
+| Modificador(es)                                                | Equivalente no manipulador                                                                                                        |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `.stop`                                                        | `event.stopPropagation()`                                                                                                         |
+| `.prevent`                                                     | `event.preventDefault()`                                                                                                          |
+| `.self`                                                        | `if (event.target !== event.currentTarget) return`                                                                                |
+| Teclas:<br>`.enter`, `.13`                                     | `if (event.keyCode !== 13) return` (mude `13` para [outro código de tecla](http://keycode.info/) para outro modificador de tecla) |
+| Modificadores de teclas:<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (mude `ctrlKey` para `altKey`, `shiftKey`, ou `metaKey`, respectivamente)                            |
 
-Here's an example with all of these modifiers used together:
+Aqui temos um exemplo de todos esses modificadores sendo usados juntos:
 
 ```js
 render() {
   return Vue.h('input', {
     onKeyUp: event => {
-      // Abort if the element emitting the event is not
-      // the element the event is bound to
+      // Aborta se o elemento emitindo o evento não é
+      // o elemento em qual o evento é ligado
       if (event.target !== event.currentTarget) return
-      // Abort if the key that went up is not the enter
-      // key (13) and the shift key was not held down
-      // at the same time
+      // Aborta se a tecla que foi pressionada não é a tecla enter
+      // (13) e a tecla shift não está sendo segurada
+      // ao mesmo tempo
       if (!event.shiftKey || event.keyCode !== 13) return
-      // Stop event propagation
+      // Para a propagação de eventos
       event.stopPropagation()
-      // Prevent the default keyup handler for this element
+      // Previne o manipulador padrão de teclas para este elemento
       event.preventDefault()
       // ...
     }
@@ -345,7 +344,7 @@ render() {
 
 ### Slots
 
-You can access slot contents as Arrays of VNodes from [`this.$slots`](../api/instance-properties.html#slots):
+Você pode acessar os conteúdos de slots como Arrays de _VNodes_ através de [`this.$slots`](../api/instance-properties.html#slots):
 
 ```js
 render() {
@@ -364,15 +363,15 @@ render() {
 }
 ```
 
-To pass slots to a child component using render functions:
+Passar slots para um componente filho usando funções de renderização:
 
 ```js
 render() {
   // `<div><child v-slot="props"><span>{{ props.text }}</span></child></div>`
   return Vue.h('div', [
     Vue.h('child', {}, {
-      // pass `slots` as the children object
-      // in the form of { name: props => VNode | Array<VNode> }
+      // passa `slots` como objetos filhos
+      // na forma de { name: props => VNode | Array<VNode> }
       default: (props) => Vue.h('span', props.text)
     })
   ])
