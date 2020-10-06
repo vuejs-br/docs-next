@@ -127,36 +127,36 @@ return Vue.h('h1', {}, this.blogTitle)
 
 O que função `h()` retorna? Não é _exatamente_ um elemento DOM real. Ela retorna um objeto que contém informações que descrevem para o Vue que tipo de nó deve ser renderizado na página, incluíndo descrições de qualquer nó filho. Chamamos essa descrição do nó de "nó virtual", geralmente abreviado para **_VNode_**. "Virtual DOM" é como chamamos toda a árvore de _VNodes_, constituída de uma árvore de componentes Vue.
 
-## `h()` Arguments
+## Argumentos de `h()`
 
-The `h()` function is a utility to create VNodes. It could perhaps more accurately be named `createVNode()`, but it's called `h()` due to frequent use and for brevity. It accepts three arguments:
+A função `h()`é um utilitário para criar _VNodes_. Poderia, talvez, ser nomeado com mais precisão como `createVNode()`, mas é chamada `h()` devido ao uso frequente e por brevidade. Ela aceita três argumentos:
 
 ```js
 // @returns {VNode}
 h(
   // {String | Object | Function } tag
-  // An HTML tag name, a component or an async component.
-  // Using function returning null would render a comment.
+  // O nome de uma tag HTML, um componente ou um componente assíncrono.
+  // Usar uma função que retorna null vai renderizar um comentário.
   //
-  // Required.
+  // Obrigatório.
   'div',
 
   // {Object} props
-  // An object corresponding to the attributes, props and events
-  // we would use in a template.
+  // Um objeto correspondente aos atributos, propriedades e eventos
+  // que utilizaríamos em um template.
   //
-  // Optional.
+  // Opcional.
   {},
 
   // {String | Array | Object} children
-  // Children VNodes, built using `h()`,
-  // or using strings to get 'text VNodes' or
-  // an object with slots.
+  // VNodes filhos, construídos usando `h()`,
+  // ou usando strings to obter 'VNodes de texto' ou
+  // um objeto com slots.
   //
-  // Optional.
+  // Opcional.
   [
-    'Some text comes first.',
-    h('h1', 'A headline'),
+    'Algum texto vem primeiro.',
+    h('h1', 'Um título'),
     h(MyComponent, {
       someProp: 'foobar'
     })
