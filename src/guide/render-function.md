@@ -1,8 +1,8 @@
-# Render Functions
+# Funções de Renderização
 
-Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the **render function**.
+Vue recomenda o uso de templates para construir aplicações na grande maioria dos casos. No entanto, existem situações onde precisamos de todo o poder programático do JavaScript. É aí onde podemos utilizar a **função de renderização**.
 
-Let's dive into an example where a `render()` function would be practical. Say we want to generate anchored headings:
+Vamos mergulhar em um exemplo onda uma função `render()` seria prática. Digamos que queremos gerar um título ancorado:
 
 ```html
 <h1>
@@ -12,13 +12,13 @@ Let's dive into an example where a `render()` function would be practical. Say w
 </h1>
 ```
 
-Anchored headings are used very frequently, we should create a component:
+Títulos ancorados são usados frequentemente, nós poderíamos criar um componente:
 
 ```vue-html
 <anchored-heading :level="1">Hello world!</anchored-heading>
 ```
 
-The component must generate a heading based on the `level` prop, and we quickly arrive at this:
+O componente deve gerar um título baseado na propriedade `level`, e, nós rapidamente chegaríamos aqui:
 
 ```js
 const app = Vue.createApp({})
@@ -53,9 +53,9 @@ app.component('anchored-heading', {
 })
 ```
 
-This template doesn't feel great. It's not only verbose, but we're duplicating `<slot></slot>` for every heading level. And when we add the anchor element, we have to again duplicate it in every `v-if/v-else-if` branch.
+Este template não parece bom. Não apenas é verboso, como também estamos duplicando o `<slot></slot>` para cada nível de título. E quando adicionarmos o elemento de âncora, teríamos que duplicá-lo em cada ramo `v-if/v-else-if`.
 
-While templates work great for most components, it's clear that this isn't one of them. So let's try rewriting it with a `render()` function:
+Enquanto que templates funcionam muito bem para a maioria dos componentes, fica claro que este não é um deles. Então, vamos tentar reescreve-lo com uma função `render()`:
 
 ```js
 const app = Vue.createApp({})
@@ -79,7 +79,7 @@ app.component('anchored-heading', {
 })
 ```
 
-The `render()` function implementation is much simpler, but also requires greater familiarity with component instance properties. In this case, you have to know that when you pass children without a `v-slot` directive into a component, like the `Hello world!` inside of `anchored-heading`, those children are stored on the component instance at `$slots.default()`. If you haven't already, **it's recommended to read through the [instance properties API](../api/instance-properties.html) before diving into render functions.**
+A implementação da função `render()` é muito mais simples, mas também requer mais familiaridade com as propriedades das instâncias de componentes. Nesse caso, você deve saber que quando você passar filhos sem uma diretiva `v-slot` para um componente, como o `Hello world!` dentro do `anchored-heading`, esses filhos serão armazenados na instância do componente em `$slots.default()`. Se você já não tiver feito ainda. **é recomendado ler a [API de propriedades de instância](../api/instance-properties.html) antes de mergulhar nas funções de renderização.**
 
 ## The DOM tree
 
