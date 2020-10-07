@@ -4,10 +4,10 @@ Vue oferece algumas abstrações que podem lhe ajudar a trabalhar com transiçõ
 
 - Hooks para componentes entrando e saindo do DOM, em CSS e JS, usando o  componente interno `<transition>`.
 - Modos de Transição para que você possa orquestrar a ordenação durante a transição. 
-- Hooks para quando multiplos elementos estão atualizando em posição  com técnicas FLIP aplicadas secundariamente para aumentar a performance, usando o componente `<transition-group>`.
+- Hooks para quando múltiplos elementos estão atualizando em posição  com técnicas FLIP aplicadas secundariamente para aumentar a performance, usando o componente `<transition-group>`.
 - Transição de diferentes estados em uma aplicação, com `watchers`.
 
-Vamos cobrir todos esses e mais nas próximas seções neste guia. Contudo, além dessas ofertas úteis de API, é importante mencionar que as declarações de classe e estilo mencionadas antes podem também ser usadas para aplicar animações e transições, para casos de uso simplificados. 
+Vamos cobrir todos esses e mais nas próximas seções deste guia. Contudo, além dessas ofertas úteis de API, é importante mencionar que as declarações de classe e estilo mencionadas antes podem também ser usadas para aplicar animações e transições, para casos de uso simplificados. 
 
 Na próxima seção, vamos passar por conceitos básicos de transições e animações web, assim como oferecer links para alguns destes recursos para exploração posterior. Se você já estiver familiarizado com animação web e como estes princípios podem funcionar com algumas das directivas do Vue, sinta-se livre para pular a próxima seção. Para quem estiver buscando aprender mais sobre os básicos de animação web, continue a leitura. 
 
@@ -17,7 +17,7 @@ Ainda que o componente `<transition>` pode ser maravilhoso para componentes que 
 
 ```html
 <div id="demo">
-  Aperte este botão para faer algo que você não deveria estar fazendo:<br />
+  Aperte este botão para fazer algo que você não deveria estar fazendo:<br />
 
   <div :class="{ mexer: ativado }">
     <button @click="ativado = true">Clique-me</button>
@@ -79,7 +79,7 @@ Vue.createApp(Demo).mount('#demo')
 
 # Transições com ligações de estilo
 
-Anguns efeitos de transições podem ser aplicados pela interpolação de valores, por exemplo, por ligar um estilo com um elemento enquanto ocorre uma interação. 
+Alguns efeitos de transições podem ser aplicados pela interpolação de valores, por exemplo, por ligar um estilo com um elemento enquanto ocorre uma interação. 
 Veja o seguinte exemplo:
 
 ```html
@@ -129,7 +129,7 @@ Neste exemplo, estamos criando uma animação por meio do uso de interpolação,
 
 ## Performance
 
-Você pode perceber que as animações mostradas acima estão usando coisas como `transforms`, e aplicando propriedades estranhas como `perspective` - por que foram construídos assim em vez de simplemente usar `margin` e `top`, etc?
+Você pode perceber que as animações mostradas acima estão usando coisas como `transforms`, e aplicando propriedades estranhas como `perspective` - por que foram construídos assim em vez de simplesmente usar `margin` e `top`, etc?
 
 Podemos criar animações extremamente lisas para a web estando cientes da performance. Queremos que o hardware acelere elementos quando pudermos, e que use as propriedades que não disparem a repintura dos mesmos. Vamos ver como podemos fazer isso.
 
@@ -137,7 +137,7 @@ Podemos criar animações extremamente lisas para a web estando cientes da perfo
 
 Podemos verificar recursos como [Gatilhos CSS](https://csstriggers.com) para vermos quais propriedades vão desencadear repinturas se nós a animarmos. Aqui, caso você olhe a parte de `transform`, você verá: 
 
-> As mudanças do transform não desencadeam em mudanças geométricas ou de pintura, o que é muito bom. Isso significa que a operação pode provavelmente ser realizada por pela thread de composição com o auxílio da GPU.
+> As mudanças do transform não desencadeiam em mudanças geométricas ou de pintura, o que é muito bom. Isso significa que a operação pode provavelmente ser realizada por pela thread de composição com o auxílio da GPU.
 
 A opacidade se comporta de maneira similar. Assim, são candidatos ideais para movimentos na web.
 
@@ -153,12 +153,12 @@ perspective: 1000px;
 backface-visibility: hidden;
 transform: translateZ(0);
 ```
-Muitas bibliotecas JS como GreenSock vão assumir que você quer aceleração de hardware e as vão aplicar por padrão, assim você não precisa configurar-las manualmente.
+Muitas bibliotecas JS como GreenSock vão assumir que você quer aceleração de hardware e as vão aplicar por padrão, assim você não precisa configurá-las manualmente.
 
 
 ## Tempo de Animação
 
-Para transições de UI simples, de um estado para outro sem estados intermediários, é comum usar tempos entre 0.1s e 0.4s, e muitas pessoas acham que _0.25s_ tende a ser o ponto certo. Você pode usar este tempo para tudo? Não necessáriamente. Se você tem algo que precisa se mover uma distância maior ou que tenha mais passos ou mudanças de estado, 0.25s não vai funcionar tão bem e você terá que ser muito mais intencional, e o tempo terá a necessidade de ser mais único. O que não significa que você pode ter ótimos padrões que você repete dentro da sua aplicação. 
+Para transições de UI simples, de um estado para outro sem estados intermediários, é comum usar tempos entre 0.1s e 0.4s, e muitas pessoas acham que _0.25s_ tende a ser o ponto certo. Você pode usar este tempo para tudo? Não necessariamente. Se você tem algo que precisa se mover uma distância maior ou que tenha mais passos ou mudanças de estado, 0.25s não vai funcionar tão bem e você terá que ser muito mais intencional, e o tempo terá a necessidade de ser mais único. O que não significa que você pode ter ótimos padrões que você repete dentro da sua aplicação. 
 
 Você também pode se dar conta de que entradas têm uma aparência melhor com um pouco mais de tempo que uma saída. O usuário tipicamente está sendo guiado durante uma entrada e é um pouco menos paciente na saída, por que querem seguir seu caminho.
 
