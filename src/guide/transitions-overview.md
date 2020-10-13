@@ -1,40 +1,40 @@
-# Visão Geral
+# Overview
 
-Vue oferece algumas abstrações que podem lhe ajudar a trabalhar com transições e animações, particularmente em resposta à mudança de algo. Algumas dessas abstrações incluem:
+Vue offers some abstractions that can help work with transitions and animations, particularly in response to something changing. Some of these abstractions include:
 
-- Hooks para componentes entrando e saindo do DOM, em CSS e JS, usando o  componente interno `<transition>`.
-- Modos de Transição para que você possa orquestrar a ordenação durante a transição. 
-- Hooks para quando múltiplos elementos estão atualizando em posição  com técnicas FLIP aplicadas secundariamente para aumentar a performance, usando o componente `<transition-group>`.
-- Transição de diferentes estados em uma aplicação, com `watchers`.
+- Hooks for components entering and leaving the DOM, in both CSS and JS, using the built-in `<transition>` component.
+- Transition Modes so that you can orchestrate ordering during a transition.
+- Hooks for when multiple elements are updating in position, with FLIP techniques applied under the hood to increase performance, using the `<transition-group>` component.
+- Transitioning different states in an application, with `watchers`.
 
-Vamos cobrir todos esses e mais nas próximas seções deste guia. Contudo, além dessas ofertas úteis de API, é importante mencionar que as declarações de classe e estilo mencionadas antes podem também ser usadas para aplicar animações e transições, para casos de uso simplificados. 
+We will cover all of these and more in the next three sections in this Guide. However, aside from these useful API offerings, it's worth mentioning that the class and style declarations we covered earlier can be used to apply animations and transitions as well, for more simple use cases.
 
-Na próxima seção, vamos passar por conceitos básicos de transições e animações web, assim como oferecer links para alguns destes recursos para exploração posterior. Se você já estiver familiarizado com animação web e como estes princípios podem funcionar com algumas das directivas do Vue, sinta-se livre para pular a próxima seção. Para quem estiver buscando aprender mais sobre os básicos de animação web, continue a leitura. 
+In this next section, we'll go over some web animation and transitions basics, and link off to some resources for further exploration. If you're already familiar with web animation and how those principles might work with some of Vue's directives, feel free to skip this next section. For anyone else looking to learn a little more about web animation basics before diving in, read on.
 
-## Animações & Transições baseadas em classes
+## Class-based Animations & Transitions
 
-Ainda que o componente `<transition>` pode ser maravilhoso para componentes que entram e saem, você também pode ativar uma animação sem montar um componente, adicionando uma classe condicional.
+Though the `<transition>` component can be wonderful for components entering and leaving, you can also activate an animation without mounting a component, by adding a conditional class.
 
 ```html
 <div id="demo">
-  Aperte este botão para fazer algo que você não deveria estar fazendo:<br />
+  Push this button to do something you shouldn't be doing:<br />
 
-  <div :class="{ mexer: ativado }">
-    <button @click="ativado = true">Clique-me</button>
-    <span v-if="ativado">Ah não!</span>
+  <div :class="{ shake: noActivated }">
+    <button @click="noActivated = true">Click me</button>
+    <span v-if="noActivated">Oh no!</span>
   </div>
 </div>
 ```
 
 ```css
-.mexer {
+.shake {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
 
-@keyframes mexer {
+@keyframes shake {
   10%,
   90% {
     transform: translate3d(-1px, 0, 0);
@@ -62,7 +62,7 @@ Ainda que o componente `<transition>` pode ser maravilhoso para componentes que 
 const Demo = {
   data() {
     return {
-      ativado: false
+      noActivated: false
     }
   }
 }
@@ -70,33 +70,32 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="ff45b91caf7a98c8c9077ad8ab539260" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Criar a animação por meio de uma classe">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="ff45b91caf7a98c8c9077ad8ab539260" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Create animation with a class">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/ff45b91caf7a98c8c9077ad8ab539260">
-  Criar a animação por meio de uma classe</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
+  Create animation with a class</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-# Transições com ligações de estilo
+# Transitions with Style Bindings
 
-Alguns efeitos de transições podem ser aplicados pela interpolação de valores, por exemplo, por ligar um estilo com um elemento enquanto ocorre uma interação. 
-Veja o seguinte exemplo:
+Some transition affects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
 
 ```html
 <div id="demo">
   <div
-    @mousemove="coordenadaX"
+    @mousemove="xCoordinate"
     :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
-    class="areaDeMovimento"
+    class="movearea"
   >
-    <h3>Mexa o seu mouse pela tela...</h3>
+    <h3>Move your mouse across the screen...</h3>
     <p>x: {{x}}</p>
   </div>
 </div>
 ```
 
 ```css
-.areaDeMovimento {
+.movearea {
   transition: 0.2s background-color ease;
 }
 ```
@@ -109,7 +108,7 @@ const Demo = {
     }
   },
   methods: {
-    coordenadaX(e) {
+    xCoordinate(e) {
       this.x = e.clientX
     }
   }
@@ -118,99 +117,97 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="JjGezQY" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Interpolação com ligações por estilo">
-  <span>Veja o Pen <a href="https://codepen.io/team/Vue/pen/JjGezQY">
-  Interpolação com ligações por estilo</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="JjGezQY" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Interpolation with style bindings">
+  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/JjGezQY">
+  Interpolation with style bindings</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Neste exemplo, estamos criando uma animação por meio do uso de interpolação, adjunto ao movimento do mouse. A transição CSS é aplicada para o elemento também, permitindo que o elemento saiba que tipo de atenuação é usada ao se atualizar. 
+In this example, we are creating animation through the use of interpolation, attached to the mouse movement. The CSS transition is applied to the element as well, to let the element know what kind of easing to use while it's updating.
 
 ## Performance
 
-Você pode perceber que as animações mostradas acima estão usando coisas como `transforms`, e aplicando propriedades estranhas como `perspective` - por que foram construídos assim em vez de simplesmente usar `margin` e `top`, etc?
+You may notice that the animations shown above are using things like `transforms`, and applying strange properties like `perspective`- why were they built that way instead of just using `margin` and `top` etc?
 
-Podemos criar animações extremamente lisas para a web estando cientes da performance. Queremos que o hardware acelere elementos quando pudermos, e que use as propriedades que não disparem a repintura dos mesmos. Vamos ver como podemos fazer isso.
+We can create extremely smooth animations on the web by being aware of performance. We want to hardware accelerate elements when we can, and use properties that don't trigger repaints. Let's go over some of how we can accomplish this.
 
-### Transform e Opacidade
+### Transform and Opacity
 
-Podemos verificar recursos como [Gatilhos CSS](https://csstriggers.com) para vermos quais propriedades vão desencadear repinturas se nós a animarmos. Aqui, caso você olhe a parte de `transform`, você verá: 
+We can check resources like [CSS-Triggers](https://csstriggers.com/) to see which properties will trigger repaints if we animate them. Here, if you look under `transform`, you will see:
 
-> As mudanças do transform não desencadeiam em mudanças geométricas ou de pintura, o que é muito bom. Isso significa que a operação pode provavelmente ser realizada por pela thread de composição com o auxílio da GPU.
+> Changing transform does not trigger any geometry changes or painting, which is very good. This means that the operation can likely be carried out by the compositor thread with the help of the GPU.
 
-A opacidade se comporta de maneira similar. Assim, são candidatos ideais para movimentos na web.
+Opacity behaves similarly. Thus, they are ideal candidates for movement on the web.
 
-### Aceleração de Hardware
+### Hardware Acceleration
 
-Propriedades como `perspective`, `backface-visibility`, e `transform: translateZ(x)` vão permitir ao browser saber quando se necessite de aceleração de hardware.
+Properties such as `perspective`, `backface-visibility`, and `transform: translateZ(x)` will allow the browser to know you need hardware acceleration.
 
-Se você gostaria de acelerar o hardware de um elemento, você pode aplicar qualquer uma dessas propriedades (não necessariamente só uma):
-
+If you wish to hardware-accelerate an element, you can apply any of these properties (not all are necessary, only one):
 
 ```css
 perspective: 1000px;
 backface-visibility: hidden;
 transform: translateZ(0);
 ```
-Muitas bibliotecas JS como GreenSock vão assumir que você quer aceleração de hardware e as vão aplicar por padrão, assim você não precisa configurá-las manualmente.
 
+Many JS libraries like GreenSock will assume you want hardware acceleration and will apply them by default, so you do not need to set them manually.
 
-## Tempo de Animação
+## Timing
 
-Para transições de UI simples, de um estado para outro sem estados intermediários, é comum usar tempos entre 0.1s e 0.4s, e muitas pessoas acham que _0.25s_ tende a ser o ponto certo. Você pode usar este tempo para tudo? Não necessariamente. Se você tem algo que precisa se mover uma distância maior ou que tenha mais passos ou mudanças de estado, 0.25s não vai funcionar tão bem e você terá que ser muito mais intencional, e o tempo terá a necessidade de ser mais único. O que não significa que você pode ter ótimos padrões que você repete dentro da sua aplicação. 
+For simple UI transitions, meaning from just one state to another with no intermediary states, it's common to use timings between 0.1s and 0.4s, and most folks find that _0.25s_ tends to be a sweet spot. Can you use that timing for everything? No, not really. If you have something that needs to move a greater distance or has more steps or state changes, 0.25s is not going to work as well and you will have to be much more intentional, and the timing will need to be more unique. That doesn't mean you can't have nice defaults that you repeat within your application, though.
 
-Você também pode se dar conta de que entradas têm uma aparência melhor com um pouco mais de tempo que uma saída. O usuário tipicamente está sendo guiado durante uma entrada e é um pouco menos paciente na saída, por que querem seguir seu caminho.
+You may also find that entrances look better with slightly more time than an exit. The user typically is being guided during the entrance, and is a little less patient upon exit because they want to go on their way.
 
+## Easing
 
-## Atenuação
+Easing is an important way to convey depth in an animation. One of the most common mistakes newcomers to animation have is to use `ease-in` for entrances, and `ease-out` for exits. You'll actually need the opposite.
 
-A atenuação é um modo importante de transmitir profundidade em uma animação. Um dos erros mais comuns que novatos em animação é usar `ease-in` para entradas, e `ease-out` para saídas. Quando, na verdade, você vai precisar do oposto. 
-
-Se tivéssemos que aplicar estes estados a uma transição, ela ficaria algo assim:
+If we were to apply these states to a transition, it would look something like this:
 
 ```css
 .button {
   background: #1b8f5a;
-  /* aplicada ao estado inicial, assim esta transição será aplicada para o estado de retorno */
+  /* applied to the initial state, so this transition will be applied to the return state */
   transition: background 0.25s ease-in;
 }
 
 .button:hover {
   background: #3eaf7c;
-  /* aplicada ao estado de hover, assim esta transição será aplicada quando um hover é acionado. */
+  /* applied to the hover state, so this transition will be applied when a hover is triggered */
   transition: background 0.35s ease-out;
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="996a9665131e7902327d350ca8a655ac" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de transição atenuada">
-  <span>Olhe o Pen <a href="https://codepen.io/team/Vue/pen/996a9665131e7902327d350ca8a655ac">
-  Exemplo de transição atenuada</a> por Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="css,result" data-user="Vue" data-slug-hash="996a9665131e7902327d350ca8a655ac" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Ease Example">
+  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/996a9665131e7902327d350ca8a655ac">
+  Transition Ease Example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-A atenuação pode inclusive transmitir a qualidade do material sendo animado. Olhe este pen, por exemplo, qual bola você acha que é rígida e qual é macia? 
+Easing can also convey the quality of material being animated. Take this pen for example, which ball do you think is hard and which is soft?
 
-<p class="codepen" data-height="500" data-theme-id="39028" data-default-tab="result" data-user="sdras" data-slug-hash="zxJWBJ" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Demo de bola quicando">
-  <span>Veja o Pen <a href="https://codepen.io/sdras/pen/zxJWBJ">
- Demo de Bola Quicando</a> por Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>)
-  no <a href="https://codepen.io">CodePen</a>.</span>
+<p class="codepen" data-height="500" data-theme-id="39028" data-default-tab="result" data-user="sdras" data-slug-hash="zxJWBJ" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Bouncing Ball Demo">
+  <span>See the Pen <a href="https://codepen.io/sdras/pen/zxJWBJ">
+  Bouncing Ball Demo</a> by Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Você pode obter muitos efeitos únicos e fazer sua animação bem estilosa ajustando sua acentuação. O CSS lhe permite modificar isso ajustando uma propriedade bezier cúbica, [este playground](https://cubic-bezier.com/#.17,.67,.83,.67) por Lea Verou é muito útil para explorar isso.
+You can get a lot of unique effects and make your animation very stylish by adjusting your easing. CSS allows you to modify this by adjusting a cubic bezier property, [this playground](https://cubic-bezier.com/#.17,.67,.83,.67) by Lea Verou is very helpful for exploring this.
 
-Apesar de que você possa alcançar grandes efeitos de animações simples com os dois handles que a acentuação por bezier-cúbico oferece, Javascript permite múltiples handles, e portanto, permite muito mais variação.
+Though you can achieve great effects for simple animation with the two handles the cubic-bezier ease offers, JavaScript allows multiple handles, and therefore, allows for much more variance.
 
-![Comparação de acentuação](/images/css-vs-js-ease.svg)
+![Ease Comparison](/images/css-vs-js-ease.svg)
 
-Tomemos um efeito de salto, por exemplo. Em CSS temos que declarar cada keyframe, para cima e para baixo. Em JavaScript, podemos expressar todo o movimento dentro da acentuação declarando `bounce` na [API GreenSock (GSAP)](https://greensock.com/)(outras bibliotecas JS têm outros tipos de padrões de acentuação).
+Take a bounce, for instance. In CSS we have to declare each keyframe, up and down. In JavaScript, we can express all of that movement within the ease, by declaring `bounce` in the [GreenSock API (GSAP)](https://greensock.com/) (other JS libraries have other types of easing defaults).
 
-Aqui está o código usado para o salto em CSS (exemplo de animate.css):
+Here is the code used for a bounce in CSS (example from animate.css):
 
 ```css
-@keyframes saltoParaBaixo {
+@keyframes bounceInDown {
   from,
   60%,
   75%,
@@ -242,19 +239,20 @@ Aqui está o código usado para o salto em CSS (exemplo de animate.css):
   }
 }
 
-.saltoParaBaixo {
-  animation-name: saltoParaBaixo;
+.bounceInDown {
+  animation-name: bounceInDown;
 }
 ```
-E aqui está o mesmo salto em JS usando GreenSock:
+
+And here is the same bounce in JS using GreenSock:
 
 ```js
 gsap.from(element, { duration: 1, ease: 'bounce.out', y: -500 })
 ```
 
-Vamos usar o GreenSock para alguns dos exemplos nas seções seguintes. Eles têm um ótimo [visualizador de atenuação](https://greensock.com/ease-visualizer) que vai lhe permitir construir atenuações bem trabalhadas. 
+We'll be using GreenSock in some of the examples in the sections following. They have a great [ease visualizer](https://greensock.com/ease-visualizer) that will help you build nicely crafted eases.
 
-## Leituras adicionais
+## Further Reading
 
-- [Designing Interface Animation: Improving the User Experience Through Animation by Val Head](https://www.amazon.com.br/dp/B01J4NKSZA)
+- [Designing Interface Animation: Improving the User Experience Through Animation by Val Head](https://www.amazon.com/dp/B01J4NKSZA/)
 - [Animation at Work by Rachel Nabors](https://abookapart.com/products/animation-at-work)
