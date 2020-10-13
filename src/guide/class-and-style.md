@@ -1,10 +1,10 @@
 # Interligações de Classe e Estilo
 
-Uma necessidade comum de interligação de dados é manipular as classes dos elementos e seus estilos _inline_. Uma vez que ambos são atributos, podemos usar `v-bind` para lidar com eles: apenas precisamos calcular uma String final com nossas expressões. No entanto, mexer com concatenação de String é irritante e propenso a erros. Por esta razão, Vue fornece aprimoramentos especiais quando `v-bind` é usado com `class` e `style`. Além de Strings, as expressões também podem avaliar Objetos ou Arrays.
+Uma necessidade comum de interligação de dados é manipular as classes dos elementos e seus estilos _inline_. Uma vez que ambos são atributos, podemos usar `v-bind` para lidar com eles: apenas precisamos calcular uma String final com nossas expressões. No entanto, mexer com concatenação de String é irritante e propenso à erros. Por esta razão, Vue fornece aprimoramentos especiais quando `v-bind` é usado com `class` e `style`. Além de Strings, as expressões também podem avaliar Objetos ou Arrays.
 
 ## Interligando Classes HTML
 
-### Sintaxe do Objeto
+### Sintaxe de Objeto
 
 Podemos passar um objeto para `:class` (abreviação de `v-bind:class`) para alternar classes dinamicamente:
 
@@ -59,7 +59,7 @@ data() {
 }
 ```
 
-Isso irá renderizar o mesmo resultado. Podemos também interligar a um [dado computado](computed.md) que retorne um objeto. Este é um padrão comum e poderoso:
+Isso irá renderizar o mesmo resultado. Podemos também interligar à um [dado computado](computed.md) que retorne um objeto. Este é um padrão comum e poderoso:
 
 ```html
 <div :class="classObject"></div>
@@ -123,7 +123,7 @@ No entanto, isso pode ser um tanto prolixo se você tiver várias classes condic
 
 > Esta seção assume conhecimento sobre [Componentes Vue](component-basics.md). Pode pular esta parte e voltar depois.
 
-Quando você usa o atributo `class` em um componente personalizado com um único elemento raiz, essas classes serão adicionadas a este elemento. As classes existentes neste elemento não serão substituídas.
+Quando você usa o atributo `class` em um componente personalizado com um único elemento raiz, essas classes serão adicionadas à este elemento. As classes existentes neste elemento não serão substituídas.
 
 Por exemplo, se você declarar este componente:
 
@@ -161,7 +161,7 @@ Quando `isActive` for verdadeiro, o HTML renderizado será:
 <p class="foo bar active">Oi!</p>
 ```
 
-Se o seu componente tiver vários elementos raiz, você precisará definir qual componente receberá essa classe utilizando a propriedade do componente `$attrs`:
+Se o seu componente tiver vários elementos raiz, você precisará definir qual componente receberá essa classe utilizando a propriedade `$attrs` de componentes:
 
 ```html
 <div id="app">
@@ -175,19 +175,18 @@ const app = Vue.createApp({})
 app.component('my-component', {
   template: `
     <p :class="$attrs.class">Oi!</p>
-    <span>Este é um component filho</span>
+    <span>Este é um componente filho</span>
   `
 })
 ```
 
-Você pode aprender mais sobre herança de atributo de componente na seção [Atributos Não-Prop](component-attrs.html).
+Você pode aprender mais sobre herança de atributos de componentes na seção [Atributos Não-Prop](component-attrs.html).
 
-## Interligando Estilos Inline
+## Interligando Estilos _Inline_
 
-### Object Syntax
 ### Sintaxe de Objeto
 
-A sintaxe de objeto para `:style` é bem direta - parece quase como CSS, mas é um objeto JavaScript. Você pode usar tanto _camelCase_ quanto _kebab-case_ (use aspas com _kebab-case_) para os nomes das propriedades CSS.
+A sintaxe de objeto para `:style` é bem direta - parece quase como CSS, exceto por ser um objeto JavaScript. Você pode usar tanto _camelCase_ quanto _kebab-case_ (use aspas com _kebab-case_) para os nomes das propriedades CSS.
 
 ```html
 <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
@@ -202,7 +201,7 @@ data() {
 }
 ```
 
-Muitas vezes é uma boa ideia vincular os estilos diretamente em um objeto para que assim o _template_ fique mais limpo:
+Frequentemente é uma boa ideia vincular os estilos diretamente em um objeto para que assim o _template_ fique mais limpo:
 
 ```html
 <div :style="styleObject"></div>
@@ -235,10 +234,10 @@ Quando você usa uma propriedade CSS que requer [prefixos de fabricantes](https:
 
 ### Valores Múltiplos
 
-Você pode prover um Array com múltiplos valores (prefixados) para estilizar um atributo, por exemplo:
+Você pode prover um Array com múltiplos valores (prefixados) para um atributo `style`, por exemplo:
 
 ```html
 <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 ```
 
-Isto irá renderizar apenas o último valor do Array que o navegador suportar. Neste exemplo, irá renderizar `display: flex` nos navegadores que suportam a versão sem prefixo do módulo Flexbox.
+Isto irá renderizar apenas o último valor do Array que o navegador suportar. Neste exemplo, irá renderizar `display: flex` nos navegadores que suportam a versão sem prefixo do Flexbox.
