@@ -4,7 +4,7 @@
 
 ## Declaração Oficial em Pacotes NPM
 
-Um sistema de tipagem estática pode ajudar a prevenir diversos potenciais erros de _runtime_ conforme as aplicações crescem, é por isso que o Vue 3 é escrito em TypeScript. Isso significa que você não precisa de nenhum ferramental adicional para usar TypeScript com Vue - temos um suporte de primeira-classe.
+Um sistema de tipagem estática pode ajudar a prevenir diversos potenciais erros de _runtime_ conforme as aplicações crescem, é por isso que o Vue 3 é escrito em TypeScript. Isso significa que você não precisa de nenhum ferramental adicional para usar TypeScript com Vue - temos um suporte de primeiro mundo.
 
 ## Configuração Recomendada
 
