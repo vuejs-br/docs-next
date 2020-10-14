@@ -1,8 +1,8 @@
 # Atributos Não-Propriedades
 
-> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia isso primeiro se você for novo em componentes.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
-Um atributo de componente não-propriedade é um atributo ou ouvinte de evento que é passado para um componente, mas não tem uma propriedade correspondente definida em [props](component-props) ou [emits](component-custom-events.html#defining-custom-events). Os exemplos comuns disto incluem atributos `class`, `style`, e `id`. Você pode acessar esses atributos por meio de propriedades `$attrs`.
+Um atributo de componente não-propriedade é um atributo ou ouvinte de evento que é passado para um componente, mas não tem uma propriedade correspondente definida em [props](component-props) ou [emits](component-custom-events.html#defining-custom-events). Os exemplos comuns disto incluem atributos `class`, `style`, e `id`. Você pode acessar esses atributos por meio da propriedade `$attrs`.
 
 ## Herança de Atributos
 
@@ -58,7 +58,7 @@ app.component('date-picker', {
 })
 ```
 
-Nesse caso, o evento `change` é passado do componente pai para o filho e será acionado no evento nativo `change` de `<select>`. Não precisamos emitir um evento de `date-picker` explicitamente:
+Nesse caso, o evento `change` é passado do componente pai para o filho e será acionado no evento nativo `change` do `<select>`. Não precisamos emitir um evento de `date-picker` explicitamente:
 
 ```html
 <div id="date-picker" class="demo">
@@ -70,7 +70,7 @@ Nesse caso, o evento `change` é passado do componente pai para o filho e será 
 const app = Vue.createApp({
   methods: {
     showChange(event) {
-      console.log(event.target.value) // irá registrar um valor da opção selecionada
+      console.log(event.target.value) // exibirá o valor da opção selecionada
     }
   }
 })
@@ -82,9 +82,9 @@ Se você **não** deseja que um componente herde atributos automaticamente, voc�
 
 O cenário comum para desativar uma herança de atributo é quando os atributos precisam ser aplicados a outros elementos além do nó raiz.
 
-Ao definir a opção `inheritAttrs` para `false`, você pode controlar para aplicar a outros atributos de elementos para usar a propriedade `$attrs` do componente, que inclui todos os atributos não incluídos às `props` do componente e propriedades `emits` (por exemplo, `class`, `style`, `v-ond`, etc.).
+Ao definir a opção `inheritAttrs` para `false`, você pode controlar a aplicação em outros atributos dos elementos, para que usem a propriedade `$attrs` do componente, que inclui todos os atributos não incluídos às propriedades `props` e `emits` do componente (por exemplo, `class`, `style`, eventos `v-on`, etc.).
 
-Usando nosso exemplo de componente date-picker da [seção anterior]('#attribute-inheritance), no caso de precisarmos aplicar todos os atributos não-propriedade ao elemento `input` em vez do elemento `div` raiz, isso pode ser feito usando o atalho `v-bind`.
+Usando nosso exemplo de componente date-picker da [seção anterior]('#heranca-de-atributos), no caso de precisarmos aplicar todos os atributos não-propriedade ao elemento `input` em vez do elemento `div` raiz, isso pode ser feito usando o atalho `v-bind`.
 
 ```js{5}
 app.component('date-picker', {
@@ -109,9 +109,9 @@ Com esta nova configuração, nosso atributo `data-status` será aplicado ao nos
 </div>
 ```
 
-## Herança de atributos em vários nós raiz
+## Herança de Atributos em Vários Nós Raízes
 
-Ao contrário dos componentes de um único nó raiz, os componentes com vários nós raiz não têm um comportamento de falha de atributo automático. Se `$attrs` não for vinculado explicitamente, um aviso de tempo de execução será emitido.
+Ao contrário dos componentes de um único nó raiz, os componentes com vários nós raízes não têm um comportamento de falha de atributo automático. Se `$attrs` não for vinculado explicitamente, um aviso de tempo de execução será emitido.
 
 ```html
 <custom-layout id="custom-layout" @click="changeValue"></custom-layout>
