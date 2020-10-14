@@ -89,7 +89,7 @@ Resultado:
 
 <common-codepen-snippet title="Exemplo de evento com chamada direta de métodoo" slug="mdPgQvR" />
 
-Às vezes, também precisamos acessar o evento original do DOM em um manipulador. Você pode passá-lo a um método usando a variável especial `$event`:
+Às vezes, também precisamos acessar o evento original do DOM em um manipulador. Você pode passá-lo à um método usando a variável especial `$event`:
 
 ```html
 <button @click="warn('O formulário ainda não pode ser enviado.', $event)">
@@ -168,8 +168,8 @@ Para resolver esse problema, Vue fornece **modificadores de evento** para `v-on`
 <div @click.self="doThat">...</div>
 ```
 
-::: tip
-A ordem importa ao utilizar modificadores pois o código relevante é gerado na mesma ordem. Desta forma, `@click.prevent.self` irá prevenir **todos os cliques**, enquanto `@click.self.prevent` irá prevenir apenas cliques no próprio elemento.</p>
+::: tip Nota
+A ordem importa ao utilizar modificadores pois o código relevante é gerado na mesma ordem. Desta forma, `@click.prevent.self` irá prevenir **todos os cliques**, enquanto `@click.self.prevent` irá prevenir apenas cliques no próprio elemento.
 :::
 
 ```html
@@ -177,7 +177,7 @@ A ordem importa ao utilizar modificadores pois o código relevante é gerado na 
 <a @click.once="doThis"></a>
 ```
 
-Diferente dos outros modificadores, que são exclusivos para eventos nativos, o modificador `.once` também pode ser usado em [eventos de componentes](components-custom-events.html). Se você ainda não leu sobre componentes, não se preocupe com isso neste momento.
+Diferente dos outros modificadores, que são exclusivos para eventos nativos, o modificador `.once` também pode ser usado em [eventos de componentes](component-custom-events.html). Se você ainda não leu sobre componentes, não se preocupe com isso neste momento.
 
 Vue também oferece o modificador `.passive`, correspondendo à [opção `passive` do `addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters).
 
@@ -190,7 +190,7 @@ Vue também oferece o modificador `.passive`, correspondendo à [opção `passiv
 
 O `.passive` é especialmente útil para otimizar desempenho em dispositivos móveis.
 
-::: tip
+::: tip Nota
 Não use `.passive` e `.prevent` juntos, pois `.prevent` será ignorado e seu navegador provavelmente exibirá um aviso. Lembre-se, `.passive` comunica ao navegador que você _não_ quer prevenir o comportamento padrão do evento.
 :::
 
@@ -203,7 +203,7 @@ Quando escutamos eventos do teclado, precisamos muitas vezes verificar a ocorrê
 <input @keyup.enter="submit" />
 ```
 
-Você pode usar diretamente qualquer nome de chave válido exposto via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) como modificadores, convertendo-os em kebab-case.
+Você pode usar diretamente qualquer nome de tecla válido exposto via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) como modificadores, convertendo-os em kebab-case.
 
 ```html
 <input @keyup.page-down="onPageDown" />
@@ -225,7 +225,7 @@ Vue fornece apelidos para os códigos de teclas mais comuns:
 - `.left`
 - `.right`
 
-## Teclas Modificadoras de Sistema
+## Modificadores de Teclas do Sistema
 
 Você pode utilizar os seguintes modificadores para acionar eventos de _mouse_ ou teclado apenas quando o modificador correspondente estiver pressionado:
 
@@ -234,7 +234,7 @@ Você pode utilizar os seguintes modificadores para acionar eventos de _mouse_ o
 - `.shift`
 - `.meta`
 
-::: tip Nota:
+::: tip Nota
 Nos teclados Macintosh, meta é a tecla de comando (⌘). Nos teclados Windows, meta é a tecla Windows (⊞). Nos teclados Sun Microsystems, meta é marcada como um diamante sólido (◆). Em alguns teclados, especificamente em máquinas MIT e Lisp e suas sucessoras, assim como o teclado Knight e teclados space-cadet, meta é marcada como “META”. Em teclados Symbolics, meta é marcada como “META” ou “Meta”.
 :::
 
@@ -263,7 +263,7 @@ O modificador `.exact` permite controlar a exata combinação de modificadores d
 <!-- dispara somente quando Ctrl (e nenhuma outra tecla) for pressionado -->
 <button @click.ctrl.exact="onCtrlClick">A</button>
 
-<!-- dispara somente se não houverem teclas modificadoras sistema pressionadas -->
+<!-- dispara somente se não houverem teclas do sistema pressionadas -->
 <button @click.exact="onClick">A</button>
 ```
 
@@ -273,7 +273,7 @@ O modificador `.exact` permite controlar a exata combinação de modificadores d
 - `.right`
 - `.middle`
 
-Estes modificadores restringem o manipulador a eventos disparados por um botão específico do _mouse_.
+Estes modificadores restringem o manipulador à eventos disparados por um botão específico do _mouse_.
 
 ## Por Que Escutas no HTML?
 
@@ -281,6 +281,6 @@ Você pode estar pensando que esta abordagem de escutas de evento viola as boas 
 
 1. É mais fácil localizar as implementações de função de manipulador dentro de seu código JS percorrendo o _template_ HTML.
 
-2. Como você não tem que manualmente anexar escutas a eventos em JS, seu código de _ViewModel_ pode conter apenas a lógica pura e está livre de manipulação DOM. Isto torna mais fácil de testar.
+2. Como você não tem que manualmente anexar escutas à eventos em JS, seu código de _ViewModel_ pode conter apenas a lógica pura e ser livre de manipulação do DOM. Isto torna mais fácil de testar.
 
-3. Quando um _ViewModel_ é destruído, todas escutas a eventos são removidas automaticamente. Você não precisa se preocupar em removê-las explicitamente.
+3. Quando um _ViewModel_ é destruído, todas as escutas de eventos são removidas automaticamente. Você não precisa se preocupar em removê-las explicitamente.
