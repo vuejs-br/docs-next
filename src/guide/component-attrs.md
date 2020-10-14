@@ -84,7 +84,7 @@ O cenário comum para desativar uma herança de atributo é quando os atributos 
 
 Ao definir a opção `inheritAttrs` para `false`, você pode controlar a aplicação em outros atributos dos elementos, para que usem a propriedade `$attrs` do componente, que inclui todos os atributos não incluídos às propriedades `props` e `emits` do componente (por exemplo, `class`, `style`, eventos `v-on`, etc.).
 
-Usando nosso exemplo de componente date-picker da [seção anterior]('#heranca-de-atributos), no caso de precisarmos aplicar todos os atributos não-propriedade ao elemento `input` em vez do elemento `div` raiz, isso pode ser feito usando o atalho `v-bind`.
+Usando nosso exemplo de componente date-picker da [seção anterior](#heranca-de-atributos), no caso de precisarmos aplicar todos os atributos não-propriedade ao elemento `input` em vez do elemento `div` raiz, isso pode ser feito usando o atalho `v-bind`.
 
 ```js{5}
 app.component('date-picker', {
