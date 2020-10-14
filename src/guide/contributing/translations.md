@@ -14,7 +14,7 @@ Digamos que você fale Esperanto e quer saber quais iniciativas de tradução j�
 
 Mas se você está aqui, deve ser por falar português! Neste caso, para nos ajudar diretamente, interaja com a equipe em [nosso repositório de tradução](https://github.com/vuejs-br/docs-next).
 
-::: tip
+::: tip Nota
 Problemas pontuais em traduções já realizadas, como erros de grafia pequenos ou frases confusas, podem ser reportados apenas [criando uma _issue_](https://github.com/vuejs-br/docs-next/issues/new). Deixe claro sobre qual página se refere o problema e, preferencialmente, ofereça uma sugestão para a correção desejada.
 :::
 
@@ -30,7 +30,7 @@ Mas se você se sente à vontade para traduzir/revisar conteúdos inteiros por c
   - Alguém da equipe de mantenedores do Vue.js Brasil vai avaliar seu _pull request_, eventualmente solicitar novos _commits_ se ainda precisar de algum ajuste e, depois de tudo pronto, liberar sua contribuição para o mundo.
 - **Gostou e quer mais?** Não se esqueça de fazer um _pull_ das alterações mais recentes antes de recomeçar o processo, já que a documentação original em inglês sempre sofre alterações e frequentemente fazemos a sincronização com o [_upstream_](https://github.com/vuejs/docs-next) para manter tudo em dia.
 
-::: warning
+::: warning Atenção
 Se passar alguns dias desde que avisou sobre o trabalho que estava fazendo e não conseguir terminar, volte na _issue_ e avise a equipe: outras pessoas podem querer dar continuidade em seu trabalho! Neste caso, você poderá enviar um _pull request_ com a parte feita e deixar que outros façam novos _commits_ ali mesmo, até que o trabalho seja finalizado. Por favor, não abandone do nada o trabalho em um arquivo sem avisar ninguém, isso dificulta demais a organização do projeto!
 :::
 
@@ -38,7 +38,7 @@ Se passar alguns dias desde que avisou sobre o trabalho que estava fazendo e nã
 
 Para uma documentação padronizada e de qualidade, seguimos alguns princípios e recomendações gerais sobre **o que fazer**:
 
-- Traduzir os comentários dos códigos-fonte, sejam eles _inline_ `//` ou de múltiplas-linhas `/* */`;
+- Traduzir os comentários dos códigos-fonte, sejam eles _inline_ (`//`) ou de múltiplas-linhas (`/* */`);
 - Traduzir textos informativos dos códigos-fonte, por exemplo: `<div id="level-1">Nível 1</div>`;
 - Seguir maiúsculas e minúsculas conforme o original em inglês sempre que possível, exceto quando existir claramente uma regra de notação diferente na língua portuguesa;
 - Usar itálico em expressões sem tradução (por exemplo, _view layer_), exceto em nomes próprios grafados em maiúsculas (por exemplo, Internet);
@@ -61,7 +61,7 @@ Alguns termos recorrentes causam dúvidas aos novos colaboradores da tradução.
 
 Devem ser traduzidos sempre da mesma maneira (a menos que sua tradução atrapalhe demais o contexto da frase, o que deve ser discutido na _issue_ correspondente):
 
-_ _Bundler_ = Empacotador
+- _Bundler_ = Empacotador
 - _Bundle_ = Pacote
 - _Debug_ = Depuração
 - _Handling_ = Manipulação
@@ -77,9 +77,9 @@ _ _Bundler_ = Empacotador
 - _Props_ = Propriedades
 - _Hooks_ = Gatilhos
 - _Bind_ = Vínculo ou Interligação
-_ _Build time_ = Processo de construção
-_ _Release notes_ = Notas de Lançamento
-_ _Build_ = Distribuição
+- _Build time_ = Processo de construção
+- _Release notes_ = Notas de Lançamento
+- _Build_ = Distribuição
 
 **Nunca traduzimos**
 

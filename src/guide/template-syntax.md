@@ -1,6 +1,6 @@
 # Sintaxe de Templates
 
-O Vue.js utiliza uma sintaxe de _templates_ baseada em HTML que permite que você vincule declarativamente o DOM renderizado aos dados da aplicação da instância que existe por baixo. Todos os _templates_ do Vue.js são compostos por HTML válido que pode ser interpretado por navegadores compatíveis com as especificações e também por _parsers_ de HTML.
+O Vue.js utiliza uma sintaxe de _templates_ baseada em HTML que permite que você vincule declarativamente o DOM renderizado aos dados da instância do componente que existe por baixo. Todos os _templates_ do Vue.js são compostos por HTML válido que pode ser interpretado por navegadores compatíveis com as especificações e também por _parsers_ de HTML.
 
 Internamente, o Vue compila os _templates_ em funções de renderização do Virtual DOM. Combinado com o sistema de reatividade, Vue é capaz de identificar de forma inteligente a menor quantidade possível de componentes a serem “re-renderizados” e aplica o mínimo possível de manipulações do DOM quando o estado da aplicação muda.
 
@@ -16,7 +16,7 @@ A forma mais básica de vinculação de dados é interpolação de texto utiliza
 <span>Mensagem: {{ msg }}</span>
 ```
 
-As chaves duplas serão substituídas pelo valor da propriedade `msg` do objeto de dados correspondente. Esse texto também será atualizado sempre que a propriedade `msg` for modificada.
+As chaves duplas serão substituídas pelo valor da propriedade `msg` da instância do componente correspondente. Esse texto também será atualizado sempre que a propriedade `msg` for modificada.
 
 Você também pode realizar interpolações únicas que não são atualizadas quando os dados mudam através da [diretiva `v-once`](../api/directives.html#v-once), mas mantenha em mente que isso afetará qualquer vinculação realizada no mesmo nó:
 
@@ -123,7 +123,7 @@ Note que existem algumas restrições à expressão do argumento, como explicado
 <a v-bind:[attributeName]="url"> ... </a>
 ```
 
-Aqui, `attributeName` será dinamicamente processado como uma expressão JavaScript, e seu valor processado será usado como o valor final para o argumento. Por exemplo, se a instância da sua aplicação possui uma propriedade de dados `attributeName` cujo valor é `"href"`, então essa ligação irá ser equivalente a `v-bind:href`.
+Aqui, `attributeName` será dinamicamente processado como uma expressão JavaScript, e seu valor processado será usado como o valor final para o argumento. Por exemplo, se a instância o seu componente possui uma propriedade de dados `attributeName` cujo valor é `"href"`, então essa ligação irá ser equivalente a `v-bind:href`.
 
 Da mesma forma, você pode usar argumentos dinâmicos para vincular um manipulador (_handler_) a um nome de evento dinâmico:
 
@@ -169,7 +169,7 @@ O prefixo `v-` serve como uma dica visual para identificar atributos específico
 <!-- forma abreviada -->
 <a @click="doSomething"> ... </a>
 
-<!-- forma abreviada com argumento dinâmico (2.6.0+) -->
+<!-- forma abreviada com argumento dinâmico -->
 <a @[event]="doSomething"> ... </a>
 ```
 
