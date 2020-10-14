@@ -1,10 +1,6 @@
 # Lidando com Casos Extremos
 
-<<<<<<< HEAD
 > Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro se o desenvolvimento de componentes for novidade para você.
-=======
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
->>>>>>> 84d3484c8edff3aff5e832d69ace073ea0e182a0
 
 ::: tip NOTA
 Todos os recursos dessa página documentam o tratamento de casos extremos, ou seja, situações incomuns que às vezes exigem que as regras do Vue sejam levemente contornadas. Observe, entretanto, que todos eles têm desvantagens ou situações onde podem ser perigosos. Estes detalhes são expostos em cada caso, portanto, lembre-se ao decidir usar cada recurso.
