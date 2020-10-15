@@ -1,12 +1,12 @@
 # Introdução
 
-## Porque Composition API?
+## Porque API de Composição?
 
 ::: tip NOTA
 Chegando até esta etapa da documentação, você já deve estar familiarizado com [os fundamentos do Vue](introduction.md) e o [básico sobre componentes](component-basics.md).
 :::
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Aprenda como a Composition API funciona em profundidade com o Vue Mastery">Assista a um vídeo gratuito sobre a Composition API no Vue Mastery</VideoLesson>
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Aprenda como a API de Composição funciona em profundidade com o Vue Mastery">Assista a um vídeo gratuito sobre a API de Composição no Vue Mastery</VideoLesson>
 
 A criação de componentes Vue nos permite extrair partes repetíveis da interface, juntamente com sua funcionalidade, em partes reutilizáveis de código. Apenas isso já pode levar nossa aplicação bem longe em termos de manutenibilidade e flexibilidade. No entanto, nossa experiência coletiva provou que isso por si só pode não ser suficiente, especialmente quando a aplicação está ficando muito grande - algo como centenas de componentes. Ao lidar com aplicações tão grandes, compartilhar e reutilizar o código torna-se importantíssimo.
 
@@ -60,11 +60,11 @@ Exemplo apresentando um grande componente em que suas **preocupações lógicas*
 
 Essa fragmentação é o que torna difícil entender e manter um componente complexo. A separação de opções obscurece as preocupações lógicas subjacentes. Além disso, ao trabalhar em uma única preocupação lógica, temos que "pular" constantemente os blocos de opções para o código relevante.
 
-Seria muito mais agradável se pudéssemos colocar o código relacionado à mesma preocupação lógica. E é exatamente isso que a Composition API nos permite fazer.
+Seria muito mais agradável se pudéssemos colocar o código relacionado à mesma preocupação lógica. E é exatamente isso que a API de Composição nos permite fazer.
 
-## Noções Básicas da Composition API
+## Noções Básicas da API de Composição
 
-Agora que já sabemos o **porquê**, podemos chegar ao **como**. Para começar a trabalhar com a Composition API, primeiro precisamos de um lugar onde possamos realmente usá-la. Em um componente Vue, chamamos esse local de `setup`.
+Agora que já sabemos o **porquê**, podemos chegar ao **como**. Para começar a trabalhar com a API de Composição, primeiro precisamos de um lugar onde possamos realmente usá-la. Em um componente Vue, chamamos esse local de `setup`.
 
 ### Opção de Componente `setup`
 
@@ -159,7 +159,7 @@ Encapsular valores dentro de um objeto pode parecer desnecessário, mas é preci
 Ter um objeto encapsulado com qualquer valor nos permite passá-lo com segurança por toda a nossa aplicação, sem a preocupação de perder sua reatividade em algum lugar ao longo do caminho.
 
 ::: tip NOTA
-Em outras palavras, `ref` cria uma **referência reativa** para nosso valor. O conceito de trabalhar com **referências** será usado frequentemente em toda a Composition API.
+Em outras palavras, `ref` cria uma **referência reativa** para nosso valor. O conceito de trabalhar com **referências** será usado frequentemente em toda a API de Composição.
 :::
 
 De volta ao nosso exemplo, vamos criar uma variável `repositories` reativa:
@@ -235,7 +235,7 @@ Começaremos com o _lifecycle hook_.
 ### Registro de _Lifecycle Hook_ no `setup`
 
 
-Para tornar a Composition API completa em comparação com a API de opções, também precisamos de uma maneira de registrar _lifecycle hooks_ dentro de `setup`. Isso é possível graças a várias novas funções exportadas do Vue. _Lifecycle hooks_ na Composition API têm o mesmo nome da API de opções, mas são prefixados com `on`: ou seja, `mounted` seria parecido com `onMounted`.
+Para tornar a API de Composição completa em comparação com a API de opções, também precisamos de uma maneira de registrar _lifecycle hooks_ dentro de `setup`. Isso é possível graças a várias novas funções exportadas do Vue. _Lifecycle hooks_ na API de Composição têm o mesmo nome da API de opções, mas são prefixados com `on`: ou seja, `mounted` seria parecido com `onMounted`.
 
 Essas funções aceitam um retorno de chamada que será executado quando o _hook_ for chamado pelo componente.
 
@@ -530,4 +530,4 @@ export default {
 
 E nós terminamos!
 
-Lembre-se de que apenas arranhamos a superfície da Composition API e o que ela nos permite fazer. Para saber mais sobre isso, consulte o guia detalhado.
+Lembre-se de que apenas arranhamos a superfície da API de Composição e o que ela nos permite fazer. Para saber mais sobre isso, consulte o guia detalhado.
