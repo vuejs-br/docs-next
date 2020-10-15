@@ -1,6 +1,6 @@
 # Gatilhos de Ciclo de Vida
 
-> Este guia assume que você já leu a [Introdução a Composition API](composition-api-introduction.html) e [Fundamentos de Reatividade](reactivity-fundamentals.html). Leia estas páginas primeiro se você for novo no assunto de Composition API.
+> Este guia assume que você já leu a [Introdução a API de Composição](composition-api-introduction.html) e [Fundamentos de Reatividade](reactivity-fundamentals.html). Leia estas páginas primeiro se você for novo no assunto de API de Composição.
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/lifecycle-hooks" title="Saiba mais sobre como os Gatilhos de Ciclo de Vida funcionam com o Vue Mastery">Assista a um vídeo grátis sobre Gatilhos de Ciclo de Vida no Vue Mastery</VideoLesson>
 
