@@ -1,8 +1,8 @@
-# Desenvolvimento Móvel
+# Desenvolvimento Mobile
 
 ## Introdução
 
-Embora Vue.js não suporte o desenvolvimento de aplicativos móveis nativamente, há uma série de soluções para a criação de aplicativos iOS e Android nativos com Vue.js.
+Embora Vue.js não suporte o desenvolvimento de aplicativos mobile nativamente, há uma série de soluções para a criação de aplicativos iOS e Android nativos com Vue.js.
 
 ## Desenvolvimento de Aplicativos Híbridos
 
@@ -16,7 +16,7 @@ Embora Vue.js não suporte o desenvolvimento de aplicativos móveis nativamente,
 
 ### NativeScript
 
-[NativeScript](https://www.nativescript.org) possibilita aplicativos móveis multiplataforma (verdadeiramente nativos), utilizando as habilidades de desenvolvimento _web_ que você já conhece. Combinados, eles formam um par fantástico para desenvolver experiências móveis imersivas.
+[NativeScript](https://www.nativescript.org) possibilita aplicativos mobile multiplataforma (verdadeiramente nativos), utilizando as habilidades de desenvolvimento _web_ que você já conhece. Combinados, eles formam um par fantástico para desenvolver experiências móveis imersivas.
 
 **Recursos**
 
