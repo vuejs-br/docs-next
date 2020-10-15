@@ -74,10 +74,10 @@ app.component('custom-form', {
 Por padrão, em um componente `v-model` usa `modelValue` como propriedade e `update:modelValue` como evento. Podemos modificar esses nomes passando um argumento para `v-model`:
 
 ```html
-<my-component v-model:foo="bar"></my-component>
+<my-component v-model:title="bookTitle"></my-component>
 ```
 
-Nesse caso, o componente filho espera a propriedade `foo` e emite o evento `update:foo` para sincronizar:
+Nesse caso, o componente filho espera a propriedade `title` e emite o evento `update:title` para sincronizar:
 
 ```js
 const app = Vue.createApp({})
@@ -143,7 +143,7 @@ app.component('user-name', {
 
 ## Manipulando modificadores `v-model`
 
-Quando estávamos aprendendo sobre interligações em elementos *input*, vimos que `v-model` tem [modificadores embutidos](/guide/forms.html#modifiers) - `.trim`, `.number` e `.lazy`. Em alguns casos, entretanto, você também pode querer adicionar seus próprios modificadores personalizados.
+Quando estávamos aprendendo sobre interligações em elementos _input_, vimos que `v-model` tem [modificadores embutidos](/guide/forms.html#modifiers) - `.trim`, `.number` e `.lazy`. Em alguns casos, entretanto, você também pode querer adicionar seus próprios modificadores personalizados.
 
 Vamos criar um modificador personalizado de exemplo, `capitalize`, que coloca em maiúscula a primeira letra da string fornecida pela vinculação `v-model`.
 
