@@ -4,7 +4,7 @@
 
 ## Declaração Oficial em Pacotes NPM
 
-Um sistema de tipagem estática pode ajudar a prevenir diversos potenciais erros de _runtime_ conforme as aplicações crescem, é por isso que o Vue 3 é escrito em TypeScript. Isso significa que você não precisa de nenhum ferramental adicional para usar TypeScript com Vue - temos um suporte de primeiro mundo.
+Um sistema de tipagem estática pode ajudar à prevenir diversos potenciais erros de _runtime_ conforme as aplicações crescem, é por isso que o Vue 3 é escrito em TypeScript. Isso significa que você não precisa de nenhum ferramental adicional para usar TypeScript com Vue - temos um suporte de primeiro mundo.
 
 ## Configuração Recomendada
 
@@ -22,7 +22,7 @@ Um sistema de tipagem estática pode ajudar a prevenir diversos potenciais erros
 }
 ```
 
-Observe que você precisa incluir `strict: true` (ou ao menos `noImplicitThis: true`, que é uma parte da _flag_ `strict`) para aumentar a checagem do `this` em métodos de componentes. Caso contrário, será sempre tratado como tipo `any`.
+Observe que você precisa incluir `strict: true` (ou ao menos `noImplicitThis: true`, que é uma parte da _flag_ `strict`) para aumentar a checagem de tipos do `this` em métodos de componentes, caso contrário, será sempre tratado como tipo `any`.
 
 Veja a [documentação das opções do compilador TypeScript](https://www.typescriptlang.org/docs/handbook/compiler-options.html) para mais detalhes.
 
@@ -53,13 +53,13 @@ Certifique-se que a parte `script` do componente tem o TypeScript definido como 
 
 ### Suporte do Editor
 
-Para o desenvolvimento de aplicações Vue com TypeScript, nós recomendamento fortemente usar o [Visual Studio Code](https://code.visualstudio.com/), que fornece um excelente suporte para o TypeScript. Se você está usando [componentes Single File](./single-file-component.html) (SFCs), obtenha a incrível [extensão Vetur](https://github.com/vuejs/vetur), que provê a inferência do TypeScript dentro de SFCs e muitos outros ótimos recursos.
+Para o desenvolvimento de aplicações Vue com TypeScript, nós recomendamos fortemente o uso do [Visual Studio Code](https://code.visualstudio.com/), que fornece um excelente suporte para o TypeScript. Se você está usando [componentes Single File](./single-file-component.html) (SFCs), obtenha a incrível [extensão Vetur](https://github.com/vuejs/vetur), que provê a inferência do TypeScript dentro de SFCs e muitos outros ótimos recursos.
 
-O [WebStorm](https://www.jetbrains.com/webstorm/) também fornece um suporte pronto pra uso para ambos, TypeScript e Vue.
+O [WebStorm](https://www.jetbrains.com/webstorm/) também fornece um suporte pronto para uso de ambos, TypeScript e Vue.
 
-## Definindo componentes Vue
+## Definindo Componentes Vue
 
-Para permitir o TypeScript inferir corretamente os tipos dentro das opções do componente Vue, você precisa definir os componentes com o método global `defineComponent`:
+Para permitir ao TypeScript inferir corretamente os tipos dentro das opções do componente Vue, você precisa definir os componentes com o método global `defineComponent`:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -81,7 +81,7 @@ const Component = defineComponent({
     }
   },
   mounted() {
-    const result = this.count.split('') // => A propriedade 'slit' não existe no tipo 'number'
+    const result = this.count.split('') // => A propriedade 'split' não existe no tipo 'number'
   }
 })
 ```
@@ -248,7 +248,7 @@ export default defineComponent({
 
 ### Tipando `computed`
 
-Valores computador irão inferir automaticamente o tipo do valor retornado
+Valores computados irão inferir automaticamente o tipo do valor retornado
 
 ```ts
 import { defineComponent, ref, computed } from 'vue'
