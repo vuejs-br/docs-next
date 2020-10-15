@@ -109,4 +109,4 @@ app.component('todo-list', {
 })
 ```
 
-Assim, qualquer alteração em `todos.length` será refletida corretamente nos componentes, onde `todoLength` é injetado. Leia mais sobre `provide/inject` de forma reativa na [seção da API de Composição](composition-api-provide-inject.html#injection-reactivity)
+Assim, qualquer alteração em `todos.length` será refletida corretamente nos componentes, onde `todoLength` é injetado. Leia mais sobre prover e injetar dados usando `reactive` na [seção da API de Composição](composition-api-provide-inject.html#injection-reactivity).

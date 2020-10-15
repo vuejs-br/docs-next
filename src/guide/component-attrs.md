@@ -6,7 +6,7 @@ Um atributo de componente não-propriedade é um atributo ou ouvinte de evento q
 
 ## Herança de Atributos
 
-Quando um componente retorna um único nó raiz, atributos não-propriedade serão automaticamente adicionados aos atributos do nó raiz. Por exemplo, na instância de um componente date-picker:
+Quando um componente retorna um único nó raiz, atributos não-propriedade serão automaticamente adicionados aos atributos do nó raiz. Por exemplo, na instância de um componente _date-picker_:
 
 ```js
 app.component('date-picker', {
@@ -18,7 +18,7 @@ app.component('date-picker', {
 })
 ```
 
-No caso de precisarmos definir o status do componente date-picker por meio de uma propriedade `data-status`, ele será aplicado ao nó raiz (ou seja, `div.date-picker`).
+No caso de precisarmos definir o status do componente _date-picker_ por meio de uma propriedade `data-status`, ele será aplicado ao nó raiz (ou seja, `div.date-picker`).
 
 ```html
 <!-- Componente date-picker com um atributo não-propriedade -->
@@ -84,7 +84,7 @@ O cenário comum para desativar uma herança de atributo é quando os atributos 
 
 Ao definir a opção `inheritAttrs` para `false`, você pode controlar a aplicação em outros atributos dos elementos, para que usem a propriedade `$attrs` do componente, que inclui todos os atributos não incluídos às propriedades `props` e `emits` do componente (por exemplo, `class`, `style`, eventos `v-on`, etc.).
 
-Usando nosso exemplo de componente date-picker da [seção anterior](#heranca-de-atributos), no caso de precisarmos aplicar todos os atributos não-propriedade ao elemento `input` em vez do elemento `div` raiz, isso pode ser feito usando o atalho `v-bind`.
+Usando nosso exemplo de componente _date-picker_ da [seção anterior](#heranca-de-atributos), no caso de precisarmos aplicar todos os atributos não-propriedade ao elemento `input` ao invés do elemento `div` raiz, podemos fazer usando o atalho `v-bind`.
 
 ```js{5}
 app.component('date-picker', {
@@ -118,7 +118,7 @@ Ao contrário dos componentes de um único nó raiz, os componentes com vários 
 ```
 
 ```js
-// Isso irá gerar um aviso
+// Isso gerará um aviso
 app.component('custom-layout', {
   template: `
     <header>...</header>

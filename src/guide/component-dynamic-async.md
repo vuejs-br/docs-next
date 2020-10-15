@@ -83,7 +83,7 @@ createApp({
 
 ### Usando com Suspense
 
-Os componentes assíncronos são _suspensos_ por padrão. Isso significa que, se houver um [`<Suspense>`](TODO) na cadeia (pai), ele será tratado como uma dependência assíncrona desse `<Suspense>`. Nesse caso, o estado de carregamento vai se controlado pelo `<Suspense>`, e as opções de carregamento, erro, atraso e tempo limite do próprio componente serão ignoradas.
+Os componentes assíncronos são _suspensos_ por padrão. Isso significa que, se houver um `<Suspense>` na na hierarquia pai, ele será tratado como uma dependência assíncrona deste `<Suspense>`. Nesse caso, o estado de carregamento será controlado pelo `<Suspense>`, e as opções de carregamento, gatilho de erros, atrasos e tempo limite do próprio componente serão ignoradas.
 
 O componente assíncrono pode cancelar o controle do `Suspense` e deixar que o componente sempre controle seu próprio estado de carregamento, especificando `suspensible: false` em suas opções.
 
