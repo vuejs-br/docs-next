@@ -1,17 +1,17 @@
-# Provide / inject
+# Prover e Injetar Dados
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
-Usually, when we need to pass data from the parent to child component, we use [props](component-props.md). Imagine the structure where you have some deeply nested components and you only need something from the parent component in the deep nested child. In this case, you still need to pass the prop down the whole component chain which might be annoying.
+Normalmente, quando precisamos passar dados do componente pai para o filho, usamos [propriedades](component-props.md) (também conhecidas como _props_). Imagine a estrutura em que você tem alguns componentes profundamente aninhados e precisa de algo do componente pai apenas num componente filho que está profundamente aninhado. Nesse caso, você precisaria passar a propriedade por toda a cadeia de componentes, o que poderia ser irritante.
 
-For such cases, we can use the `provide` and `inject` pair. Parent components can serve as dependency provider for all its children, regardless how deep the component hierarchy is. This feature works on two parts: parent component has a `provide` option to provide data and child component has an `inject` option to start using this data.
+Nessas situações, podemos usar o par `provide` e `inject`. Os componentes pai podem servir como provedores de dependência para todos os seus filhos, independentemente da profundidade da hierarquia do componente. Este recurso funciona em duas partes: o componente pai tem uma opção `provide` para fornecer dados e o componente filho tem uma opção `inject` para usar esses dados.
 
 ![Provide/inject scheme](/images/components_provide.png)
 
-For example, if we have a hierarchy like this:
+Por exemplo, se tivéssemos uma hierarquia como esta:
 
 ```
-Root
+Raiz
 └─ TodoList
    ├─ TodoItem
    └─ TodoListFooter
@@ -19,7 +19,7 @@ Root
       └─ TodoListStatistics
 ```
 
-If we want to pass the length of todo-items directly to `TodoListStatistics`, we would pass the prop down the hierarchy: `TodoList` -> `TodoListFooter` -> `TodoListStatistics`. With provide/inject approach, we can do this directly:
+Se quiséssemos passar o tamanho da lista de tarefas diretamente para `TodoListStatistics`, passaríamos a propriedade por toda hierarquia: `TodoList` -> `TodoListFooter` -> `TodoListStatistics`. Com a abordagem de prover/injetar, podemos fazer isso diretamente:
 
 ```js
 const app = Vue.createApp({})
@@ -27,7 +27,7 @@ const app = Vue.createApp({})
 app.component('todo-list', {
   data() {
     return {
-      todos: ['Feed a cat', 'Buy tickets']
+      todos: ['Alimentar o gato', 'Comprar ingressos']
     }
   },
   provide: {
@@ -36,7 +36,7 @@ app.component('todo-list', {
   template: `
     <div>
       {{ todos.length }}
-      <!-- rest of the template -->
+      <!-- restante do _template_ -->
     </div>
   `
 })
@@ -44,22 +44,22 @@ app.component('todo-list', {
 app.component('todo-list-statistics', {
   inject: ['user'],
   created() {
-    console.log(`Injected property: ${this.user}`) // > Injected property: John Doe
+    console.log(`Propriedade injetada: ${this.user}`) // > Propriedade injetada: John Doe
   }
 })
 ```
 
-However, this won't work if we try to provide some component instance property here:
+No entanto, isso não funcionará se tentarmos prover alguma propriedade da instância do componente:
 
 ```js
 app.component('todo-list', {
   data() {
     return {
-      todos: ['Feed a cat', 'Buy tickets']
+      todos: ['Alimentar o gato', 'Comprar ingressos']
     }
   },
   provide: {
-    todoLength: this.todos.length // this will result in error 'Cannot read property 'length' of undefined`
+    todoLength: this.todos.length // isso resultará no erro `Cannot read property 'length' of undefined`
   },
   template: `
     ...
@@ -67,13 +67,13 @@ app.component('todo-list', {
 })
 ```
 
-To access component instance properties, we need to convert `provide` to be a function returning an object
+Para acessar as propriedades da instância do componente, precisamos converter `provide` em uma função que retorna um objeto
 
 ```js
 app.component('todo-list', {
   data() {
     return {
-      todos: ['Feed a cat', 'Buy tickets']
+      todos: ['Alimentar o gato', 'Comprar ingressos']
     }
   },
   provide() {
@@ -87,16 +87,16 @@ app.component('todo-list', {
 })
 ```
 
-This allows us to more safely keep developing that component, without fear that we might change/remove something that a child component is relying on. The interface between these components remains clearly defined, just as with props.
+Isso nos permite continuar desenvolvendo esse componente com mais segurança, sem medo de que possamos alterar/remover algo em que um componente filho dependa. A interface entre esses componentes permanece claramente definida, similar à `props`.
 
-In fact, you can think of dependency injection as sort of “long-range props”, except:
+Na verdade, você pode pensar na injeção de dependência como uma espécie de "`props` de longo alcance", exceto:
 
-- parent components don’t need to know which descendants use the properties it provides
-- child components don’t need to know where injected properties are coming from
+- os componentes pai não precisam saber quais descendentes usam as propriedades que ele fornece
+- os componentes filhos não precisam saber de onde vêm as propriedades injetadas
 
-## Working with reactivity
+## Trabalhando com Reatividade
 
-In the example above, if we change the list of `todos`, this change won't be reflected in the injected `todoLength` property. This is because `provide/inject` bindings are _not_ reactive by default. We can change this behavior by passing a `ref` property or `reactive` object to `provide`. In our case, if we wanted to react to changes in the ancestor component, we would need to assign a Composition API `computed` property to our provided `todoLength`:
+No exemplo acima, se alterarmos a lista de tarefas, essa alteração não será refletida na propriedade injetada `todoLength`. Isso ocorre porque as interligações `provide/inject` **não** são reativas por padrão. Podemos mudar esse comportamento passando uma propriedade `ref` ou objeto reativo (`reactive`) para `provide`. Em nosso exemplo, se quiséssemos reagir às mudanças no componente ancestral, precisaríamos atribuir um dado computado (usando o `computed` da API de Composição) para nosso `todoLength` fornecido:
 
 ```js
 app.component('todo-list', {
@@ -109,4 +109,4 @@ app.component('todo-list', {
 })
 ```
 
-In this, any change to `todos.length` will be reflected correctly in the components, where `todoLength` is injected. Read more about `reactive` provide/inject in the [Composition API section](composition-api-provide-inject.html#injection-reactivity)
+Assim, qualquer alteração em `todos.length` será refletida corretamente nos componentes, onde `todoLength` é injetado. Leia mais sobre `provide/inject` de forma reativa na [seção da API de Composição](composition-api-provide-inject.html#injection-reactivity)
