@@ -1,4 +1,4 @@
-# Prover / Injetar (Provide/Inject)
+# Prover e Injetar Dados
 
 > Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
@@ -11,7 +11,7 @@ Nessas situações, podemos usar o par `provide` e `inject`. Os componentes pai 
 Por exemplo, se tivéssemos uma hierarquia como esta:
 
 ```
-Root
+Raiz
 └─ TodoList
    ├─ TodoItem
    └─ TodoListFooter
@@ -49,7 +49,7 @@ app.component('todo-list-statistics', {
 })
 ```
 
-No entanto, isso não funcionará se tentarmos prover alguma propriedade de instância do componente:
+No entanto, isso não funcionará se tentarmos prover alguma propriedade da instância do componente:
 
 ```js
 app.component('todo-list', {
@@ -60,7 +60,6 @@ app.component('todo-list', {
   },
   provide: {
     todoLength: this.todos.length // isso resultará no erro `Cannot read property 'length' of undefined`
-                                  
   },
   template: `
     ...
@@ -88,16 +87,16 @@ app.component('todo-list', {
 })
 ```
 
-Isso nos permite continuar desenvolvendo esse componente com mais segurança, sem medo de que possamos alterar/remover algo em que um componente filho dependa. A interface entre esses componentes permanece claramente definida, assim como com as suas propriedades.
+Isso nos permite continuar desenvolvendo esse componente com mais segurança, sem medo de que possamos alterar/remover algo em que um componente filho dependa. A interface entre esses componentes permanece claramente definida, similar à `props`.
 
-Na verdade, você pode pensar na injeção de dependência como uma espécie de "propriedades de longo alcance", exceto:
+Na verdade, você pode pensar na injeção de dependência como uma espécie de "`props` de longo alcance", exceto:
 
 - os componentes pai não precisam saber quais descendentes usam as propriedades que ele fornece
 - os componentes filhos não precisam saber de onde vêm as propriedades injetadas
 
 ## Trabalhando com Reatividade
 
-No exemplo acima, se alterarmos a lista de tarefas, essa alteração não será refletida na propriedade injetada `todoLength`. Isso ocorre porque as interligações `provide/inject` _não_ são reativas por padrão. Podemos mudar esse comportamento passando uma propriedade `ref` ou objeto reativo (`reactive`) para `provide`. Em nosso exemplo, se quiséssemos reagir às mudanças no componente ancestral, precisaríamos atribuir um dado computado (`computed property`) da API de Composição para nosso `todoLength` fornecido:
+No exemplo acima, se alterarmos a lista de tarefas, essa alteração não será refletida na propriedade injetada `todoLength`. Isso ocorre porque as interligações `provide/inject` **não** são reativas por padrão. Podemos mudar esse comportamento passando uma propriedade `ref` ou objeto reativo (`reactive`) para `provide`. Em nosso exemplo, se quiséssemos reagir às mudanças no componente ancestral, precisaríamos atribuir um dado computado (usando o `computed` da API de Composição) para nosso `todoLength` fornecido:
 
 ```js
 app.component('todo-list', {
@@ -110,4 +109,4 @@ app.component('todo-list', {
 })
 ```
 
-Assim, qualquer alteração em `todos.length` será refletida corretamente nos componentes, onde `todoLength` é injetado. Leia mais sobre `provide/inject` de forma reativa na [seção da API de composição](composition-api-provide-inject.html#injection-reactivity)
+Assim, qualquer alteração em `todos.length` será refletida corretamente nos componentes, onde `todoLength` é injetado. Leia mais sobre `provide/inject` de forma reativa na [seção da API de Composição](composition-api-provide-inject.html#injection-reactivity)
