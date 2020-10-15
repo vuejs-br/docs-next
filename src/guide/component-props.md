@@ -1,10 +1,10 @@
 # Propriedades
 
-> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia primeiro caso seja novo com componentes.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro caso seja novo com componentes.
 
 ## Tipos de Propriedades
 
-Até agora, nós apenas vimos propriedades listadas como um vetor de Strings:
+Até agora, nós apenas vimos propriedades listadas como um Array de Strings:
 
 ```js
 props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
@@ -15,7 +15,7 @@ Mas normalmente, você vai querer que cada propriedade seja de um tipo específi
 ```js
 props: {
   title: String,
-  like: Number,
+  likes: Number,
   isPublished: Boolean,
   commentIds: Array,
   author: Object,
@@ -24,23 +24,23 @@ props: {
 }
 ```
 
-Fazer isso não apenas documenta seu componente, mas também mostra um aviso aos usuários no console JavaScript do navegador se eles passarem o tipo errado. Você irá aprender muito mais sobre [checagem de tipos e outras validações de propriedades](#prop-validation) mais abaixo nesta página.
+Fazer isso não apenas documenta seu componente, mas também mostra um aviso aos usuários no console JavaScript do navegador se eles passarem o tipo errado. Você irá aprender muito mais sobre [checagem de tipos e outras validações de propriedades](#validacao-de-propriedades) mais abaixo nesta página.
 
 ## Passando Propriedades Estáticas ou Dinâmicas
 
 Até agora, você viu propriedades passando um valor estático, como por exemplo:
 
 ```html
-<blog-post title="My journey with Vue"></blog-post>
+<blog-post title="Minha jornada com Vue"></blog-post>
 ```
 
-Você também viu propriedades associadas dinamicamente com `v-bind` ou sua abreviação, o caractere `:`, como em:
+Você também viu propriedades atribuídas dinamicamente com `v-bind` ou sua abreviação, o caractere `:`, como em:
 
 ```html
-<!-- Dinamicamente associa ao valor de uma variável -->
+<!-- Dinamicamente atribui o valor de uma variável -->
 <blog-post :title="post.title"></blog-post>
 
-<!-- Dinamicamente associa ao valor de uma expressão complexa -->
+<!-- Dinamicamente atribui o valor de uma expressão complexa -->
 <blog-post :title="post.title + ' by ' + post.author.name"><blog-post>
 ```
 
@@ -53,7 +53,7 @@ Em ambos os exemplos acima nós passamos valores de String, mas _qualquer_ tipo 
 <!-- ao Vue que esta é uma expressão JavaScript e não uma String. -->
 <blog-post :likes="42"></blog-post>
 
-<!-- Dinamicamente atribui ao valor de uma variável. -->
+<!-- Dinamicamente atribui o valor de uma variável. -->
 <blog-post :likes="post.likes"></blog-post>
 ```
 
@@ -67,7 +67,7 @@ Em ambos os exemplos acima nós passamos valores de String, mas _qualquer_ tipo 
 <!-- ao Vue que esta é uma expressão JavaScript e não uma String.    -->
 <blog-post :is-published="false"></blog-post>
 
-<!-- Dinamicamente atribui ao valor de uma variável. -->
+<!-- Dinamicamente atribui o valor de uma variável. -->
 <blog-post :is-published="post.isPublished"></blog-post>
 ```
 
@@ -78,7 +78,7 @@ Em ambos os exemplos acima nós passamos valores de String, mas _qualquer_ tipo 
 <!-- ao Vue que esta é uma expressão JavaScript e não uma String.    -->
 <blog-post :comment-ids="[234, 266, 273]"></blog-post>
 
-<!-- Dinamicamente atribui ao valor de uma variável. -->
+<!-- Dinamicamente atribui o valor de uma variável. -->
 <blog-post :comment-ids="post.commentIds"></blog-post>
 ```
 
@@ -94,7 +94,7 @@ Em ambos os exemplos acima nós passamos valores de String, mas _qualquer_ tipo 
   }"
 ></blog-post>
 
-<!-- Dinamicamente atribui ao valor de uma variável. -->
+<!-- Dinamicamente atribui o valor de uma variável. -->
 <blog-post :author="post.author"></blog-post>
 ```
 
@@ -105,11 +105,11 @@ Se você deseja passar todas as propriedades de um objeto como propriedades, voc
 ```js
 post: {
   id: 1,
-  title: 'My journey with Vue'
+  title: 'Minha Jornada com Vue'
 }
 ```
 
-A seguinte _template_:
+O seguinte _template_:
 
 ```html
 <blog-post v-bind="post"></blog-post>
@@ -121,7 +121,7 @@ Será equivalente a:
 <blog-post v-bind:id="post.id" v-bind:title="post.title"></blog-post>
 ```
 
-### Fluxo de Dados Unidirecional
+## Fluxo de Dados Unidirecional
 
 Todas as propriedades formam um **vínculo unidirecional para baixo** entre a propriedade do filho e a do pai: quando a propriedade do pai é atualizada, ela vai fluir para baixo até o filho, mas não do filho para o pai. Isso evita que componentes filhos acidentalmente alterem o estado do pai, o que pode tornar o fluxo de dados da sua aplicação mais difícil de entender.
 
@@ -166,7 +166,7 @@ app.component('my-component', {
   props: {
     // Checagem básica de tipo (valores `null` e `undefined` passam qualquer validação de tipo)
     propA: Number,
-    // Múltiplos tipo possíveis
+    // Múltiplos tipos possíveis
     propB: [String, Number],
     // String obrigatória
     propC: {
@@ -254,15 +254,15 @@ Nomes de atributos HTML são _case-insensitive_, logo navegadores irão interpre
 const app = Vue.createApp({})
 
 app.component('blog-post', {
-  // camelCase em JavaScript
+  // camelCase no JavaScript
   props: ['postTitle'],
-  template: '<h3{{ postTitle }}</h3>'
+  template: '<h3>{{ postTitle }}</h3>'
 })
 ```
 
 ```html
 <!-- kebab-case no HTML -->
-<blog-post post-title="hello!"></blog-post>
+<blog-post post-title="olá!"></blog-post>
 ```
 
 Novamente, caso você esteja usando _templates_ String, esta limitação não se aplica.
