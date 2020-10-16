@@ -1,29 +1,29 @@
-# Eventos Personalizados
+# Eventos Customizados
 
-> Esta página pressupõe que você já leu o [Básico sobre Componentes](component-basics.md). Leia isso antes se você está iniciando com componentes.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá antes se você está iniciando com componentes.
 
 ## Nomes de Eventos
 
-Diferente de componentes e propriedades, os nomes de eventos não convertem automaticamente maiúsculas e minúsculas. Em vez disso, o nome de um evento emitido deve corresponder exatamente ao nome usado para ouvir este evento. Por exemplo, se emitir um evento com nome em camelCase:
+Diferente de componentes e propriedades, os nomes de eventos não convertem automaticamente maiúsculas e minúsculas. Em vez disso, o nome de um evento emitido deve corresponder exatamente ao nome usado para escutar este evento. Por exemplo, se emitir um evento com nome em camelCase:
 
 ```js
 this.$emit('myEvent')
 ```
 
-Ouvir com kebab-case não funcionará:
+Escutar com kebab-case não funcionará:
 
 ```html
 <!-- Não funcionará -->
 <my-component @my-event="doSomething"></my-component>
 ```
 
-Considerando que os nomes de eventos nunca serão usados como nomes de variáveis ou de propriedades no JavaScript, não há razão para usar camelCase ou PascalCase. Além disso, os ouvintes de eventos `v-on` dentro dos templates DOM serão automaticamente transformados em minúsculas (devido ao HTML ser insensível a maiúsculas e minúsculas), então `@myEvent` se tornará `@myevent` -- fazendo `myEvent` impossível de ser ouvido.
+Considerando que os nomes de eventos nunca serão usados como nomes de variáveis ou de propriedades no JavaScript, não há razão para usar camelCase ou PascalCase. Além disso, escutadores de eventos `v-on` dentro dos templates DOM serão automaticamente transformados em minúsculas (devido ao HTML ser insensível à maiúsculas e minúsculas), então `@myEvent` se tornará `@myevent` -- fazendo `myEvent` impossível de ser escutado.
 
 Por estas razões, nós recomendamos que você **sempre use kebab-case para nomes de eventos**.
 
-## Definindo Eventos Personalizados
+## Definindo Eventos Customizados
 
-<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Aprenda a definir quais eventos um componente pode emitir com a Vue School (em inglês)">Assista a um vídeo grátis sobre como definir Eventos Personalizados na Vue School (em inglês)</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Aprenda à definir quais eventos um componente pode emitir com a Vue School (em inglês)">Assista um vídeo grátis sobre como definir Eventos Customizados na Vue School (em inglês)</VideoLesson>
 
 Os eventos emitidos podem ser definidos no componente através da opção `emits`.
 
@@ -33,7 +33,7 @@ app.component('custom-form', {
 })
 ```
 
-Quando um evento nativo (por exemplo, `click`) for definido na opção `emits`, o evento do componente será uaado __ao invés__ de um escutador de evento nativo.
+Quando um evento nativo (por exemplo, `click`) for definido na opção `emits`, o evento do componente será usado __ao invés__ de um escutador de evento nativo.
 
 ::: tip DICA
 Recomenda-se definir todos os eventos emitidos para documentar melhor como o componente deve funcionar.
@@ -56,7 +56,7 @@ app.component('custom-form', {
       if (email && password) {
         return true
       } else {
-        console.warn('Invalid submit event payload!')
+        console.warn('Argumentos inválidos para o evento submit!')
         return false
       }
     }
@@ -69,9 +69,9 @@ app.component('custom-form', {
 })
 ```
 
-## Argumentos `v-model`
+## Argumentos do `v-model`
 
-Por padrão, em um componente `v-model` usa `modelValue` como propriedade e `update:modelValue` como evento. Podemos modificar esses nomes passando um argumento para `v-model`:
+Por padrão, em um componente o `v-model` usa `modelValue` como propriedade e `update:modelValue` como evento. Podemos modificar esses nomes passando um argumento para `v-model`:
 
 ```html
 <my-component v-model:title="bookTitle"></my-component>
@@ -99,11 +99,11 @@ app.component('my-component', {
 <my-component v-model:title="bookTitle"></my-component>
 ```
 
-## Vários vínculos `v-model`
+## Múltiplos Vínculos `v-model`
 
-Aproveitando a capacidade de direcionar uma determinada propriedade e evento como aprendemos antes em [argumentos `v-model`](#argumentos-v-model), agora podemos criar vários vínculos de v-model em uma única instância do componente.
+Aproveitando a capacidade de direcionar uma determinada propriedade e evento como aprendemos antes em [argumentos do `v-model`](#argumentos-do-v-model), agora podemos criar múltiplos vínculos de `v-model` em uma única instância do componente.
 
-Cada v-model será sincronizado com uma propriedade diferente, sem a necessidade de opções extras no componente:
+Cada `v-model` será sincronizado com uma propriedade diferente, sem a necessidade de opções extras no componente:
 
 ```html
 <user-name
@@ -141,15 +141,15 @@ app.component('user-name', {
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Manipulando modificadores `v-model`
+## Manipulando Modificadores do `v-model`
 
 Quando estávamos aprendendo sobre interligações em elementos _input_, vimos que `v-model` tem [modificadores embutidos](/guide/forms.html#modifiers) - `.trim`, `.number` e `.lazy`. Em alguns casos, entretanto, você também pode querer adicionar seus próprios modificadores personalizados.
 
 Vamos criar um modificador personalizado de exemplo, `capitalize`, que coloca em maiúscula a primeira letra da string fornecida pela vinculação `v-model`.
 
-Modificadores adicionados a um componente `v-model` serão fornecidos ao componente por meio da propriedade `modelModifiers`. No exemplo abaixo, criamos um componente que contém uma propriedade `modelModifiers` cujo padrão é um objeto vazio.
+Modificadores adicionados ao `v-model` de um componente serão fornecidos ao componente por meio da propriedade `modelModifiers`. No exemplo abaixo, criamos um componente que contém uma propriedade `modelModifiers` cujo padrão é um objeto vazio.
 
-Observe que quando o gancho do ciclo de vida `created` do componente é acionado, a propriedade `modelModifiers` contém `capitalize` e seu valor é `true` - devido ao fato de ser definido na vinculação `v-model.capitalize="bar"`.
+Observe que quando o gatilho do ciclo de vida `created` do componente é acionado, a propriedade `modelModifiers` contém `capitalize` e seu valor é `true` - devido ao fato de ser definido na vinculação `v-model.capitalize="bar"`.
 
 ```html
 <my-component v-model.capitalize="bar"></my-component>
@@ -217,7 +217,7 @@ app.component('my-component', {
 app.mount('#app')
 ```
 
-Para as ligações `v-model` com argumentos, o nome da propriedade gerada será `arg + "Modifiers"`:
+Para os vínculos `v-model` com argumentos, o nome da propriedade gerada será `arg + "Modifiers"`:
 
 ```html
 <my-component v-model:foo.capitalize="bar"></my-component>
