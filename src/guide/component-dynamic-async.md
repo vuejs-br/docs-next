@@ -1,51 +1,41 @@
-# Dynamic & Async Components
+# Dinâmicos & Assíncronos
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> Essa página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
-## Dynamic Components with `keep-alive`
+## Componentes Dinâmicos com `keep-alive`
 
-Earlier, we used the `is` attribute to switch between components in a tabbed interface:
+Anteriormente, usamos o atributo `is` para alternar entre os componentes em uma interface com guias:
 
 ```vue-html
 <component :is="currentTabComponent"></component>
 ```
 
-When switching between these components though, you'll sometimes want to maintain their state or avoid re-rendering for performance reasons. For example, when expanding our tabbed interface a little:
+Ao alternar entre esses componentes, às vezes, você desejará manter seu estado ou evitar uma nova renderização, por motivos de desempenho. Por exemplo, ao expandir nossa interface com guias um pouco:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="jOPjZOe" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Dynamic components: without keep-alive">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/jOPjZOe">
-  Dynamic components: without keep-alive</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Componentes Dinâmicos: sem keep-alive" slug="jOPjZOe" />
 
-You'll notice that if you select a post, switch to the _Archive_ tab, then switch back to _Posts_, it's no longer showing the post you selected. That's because each time you switch to a new tab, Vue creates a new instance of the `currentTabComponent`.
+Você notará que, se selecionar uma postagem, alternar para a guia _Arquivo_ e, em seguida, voltar para _Postagens_, ela não estará mais mostrando a postagem selecionada. Isso acontece pois, cada vez que você muda para uma nova guia, o Vue cria uma nova instância do componente `currentTabComponent`.
 
-Recreating dynamic components is normally useful behavior, but in this case, we'd really like those tab component instances to be cached once they're created for the first time. To solve this problem, we can wrap our dynamic component with a `<keep-alive>` element:
+Recriar componentes dinâmicos normalmente é um comportamento útil, mas, nesse caso, gostaríamos que essas instâncias de componentes de guias fossem armazenadas em _cache_ assim que fossem criadas pela primeira vez. Para resolver este problema, podemos envolver nosso componente dinâmico com um elemento `<keep-alive>`:
 
 ```vue-html
-<!-- Inactive components will be cached! -->
+<!-- Componentes inativos serão armazenados em cache -->
 <keep-alive>
   <component :is="currentTabComponent"></component>
 </keep-alive>
 ```
 
-Check out the result below:
+Confira o resultado abaixo:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="VwLJQvP" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Dynamic components: with keep-alive">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/VwLJQvP">
-  Dynamic components: with keep-alive</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Componentes Dinâmicos: com keep-alive" slug="VwLJQvP" />
 
-Now the _Posts_ tab maintains its state (the selected post) even when it's not rendered.
+Agora, a guia _Postagens_ mantém seu estado (a postagem selecionada) mesmo quando não é renderizada.
 
-Check out more details on `<keep-alive>` in the [API reference](../api/built-in-components.html#keep-alive).
+Confira mais detalhes sobre `<keep-alive>` em [Referências de API](../api/built-in-components.html#keep-alive).
 
-## Async Components
+## Componentes Assíncronos
 
-In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make that possible, Vue has a `defineAsyncComponent` method:
+Em aplicativos grandes, talvez seja necessário dividí-lo em partes menores e carregar apenas um componente do servidor quando necessário.. Para tornar isso possível, o Vue tem o método `defineAsyncComponent`:
 
 ```js
 const app = Vue.createApp({})
@@ -54,7 +44,7 @@ const AsyncComp = Vue.defineAsyncComponent(
   () =>
     new Promise((resolve, reject) => {
       resolve({
-        template: '<div>I am async!</div>'
+        template: '<div>Eu sou assíncrono!</div>',
       })
     })
 )
@@ -62,9 +52,9 @@ const AsyncComp = Vue.defineAsyncComponent(
 app.component('async-example', AsyncComp)
 ```
 
-As you can see, this method accepts a factory function returning a `Promise`. Promise's `resolve` callback should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed.
+Como você pode ver, esse método aceita uma função de fabricação (_factory function_) que retorna uma `Promise`. O retorno de chamada `resolve` da Promise deve ser chamado quando você recuperar sua definição de componente do servidor. Você também pode chamar `reject(reason)` para indicar que o carregamento falhou.
 
-You can also return a `Promise` in the factory function, so with Webpack 2 or later and ES2015 syntax you can do:
+Você também pode retornar uma `Promise` na função de fabricação. Portanto, com a sintaxe do Webpack 2+ ou ES2015, você pode fazer:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -76,7 +66,7 @@ const AsyncComp = defineAsyncComponent(() =>
 app.component('async-component', AsyncComp)
 ```
 
-You can also use `defineAsyncComponent` when [registering a component locally](component-registration.html#local-registration):
+Você também pode usar o `defineAsyncComponent` ao [registrar um componente localmente](component-registration.html#local-registration):
 
 ```js
 import { createApp, defineAsyncComponent } from 'vue'
@@ -86,15 +76,15 @@ createApp({
   components: {
     AsyncComponent: defineAsyncComponent(() =>
       import('./components/AsyncComponent.vue')
-    )
-  }
+    ),
+  },
 })
 ```
 
-### Using with Suspense
+### Usando com Suspense
 
-Async components are _suspensible_ by default. This means if it has a [`<Suspense>`](TODO) in the parent chain, it will be treated as an async dependency of that `<Suspense>`. In this case, the loading state will be controlled by the `<Suspense>`, and the component's own loading, error, delay and timeout options will be ignored.
+Os componentes assíncronos são _suspensos_ por padrão. Isso significa que, se houver um `<Suspense>` na na hierarquia pai, ele será tratado como uma dependência assíncrona deste `<Suspense>`. Nesse caso, o estado de carregamento será controlado pelo `<Suspense>`, e as opções de carregamento, gatilho de erros, atrasos e tempo limite do próprio componente serão ignoradas.
 
-The async component can opt-out of `Suspense` control and let the component always control its own loading state by specifying `suspensible: false` in its options.
+O componente assíncrono pode cancelar o controle do `Suspense` e deixar que o componente sempre controle seu próprio estado de carregamento, especificando `suspensible: false` em suas opções.
 
-You can check the list of available options in the [API Reference](../api/global-api.html#arguments-4)
+Você pode conferir a lista de opções disponíveis na [Referência da API](../api/global-api.html#arguments-4)

@@ -33,7 +33,7 @@ app.component('custom-form', {
 })
 ```
 
-No caso de um evento nativo (por exemplo, `click`) ser definido na opção `emits`, ele será substituído pelo evento do componente em vez de ser tratado como um ouvinte nativo.
+Quando um evento nativo (por exemplo, `click`) for definido na opção `emits`, o evento do componente será uaado __ao invés__ de um escutador de evento nativo.
 
 ::: tip DICA
 Recomenda-se definir todos os eventos emitidos para documentar melhor como o componente deve funcionar.
@@ -84,19 +84,19 @@ const app = Vue.createApp({})
 
 app.component('my-component', {
   props: {
-    foo: String
+    title: String
   },
   template: `
     <input 
       type="text"
-      :value="foo"
-      @input="$emit('update:foo', $event.target.value)">
+      :value="title"
+      @input="$emit('update:title', $event.target.value)">
   `
 })
 ```
 
 ```html
-<my-component v-model:foo="bar"></my-component>
+<my-component v-model:title="bookTitle"></my-component>
 ```
 
 ## Vários vínculos `v-model`
