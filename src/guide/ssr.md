@@ -6,7 +6,7 @@ Criamos um guia independente para a criação de aplicativos Vue renderizados a 
 
 ## Nuxt.js
 
-Configurar corretamente todos os aspectos de uma aplicação pronta para produção utilizando renderização pelo servidor pode ser uma tarefa árdua. Felizmente, existe um excelente projeto da comunidade que visa tornar tudo isso mais fácil: [Nuxt.js](https://nuxtjs.org/). Nuxt.js é *framework* de alto nível criado por cima do ecossistema Vue que fornece uma experiência extremamente simplificada para escrever aplicações universais. Melhor ainda, você pode utilizá-lo como um gerador de páginas estáticas (páginas HTML geradas a partir de Componentes *Single-File*)! Nós recomendamos fortemente experimentá-lo.
+Configurar corretamente todos os aspectos de uma aplicação pronta para produção utilizando renderização pelo servidor pode ser uma tarefa árdua. Felizmente, existe um excelente projeto da comunidade que visa tornar tudo isso mais fácil: [Nuxt.js](https://nuxtjs.org/). Nuxt.js é um *framework* de alto nível criado por cima do ecossistema Vue que fornece uma experiência extremamente simplificada para escrever aplicações universais. Melhor ainda, você pode utilizá-lo como um gerador de páginas estáticas (geradas a partir de Componentes *Single-File*)! Nós recomendamos fortemente experimentá-lo.
 
 ## Quasar Framework SSR + PWA
 
