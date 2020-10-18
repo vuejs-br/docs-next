@@ -1,46 +1,46 @@
 ---
-title: v-bind Merge Behavior
+title: Comportamento ao Combinar v-bind
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Visão Geral
 
-- **BREAKING**: Order of bindings for v-bind will affect the rendering result.
+- **QUEBRA**: A ordem das vinculações para `v-bind` irá afetar o resultado da renderização.
 
-## Introduction
+## Visão Geral
 
-When dynamically binding attributes on an element, a common scenario involves using both the `v-bind="object"` syntax as well as individual properties in the same element. However, this raises questions as far as the priority of merging.
+Quando se está dinamicamente vinculando atributos em um elemento, um cenário comum envolve utilizar tanto a sintaxe `v-bind="object"` quanto as propriedades indiviuais no mesmo elemento. Contudo, isso gera questões tal como a prioridade na combinação.
 
-## 2.x Syntax
+## Sintaxe 2.x
 
-In 2.x, if an element has both `v-bind="object"` and an identical individual property defined, the individual property would always overwrite bindings in the `object`. 
+No 2.x, se um elemento tem tanto o `v-bind="object"` quanto uma propriedade individual idêntica definida, a propriedade individual sempre vai sobrescrever as vinculações do `object`. 
 
 ```html
 <!-- template -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- resultado -->
 <div id="red"></div>
 ```
 
-## 3.x Syntax
+## Sintaxe v3.x
 
-In 3x, if an element has both `v-bind="object"` and an identical individual property defined, the order of how the bindings are declared determines how they are merged. In other words, rather than assuming developers want the individual property to always override what is defined in the `object`, developers now have more control over the desired merging behavior.
+Na v3.x, se um elemento tem tanto o `v-bind="object"` quanto uma propriedade individual idêntica definida, a ordem de como as vinculações são declaradas determina como elas serão combinadas. Em outras palavras, em vez de assumir que os desenvolvedores querem que a propriedade individual sempre sobrescreva o que está definido no `object`, agora os desenvolvedores terão mais controle sobre qual o comportamento desejado na combinação.
 
 ```html
 <!-- template -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- resultado -->
 <div id="blue"></div>
 
 <!-- template -->
 <div v-bind="{ id: 'blue' }" id="red"></div>
-<!-- result -->
+<!-- resultado -->
 <div id="red"></div>
 ```
 
-## Migration Strategy
+## Estratégia de Migração
 
-If you are relying on this override functionality for `v-bind`, we currently recommend ensuring that your `v-bind` attribute is defined before individual properties.
+Se você está confiando nessa funcionalidade de sobrescrita do `v-bind`, nós atualmente recomendamos você à garantir que seu atributo `v-bind` seja definido sempre antes das propriedades individuais.
