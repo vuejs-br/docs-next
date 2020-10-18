@@ -222,7 +222,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   Invocado quando a re-renderização do DOM é disparada. De forma similar ao [`renderTracked`](#rendertracked), ele recebe um evento de depuração como argumento. Esse evento informa que operação disparou a re-renderização, o objeto alvo e a chave da operação.
 
-- **Usage:**
+- **Uso:**
 
   ```html
   <div id="app">
