@@ -6,17 +6,17 @@ sidebar: auto
 # Patrocine o Desenvolvimento do Vue.js
 
 O Vue.js é um projeto de código aberto completamente grátis para uso sob a licença MIT.
-No entanto, o quantidade de esforço requerido para manter e desenvolver novas funcionalidades para o projeto não é sustentável sem o financiamento adequado. Você pode ajudar o desenvolvimento do Vue.js através dos seguintes métodos:
+No entanto, a quantidade de esforço necessário para manter e desenvolver novas funcionalidades para o projeto não é sustentável sem o financiamento adequado. Você pode ajudar o desenvolvimento do Vue.js através dos seguintes métodos:
 
-## Doações únicas
+## Doações Únicas
 
 Aceitamos doações através dos seguintes canais:
 
 <support-Coins />
 
-## Doações recorrentes
+## Doações Recorrentes
 
-Doações recorrentes vem com vantagens exclusívas, e.g., ter seu nome listado no repositório do Vue no GitHub, ou ter o logo da sua empresa neste _website_.
+Doações recorrentes vem com vantagens exclusívas, ter seu nome listado no repositório do Vue no GitHub, ou ter a logo da sua empresa neste _website_, por exemplo.
 
 - [Torne-se um apoiador ou patrocinador via Patreon](https://www.patreon.com/evanyou) (vai diretamente para o suporte ao trabalho em tempo integral no Vue do Evan You)
 - [Torne-se um apoiador ou patrocinador via OpenCollective](https://opencollective.com/vuejs) (vai para um fundo com modelos transparentes de gastos em esforços e eventos da comunidade)
