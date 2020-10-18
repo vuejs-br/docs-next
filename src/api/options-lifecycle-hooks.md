@@ -107,7 +107,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
 - **Ver também:**
-  - [Componentes dinâmicos - _keep-alive_](../guide/component-basics.html#keep-alive)
+  - [Componentes dinâmicos - _keep-alive_](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 
 ## deactivated
 
@@ -120,7 +120,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
 - **Ver também:**
-  - [Componentes dinâmicos - _keep-alive_](../guide/component-basics.html#keep-alive)
+  - [Componentes dinâmicos - _keep-alive_](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 
 ## beforeUnmount
 

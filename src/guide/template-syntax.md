@@ -48,7 +48,7 @@ Renderizar dinamicamente HTML arbitrário no seu _site_ pode ser muito perigoso,
 
 ### Atributos
 
-Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a [diretiva v-bind]((../api/#v-bind)):
+Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a [diretiva `v-bind`](../api/directives.html#v-bind):
 
 ```html
 <div v-bind:id="dynamicId"></div>
