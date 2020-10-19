@@ -3,28 +3,29 @@ badges:
   - breaking
 ---
 
-# Render Function API <MigrationBadges :badges="$frontmatter.badges" />
+# API da Função de Renderização <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Visão Geral
 
-This change will not affect `<template>` users.
+Esta mudança não vai afetar usuários de `<template>`.
 
-Here is a quick summary of what has changed:
+Aqui está um rápido resumo do que mudou:
 
-- `h` is now globally imported instead of passed to render functions as an arguments
-- render function arguments changed to be more consistent between stateful and functional components
-- VNodes now have a flat props structure
+- `h` agora é globalmente importado em vez de passado como argumento para funções de renderização
+- Argumentos da função render mudaram para ser mais consistentes entre componentes funcionais e com estado
+- VNodes agora têm uma estrutura plana de props
 
-For more information, read on!
 
-## Render Function Argument
+Para mais informações, continue lendo!
 
-### 2.x Syntax
+## Argumento da Função Render
 
-In 2.x, the `render` function would automatically receive the `h` function (which is a conventional alias for `createElement`) as an argument:
+### Sintaxe 2.x
+
+Na versão 2.x, a função `render` receberia automaticamente a função `h` (que é um _alias_ para `createElement`) como argumento: 
 
 ```js
-// Vue 2 Render Function Example
+// Exemplo da Função Render no Vue 2
 export default {
   render(h) {
     return h('div')
@@ -32,12 +33,13 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### Sintaxe 3.x
 
-In 3.x, `h` is now globally imported instead of being automatically passed as an argument.
+Na versão 3.x, o `h` agora é importado globalmente em vez de automaticamente passado como um argumento.
+
 
 ```js
-// Vue 3 Render Function Example
+// Exemplo da Função Render no Vue 3
 import { h } from 'vue'
 
 export default {
@@ -46,25 +48,24 @@ export default {
   }
 }
 ```
+## Mudança da assinatura da função Render
 
-## Render Function Signature Change
+### Sintaxe 2.x
 
-### 2.x Syntax
-
-In 2.x, the `render` function automatically received arguments such as `h`.
+Na versão 2.x, a função `render` recebeu automaticamente argumentos como o `h`.
 
 ```js
-// Vue 2 Render Function Example
+// Exemplo da Função Render no Vue 2
 export default {
   render(h) {
     return h('div')
   }
 }
 ```
+### Sintaxe 3.x
 
-### 3.x Syntax
+Na versão 3.x, desde que a função `render` já não recebe argumentos, ela será primeiramente usada dentro da função `setup()`. Isso traz o benefício adicional em ganhar acesso para o estado reativo e às funções declaradas no escopo, assim como argumentos passados para o `setup()`.
 
-In 3.x, since the `render` function no longer receives any arguments, it will primarily be used inside of the `setup()` function. This has the added benefit of gaining access to reactive state and functions declared in scope, as well as the arguments passed to `setup()`.
 
 ```js
 import { h, reactive } from 'vue'
@@ -79,7 +80,7 @@ export default {
       state.count++
     }
 
-    // return the render function
+    // retorna a função render
     return () =>
       h(
         'div',
@@ -91,14 +92,13 @@ export default {
   }
 }
 ```
+Para mais informações em como o `setup()` funciona, veja nosso [Guia da API de Composição](/guide/composition-api-introduction.html).
 
-For more information on how `setup()` works, see our [Composition API Guide](/guide/composition-api-introduction.html).
+## Formato de Props VNode
 
-## VNode Props Format
+### Sintaxe 2.x
 
-### 2.x Syntax
-
-In 2.x, `domProps` contained a nested list within the VNode props:
+Na versão 2.x, o `domProps` continha uma lista aninhada dentro dos props VNode:
 
 ```js
 // 2.x
