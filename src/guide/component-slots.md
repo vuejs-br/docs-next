@@ -1,10 +1,10 @@
 # _Slots_
 
-> Esta página pressupõe que você já leu o [Básico sobre Componentes](component-basics.md). Se você não está familizariado com componentes, recomendamos lê-lo primeiro.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Se você não está familizariado com componentes, recomendamos lê-lo primeiro.
 
 ## Conteúdo do _Slot_
 
-Vue implementa uma API de distribuição de conteúdo inspirada em [um dos rascunhos de especificação de _Web Components_](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), utilizando o elemento `<slot>` como saída de distribuição de conteúdo.
+Vue implementa uma API de distribuição de conteúdo inspirada no [rascunho da especificação de _Web Components_](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), utilizando o elemento `<slot>` como saída de distribuição de conteúdo.
 
 Isto permite a criação de componentes como o seguinte exemplo:
 
@@ -32,7 +32,7 @@ Quando o componente renderizar, `<slot></slot>` será substituído por "Adiciona
 </button>
 ```
 
-_Strings_ são apenas um exemplo simples! _Slots_ podem servir vários tipos de conteúdo também, incluindo HTML:
+_Strings_ são apenas um exemplo simples! _Slots_ podem conter código de _template_ também, incluindo HTML:
 
 ```html
 <todo-button>
@@ -68,7 +68,7 @@ Se o _template_ de `<todo-button>` **não** possuísse o elemento `<slot>`, qual
 </todo-button>
 ```
 
-## Escopo de Compilação
+## Escopo da Renderização
 
 Quando você desejar utilizar dados dentro de um _slot_, como em:
 
@@ -78,11 +78,11 @@ Quando você desejar utilizar dados dentro de um _slot_, como em:
 </todo-button>
 ```
 
-Este _slot_ possui acesso às propriedades de sua instância (isto é, ao "escopo" de sua instância), assim como o resto do _template_.
+Este _slot_ possui acesso às propriedades da mesma instância (isto é, mesmo "escopo"), que o resto do _template_.
 
-<img src="/images/slot.png" width="447" height="auto" style="display: block; margin: 0 auto; max-width: 100%" loading="lazy" alt="Diagrama para explicar o Escopo de Compilação">
+<img src="/images/slot.png" width="447" height="auto" style="display: block; margin: 0 auto; max-width: 100%" loading="lazy" alt="Diagrama para explicar o Escopo da Renderização">
 
-Entretanto, o _slot_ *não* possui acesso ao escopo de `<todo-button>`. Por exemplo, se tentarmos adquirir o valor de `action`, não será possível:
+O _slot_ *não* possui acesso ao escopo de `<todo-button>`. Por exemplo, se tentarmos adquirir o valor de `action`, não será possível:
 
 ```html
 <todo-button action="delete">
@@ -99,8 +99,7 @@ Lembre-se, como regra, de que:
 
 > Tudo do _template_ pai _(parent template)_ é compilado no escopo pai _(parent scope)_; tudo do _template_ filho _(child template)_, é compilado no escopo filho _(child scope)_.
 
-## Conteúdo padrão
-
+## Conteúdo Padrão
 
 Há certos casos onde é interessante definir um conteúdo padrão (ou de _fallback_) para um _slot_ — ou seja, conteúdo que será apenas renderizado caso nenhum outro for informado. Por exemplo, no componente `<submit-button>`:
 
@@ -118,7 +117,7 @@ Podemos querer mostrar "Enviar" dentro do `<button>` quando nenhum outro texto f
 </button>
 ```
 
-Agora, ao utilizarmos o componente `<submit-button>`, sem informar um conteúdo...
+Agora, ao utilizarmos o componente `<submit-button>`, sem prover um conteúdo:
 
 ```html
 <submit-button></submit-button>
@@ -132,7 +131,7 @@ Agora, ao utilizarmos o componente `<submit-button>`, sem informar um conteúdo.
 </button>
 ```
 
-Entretanto, se especificarmos um conteúdo...
+Entretanto, se especificarmos um conteúdo:
 
 ```html
 <submit-button>
@@ -148,7 +147,7 @@ O conteúdo informado que será renderizado no lugar de "Enviar":
 </button>
 ```
 
-## _Slots_ nomeados
+## _Slots_ Nomeados
 
 Há casos onde é interessante utilizar vários slots. Por exemplo, em um componente `<base-layout>`, com o seguinte _template_:
 
@@ -222,11 +221,11 @@ O HTML renderizado será:
 </div>
 ```
 
-É importante destacar que **`v-slot` pode ser adicionado apenas a um `<template>`** ([exceto neste caso](#sintaxe-abreviada-para-slot-unico-e-default)).
+É importante destacar que **`v-slot` pode ser adicionado apenas à um `<template>`** ([exceto neste caso](#sintaxe-abreviada-para-slot-unico-e-default)).
 
 ## Definição de Escopo em _Slots_
 
-Em certos momentos, é interessante acessar dados apenas disponíveis no componente filho _(child component)_ no conteúdo de um _slot_. Um caso muito comum é quando utilizamos um componente específico para renderizarmos cada item de um vetor _(array)_ ou, simplesmente, para personalizarmos como cada item é renderizado.
+Em certos momentos, é interessante acessar dados apenas disponíveis no componente filho _(child component)_ no conteúdo de um _slot_. Um caso comum é utilizarmos um componente para renderizarmos itens de um Array, e queremos o poder de personalizar como cada item é renderizado.
 
 Por exemplo, em um componente que possui uma lista de afazeres:
 
@@ -268,7 +267,7 @@ Para fazer com que `item` esteja disponível para uso no conteúdo do _slot_ def
 </ul>
 ```
 
-Atributos passados para um elemento `<slot>` são chamados de **_props_ do _slot_** _(slot props)_. Agora, no escopo do componente pai _(parent scope)_, podemos utilizar `v-slot` com um valor, que será utilizado, neste caso, como o nome de acesso a estes _props_ do _slot_:
+Atributos passados para um elemento `<slot>` são chamados de **_props_ do _slot_** _(slot props)_. Agora, no escopo do componente pai _(parent scope)_, podemos utilizar `v-slot` com um valor, que será utilizado, neste caso, como o nome de acesso à estes _props_ do _slot_:
 
 ```html
 <todo-list>
@@ -333,7 +332,7 @@ Sempre que houver mais de um _slot_, utilize da sintaxe completa, com `<template
 </current-user>
 ```
 
-### Desestruturando _Props_ em um _Slot_
+### Desestruturando _Props_ do _Slot_
 
 Internamente, _slots_ com escopo definido encapsulam o conteúdo do seu respectivo _slot_ em uma função com um único argumento:
 
@@ -343,7 +342,7 @@ function (slotProps) {
 }
 ```
 
-Isto significa que o valor passado a `v-slot` pode aceitar, na verdade, qualquer expressão JavaScript válida de definição de argumentos de uma função. Portanto, você também pode utilizar a [desestruturação de objetos, da ES2015](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring), a fim de trabalhar apenas com os _props_ que você desejar no conteúdo do _slot_, como no exemplo abaixo:
+Isto significa que o valor passado à `v-slot` pode aceitar, na verdade, qualquer expressão JavaScript válida na definição de argumentos de uma função. Portanto, você também pode utilizar a [desestruturação de objetos, da ES2015](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring), a fim de trabalhar apenas com os _props_ que você desejar no conteúdo do _slot_, como no exemplo abaixo:
 
 ```html
 <todo-list v-slot="{ item }">
@@ -364,7 +363,7 @@ Isto pode tornar o _template_ muito mais limpo, especialmente quando o _slot_ fo
 Você pode até definir valores padrão _(fallbacks)_, a fim de serem utilizados quando um _prop_ do _slot_ não possuir um valor definido _(undefined)_:
 
 ```html
-<todo-list v-slot="{ item = 'Isto é um afazer' }">
+<todo-list v-slot="{ item = 'Isto é um afazer placeholder' }">
   <i class="fas fa-check"></i>
   <span class="green">{{ item }}</span>
 </todo-list>
