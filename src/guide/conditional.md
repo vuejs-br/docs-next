@@ -91,4 +91,4 @@ De modo geral, `v-if` tem custo maior nas alternâncias de renderização, enqua
 Usar `v-if` e `v-for` juntos **não é recomendado**. Veja o [guia de estilos](../style-guide/#avoid-v-if-with-v-for-essential) para mais informações.
 :::
 
-Quando usado em conjunto com `v-if`, `v-for` possui maior prioridade do que `v-if`. Veja o [guia de renderização de listas](list#v-for-with-v-if) para mais detalhes.
+Quando `v-if` e `v-for` são usados juntos no mesmo elemento, `v-if` será avaliado primeiro. Veja sobre [Renderização de Listas](list#v-for-with-v-if) para mais detalhes.

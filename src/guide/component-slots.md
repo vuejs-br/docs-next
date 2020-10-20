@@ -48,7 +48,7 @@ Ou, até mesmo, outros componentes:
 <todo-button>
   <!-- Utilizando um componente para adicionar um ícone -->
   <font-awesome-icon name="plus"></font-awesome-icon>
-  Seu perfil
+  Adicionar afazer
 </todo-button>
 ```
 
@@ -262,7 +262,7 @@ Para fazer com que `item` esteja disponível para uso no conteúdo do _slot_ def
 ```html
 <ul>
   <li v-for="( item, index ) in items">
-    <slot v-bind:item="item"></slot>
+    <slot :item="item"></slot>
   </li>
 </ul>
 ```
@@ -329,7 +329,7 @@ Sempre que houver mais de um _slot_, utilize da sintaxe completa, com `<template
   <template v-slot:other="otherSlotProps">
     ...
   </template>
-</current-user>
+</todo-list>
 ```
 
 ### Desestruturando _Props_ do _Slot_

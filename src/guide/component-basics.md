@@ -126,7 +126,7 @@ Uma vez que uma propriedade é registrada, você pode passar dados para ela como
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Em um aplicação comum, no entanto, você provavelmente terá uma série de postagens em `data`:
+Em uma aplicação comum, no entanto, você provavelmente terá uma série de postagens em `data`:
 
 ```js
 const App = {
@@ -234,7 +234,7 @@ Então, o componente filho pode emitir um evento por si próprio chamando o [mé
 </button>
 ```
 
-Graças à escuta `v-on:enlarge-text="postFontSize += 0.1"`, o componente pai receberá o evento e atualizará o valor de `postFontSize`.
+Graças à escuta `@enlarge-text="postFontSize += 0.1"`, o componente pai receberá o evento e atualizará o valor de `postFontSize`.
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="KKpGyrp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Básico sobre Componentes: Emitindo Eventos">
   <span>Veja o exemplo <a href="https://codepen.io/vuejs-br/pen/jOqXJEv">
