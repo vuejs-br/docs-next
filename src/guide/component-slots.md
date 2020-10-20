@@ -1,108 +1,107 @@
-# Slots
+# _Slots_
 
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Se você não está familizariado com componentes, recomendamos lê-lo primeiro.
 
-## Slot Content
+## Conteúdo do _Slot_
 
-Vue implements a content distribution API inspired by the [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), using the `<slot>` element to serve as distribution outlets for content.
+Vue implementa uma API de distribuição de conteúdo inspirada no [rascunho da especificação de _Web Components_](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), utilizando o elemento `<slot>` como saída de distribuição de conteúdo.
 
-This allows you to compose components like this:
+Isto permite a criação de componentes como o seguinte exemplo:
 
 ```html
 <todo-button>
-  Add todo
+  Adicionar afazer
 </todo-button>
 ```
 
-Then in the template for `<todo-button>`, you might have:
+E, no _template_ de `<todo-button>`, possuímos:
 
 ```html
-<!-- todo-button component template -->
+<!-- template do componente todo-button -->
 <button class="btn-primary">
   <slot></slot>
 </button>
 ```
 
-When the component renders, `<slot></slot>` will be replaced by "Add Todo".
+Quando o componente renderizar, `<slot></slot>` será substituído por "Adicionar afazer".
 
 ```html
-<!-- rendered HTML -->
+<!-- HTML renderizado -->
 <button class="btn-primary">
-  Add todo
+  Adicionar afazer
 </button>
 ```
 
-Strings are just the beginning though! Slots can also contain any template code, including HTML:
+_Strings_ são apenas um exemplo simples! _Slots_ podem conter código de _template_ também, incluindo HTML:
 
 ```html
 <todo-button>
-  <!-- Add a Font Awesome icon -->
+  <!-- Adiciona um ícone do Font Awesome -->
   <i class="fas fa-plus"></i>
-  Add todo
+  Adicionar afazer
 </todo-button>
 ```
 
-Or even other components:
+Ou, até mesmo, outros componentes:
 
 ```html
 <todo-button>
-  <!-- Use a component to add an icon -->
+  <!-- Utilizando um componente para adicionar um ícone -->
   <font-awesome-icon name="plus"></font-awesome-icon>
-  Add todo
+  Adicionar afazer
 </todo-button>
 ```
 
-If `<todo-button>`'s template did **not** contain a `<slot>` element, any content provided between its opening and closing tag would be discarded.
+Se o _template_ de `<todo-button>` **não** possuísse o elemento `<slot>`, qualquer conteúdo fornecido seria descartado.
 
 ```html
-<!-- todo-button component template -->
-
+<!-- template do componente todo-button, agora sem <slot></slot>  -->
 <button class="btn-primary">
-  Create a new item
+  Criar um novo item
 </button>
 ```
 
 ```html
 <todo-button>
-  <!-- Following text won't be rendered -->
-  Add todo
+  <!-- O texto a seguir não será renderizado -->
+  Adicionar afazer
 </todo-button>
 ```
 
-## Render Scope
+## Escopo da Renderização
 
-When you want to use data inside a slot, such as in:
+Quando você desejar utilizar dados dentro de um _slot_, como em:
 
 ```html
 <todo-button>
-  Delete a {{ item.name }}
+  Remover {{ item.name }}
 </todo-button>
 ```
 
-That slot has access to the same instance properties (i.e. the same "scope") as the rest of the template.
+Este _slot_ possui acesso às propriedades da mesma instância (isto é, mesmo "escopo"), que o resto do _template_.
 
-<img src="/images/slot.png" width="447" height="auto" style="display: block; margin: 0 auto; max-width: 100%" loading="lazy" alt="Slot explanation diagram">
+<img src="/images/slot.png" width="447" height="auto" style="display: block; margin: 0 auto; max-width: 100%" loading="lazy" alt="Diagrama para explicar o Escopo da Renderização">
 
-The slot does **not** have access to `<todo-button>`'s scope. For example, trying to access `action` would not work:
+O _slot_ *não* possui acesso ao escopo de `<todo-button>`. Por exemplo, se tentarmos adquirir o valor de `action`, não será possível:
 
 ```html
 <todo-button action="delete">
-  Clicking here will {{ action }} an item
+  Ao clicar aqui, este item realizará a ação {{ action }}
   <!--
-  The `action` will be undefined, because this content is passed
-  _to_ <todo-button>, rather than defined _inside_ the
-  <todo-button> component.
+  `action` retornará `undefined` neste caso, já que
+  o conteúdo de `action` é apenas _transmitido_ para `<todo-button>`,
+  ao invés de ser _definido_ como um dado de `<todo-button>`.
   -->
 </todo-button>
 ```
 
-As a rule, remember that:
+Lembre-se, como regra, de que:
 
-> Everything in the parent template is compiled in parent scope; everything in the child template is compiled in the child scope.
+> Tudo do _template_ pai _(parent template)_ é compilado no escopo pai _(parent scope)_; tudo do _template_ filho _(child template)_, é compilado no escopo filho _(child scope)_.
 
-## Fallback Content
+## Conteúdo Padrão
 
-There are cases when it's useful to specify fallback (i.e. default) content for a slot, to be rendered only when no content is provided. For example, in a `<submit-button>` component:
+Há certos casos onde é interessante definir um conteúdo padrão (ou de _fallback_) para um _slot_ — ou seja, conteúdo que será apenas renderizado caso nenhum outro for informado. Por exemplo, no componente `<submit-button>`:
 
 ```html
 <button type="submit">
@@ -110,63 +109,63 @@ There are cases when it's useful to specify fallback (i.e. default) content for 
 </button>
 ```
 
-We might want the text "Submit" to be rendered inside the `<button>` most of the time. To make "Submit" the fallback content, we can place it in between the `<slot>` tags:
+Podemos querer mostrar "Enviar" dentro do `<button>` quando nenhum outro texto for informado. Para isto, basta apenas colocar "Enviar" entre as _tags_ `<slot>` para defini-lo como o conteúdo padrão.
 
 ```html
 <button type="submit">
-  <slot>Submit</slot>
+  <slot>Enviar</slot>
 </button>
 ```
 
-Now when we use `<submit-button>` in a parent component, providing no content for the slot:
+Agora, ao utilizarmos o componente `<submit-button>`, sem prover um conteúdo:
 
 ```html
 <submit-button></submit-button>
 ```
 
-will render the fallback content, "Submit":
+"Enviar" será renderizado, por ser o conteúdo padrão:
 
 ```html
 <button type="submit">
-  Submit
+  Enviar
 </button>
 ```
 
-But if we provide content:
+Entretanto, se especificarmos um conteúdo:
 
 ```html
 <submit-button>
-  Save
+  Salvar
 </submit-button>
 ```
 
-Then the provided content will be rendered instead:
+O conteúdo informado que será renderizado no lugar de "Enviar":
 
 ```html
 <button type="submit">
-  Save
+  Salvar
 </button>
 ```
 
-## Named Slots
+## _Slots_ Nomeados
 
-There are times when it's useful to have multiple slots. For example, in a `<base-layout>` component with the following template:
+Há casos onde é interessante utilizar vários slots. Por exemplo, em um componente `<base-layout>`, com o seguinte _template_:
 
 ```html
 <div class="container">
   <header>
-    <!-- We want header content here -->
+    <!-- Queremos nosso conteúdo para o cabeçalho aqui -->
   </header>
   <main>
-    <!-- We want main content here -->
+    <!-- Queremos nosso conteúdo principal aqui -->
   </main>
   <footer>
-    <!-- We want footer content here -->
+    <!-- Queremos nosso conteúdo para o rodapé aqui -->
   </footer>
 </div>
 ```
 
-For these cases, the `<slot>` element has a special attribute, `name`, which can be used to assign a unique ID to different slots so you can determine where content should be rendered:
+Para estes casos, o elemento `<slot>` possui um atributo especial, `name`, que pode ser utilizado para designar uma identificação única a cada `<slot>` e, assim, determinar onde certos conteúdos devem ser renderizados:
 
 ```html
 <div class="container">
@@ -182,59 +181,59 @@ For these cases, the `<slot>` element has a special attribute, `name`, which can
 </div>
 ```
 
-A `<slot>` outlet without `name` implicitly has the name "default".
+Um elemento `<slot>` sem o atributo `name`, implicitamente, possui `name="default"`.
 
-To provide content to named slots, we need to use the `v-slot` directive on a `<template>` element, providing the name of the slot as `v-slot`'s argument:
+Para fornecer conteúdo a um _slot_ nomeado, precisamos utilizar a diretiva `v-slot` em um elemento `<template>`, indicando o nome do _slot_ como argumento, logo em seguida:
 
 ```html
 <base-layout>
   <template v-slot:header>
-    <h1>Here might be a page title</h1>
+    <h1>Aqui podemos ter um título para a página.</h1>
   </template>
 
   <template v-slot:default>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    <p>Um parágrafo para o conteúdo principal.</p>
+    <p>E aqui mais um.</p>
   </template>
 
   <template v-slot:footer>
-    <p>Here's some contact info</p>
+    <p>Aqui temos informações para contato.</p>
   </template>
 </base-layout>
 ```
 
-Now everything inside the `<template>` elements will be passed to the corresponding slots.
+A partir deste momento, o conteúdo dos elementos `<template>` será transferido para os _slots_ correspondentes.
 
-The rendered HTML will be:
+O HTML renderizado será:
 
 ```html
 <div class="container">
   <header>
-    <h1>Here might be a page title</h1>
+    <h1>Aqui podemos ter um título para a página.</h1>
   </header>
   <main>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    <p>Um parágrafo para o conteúdo principal.</p>
+    <p>E aqui mais um.</p>
   </main>
   <footer>
-    <p>Here's some contact info</p>
+    <p>Aqui temos informações para contato.</p>
   </footer>
 </div>
 ```
 
-Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#abbreviated-syntax-for-lone-default-slots))
+É importante destacar que **`v-slot` pode ser adicionado apenas à um `<template>`** ([exceto neste caso](#sintaxe-abreviada-para-slot-unico-e-default)).
 
-## Scoped Slots
+## Definição de Escopo em _Slots_
 
-Sometimes, it's useful for slot content to have access to data only available in the child component. It's a common case when a component is used to render an array of items, and we want to be able to customize the way each item is rendered.
+Em certos momentos, é interessante acessar dados apenas disponíveis no componente filho _(child component)_ no conteúdo de um _slot_. Um caso comum é utilizarmos um componente para renderizarmos itens de um Array, e queremos o poder de personalizar como cada item é renderizado.
 
-For example, we have a component, containing a list of todo-items.
+Por exemplo, em um componente que possui uma lista de afazeres:
 
 ```js
 app.component('todo-list', {
   data() {
     return {
-      items: ['Feed a cat', 'Buy milk']
+      items: ['Alimentar o gato', 'Comprar leite']
     }
   },
   template: `
@@ -247,7 +246,7 @@ app.component('todo-list', {
 })
 ```
 
-We might want to replace the slot to customize it on parent component:
+Podemos desejar personalizar o _slot_ diretamente no componente pai _(parent component)_:
 
 ```html
 <todo-list>
@@ -256,9 +255,9 @@ We might want to replace the slot to customize it on parent component:
 </todo-list>
 ```
 
-That won't work, however, because only the `<todo-list>` component has access to the `item` and we are providing the slot content from its parent.
+Entretanto, isto não funcionará por estarmos definindo o conteúdo do _slot_ no componente pai, e apenas o componente `<todo-list>` possuir acesso ao dado `item`.
 
-To make `item` available to the slot content provided by the parent, we can add a `<slot>` element and bind it as an attribute:
+Para fazer com que `item` esteja disponível para uso no conteúdo do _slot_ definido no componente pai, podemos passá-lo como um atributo de `<slot>`, através de `v-bind`:
 
 ```html
 <ul>
@@ -268,7 +267,7 @@ To make `item` available to the slot content provided by the parent, we can add 
 </ul>
 ```
 
-Attributes bound to a `<slot>` element are called **slot props**. Now, in the parent scope, we can use `v-slot` with a value to define a name for the slot props we've been provided:
+Atributos passados para um elemento `<slot>` são chamados de **_props_ do _slot_** _(slot props)_. Agora, no escopo do componente pai _(parent scope)_, podemos utilizar `v-slot` com um valor, que será utilizado, neste caso, como o nome de acesso à estes _props_ do _slot_:
 
 ```html
 <todo-list>
@@ -279,13 +278,13 @@ Attributes bound to a `<slot>` element are called **slot props**. Now, in the pa
 </todo-list>
 ```
 
-<img src="/images/scoped-slot.png" width="611" height="auto" style="display: block; margin: 0 auto; max-width: 100%;" loading="lazy" alt="Scoped slot diagram">
+<img src="/images/scoped-slot.png" width="611" height="auto" style="display: block; margin: 0 auto; max-width: 100%;" loading="lazy" alt="Diagrama para explicar a Definição de Escopo em Slots">
 
-In this example, we've chosen to name the object containing all our slot props `slotProps`, but you can use any name you like.
+Neste exemplo, escolhemos `slotProps` como valor, a fim de tê-lo como o nome de acesso aos _props_ do _slot_. É possível utilizar qualquer nome que desejar.
 
-### Abbreviated Syntax for Lone Default Slots
+### Sintaxe Abreviada para Slot Único e _Default_
 
-In cases like above, when _only_ the default slot is provided content, the component's tags can be used as the slot's template. This allows us to use `v-slot` directly on the component:
+Em casos como o acima, quando _apenas_ o _slot_ padrão _(default)_ é fornecido, podemos utilizar o próprio conteúdo do componente como o _template_ do _slot_. Deste modo, utilizamos `v-slot` diretamente no componente:
 
 ```html
 <todo-list v-slot:default="slotProps">
@@ -294,7 +293,7 @@ In cases like above, when _only_ the default slot is provided content, the compo
 </todo-list>
 ```
 
-This can be shortened even further. Just as non-specified content is assumed to be for the default slot, `v-slot` without an argument is assumed to refer to the default slot:
+Podemos deixar isto ainda mais simples, já que, assim como não especificar um `name` para um elemento `<slot>` o faz possuir `name="default"`, não especificar um argumento para um `v-slot` o faz referenciar `default`, implicitamente:
 
 ```html
 <todo-list v-slot="slotProps">
@@ -303,22 +302,22 @@ This can be shortened even further. Just as non-specified content is assumed to 
 </todo-list>
 ```
 
-Note that the abbreviated syntax for default slot **cannot** be mixed with named slots, as it would lead to scope ambiguity:
+É importante mencionar que **não é possível** utilizar esta sintaxe abreviada para _slot_ padrão em conjunto de _slots_ nomeados, já que isto resultaria em ambiguidade de escopo _(scope ambiguity)_:
 
 ```html
-<!-- INVALID, will result in warning -->
+<!-- INVÁLIDO, resultará em um aviso -->
 <todo-list v-slot="slotProps">
   <todo-list v-slot:default="slotProps">
     <i class="fas fa-check"></i>
     <span class="green">{{ slotProps.item }}</span>
   </todo-list>
   <template v-slot:other="otherSlotProps">
-    slotProps is NOT available here
+    slotProps NÃO está disponível aqui
   </template>
 </todo-list>
 ```
 
-Whenever there are multiple slots, use the full `<template>` based syntax for _all_ slots:
+Sempre que houver mais de um _slot_, utilize da sintaxe completa, com `<template>`, para _todos_ os _slots_:
 
 ```html
 <todo-list>
@@ -333,17 +332,17 @@ Whenever there are multiple slots, use the full `<template>` based syntax for _a
 </todo-list>
 ```
 
-### Destructuring Slot Props
+### Desestruturando _Props_ do _Slot_
 
-Internally, scoped slots work by wrapping your slot content in a function passed a single argument:
+Internamente, _slots_ com escopo definido encapsulam o conteúdo do seu respectivo _slot_ em uma função com um único argumento:
 
 ```js
 function (slotProps) {
-  // ... slot content ...
+  // ... conteúdo do slot ...
 }
 ```
 
-That means the value of `v-slot` can actually accept any valid JavaScript expression that can appear in the argument position of a function definition. So you can also use [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) to pull out specific slot props, like so:
+Isto significa que o valor passado à `v-slot` pode aceitar, na verdade, qualquer expressão JavaScript válida na definição de argumentos de uma função. Portanto, você também pode utilizar a [desestruturação de objetos, da ES2015](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring), a fim de trabalhar apenas com os _props_ que você desejar no conteúdo do _slot_, como no exemplo abaixo:
 
 ```html
 <todo-list v-slot="{ item }">
@@ -352,7 +351,7 @@ That means the value of `v-slot` can actually accept any valid JavaScript expres
 </todo-list>
 ```
 
-This can make the template much cleaner, especially when the slot provides many props. It also opens other possibilities, such as renaming props, e.g. `item` to `todo`:
+Isto pode tornar o _template_ muito mais limpo, especialmente quando o _slot_ fornece vários _props_. Isto também abre portas para outras possibilidades, como renomear um _prop_ de nome `item` para `todo`:
 
 ```html
 <todo-list v-slot="{ item: todo }">
@@ -361,18 +360,18 @@ This can make the template much cleaner, especially when the slot provides many 
 </todo-list>
 ```
 
-You can even define fallbacks, to be used in case a slot prop is undefined:
+Você pode até definir valores padrão _(fallbacks)_, a fim de serem utilizados quando um _prop_ do _slot_ não possuir um valor definido _(undefined)_:
 
 ```html
-<todo-list v-slot="{ item = 'Placeholder' }">
+<todo-list v-slot="{ item = 'Isto é um afazer placeholder' }">
   <i class="fas fa-check"></i>
   <span class="green">{{ item }}</span>
 </todo-list>
 ```
 
-## Dynamic Slot Names
+## Nomes Dinâmicos para _Slots_
 
-[Dynamic directive arguments](template-syntax.md#dynamic-arguments) also work on `v-slot`, allowing the definition of dynamic slot names:
+[Argumentos dinâmicos de diretiva](template-syntax.md#argumentos-dinamicos) também funcionam com `v-slot`, permitindo a definição de nomes dinâmicos para _slots_:
 
 ```html
 <base-layout>
@@ -382,31 +381,31 @@ You can even define fallbacks, to be used in case a slot prop is undefined:
 </base-layout>
 ```
 
-## Named Slots Shorthand
+## Forma Abreviada para _Slots_ Nomeados
 
-Similar to `v-on` and `v-bind`, `v-slot` also has a shorthand, replacing everything before the argument (`v-slot:`) with the special symbol `#`. For example, `v-slot:header` can be rewritten as `#header`:
+Assim como em `v-on` e `v-bind`, `v-slot` também possui uma forma abreviada, basta substituirmos `v-slot:` (ou seja, tudo antes do argumento) pelo símbolo especial `#`. Portanto, `v-slot:header` também pode ser escrito como `#header`, por exemplo.
 
 ```html
 <base-layout>
   <template #header>
-    <h1>Here might be a page title</h1>
+    <h1>Aqui podemos ter um título para a página.</h1>
   </template>
 
   <template #default>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    <p>Um parágrafo para o conteúdo principal.</p>
+    <p>E aqui mais um.</p>
   </template>
 
   <template #footer>
-    <p>Here's some contact info</p>
+    <p>Aqui temos informações para contato.</p>
   </template>
 </base-layout>
 ```
 
-However, just as with other directives, the shorthand is only available when an argument is provided. That means the following syntax is invalid:
+Entretanto, assim como em qualquer outra diretiva, a forma abreviada está apenas disponível quando esta recebe um argumento. Isto significa que o exemplo a seguir possui sintaxe inválida:
 
 ```html
-<!-- This will trigger a warning -->
+<!-- Isto acionará um aviso -->
 
 <todo-list #="{ item }">
   <i class="fas fa-check"></i>
@@ -414,7 +413,7 @@ However, just as with other directives, the shorthand is only available when an 
 </todo-list>
 ```
 
-Instead, you must always specify the name of the slot if you wish to use the shorthand:
+Deste modo, você sempre precisa especificar o nome do _slot_ que você deseja definir ao utilizar a forma abreviada, como em:
 
 ```html
 <todo-list #default="{ item }">
