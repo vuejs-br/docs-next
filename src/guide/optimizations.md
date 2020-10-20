@@ -1,20 +1,20 @@
-# Rendering Mechanisms and Optimizations
+# Mecanismos de Renderização e Otimização
 
-> This page is not required reading in order to learn how to use Vue well, but it provides more information, should you be curious how rendering works under the hood.
+> Essa página não é uma leitura necessária para aprender como usar o Vue de forma correta, mas fornece mais informações, caso você fique curioso em como o trabalho de renderização funciona por debaixo do capô.
 
-## Virtual DOM
+## DOM Virtual
 
-Now that we know how watchers are updating the components, you might ask how those changes eventually make it to the DOM! Perhaps you’ve heard of the Virtual DOM before, many frameworks including Vue use this paradigm to make sure our interfaces reflect the changes we’re updating in JavaScript effectively
+Agora que nós sabemos como os observadores atualizam os componentes, você deve se perguntar como essas mudanças eventualmente alteram o DOM! Possivelmente você já ouviu falar sobre o DOM Virtual anteriormente, muitos *frameworks* inclusive o Vue usam esse paradigma para ter certeza que suas interfaces refletem as alterações que nós atualizamos no JavaScript efetivamente.
 
 <div class="reactivecontent">
-  <iframe height="500" style="width: 100%;" scrolling="no" title="How does the Virtual DOM work?" src="https://codepen.io/sdras/embed/RwwQapa?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-    See the Pen <a href='https://codepen.io/sdras/pen/RwwQapa'>How does the Virtual DOM work?</a> by Sarah Drasner
-    (<a href='https://codepen.io/sdras'>@sdras</a>) on <a href='https://codepen.io'>CodePen</a>.
+  <iframe height="500" style="width: 100%;" scrolling="no" title="Como o DOM Virtual funciona?" src="https://codepen.io/sdras/embed/RwwQapa?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+    Veja a caneta <a href='https://codepen.io/sdras/pen/RwwQapa'>Como o DOM Virtual funciona?</a> por Sarah Drasner
+    (<a href='https://codepen.io/sdras'>@sdras</a>) em <a href='https://codepen.io'>CodePen</a>.
   </iframe>
 </div>
 
-We make a copy of the DOM in JavaScript called the Virtual DOM, we do this because touching the DOM with JavaScript is computationally expensive. While performing updates in JavaScript is cheap, finding the required DOM nodes and updating them with JS is expensive. So we batch calls, and change the DOM all at once.
+Nós fazemos uma cópia do DOM no JavaScript chamada DOM Virtual, nós fazemos isso porque alterar o DOM com JavaScript é computacionalmente caro. Enquanto efetuar atualizações no JavaScript é barato, encontrando os nós necessários do DOM e os atualizando com JS é caro. Então nós colocamos as chamadas em lote, e fazemos a mudança no DOM todas de uma única vez.
 
-The Virtual DOM in is a lightweight JavaScript object, created by a render function. It takes three arguments: the element, an object with data, props, attrs and more, and an array. The array is where we pass in the children, which have all these arguments too, and then they can have children and so on, until we build a full tree of elements.
+O DOM Virtual é um leve objeto em JavaScript, criado pela função de renderização. Ele recebe três argumentos: o elemento, o objeto com a informação, propriedades, atributos e mais, e uma Array. A Array é onde nós passamos o filho, no qual tem todos esses argumentos também, e então eles podem ter filhos e assim por diante, até que nós criamos uma árvore cheia de elementos.
 
-If we need to update the list items, we do so in JavaScript, using the reactivity we mentioned earlier. We then make all the changes to the JavaScript copy, the virtual DOM, and perform a diff between this and the actual DOM. Only then do we make our updates to just what has changed. The Virtual DOM allows us to make performant updates to our UIs!
+Se nós precisarmos atualizar a lista de itens, nós também fazemos no JavaScript, utilizando a reatividade que mencionamos anteriormente. Nós fazemos todas as alterações na cópia do JavaScript, o DOM Virtual, e executamos a diferença entre esse e o DOM atual. Apenas então, fazemos nossas atualizações apenas no que foi alterado. O DOM Virtual nos permite fazer atualizações performáticas em nossas interfaces de usuário (UIs)!.
