@@ -1,12 +1,12 @@
 # Aprofundando-se na Reatividade
 
-Agora é o momento de mergulhar fundo! Uma das características mais distintas do Vue é o seu discreto sistema de reatividade. Models são _proxies_ de objetos JavaScript. Quando você os modifica, a _view_ é atualizada. Isso faz com que a administração de estado seja simples e intuitiva, porém é importante entender como isso funciona para evitar algumas pegadinhas. Nesta seção, vamos nos aprofundar em alguns dos detalhes de baixo nível do sistema de reatividade do Vue.
+Agora é o momento de mergulhar fundo! Uma das características mais distintas do Vue é o seu discreto sistema de reatividade. Os modelos de dados são _proxies_ de objetos JavaScript. Quando você os modifica, a _view_ é atualizada. Isso faz com que a administração de estado seja simples e intuitiva, mas também é importante entender como isso funciona para evitar algumas pegadinhas. Nesta seção, vamos nos aprofundar em alguns dos detalhes de baixo nível do sistema de reatividade do Vue.
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity" title="Aprenda a fundo como a reatividade funciona com o Vue Mastery">Assista um vídeo gratuito sobre Aprofundando-se na Reatividade no Vue Mastery</VideoLesson>
 
 ## O Que é Reatividade?
 
-Esse termo aparece na programação com uma certa frequência atualmente, mas o que é que as pessoas entendem por isso? Reatividade é um paradigma de programação que nos permite nos ajustar a mudanças de uma maneira declarativa. O exemplo canônico geralmente mostrado, por ser um ótimo exemplo, é uma planilha do excel.
+Esse termo aparece na programação com uma certa frequência atualmente, mas o que realmente significa quando as pessoas o dizem? Reatividade é um paradigma da programação que permite nos ajustarmos à mudanças de uma maneira declarativa. O exemplo canônico geralmente mostrado, por ser ótimo, é uma planilha do excel.
 
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
@@ -33,7 +33,7 @@ val1 = 3
 
 Ao atualizarmos o primeiro valor, a soma não é ajustada.
 
-Então, como fazemos isso em JavaScript?
+Então, como faríamos isso em JavaScript?
 
 - Detecte quando há uma mudança em algum dos valores
 - Rastreie a função que o modifica
@@ -41,7 +41,7 @@ Então, como fazemos isso em JavaScript?
 
 ## Como o Vue Rastreia Essas Mudanças
 
-Quando você passa um objeto Javascript simples para uma aplicação ou instância de componente, como sua opção `data`, o Vue irá iterar sobre todas as suas propriedades e irá convertê-las em [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) utilizando um _handler_ com getters e setters. Isso é uma _feature_ do ES6, somente, mas nós oferecemos uma versão do Vue 3 que utiliza o `Object.defineProperty` mais antigo, para dar suporte a navegadores IE. Ambas possuem a mesma API, na superfície, mas a versão com Proxy é mais elegante e oferece melhor performance.
+Quando você passa um objeto Javascript simples para uma aplicação ou instância de componente, como sua opção `data`, o Vue irá iterar sobre todas as suas propriedades e convertê-las em [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) utilizando um _handler_ com getters e setters. Isso é uma _feature_ do ES6, somente, mas nós oferecemos uma versão do Vue 3 que utiliza o `Object.defineProperty` mais antigo, para dar suporte à navegadores IE. Ambas possuem a mesma API, na superfície, mas a versão com Proxy é mais elegante e oferece melhor performance.
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Proxies e a Reatividade do Vue Explicados Visualmente" src="https://codepen.io/sdras/embed/zYYzjBg?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -71,7 +71,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-Ok, até agora, estamos apenas encapsulando o objeto e o retornando. Legal, mas ainda não muito útil. Mas observe isso, nós também podemos interceptar esse objeto enquanto temos ele encapsulado no Proxy. Essa interceptação é chamada de armadilha (_trap_).
+Ok, até agora, estamos apenas encapsulando o objeto e o retornando. Legal, mas ainda não tão útil. Mas observe isso, nós também podemos interceptar esse objeto enquanto temos ele encapsulado no Proxy. Essa interceptação é chamada de armadilha (_trap_).
 
 ```js
 const dinner = {
@@ -80,7 +80,7 @@ const dinner = {
 
 const handler = {
   get(target, prop) {
-    console.log(‘intercepted!’)
+    console.log(‘interceptado!’)
     return target[prop]
   }
 }
@@ -88,13 +88,13 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
+// interceptado!
 // tacos
 ```
 
-Indo além de um _console log_, nós poderíamos fazer aqui qualquer coisa que desejássemos. Poderíamos até mesmo _não_ retornar o valor real se quiséssemos. Isso é o que torna os Proxies tão poderosos para a criação de APIs.
+Indo além de um `console.log`, nós poderíamos fazer aqui qualquer coisa que desejássemos. Poderíamos até mesmo _não_ retornar o valor real se quiséssemos. Isso é o que torna os Proxies tão poderosos para a criação de APIs.
 
-Além disso, há uma outra _feature_ que os Proxies nos oferecem. Ao invés de apenas retornar valores como esse: `target[prop]`, nós poderíamos levar isso um passo adiante e usar uma _feature_ chamada `Reflect`, que nos permite fazer a interligação apropriada do `this`. Isso leva a algo parecido com isso:
+Além disso, há uma outra _feature_ que os Proxies nos oferecem. Ao invés de apenas retornar valores como esse: `target[prop]`, nós poderíamos levar isso um passo adiante e usar uma _feature_ chamada `Reflect`, que nos permite fazer a interligação apropriada do `this`. Isso leva à algo parecido com isso:
 
 ```js{7}
 const dinner = {
@@ -110,7 +110,7 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
+// interceptado!
 // tacos
 ```
 
@@ -131,7 +131,7 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
+// interceptado!
 // tacos
 ```
 
@@ -156,7 +156,7 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
+// interceptado!
 // tacos
 ```
 
@@ -168,7 +168,7 @@ Lembra-se desta lista de alguns parágrafos atrás? Agora nós temos algumas res
 
 O objeto com o _proxy_ aplicado é invisível para o usuário, mas por baixo dos panos ele possibilita que o Vue faça o rastreamento-de-dependência (_dependency-tracking_) e a notificação-de-mudança (_change-notification_) quando propriedades são acessadas ou modificadas. A partir do Vue 3, nossa reatividade está agora disponível em um [pacote separado](https://github.com/vuejs/vue-next/tree/master/packages/reactivity). Um problema é que o _console_ de navegadores formatam diferentemente quando objetos de dados convertidos são registrados no _log_, então pode ser que você queria instalar o [vue-devtools](https://github.com/vuejs/vue-devtools) para uma interface mais amigável à inspeção.
 
-### Objetos com o Proxy aplicado
+### Objetos com Proxy Aplicado
 
 O Vue rastreia internamente todos os objetos que foram transformados em reativos, então ele sempre retorna o mesmo proxy de um mesmo objeto.
 
@@ -189,7 +189,7 @@ const handler = {
 }
 ```
 
-### Proxy vs. identidade original
+### Proxy vs. Identidade Original
 
 O uso do Proxy de fato introduz um novo empecilho a ser considerado: o objeto com o proxy aplicado não é igual ao objeto original em termos de comparação de identidade (`===`). Por exemplo:
 
@@ -202,7 +202,7 @@ console.log(obj === wrapped) // false
 
 A versão original e a versão encapsulada se comportarão da mesma forma na maioria dos casos, mas esteja ciente de que elas irão falhar em operações que dependem de comparações fortes de identidade, como `.filter()` ou `.map()`. Esse empecilho tem pouca chance de ocorrer quando a API de opções estiver sendo utilizada, porque todo o estado reativo é acessado a partir do `this` e é garantido que já sejam _proxies_.
 
-Entretanto, quanto estiver utilizando a API de composição para criar objetos reativos explicitamente, a melhor prática é a de nunca guardar uma referência para o objeto cru original e trabalhar somente com a versão reativa:
+Entretanto, quanto estiver utilizando a API de composição para criar objetos reativos explicitamente, a melhor prática é a de nunca guardar uma referência para o puro objeto original e trabalhar somente com a versão reativa:
 
 ```js
 const obj = reactive({
@@ -223,8 +223,8 @@ Toda instância de componente tem uma instância de observador correspondente, q
 
 Quando você passa um objeto para uma instância de um componente como _data_, o Vue o converte em um proxy. Esse proxy permite ao Vue realizar o rastreamento-de-dependência (_dependency-tracking_) e a notificação-de-mudança (_change-notification_), quando as propriedades são acessadas ou modificadas. Cada propriedade é considerada uma dependência.
 
-Após a primeira renderização, um componente teria rastreado a lista de dependências &mdash; as propriedades que acessou durante a renderização. Inversamente, o componente se torna um assinante de cada uma dessas propriedades. Quando um proxy intercepta uma operação _set_, a propriedade notificará cada um de seus componentes assinantes para re-renderizarem.
+Após a primeira renderização, um componente teria rastreado uma lista de dependências &mdash; as propriedades que acessou durante a renderização. Inversamente, o componente se torna um assinante de cada uma dessas propriedades. Quando um proxy intercepta uma operação _set_, a propriedade notificará cada um de seus componentes assinantes para re-renderizarem.
 
-[//]: # 'TODO: Diagrama de Insert'
+[//]: # 'TODO: Inserir diagrama'
 
-> Se você está utilizando Vue 2.x e abaixo, pode estar interessado em alguns empecilhos de detecção de mudanças que existem nessas versões, [explorados em mais detalhes aqui](change-detection.md).
+> Se você está utilizando Vue v2.x ou mais antigo, pode estar interessado em alguns empecilhos da detecção de mudanças que existem nessas versões, [explorados em mais detalhes aqui](change-detection.md).
