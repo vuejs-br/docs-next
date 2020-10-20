@@ -1,20 +1,20 @@
 ---
-title: v-for Array Refs
+title: Array Refs no v-for
 badges:
 - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-In Vue 2, using the `ref` attribute inside `v-for` will populate the corresponding `$refs` property with an array of refs. This behavior becomes ambiguous and inefficient when there are nested `v-for`s present.
+No Vue 2, usar o atributo `ref` dentro do `v-for` irá preencher a propriedade `$refs` correspondente com um Array de `refs`. Este comportamento se torna ambíguo e ineficiente quando existem `v-for` aninhados.
 
-In Vue 3, such usage will no longer automatically create an array in `$refs`. To retrieve multiple refs from a single binding, bind `ref` to a function which provides more flexibility (this is a new feature):
+No Vue 3, tal uso não mais criará automaticamente um Array em `$refs`. Para recuperar várias referências de uma única ligação, vincule `ref` à uma função que forneça mais flexibilidade (este é um novo recurso):
 
 ```html
 <div v-for="item in list" :ref="setItemRef"></div>
 ```
 
-With Options API:
+Com API de Opções:
 
 ```js
 export default {
@@ -37,7 +37,7 @@ export default {
 }
 ```
 
-With Composition API:
+Com API de Composição:
 
 ```js
 import { ref, onBeforeUpdate, onUpdated } from 'vue'
@@ -62,8 +62,8 @@ export default {
 }
 ```
 
-Note that:
+Observe que:
 
-- `itemRefs` doesn't have to be an array: it can also be an object where the refs are set by their iteration keys.
+- `itemRefs` não precisa ser um Array: também pode ser um objeto onde as referências são definidas por suas chaves de iteração.
 
-- This also allows `itemRefs` to be made reactive and watched, if needed.
+- Isso também permite que `itemRefs` sejam reativos e observados, se necessário.
