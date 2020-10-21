@@ -7,11 +7,11 @@ badges:
 
 ## Visão Geral
 
-No Vue 3, os componentes agora terão suporte oficial para componentes com nós multi-raiz, i.e., fragmentos!
+No Vue 3, os componentes agora tem suporte oficial para componentes com nós multi-raiz, ou seja, fragmentos!
 
-## Sintaxe 2.x
+## Sintaxe v2.x
 
-No 2.x, componentes multi-raiz não eram suportados e iriam emitir um aviso no caso de um usuário acidentalmente criar um. Como resultado, vários componentes são envolvidos em uma única `<div>` de forma a corrigir esse erro.
+Na v2.x, componentes multi-raiz não eram suportados e iriam emitir um aviso no caso de um usuário acidentalmente criar um. Como resultado, vários componentes são envolvidos em uma única `<div>` de forma a corrigir esse erro.
 
 ```html
 <!-- Layout.vue -->
@@ -24,9 +24,9 @@ No 2.x, componentes multi-raiz não eram suportados e iriam emitir um aviso no c
 </template>
 ```
 
-## Sintaxe 3.x
+## Sintaxe v3.x
 
-No 3.x, componentes agora podem ter vários nós raiz! No entanto, isso requer aos desenvolvedores definir explicitamente onde os atributos deveriam ser distribuídos.
+Na v3.x, componentes agora podem ter vários nós raiz! No entanto, isso requer aos desenvolvedores definir explicitamente onde os atributos deveriam ser distribuídos.
 
 ```html
 <!-- Layout.vue -->
