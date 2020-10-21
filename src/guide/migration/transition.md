@@ -10,7 +10,7 @@ badges:
 
 A classe de transição `v-enter` foi renomeada para `v-enter-from` e a classe de transição `v-leave` foi renomeada para `v-leave-from`.
 
-## Sintaxe 2.x
+## Sintaxe v2.x
 
 Antes da v2.1.8, nós tinhamos duas classes de transição para cada direção da transição: estados inicial e ativo.
 
@@ -28,11 +28,11 @@ Na v2.1.8, nós introduzimos a `v-enter-to` para endereçar o intervalo de tempo
 }
 ```
 
-Isso se tornou confuso, como _enter_ e _leave_ eram amplos e não utilizavam a mesma convenção de nome que suas classes de ligação com homólogas.
+Isso se tornou confuso, como _enter_ e _leave_ eram amplos e não utilizavam a mesma convenção de nome que suas classes de ligação homólogas.
 
-## Atualização 3.x
+## Atualização v3.x
 
-De forma a deixar mais explícito e legível, nós agora renomeamos essas classes de estado inicial:
+De forma à deixar mais explícito e legível, nós agora renomeamos essas classes de estado inicial:
 
 ```css
 .v-enter-from,
