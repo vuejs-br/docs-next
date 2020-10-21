@@ -11,7 +11,6 @@ Todos eles já estão armazenados como números brutos ou podem ser convertidos 
 
 ## Animando Estado com Observadores
 
-
 Os observadores nos permitem animar mudanças de qualquer propriedade numérica em outra propriedade. Isso pode parecer complicado no abstrato, então vamos mergulhar em um exemplo usando [GreenSock](https://greensock.com/):
 
 ```html
@@ -48,16 +47,16 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="22903bc3b53eb5b7817378ecb985ce96" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transitioning State 1">
   <span>Veja o exemplo <a href="https://codepen.io/team/Vue/pen/22903bc3b53eb5b7817378ecb985ce96">
-  Estado de Transição 1</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Transição de Estado 1</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Quando você atualiza o número, a mudança é animada abaixo da entrada.
+Quando você atualiza o número, a mudança é animada abaixo do `input`.
 
-## Transições de Estado Dinâmico
+## Transições de Estado Dinâmicas
 
-Tal como acontece com os componentes de transição do Vue, as transições de estado de suporte de dados podem ser atualizadas em tempo real, o que é especialmente útil para prototipagem! Mesmo usando um polígono SVG simples, você pode obter muitos efeitos que seriam difíceis de conceber até que você jogasse um pouco com as variáveis.
+Tal como acontece com os componentes de transição do Vue, os dados nos quais as transições de estado se baseiam podem ser atualizados em tempo real, o que é especialmente útil para prototipagem! Mesmo usando um polígono SVG simples, você pode obter muitos efeitos que seriam difíceis de conceber até que você brincasse um pouco com as variáveis.
 
 <p class="codepen" data-height="500" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="a8e00648d4df6baa1b19fb6c31c8d17e" data-preview="true" style="height: 493px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Updating SVG">
   <span>Veja o exemplo<a href="https://codepen.io/team/Vue/pen/a8e00648d4df6baa1b19fb6c31c8d17e">
@@ -68,7 +67,7 @@ Tal como acontece com os componentes de transição do Vue, as transições de e
 
 ## Organizando Transições em Componentes
 
-Gerenciar muitas transições de estado pode aumentar rapidamente a complexidade de uma instância de componente. Felizmente, muitas animações podem ser extraídas em componentes filhos dedicados. Vamos fazer isso com o inteiro animado de nosso exemplo anterior:
+Gerenciar muitas transições de estado pode aumentar rapidamente a complexidade de uma instância de componente. Felizmente, muitas animações podem ser extraídas em componentes filhos dedicados. Vamos fazer isso com o número inteiro animado de nosso exemplo anterior:
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -148,15 +147,15 @@ app.mount('#app')
 
 Agora podemos compor vários estados com esses componentes filhos. É empolgante - podemos usar qualquer combinação de estratégias de transição que foram abordadas nesta página, junto com as oferecidas pelo [sistema de transição integrado](transitions.html) do Vue. Juntos, existem poucos limites para o que pode ser realizado.
 
-Você pode ver como podemos usar isso para visualização de dados, para efeitos físicos, para animações e interações de personagens, o céu é o limite.
+Você pode ver como podemos usar isso para visualização de dados, efeitos de física, animações e interações de personagens, o céu é o limite!
 
-## Dando Vida aos Designs
+## Trazendo Designs à Vida
 
-Para animar, por uma definição, significa trazer à vida. Infelizmente, quando os designers criam ícones, logotipos e mascotes, eles geralmente são entregues como imagens ou SVGs estáticos. Portanto, embora o  polvo-gato do GitHub, o pássaro do Twitter e muitos outros logotipos se assemelhem a criaturas vivas, eles não parecem realmente vivos.
+Animar, por uma definição, significa trazer à vida. Infelizmente, quando os designers criam ícones, logotipos e mascotes, eles geralmente são entregues como imagens ou SVGs estáticos. Portanto, embora o polvo-gato do GitHub, o pássaro do Twitter e muitos outros logotipos se assemelhem à criaturas vivas, eles não parecem realmente vivos.
 
 O Vue pode ajudar. Como os SVGs são apenas dados, precisamos apenas de exemplos de como essas criaturas se parecem quando empolgadas, pensando ou alarmadas. O Vue pode ajudar na transição entre esses estados, tornando suas páginas de boas-vindas, indicadores de carregamento e notificações mais emocionalmente atraentes.
 
-Sarah Drasner demonstra isso na demonstração abaixo, usando uma combinação de mudanças de estado cronometradas e orientadas à interatividade:
+Sarah Drasner demonstra isso abaixo, usando uma combinação de mudanças de estado cronometradas e orientadas à interatividade:
 
-<p data-height="400" data-theme-id="light" data-slug-hash="YZBGNp" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Vue-controlled Wall-E" class="codepen">Veja o exemplo <a href="https://codepen.io/sdras/pen/YZBGNp/">Vue-controlled Wall-E</a> por Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="400" data-theme-id="light" data-slug-hash="YZBGNp" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Vue-controlled Wall-E" class="codepen">Veja o exemplo <a href="https://codepen.io/sdras/pen/YZBGNp/">Wall-E controlado via Vue</a> por Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
