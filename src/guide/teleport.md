@@ -1,19 +1,19 @@
-# Teleport
+# Teleporte
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how to use teleport with Vue School">Learn how to use teleport with a free lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda a usar o teleport com Vue School">Aprenda como usar o teleporte em uma aula grátis do Vue School</a></div>
 
-Vue encourages us to build our UIs by encapsulating UI and related behavior into components. We can nest them inside one another to build a tree that makes up an application UI.
+O Vue nos encoraja à construir nossas interfaces de usuário (UIs) encapsulando a UI e seu respectivo comportamento em componentes. Podemos aninhar componentes dentro de outros componentes e montar uma árvore que constitui a UI da aplicação.
 
-However, sometimes a part of a component's template belongs to this component logically, while from a technical point of view, it would be preferable to move this part of the template somewhere else in the DOM, outside of the Vue app. 
+Entretanto, algumas vezes uma parte do _template_ do componente pertence à esse componente de forma lógica, enquanto do ponto de vista técnico, seria preferível mover essa parte do _template_ para outro lugar no DOM, fora da aplicação Vue.
 
-A common scenario for this is creating a component that includes a full-screen modal. In most cases, you'd want the modal's logic to live within the component, but the positioning of the modal quickly becomes difficult to solve through CSS, or requires a change in component composition.
+Um cenário comum para isso é a criação de um componente que inclui um _modal_ em tela cheia. Na maioria dos casos, você gostaria que a lógica do modal residisse dentro do componente, mas o posicionamento do modal se torna difícil de resolver por meio de CSS ou requer uma mudança na composição do componente.
 
-Consider the following HTML structure.
+Considere a seguinte estrutura HTML.
 
 ```html
 <body>
   <div style="position: relative;">
-    <h3>Tooltips with Vue 3 Teleport</h3>
+    <h3>Tooltips com Vue 3 e Teleport</h3>
     <div>
       <modal-button></modal-button>
     </div>
@@ -21,9 +21,9 @@ Consider the following HTML structure.
 </body>
 ```
 
-Let's take a look at `modal-button`. 
+Vamos olhar o `modal-button` de perto.
 
-The component will have a `button` element to trigger the opening of the modal, and a `div` element with a class of `.modal`, which will contain the modal's content and a button to self-close.
+O componente terá um elemento `button` para acionar a abertura do modal e um elemento `div` com uma classe `.modal` que irá conter o conteúdo do modal e um botão para fechá-lo.
 
 ```js
 const app = Vue.createApp({});
@@ -31,14 +31,14 @@ const app = Vue.createApp({});
 app.component('modal-button', {
   template: `
     <button @click="modalOpen = true">
-        Open full screen modal!
+        Abrir modal de tela cheia!
     </button>
 
     <div v-if="modalOpen" class="modal">
       <div>
-        I'm a modal! 
+        Eu sou um modal! 
         <button @click="modalOpen = false">
-          Close
+          Fechar
         </button>
       </div>
     </div>
@@ -51,26 +51,26 @@ app.component('modal-button', {
 })
 ```
 
-When using this component inside the initial HTML structure, we can see a problem - the modal is being rendered inside the deeply nested `div` and the `position: absolute` of the modal takes the parent relatively positioned `div` as reference.
+Ao usar esse componente dentro da estrutura HTML inicial, podemos ver um problema - o modal está sendo renderizado dentro de uma `div` profundamente aninhada e a `position: absolute` do modal toma como referência a `div` pai posicionada relativamente. 
 
-Teleport provides a clean way to allow us to control under which parent in our DOM we want a piece of HTML to be rendered, without having to resort to global state or splitting this into two components.
+O Teleporte fornece uma maneira limpa para nos permitir controlar sob que elemento pai no DOM nós queremos que uma parte do HTML seja rederizada, sem ter que recorrer ao estado global ou dividí-lo em dois componentes.
 
-Let's modify our `modal-button` to use `<teleport>` and tell Vue "**teleport** this HTML **to** the "**body**" tag". 
+Vamos modificar nosso `modal-button` para usar o `<teleport>` e dizer ao Vue que "**teleporte** esse HTML **para** a _tag_ '**body**'". 
 
 ```js
 app.component('modal-button', {
   template: `
     <button @click="modalOpen = true">
-        Open full screen modal! (With teleport!)
+        Abrir modal de tela cheia! (Com Teleporte!)
     </button>
 
     <teleport to="body">
       <div v-if="modalOpen" class="modal">
         <div>
-          I'm a teleported modal! 
-          (My parent is "body")
+          Eu sou um modal teleportado!
+          (Meu pai é o "body")
           <button @click="modalOpen = false">
-            Close
+            Fechar
           </button>
         </div>
       </div>
@@ -84,7 +84,7 @@ app.component('modal-button', {
 })
 ```
 
-As a result, once we click the button to open the modal, Vue will correctly render the modal's content as a child of the `body` tag.
+Como resultado, uma vez que clicamos no botão para abrir o modal, o Vue irá renderizar corretamente o conteúdo como um filho da _tag_ `body`.
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="gOPNvjR" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue 3 Teleport">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOPNvjR">
@@ -93,21 +93,21 @@ As a result, once we click the button to open the modal, Vue will correctly rend
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Using with Vue components
+## Usando com Componentes Vue
 
-If `<teleport>` contains a Vue component, it will remain a logical child component of the `<teleport>`'s parent:
+Se o `<teleport>` contém um componente Vue, o componente permanecerá um filho lógico do pai do `<teleport>`:
 
 ```js
 const app = Vue.createApp({
   template: `
-    <h1>Root instance</h1>
+    <h1>Instância raiz</h1>
     <parent-component />
   `
 })
 
 app.component('parent-component', {
   template: `
-    <h2>This is a parent component</h2>
+    <h2>Este é um componente pai</h2>
     <teleport to="#endofbody">
       <child-component name="John" />
     </teleport>
@@ -117,18 +117,18 @@ app.component('parent-component', {
 app.component('child-component', {
   props: ['name'],
   template: `
-    <div>Hello, {{ name }}</div>
+    <div>Olá, {{ name }}</div>
   `
 })
 ```
 
-In this case, even when `child-component` is rendered in the different place, it will remain a child of `parent-component` and will receive a `name` prop from it.
+Neste caso, mesmo quando o `child-component` é renderizado em um lugar diferente, permanecerá como filho do `parent-component` e receberá a propriedade `name` dele.
 
-This also means that injections from a parent component work as expected, and that the child component will be nested below the parent component in the Vue Devtools, instead of being placed where the actual content moved to.
+Isso também significa que injeções vindas do componente pai funcionam como o esperado, e que o componente filho será aninhado embaixo do componente pai no _Vue Devtools_, em vez de ser colocado no lugar para o qual o conteúdo foi movido.
 
-## Using multiple teleports on the same target
+## Usando Múltiplos Teleportes no Mesmo Alvo
 
-A common use case scenario would be a reusable `<Modal>` component of which there might be multiple instances active at the same time. For this kind of scenario, multiple `<teleport>` components can mount their content to the same target element. The order will be a simple append - later mounts will be located after earlier ones within the target element.
+Um cenário de caso de uso comum pode ser um componente `<Modal>` reutilizável, do qual pode haver várias instâncias ativas ao mesmo tempo. Para esse tipo de cenário, múltiplos componentes `<teleport>` podem montar seus respectivos conteúdos no mesmo elemento alvo. A ordem será simplemente anexá-los - as montagens novas serão localizadas depois das primeiras montagens realizadas no elemento alvo.
 
 ```html
 <teleport to="#modals">
@@ -145,4 +145,4 @@ A common use case scenario would be a reusable `<Modal>` component of which ther
 </div>
 ```
 
-You can check `<teleport>` component options in the [API reference](../api/built-in-components.html#teleport)
+Você pode checar as opções do componente `<teleport>` nas [referências da API](../api/built-in-components.html#teleport)

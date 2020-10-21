@@ -1,9 +1,9 @@
 <template>
   <SponsorsLayout extra-classes="sponsors__open-collective">
-    <template #heading>Open Collective Sponsors</template>
+    <template #heading>Patrocínio no Open Collective</template>
 
     <template #content>
-      <h4>Platinum</h4>
+      <h4>Platina</h4>
       <a
         :href="`https://opencollective.com/vuejs/tiers/platinum-sponsors/${index}/website`"
         rel="sponsored noopener"
@@ -12,11 +12,11 @@
       >
         <img
           :src="`https://opencollective.com/vuejs/tiers/platinum-sponsors/${index}/avatar.svg`"
-          alt="Vue.JS platinum sponsor"
+          alt="Patrocinador Platina do Vue.JS"
         >
       </a>
 
-      <h4>Gold</h4>
+      <h4>Ouro</h4>
       <a
         :href="`https://opencollective.com/vuejs/tiers/gold-sponsors/${index}/website`"
         rel="sponsored noopener"
@@ -25,7 +25,7 @@
       >
         <img
           :src="`https://opencollective.com/vuejs/tiers/gold-sponsors/${index}/avatar.svg`"
-          alt="Vue.JS gold sponsor"
+          alt="Patrocinador Ouro do Vue.JS"
         >
       </a>
     </template>
