@@ -1,14 +1,14 @@
-# Application & Component Instances
+# Instâncias de Aplicação e de Componentes
 
-## Creating an Application Instance
+## Criando uma Instância de Aplicação
 
 Toda aplicação Vue começa com a criação de uma nova **instância** com a função `createApp`:
 
 ```js
-const app = Vue.createApp({ /* options */ })
+const app = Vue.createApp({ /* opções */ })
 ```
 
-The application instance is used to register 'globals' that can then be used by components within that application. We'll discuss that in detail later in the guide but as a quick example:
+A instância da aplicação é usada para registrar 'globais' que podem ser usados pelos componentes dentro da aplicação. Discutiremos isso em detalhes posteriormente no guia, mas como um exemplo rápido:
 
 ```js
 const app = Vue.createApp({})
@@ -17,7 +17,7 @@ app.directive('focus', FocusDirective)
 app.use(LocalePlugin)
 ```
 
-Most of the methods exposed by the application instance return that same instance, allowing for chaining:
+A maioria dos métodos expostos pela instância da aplicação retornam a própria instância, permitindo encadeamentos:
 
 ```js
 Vue.createApp({})
@@ -26,28 +26,28 @@ Vue.createApp({})
   .use(LocalePlugin)
 ```
 
-You can browse the full application API in the [API reference](../api/application-api.html).
+Você pode navegar na API completa da aplicação na [documentação da API](../api/application-api.html).
 
-## The Root Component
+## O Componente Raiz
 
-The options passed to `createApp` are used to configure the **root component**. That component is used as the starting point for rendering when we **mount** the application.
+As opções passadas para `createApp` são usadas para configurar o  **componente raiz**. Esse componente é usado como ponto de partida para renderização quando nós **montamos** a aplicação.
 
-An application needs to be mounted into a DOM element. For example, if we want to mount a Vue application into `<div id="app"></div>`, we should pass `#app`:
+Uma aplicação precisa ser montada em um elemento DOM. Por exemplo, se quisermos montar um aplicação Vue em `<div id="app"></div>`, devemos passar `#app`:
 
 ```js
-const RootComponent = { /* options */ }
+const RootComponent = { /* opções */ }
 const app = Vue.createApp(RootComponent)
 const vm = app.mount('#app')
 ```
 
-Unlike most of the application methods, `mount` does not return the application. Instead it returns the root component instance.
+Diferente da maioria dos métodos de aplicação, `mount` não retorna uma instância da aplicação. Em vez disso, retorna a instância do componente raiz.
 
-Although not strictly associated with the [MVVM pattern](https://en.wikipedia.org/wiki/Model_View_ViewModel), Vue's design was partly inspired by it. As a convention, we often use the variable `vm` (short for ViewModel) to refer to a component instance.
+Embora não seja estritamente associado ao [padrão MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), o design do Vue foi parcialmente inspirado por ele. Como convenção, costumamos usar a variável `vm` (abreviação de ViewModel) para se referir à uma instância de componente.
 
-While all the examples on this page only need a single component, most real applications are organized into a tree of nested, reusable components. For example, a Todo application's component tree might look like this:
+Embora todos os exemplos nesta página precisem apenas de um único componente, a maioria das aplicações reais são organizadas em uma árvore de componentes reutilizáveis aninhados. Por exemplo, a árvore de componentes de uma aplicação Todo pode ter a seguinte aparência:
 
 ```
-Root Component
+Componente Raiz
 └─ TodoList
    ├─ TodoItem
    │  ├─ DeleteTodoButton
@@ -57,13 +57,13 @@ Root Component
       └─ TodoListStatistics
 ```
 
-Each component will have its own component instance, `vm`. For some components, such as `TodoItem`, there will likely be multiple instances rendered at any one time. All of the component instances in this application will share the same application instance.
+Cada componente terá sua própria instância de componente, `vm`. Para alguns componentes, como `TodoItem`, provavelmente haverão várias instâncias renderizadas a qualquer momento. Todas as instâncias de componente nesta aplicação irão compartilhar a mesma instância de aplicação.
 
-We'll talk about [the component system](component-basics.html) in detail later. For now, just be aware that the root component isn't really any different from any other component. The configuration options are the same, as is the behavior of the corresponding component instance.
+Falaremos sobre [o sistema de componentes](component-basics.html) em detalhes depois. Por enquanto, apenas esteja ciente de que o componente raiz não é realmente diferente de qualquer outro componente. As opções de configuração são as mesmas, assim como o comportamento da instância do componente correspondente.
 
-## Component Instance Properties
+## Propriedades da Instância do Componente
 
-Earlier in the guide we met `data` properties. Properties defined in `data` are exposed via the component instance:
+No início do guia conhecemos as propriedades do `data`. Propriedades definidas no `data` são expostas por meio da instância do componente:
 
 ```js
 const app = Vue.createApp({
@@ -77,13 +77,13 @@ const vm = app.mount('#app')
 console.log(vm.count) // => 4
 ```
 
-There are various other component options that add user-defined properties to the component instance, such as `methods`, `props`, `computed`, `inject` and `setup`. We'll discuss each of these in depth later in the guide. All of the properties of the component instance, no matter how they are defined, will be accessible in the component's template.
+Existem várias outras opções de componentes que adicionam propriedades definidas pelo usuário à instância do componente, tais como `methods`, `props`, `computed`, `inject` e `setup`. Discutiremos cada um deles em detalhes posteriormente no guia. Todas as propriedades da instância do componente, não importa como sejam definidas, estarão acessíveis no _template_ do componente.
 
-Vue also exposes some built-in properties via the component instance, such as `$attrs` and `$emit`. These properties all have a `$` prefix to avoid conflicting with user-defined property names.
+O Vue também expõe algumas propriedades integradas por meio da instância do componente, tais como `$attrs` e `$emit`. Todas essas propriedades têm um prefixo `$` para evitar conflito com nomes de propriedade definidas pelo usuário.
 
-## Lifecycle Hooks
+## Gatilhos de Ciclo de Vida
 
-Each component instance goes through a series of initialization steps when it's created - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. Along the way, it also runs functions called **lifecycle hooks**, giving users the opportunity to add their own code at specific stages.
+Cada instância do componente passa por uma série de etapas de inicialização quando é criada - por exemplo, é preciso configurar a observação de dados, compilar o template, montar a instância no DOM, e atualizar o DOM quando os dados mudam. Ao longo desse caminho, também executa funções chamadas **gatilhos de ciclo de vida**, dando aos usuários a oportunidade de adicionar seu próprio código em estágios específicos.
 
 Por exemplo, o gatilho [`created`](../api/options-lifecycle-hooks.html#created) pode ser utilizado para executar código logo após a instância ser criada:
 
@@ -93,7 +93,7 @@ Vue.createApp({
     return { count: 1 }
   },
   created() {
-    // `this` points to the vm instance
+    // `this` aponta para a instância vm
     console.log('count is: ' + this.count) // => "count is: 1"
   }
 })
@@ -102,7 +102,7 @@ Vue.createApp({
 Existem também outros gatilhos que serão chamados em diferentes etapas do ciclo de vida da instância, como [`mounted`](../api/options-lifecycle-hooks.html#mounted), [`updated`](../api/options-lifecycle-hooks.html#updated), e [`unmounted`](../api/options-lifecycle-hooks.html#unmounted). Todos os gatilhos de ciclo de vida são executados com seu contexto `this` apontando para a atual instância ativa que o invoca.
 
 ::: tip Nota
-Não utilize [_arrow functions_](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions) em propriedades de opções ou _callback_, como em `created: () => console.log(this.a)` ou `vm.$watch('a', newValue => this.myMethod())`. Como as _arrow functions_ não possuem um `this`,`this` será tratado como qualquer outra variável e lexicamente pesquisada através de escopos parentais até ser encontrada, frequentemente resultando em erros como `Uncaught TypeError: Cannot read property of undefined` ou `Uncaught TypeError: this.myMethod is not a function`.
+Não utilize [_arrow functions_](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions) em propriedades de opções ou _callback_, como em `created: () => console.log(this.a)` ou `vm.$watch('a', newValue => this.myMethod())`. Como as _arrow functions_ não possuem um `this`,`this` será tratado como qualquer outra variável e lexicalmente pesquisada através de escopos parentais até ser encontrada, frequentemente resultando em erros como `Uncaught TypeError: Cannot read property of undefined` ou `Uncaught TypeError: this.myMethod is not a function`.
 :::
 
 ## Diagrama do Ciclo de Vida
