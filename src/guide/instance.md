@@ -1,4 +1,4 @@
-# Instâncias de Aplicação e de componentes
+# Instâncias de Aplicação e de Componentes
 
 ## Criando uma Instância de Aplicação
 
@@ -8,7 +8,7 @@ Toda aplicação Vue começa com a criação de uma nova **instância** com a fu
 const app = Vue.createApp({ /* opções */ })
 ```
 
-A instância de aplicação é usada para registrar 'globais' que podem ser usados pelos componentes dentro da aplicação. Discutiremos isso em detalhes posteriormente no guia, mas como um exemplo rápido:
+A instância da aplicação é usada para registrar 'globais' que podem ser usados pelos componentes dentro da aplicação. Discutiremos isso em detalhes posteriormente no guia, mas como um exemplo rápido:
 
 ```js
 const app = Vue.createApp({})
@@ -17,7 +17,7 @@ app.directive('focus', FocusDirective)
 app.use(LocalePlugin)
 ```
 
-A maioria dos métodos expostos pela instância de aplicação retornam a própria instância, permitindo encadeamentos:
+A maioria dos métodos expostos pela instância da aplicação retornam a própria instância, permitindo encadeamentos:
 
 ```js
 Vue.createApp({})
@@ -42,12 +42,12 @@ const vm = app.mount('#app')
 
 Diferente da maioria dos métodos de aplicação, `mount` não retorna uma instância da aplicação. Em vez disso, retorna a instância do componente raiz.
 
-Embora não seja estritamente associado ao [padrão MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), o design do Vue foi parcialmente inspirado por ele. Como convenção, costumamos usar a variável `vm` (abreviação de ViewModel) para se referir a uma instância de componente.
+Embora não seja estritamente associado ao [padrão MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), o design do Vue foi parcialmente inspirado por ele. Como convenção, costumamos usar a variável `vm` (abreviação de ViewModel) para se referir à uma instância de componente.
 
 Embora todos os exemplos nesta página precisem apenas de um único componente, a maioria das aplicações reais são organizadas em uma árvore de componentes reutilizáveis aninhados. Por exemplo, a árvore de componentes de uma aplicação Todo pode ter a seguinte aparência:
 
 ```
-Root Component
+Componente Raiz
 └─ TodoList
    ├─ TodoItem
    │  ├─ DeleteTodoButton
@@ -63,7 +63,7 @@ Falaremos sobre [o sistema de componentes](component-basics.html) em detalhes de
 
 ## Propriedades da Instância do Componente
 
-No início do guia que conhecemos as propriedades do `data`. Propriedades definidas no `data` são expostas por meio da instância do componente:
+No início do guia conhecemos as propriedades do `data`. Propriedades definidas no `data` são expostas por meio da instância do componente:
 
 ```js
 const app = Vue.createApp({
@@ -77,9 +77,9 @@ const vm = app.mount('#app')
 console.log(vm.count) // => 4
 ```
 
-Existem várias outras opções de componentes que adicionam propriedades definidas pelo usuário à instância do componente, tais como `methods`, `props`, `computed`, `inject` e `setup`. Discutiremos cada um deles em detalhes posteriormente no guia. Todas as propriedades da instância do componente, não importa como sejam definidas, estará acessível no template do componente.
+Existem várias outras opções de componentes que adicionam propriedades definidas pelo usuário à instância do componente, tais como `methods`, `props`, `computed`, `inject` e `setup`. Discutiremos cada um deles em detalhes posteriormente no guia. Todas as propriedades da instância do componente, não importa como sejam definidas, estarão acessíveis no _template_ do componente.
 
-O Vue também expõe algumas propriedades integradas por meio da instância do componente, tais como `$attrs` e `$emit`. Todas essas propriedades têm um `$` prefixo para evitar conflito com nomes de propriedade definidas pelo usuário.
+O Vue também expõe algumas propriedades integradas por meio da instância do componente, tais como `$attrs` e `$emit`. Todas essas propriedades têm um prefixo `$` para evitar conflito com nomes de propriedade definidas pelo usuário.
 
 ## Gatilhos de Ciclo de Vida
 
