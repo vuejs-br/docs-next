@@ -114,12 +114,12 @@ Na versão 2.x, o `domProps` continha uma lista aninhada dentro dos props VNode:
 }
 ```
 
-### 3.x Syntax
+### Sintaxe 3.x
 
-In 3.x, the entire VNode props structure is flattened. Using the example from above, here is what it would look like now.
+Em 3.x, toda a estrutura de props do VNode é achatada. Usando o exemplo acima, ele ficaria algo assim agora.
 
 ```js
-// 3.x Syntax
+// Sintaxe 3.x
 {
   class: ['button', { 'is-outlined': isOutlined }],
   style: [{ color: '#34495E' }, { backgroundColor: buttonColor }],
@@ -130,11 +130,11 @@ In 3.x, the entire VNode props structure is flattened. Using the example from ab
 }
 ```
 
-## Registered Component
+## Componente registrado
 
-### 2.x Syntax
+### Sintaxe 2.x
 
-In 2.x, when a component has been registered, the render function would work well when passing the component's name as a string to the first argument:
+Em 2.x, quando um componente foi registrado, a função render funcionaria bem quando passasse o nome do componente como uma string para o primeiro argumento: 
 
 ```js
 // 2.x
@@ -158,9 +158,9 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### Sintaxe 3.x
 
-In 3.x, with VNodes being context-free, we can no longer use a string ID to implicitly lookup registered components. Instead, we need to use an imported `resolveComponent` method:
+Em 3.x, com os VNodes sendo livres de contexto, não podemos usar um ID como string para implicitamente buscar por componentes registrado. Em vez disos, precisamos usar o método importado `resolveComponent`:
 
 ```js
 // 3.x
@@ -173,19 +173,20 @@ export default {
   }
 }
 ```
+Para mais informações, veja [O RFC* das mudanças da API da Função Render](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
 
-For more information, see [The Render Function Api Change RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
+* **Nota da tradução**: RFC significa Request For Comments, e é um processo que visa prover um caminho consistente e controlado para as novas funcionalidades de um framework.
 
-## Migration Strategy
+## Estratégia de Migração
 
-### Library Authors
+### Autores da biblioteca
 
-`h` being globally imported means that any library that contains Vue components will include `import { h } from 'vue'` somewhere. As a result, this creates a bit of overhead since it requires library authors to properly configure the externalization of Vue in their build setup:
+A Importação global do `h` significa que qualquer biblioteca que contenha componentes Vue vão incluir `import { h } from 'vue'` em algum lugar. Como resultado, isso cria um pouco de sobrecarga, pois requer que os autores da biblioteca configurem corretamente a externalização do Vue em suas configurações de compilação: 
 
-- Vue should not be bundled into the library
-- For module builds, the import should be left alone and be handled by the end user bundler
-- For UMD / browser builds, it should try the global Vue.h first and fallback to require calls
+- o Vue não deve estar no bundle da biblioteca
+- Para construções de módulo, a importação deve ser deixada sozinha e tratada pelo empacotador do usuário final
+- Para UMD / compilações de navegador, deve-se tentar o Vue.h global primeiro e alternar para exigir chamadas
 
-## Next Steps
+## Próximos passos
 
-See [Render Function Guide](/guide/render-function) for more detailed documentation!
+Veja [O Guia da Função Render](/guide/render-function) para documentação mais detalhada!
