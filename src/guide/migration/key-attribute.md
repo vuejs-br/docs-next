@@ -7,20 +7,20 @@ badges:
 
 ## Visão Geral
 
-- **NEW:** `key`s não são mais necessárias em branches `v-if`/`v-else`/`v-else-if`, ja que o Vue agora gera automaticamente `key`s unicas.
-  - **BREAKING:** Se você imformar `key`s manualmente, então cada branch deve ter uma `key` unica. Você não pode mais usar intencionalmente usar a mesma `key` para forçar reuso de branch.
-- **BREAKING:** `key`s de `<template v-for>` devem ser colocadas na tag `<template>` ao inves de suas filhas.
+- **NOVO:** `key`s não são mais necessárias em _branches_ `v-if`/`v-else`/`v-else-if`, já que o Vue agora gera automaticamente `key`s únicas.
+  - **BREAKING:** Se você informar `key`s manualmente, então cada _branch_ deve ter uma `key` única. Você não pode mais usar intencionalmente a mesma `key` para forçar reuso de _branch_.
+- **BREAKING:** `key`s de `<template v-for>` devem ser colocadas na tag `<template>` (ao invés de em seus filhos).
 
 ## Background
 
 O atributo especial `key` é usado como uma dica para o algoritmo de DOM virtual do Vue rastrear a identidade de um nó. Dessa forma, o Vue sabe quando pode reutilizar e corrigir nós existentes e quando precisa reordená-los ou recriá-los. Para mais informações, olhe as seções a seguir:
 
-- [List Rendering: Maintaining State](/guide/list.html#maintaining-state)
-- [API Reference: `key` Special Attribute](/api/special-attributes.html#key)
+- [Renderização de Listas: Manutenção de Estado](/guide/list.html#manutencao-de-estado)
+- [Referência da API: Atributo Especial `key`](/api/special-attributes.html#key)
 
-## Em branches condicionais
+## Em _Branches_ Condicionais
 
-No Vue 2.x, era recomendado o uso de `key`s nos branches `v-if`/`v-else`/`v-else-if`.
+No Vue 2.x, era recomendado o uso de `key`s nos _branches_ `v-if`/`v-else`/`v-else-if`.
 
 ```html
 <!-- Vue 2.x -->
@@ -28,7 +28,7 @@ No Vue 2.x, era recomendado o uso de `key`s nos branches `v-if`/`v-else`/`v-else
 <div v-else key="no">Não</div>
 ```
 
-O exemplo acima ainda funciona no Vue 3.x. Porém, não é mais recomendado o uso do atributo `key` em branches `v-if`/`v-else`/`v-else-if`, ja que `key`s unicas são geradas automaticamente em branches condicionais caso você não as informe.
+O exemplo acima ainda funciona no Vue 3.x. Porém, não é mais recomendado o uso do atributo `key` em _branches_ `v-if`/`v-else`/`v-else-if`, já que `key`s únicas são geradas automaticamente em _branches_ condicionais caso você não as informe.
 
 ```html
 <!-- Vue 3.x -->
@@ -36,7 +36,7 @@ O exemplo acima ainda funciona no Vue 3.x. Porém, não é mais recomendado o us
 <div v-else>Não</div>
 ```
 
-A grande mudança (breaking change) é que se você informar `key`s manualmente, cada branch deverá usar uma `key` unica. Na maioria dos casos, você pode remover essas `key`s.
+A grande mudança (breaking change) é que se você informar `key`s manualmente, cada branch deverá usar uma `key` única. Na maioria dos casos, você pode remover essas `key`s.
 
 ```html
 <!-- Vue 2.x -->
@@ -47,7 +47,7 @@ A grande mudança (breaking change) é que se você informar `key`s manualmente,
 <div v-if="condition">Sim</div>
 <div v-else>Não</div>
 
-<!-- Vue 3.x (solução alternativa: garantir que as keys sejam sempre unicas) -->
+<!-- Vue 3.x (solução alternativa: garantir que as keys sejam sempre únicas) -->
 <div v-if="condition" key="a">Sim</div>
 <div v-else key="b">Não</div>
 ```
