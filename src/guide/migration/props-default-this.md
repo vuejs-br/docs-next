@@ -1,18 +1,18 @@
 ---
-title: Props Default Function this Access
+title: Acesso ao this na Função Padrão de Props
 badges:
   - breaking
 ---
 
-# Props Default Function `this` Access <MigrationBadges :badges="$frontmatter.badges" />
+# Acesso ao `this` na Função Padrão de Props <MigrationBadges :badges="$frontmatter.badges" />
 
-Props default value factory functions no longer have access to `this`.
+As funções fabricadoras de valores padrão de `props` não têm mais acesso à `this`.
 
-Instead:
+Ao invés disso:
 
-- Raw props received by the component are passed to the default function as argument;
+- `props` brutas recebidas pelo componente são passadas para as funções padrão como argumento;
 
-- The [inject](../composition-api-provide-inject.md) API can be used inside default functions.
+- A API de [injeção](../composition-api-provide-inject.md) pode ser utilizada dentro de funções padrão.
 
 ```js
 import { inject } from 'vue'
@@ -21,9 +21,9 @@ export default {
   props: {
     theme: {
       default (props) {
-        // `props` is the raw values passed to the component,
-        // before any type / default coercions
-        // can also use `inject` to access injected properties
+        // `props` são os valores brutos passados para o componente,
+        // antes de qualquer tipo / coerção padrão.
+        // Também pode ser utilizado `inject` para acessar propriedades injetadas
         return inject('theme', 'default-theme')
       }
     }
