@@ -142,7 +142,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Contribua para o Docs',
+      title: 'Contribua com as Docs',
       collapsable: true,
       children: [
         '/guide/contributing/writing-guide',
@@ -271,8 +271,8 @@ module.exports = {
     logo: '/logo.png',
     nav: [
       {
-        text: 'Aprenda',
-        ariaLabel: 'Documentação',
+        text: 'Documentação',
+        ariaLabel: 'Menu de Documentação',
         items: [
           {
             text: 'Guia',
@@ -350,7 +350,7 @@ module.exports = {
                 link: 'https://github.com/vuejs/vue-devtools'
               },
               {
-                text: 'Weekly news',
+                text: 'Notícias semanais',
                 link: 'https://news.vuejs.org/'
               }
             ]
@@ -358,11 +358,11 @@ module.exports = {
         ]
       },
       {
-        text: 'Suporte Vue',
+        text: 'Patrocine',
         link: '/support-vuejs/',
         items: [
           {
-            text: 'Doações únicas',
+            text: 'Doações Únicas',
             link: '/support-vuejs/#one-time-donations'
           },
           {
