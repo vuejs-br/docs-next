@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroText: Vue.js
 tagline: O Framework<br> JavaScript Progressivo
 actionButtons:
-  - text: Por quê Vue?
+  - text: Por que Vue?
     link: /
     extraClass: vuemastery-trigger primary
     icon: fa fa-play-circle
