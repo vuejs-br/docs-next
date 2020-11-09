@@ -8,18 +8,18 @@ badges:
 
 ## Overview
 
-- **BREAKING**: `data` component option declaration no longer accepts a plain JavaScript `object` and expects a `function` declaration.
+- **BREAKING**: A declaração do componente `data` não aceita mais um `objeto` JavaScript e espera uma declaração de `função`.
 
-- **BREAKING**: when merging multiple `data` return values from mixins or extends, the merge is now shallow instead of deep (only root-level properties are merged).
+- **BREAKING**: Quando mesclando multiplos valores de retorno `data` de mixins ou extends, a mescla agora é superficial e não profunda (apenas propriedades de nivel raiz são mescladas).
 
-## 2.x Syntax
+## Sintaxe da Versão 2.x
 
-In 2.x, developers could define the `data` option with either an `object` or a `function`.
+Na versão 2.x, os desenvolvedores poderiam definir a opção `data` como um `objeto` ou uma `função`.
 
-For example:
+Por exemplo:
 
 ```html
-<!-- Object Declaration -->
+<!-- Declaração como Objeto -->
 <script>
   const app = new Vue({
     data: {
@@ -28,7 +28,7 @@ For example:
   })
 </script>
 
-<!-- Function Declaration -->
+<!-- Declaração como Função -->
 <script>
   const app = new Vue({
     data() {
@@ -40,13 +40,13 @@ For example:
 </script>
 ```
 
-Though this provided some convenience in terms of root instances having a shared state, this has led to confusion due to the fact that its only possible on the root instance.
+Apesar de fornecer algumas conveniências em termos de instâncias raiz possuirem um estado compartilhado, isso gerou confusão devido ao fato de que só é possível na instância raiz.
 
-## 3.x Update
+## Atualização 3.x
 
-In 3.x, the `data` option has been standardized to only accept a `function` that returns an `object`.
+Na versão 3.x, a opção `data` foi padronizada para somente receber uma `função` que retorna um `objeto`.
 
-Using the example above, there would only be one possible implementation of the code:
+Usando o exemplo acima, só haveria uma forma possivel de implementar o código:
 
 ```html
 <script>
@@ -62,9 +62,9 @@ Using the example above, there would only be one possible implementation of the 
 </script>
 ```
 
-## Mixin Merge Behavior Change
+## Mudança de Comportamento na Mescla de Mixin (Mixin Merge Behavior Change)
 
-In addition, when `data()` from a component and its mixins or extends base are merged, the merge is now performed *shallowly*:
+Além disso, quando a `data()` de um componente e seus mixins ou extends de base são mesclados, a mescla agora é feita *superficialmente*:
 
 ```js
 const Mixin = {
@@ -90,7 +90,7 @@ const CompA = {
 }
 ```
 
-In Vue 2.x, the resulting `$data` is:
+No Vue 2.x, a `$data` resultante seria:
 
 ```json
 {
@@ -101,7 +101,7 @@ In Vue 2.x, the resulting `$data` is:
 }
 ```
 
-In 3.0, the result will be:
+Na versão 3.0, o resultado será:
 
 ```json
 {
@@ -111,11 +111,11 @@ In 3.0, the result will be:
 }
 ```
 
-## Migration Strategy
+## Estratégias de Migração
 
-For users relying on the object declaration, we recommend:
+Para usuários que dependem da declaração em objeto, é recomendado:
 
-- Extracting the shared data into an external object and using it as a property in `data`
-- Rewrite references to the shared data to point to a new shared object
+- Extrair a informação compartilhada em um objeto externo e usá-lo como propriedade em `data`
+- Reescrever as referencias a informação compartilhada para apontar a um novo objeto compartilhado
 
-For users relying on the deep merge behavior from mixins, we recommend refactoring your code to avoid such reliance altogether, since deep merges from mixins are very implicit and can make the code logic more difficult to understand and debug.
+Para usuários que dependem do comportamento de deep merge dos mixins, é recomendado refatorar seu código para evitar tal dependência completamente, já que deep merges de mixins são muito implicitos e podem fazer a lógica do código ser mais difícil de entender e depurar.
