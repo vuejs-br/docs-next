@@ -78,13 +78,13 @@ Tem seis classes aplicado para entrar/sair de transições.
 
 2. `v-enter-active`: Estado ativo para entrar. Aplicado durante toda a fase de entrada. Adicionado antes de o elemento ser inserido, removido quando a transição/animação termina. Esta classe pode ser usada para definir a duração, o atraso e a curva de atenuação para a transição de entrada.
 
-3. `v-enter-to`: **Disponível apenas em versões 2.1.8+.** Estado final para entrar. Adicionado um quadro após o elemento ser inserido (ao mesmo tempo `v-enter` é removido), removido quando a transição/animação termina.
+3. `v-enter-to`: Estado final para entrar. Adicionado um quadro após o elemento ser inserido (ao mesmo tempo `v-enter-from` é removido), removido quando a transição/animação termina.
 
 4. `v-leave-from`: Estado inicial para licença. Adicionado imediatamente quando uma transição de saída é acionada, removido após um quadro.
 
 5. `v-leave-active`: Estado ativo para licença. Aplicado durante toda a fase de saída. Adicionado imediatamente quando a transição de licença é acionada, removido quando a transição/animação termina. Esta classe pode ser usada para definir a duração, o atraso e a curva de atenuação para a transição de saída.
 
-6. `v-leave-to`: **Disponível apenas em versões 2.1.8+.** Estado final para licença. Adicionado um quadro depois que uma transição de saída é acionada (ao mesmo tempo `v-leave` é removido), removido quando a transição/animação termina.
+6. `v-leave-to`: Estado final para licença. Adicionado um quadro depois que uma transição de saída é acionada (ao mesmo tempo `v-leave-from` é removido), removido quando a transição/animação termina.
 
 ![Diagrama de Transição](/images/transitions.svg)
 
@@ -152,7 +152,7 @@ As animações CSS são aplicadas da mesma forma que as transições CSS, com a 
 Aqui está um exemplo, omitindo regras CSS prefixadas por uma questão de brevidade:
 
 ```html
-<div id="example-2">
+<div id="demo">
   <button @click="show = !show">Toggle show</button>
   <transition name="bounce">
     <p v-if="show">
@@ -188,7 +188,7 @@ Vue.createApp(Demo).mount('#demo')
     transform: scale(0);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.25);
   }
   100% {
     transform: scale(1);
@@ -209,10 +209,10 @@ Você também pode especificar classes de transição personalizadas, fornecendo
 
 - `enter-from-class`
 - `enter-active-class`
-- `enter-to-class` (2.1.8+)
+- `enter-to-class`
 - `leave-from-class`
 - `leave-active-class`
-- `leave-to-class` (2.1.8+)
+- `leave-to-class`
 
 Eles substituirão os nomes de classe convencionais. Isso é especialmente útil quando você deseja combinar o sistema de transição do Vue com uma biblioteca de animação CSS existente, como [Animate.css](https://daneden.github.io/animate.css/).
 
@@ -261,9 +261,7 @@ No entanto, em alguns casos, você pode querer ter ambos no mesmo elemento, por 
 
 ### Durações de transição explícitas
 
-TODO: validar e fornecer um exemplo
-
-> Apartir da 2.2.0+
+<!-- TODO: validar e fornecer um exemplo -->
 
 Na maioria dos casos, o Vue pode descobrir automaticamente quando a transição terminou. Por padrão, Vue espera pelo primeiro`transitionend` ou `animationend` evento no elemento de transição raiz. No entanto, isso pode não ser sempre desejado - por exemplo, podemos ter uma sequência de transição coreografada onde alguns elementos internos aninhados têm uma transição atrasada ou uma duração de transição mais longa do que o elemento de transição raiz.
 
@@ -450,7 +448,7 @@ Nós discutimos [transição entre componentes](#transitioning-between-component
 
 Na verdade, é possível fazer a transição entre qualquer número de elementos, usando vários `v-if` ou vinculando um único elemento a uma propriedade dinâmica. Por exemplo:
 
-TODO: reescrever o exemplo e colocar no exemplo de código
+<!-- TODO: reescrever o exemplo e colocar no em codepen -->
 
 ```html
 <transition>
@@ -550,19 +548,22 @@ Podemos usar isso para coordenar movimentos mais expressivos, como um cartão do
 
 A transição entre componentes é ainda mais simples - nem precisamos do atributo `key`. Em vez disso, envolvemos um [componente dinâmico](component-basics.html#dynamic-components):
 
-TODO: atualização para Vue 3
-
 ```html
-<transition name="component-fade" mode="out-in">
-  <component :is="view"></component>
-</transition>
+<div id="demo">
+  <input v-model="view" type="radio" value="v-a" id="a"><label for="a">A</label>
+  <input v-model="view" type="radio" value="v-b" id="b"><label for="b">B</label>
+  <transition name="component-fade" mode="out-in">
+    <component :is="view"></component>
+  </transition>
+</div>
 ```
 
 ```js
-new Vue({
-  el: '#transition-components-demo',
-  data: {
-    view: 'v-a'
+const Demo = {
+  data() {
+    return {
+      view: 'v-a'
+    }
   },
   components: {
     'v-a': {
@@ -572,7 +573,9 @@ new Vue({
       template: '<div>Component B</div>'
     }
   }
-})
+}
+
+Vue.createApp(Demo).mount('#demo')
 ```
 
 ```css
@@ -580,8 +583,16 @@ new Vue({
 .component-fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.component-fade-enter, .component-fade-leave-to
-/* .componente-fade-leave-active abaixo da versão 2.1.8 */ {
+
+.component-fade-enter-from,
+.component-fade-leave-to {
   opacity: 0;
 }
 ```
+
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="WNwVxZw" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transitioning between components">
+  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/WNwVxZw">
+  Transitioning between components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>

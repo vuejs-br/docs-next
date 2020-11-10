@@ -1,20 +1,21 @@
 const sidebar = {
   cookbook: [
     {
-      title: 'Cookbook',
+      title: 'Livro de Receitas',
       collapsable: false,
       children: ['/cookbook/', '/cookbook/editable-svg-icons']
     }
   ],
   guide: [
     {
-      title: 'Essentials',
+      title: 'Essenciais',
       collapsable: false,
       children: [
         '/guide/installation',
         '/guide/introduction',
         '/guide/instance',
         '/guide/template-syntax',
+        '/guide/data-methods',
         '/guide/computed',
         '/guide/class-and-style',
         '/guide/conditional',
@@ -25,7 +26,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Components In-Depth',
+      title: 'Componentes em Detalhes',
       collapsable: false,
       children: [
         '/guide/component-registration',
@@ -40,7 +41,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Transitions & Animation',
+      title: 'Transições & Animações',
       collapsable: false,
       children: [
         '/guide/transitions-overview',
@@ -50,7 +51,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Reusability & Composition',
+      title: 'Reuso & Composição',
       collapsable: false,
       children: [
         '/guide/mixins',
@@ -61,11 +62,11 @@ const sidebar = {
       ]
     },
     {
-      title: 'Advanced Guides',
+      title: 'Guias Avançados',
       collapsable: false,
       children: [
         {
-          title: 'Reactivity',
+          title: 'Reatividade',
           children: [
             '/guide/reactivity',
             '/guide/reactivity-fundamentals',
@@ -73,7 +74,7 @@ const sidebar = {
           ]
         },
         {
-          title: 'Composition API',
+          title: 'API de Composição',
           children: [
             '/guide/composition-api-introduction',
             '/guide/composition-api-setup',
@@ -87,7 +88,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Tooling',
+      title: 'Ferramentas',
       collapsable: false,
       children: [
         '/guide/single-file-component',
@@ -97,12 +98,12 @@ const sidebar = {
       ]
     },
     {
-      title: 'Scaling Up',
+      title: 'Escalonando',
       collapsable: false,
       children: ['/guide/routing', '/guide/state-management', '/guide/ssr']
     },
     {
-      title: 'Accessibility',
+      title: 'Acessibilidade',
       collapsable: false,
       children: [
         '/guide/a11y-basics',
@@ -112,7 +113,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Migration Guide',
+      title: 'Guia de Migração',
       collapsable: true,
       children: [
         '/guide/migration/introduction',
@@ -141,7 +142,7 @@ const sidebar = {
       ]
     },
     {
-      title: 'Contribute to the Docs',
+      title: 'Contribua com as Docs',
       collapsable: true,
       children: [
         '/guide/contributing/writing-guide',
@@ -155,7 +156,8 @@ const sidebar = {
     '/api/application-api',
     '/api/global-api',
     {
-      title: 'Options',
+      title: 'Opções',
+      path: '/api/options-api',
       collapsable: false,
       children: [
         '/api/options-data',
@@ -172,7 +174,8 @@ const sidebar = {
     '/api/special-attributes',
     '/api/built-in-components.md',
     {
-      title: 'Reactivity API',
+      title: 'API de Reatividade',
+      path: '/api/reactivity-api',
       collapsable: false,
       children: [
         '/api/basic-reactivity',
@@ -184,7 +187,7 @@ const sidebar = {
   ],
   examples: [
     {
-      title: 'Examples',
+      title: 'Exemplos',
       collapsable: false,
       children: [
         '/examples/markdown',
@@ -203,7 +206,7 @@ const sidebar = {
 
 module.exports = {
   title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: 'Vue.js - O Framework JavaScript Progressivo',
   head: [
     [
       'link',
@@ -251,10 +254,10 @@ module.exports = {
     ],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
     [
-      ('script',
+      'script',
       {
         src: 'https://player.vimeo.com/api/player.js'
-      })
+      }
     ],
     [
       'script',
@@ -268,62 +271,62 @@ module.exports = {
     logo: '/logo.png',
     nav: [
       {
-        text: 'Docs',
-        ariaLabel: 'Documentation Menu',
+        text: 'Documentação',
+        ariaLabel: 'Menu de Documentação',
         items: [
           {
-            text: 'Guide',
+            text: 'Guia',
             link: '/guide/introduction'
           },
           {
-            text: 'Migration Guide',
+            text: 'Guia de Migração',
             link: '/guide/migration/introduction'
           },
           {
-            text: 'Style Guide',
+            text: 'Guia de Estilos',
             link: '/style-guide/'
           },
           {
-            text: 'Cookbook',
+            text: 'Livro de Receitas',
             link: '/cookbook/'
           },
           {
-            text: 'Examples',
+            text: 'Exemplos',
             link: '/examples/markdown'
           }
         ]
       },
       {
-        text: 'API Reference',
-        link: '/api/application-config'
+        text: 'Referência da API',
+        link: '/api/'
       },
       {
-        text: 'Ecosystem',
+        text: 'Ecossistema',
         items: [
           {
-            text: 'Community',
-            ariaLabel: 'Community Menu',
+            text: 'Comunidade',
+            ariaLabel: 'Menu de Comunidade',
             items: [
               {
-                text: 'Team',
+                text: 'Equipe',
                 link: '/community/team/'
               },
               {
-                text: 'Partners',
+                text: 'Parceiros',
                 link: '/community/partners'
               },
               {
-                text: 'Join',
+                text: 'Junte-se',
                 link: '/community/join/'
               },
               {
-                text: 'Themes',
+                text: 'Temas',
                 link: '/community/themes/'
               }
             ]
           },
           {
-            text: 'Official Projects',
+            text: 'Projetos Oficiais',
             items: [
               {
                 text: 'Vue Router',
@@ -347,7 +350,7 @@ module.exports = {
                 link: 'https://github.com/vuejs/vue-devtools'
               },
               {
-                text: 'Weekly news',
+                text: 'Notícias semanais',
                 link: 'https://news.vuejs.org/'
               }
             ]
@@ -355,19 +358,19 @@ module.exports = {
         ]
       },
       {
-        text: 'Support Vue',
+        text: 'Patrocine',
         link: '/support-vuejs/',
         items: [
           {
-            text: 'One-time Donations',
+            text: 'Doações Únicas',
             link: '/support-vuejs/#one-time-donations'
           },
           {
-            text: 'Recurring Pledges',
+            text: 'Ajuda Recorrente',
             link: '/support-vuejs/#recurring-pledges'
           },
           {
-            text: 'T-Shirt Shop',
+            text: 'Loja de Camisetas',
             link: 'https://vue.threadless.com/'
           }
         ]
@@ -375,8 +378,8 @@ module.exports = {
     ],
     repo: 'vuejs/docs-next',
     editLinks: false,
-    editLinkText: 'Edit this on GitHub!',
-    lastUpdated: 'Last updated',
+    editLinkText: 'Edite isto no GitHub!',
+    lastUpdated: 'Atualizado pela última vez',
     docsDir: 'src',
     sidebarDepth: 2,
     sidebar: {
@@ -390,7 +393,8 @@ module.exports = {
     smoothScroll: false,
     algolia: {
       indexName: 'vuejs-v3',
-      apiKey: 'bc6e8acb44ed4179c30d0a45d6140d3f'
+      apiKey: 'bc6e8acb44ed4179c30d0a45d6140d3f',
+      placeholder: 'Buscar na documentação'
     }
   },
   plugins: [
@@ -400,8 +404,8 @@ module.exports = {
         serviceWorker: true,
         updatePopup: {
           '/': {
-            message: 'New content is available.',
-            buttonText: 'Refresh'
+            message: 'Novo conteúdo disponível.',
+            buttonText: 'Atualizar'
           }
         }
       }

@@ -18,20 +18,20 @@
       </div>
 
       <p class="modal-text">
-        Video by
+        Vídeo por
         <a
           href="https://www.vuemastery.com"
           target="_blank"
           rel="sponsored noopener"
-          title="Vue.js Courses on Vue Mastery"
+          title="Cursos de Vue.js na Vue Mastery"
           >Vue Mastery</a
-        >. Watch Vue Mastery’s free
+        >. Assista ao gratuito
         <a
           href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3"
           target="_blank"
           rel="sponsored noopener"
-          title="Vue.js Courses on Vue Mastery"
-          >Intro to Vue course</a
+          title="Cursos de Vue.js na Vue Mastery"
+          >Curso de Introdução ao Vue</a
         >.
       </p>
     </div>

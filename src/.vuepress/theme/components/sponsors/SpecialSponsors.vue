@@ -26,7 +26,23 @@ export default {
 
   computed: {
     heading () {
-      return `Special Sponsor${this.sponsors.length === 1 ? '' : 's'}`
+      return (
+        this.sponsors.length > 0
+          ? `Patrocinador${this.getPlural(0)} Especia${this.getPlural(1)}`
+          : ''
+      )
+    }
+  },
+
+  methods: {
+    getPlural(wordId) {
+      const plurals = ['es', 'is']
+      const singulars = ['', 'l']
+      return (
+        this.sponsors.length === 1
+          ? singulars[wordId]
+          : plurals[wordId]
+      )
     }
   }
 }

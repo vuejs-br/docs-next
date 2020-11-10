@@ -10,7 +10,7 @@ export default {
       "url": "https://autocode.com",
       "img": "autocode.svg",
       "name": "Autocode",
-      "description": "Build app-to-app workflows and connect APIs"
+      "description": "Construa workflows de app à app e conecte APIs"
     }
   ],
   "platinum_sponsors": [
