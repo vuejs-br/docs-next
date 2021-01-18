@@ -1,26 +1,26 @@
-# Editable SVG Icon Systems
+# Sistemas de Ícones SVG Editáveis
 
-## Base Example
+## Exemplo Base
 
-There are many ways to create an SVG Icon System, but one method that takes advantage of Vue's capabilities is to create editable inline icons as components. Some of the advantages of this way of working is:
+Existem muitas formas de criar um sistema de ícone SVG, mas o método que tira vantagem das capacidades do Vue é criar ícones *inline* editáveis como componente. Algumas das vantagens desta forma de trabalhar são:
 
-- They are easy to edit on the fly
-- They are animatable
-- You can use standard props and defaults to keep them to a typical size or alter them if you need to
-- They are inline, so no HTTP requests are necessary
-- They can be made accessible dynamically
+- São fáceis de se editar em tempo real
+- São animáveis
+- Pode se usar props, definindo padrões ou alterando-as caso necessário
+- São incorporados, então não exigem requisições HTTP adicionais
+- Eles podem ser acessados dinamicamente
 
-First, we'll create a folder for all of the icons, and name them in a standardized fashion for easy retrieval:
+Primeiro, vamos criar uma pasta para todos os ícones, e nomeá-los de forma padronizada para fácil recuperação:
 
 - `components/icons/IconBox.vue`
 - `components/icons/IconCalendar.vue`
 - `components/icons/IconEnvelope.vue`
 
-Here's an example repo to get you going, where you can see the entire setup: [https://github.com/sdras/vue-sample-svg-icons/](https://github.com/sdras/vue-sample-svg-icons/)
+Eis um exemplo de repositório, onde pode ver toda a configuração: [https://github.com/sdras/vue-sample-svg-icons/](https://github.com/sdras/vue-sample-svg-icons/)
 
 ![Documentation site](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/screendocs.jpg 'Docs demo')
 
-We'll create a base icon (`IconBase.vue`) component that uses a slot.
+Vamos criar um componente de ícone base (`IconBase.vue`) que usa um `slot`.
 
 ```html
 <template>
@@ -40,9 +40,9 @@ We'll create a base icon (`IconBase.vue`) component that uses a slot.
 </template>
 ```
 
-You can use this base icon as is- the only thing you might need to update is the `viewBox` depending on the `viewBox` of your icons. In the base, we're making the `width`, `height`, `iconColor`, and name of the icon props so that it can be dynamically updated with props. The name will be used for both the `<title>` content and its `id` for accessibility.
+Você pode usar essa base de ícones do jeito que está – a única coisa que você pode precisar atualizar é a e `viewBox` dependendo da `viewBox` dos ícones que for utilizar. Na base, vamos usar propriedades para `width`, `height`, `iconColor`, e `iconColor`, para que possam ser atualizados dinamicamente. O nome será usado tanto para o conteúdo do `<title>` como do `id` para acessilibidade.
 
-Our script will look like this, we'll have some defaults so that our icon will be rendered consistently unless we state otherwise:
+Nosso script ficará assim, teremos alguns valores padrão para que nosso ícone seja renderizado de forma consistente, a menos que declaremos o contrário: 
 
 ```js
 export default {
@@ -67,30 +67,30 @@ export default {
 }
 ```
 
-The `currentColor` property that's the default on the fill will make the icon inherit the color of whatever text surrounds it. We could also pass in a different color as a prop if we wish.
+A propriedade `currentColor` , usada como padrão para o preenchimento, irá permitir ao ícone herdar a cor do texto que o rodeia. Também poderíamos passar uma cor diferente como `prop` se quisermos.
 
-We can use it like so, with the only contents of `IconWrite.vue` containing the paths inside the icon:
+Podemos usá-lo assim, com o único conteúdo de `IconWrite.vue` contendo os `path` dentro do ícone:
 
 ```html
 <icon-base icon-name="write"><icon-write /></icon-base>
 ```
 
-Now, if we'd like to make many sizes for the icon, we can do so very easily:
+Agora, se quisermos fazer vários tamanhos para o ícone, podemos fazer isso facilmente:
 
 ```html
 <p>
-  <!-- you can pass in a smaller `width` and `height` as props -->
+  <!-- pode-se passar um `width` e `height` mais pequenos como props -->
   <icon-base width="12" height="12" icon-name="write"><icon-write /></icon-base>
-  <!-- or you can use the default, which is 18 -->
+  <!-- ou você pode usar o padrão, que é 18 -->
   <icon-base icon-name="write"><icon-write /></icon-base>
-  <!-- or make it a little bigger too :) -->
+  <!-- ou torná-lo um pouco maior também :) -->
   <icon-base width="30" height="30" icon-name="write"><icon-write /></icon-base>
 </p>
 ```
 
 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/Screen%20Shot%202018-01-01%20at%204.51.40%20PM.png" width="450" />
 
-## Animatable Icons
+## Ícones Animáveis
 
 Keeping icons in components comes in very handy when you'd like to animate them, especially on an interaction. Inline SVGs have the highest support for interaction of any method. Here's a very basic example of an icon that's animated on click:
 
