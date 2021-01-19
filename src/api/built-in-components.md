@@ -1,16 +1,16 @@
-# Built-In Components
+# Componentes Integrados
 
 ## component
 
-- **Props:**
+- **Propriedades:**
 
   - `is` - `string | Component`
 
-- **Usage:**
+- **Uso:**
 
   A "meta component" for rendering dynamic components. The actual component to render is determined by the `is` prop. An `is` prop as a string could be either an HTML tag name or a Component name.
 
-- **Example:**
+- **Exemplo:**
 
   ```html
   <!-- a dynamic component controlled by -->
@@ -27,11 +27,11 @@
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
-- **See also:** [Dynamic Components](../guide/component-dynamic-async.html)
+- **Ver também:** [Dynamic Components](../guide/component-dynamic-async.html)
 
 ## transition
 
-- **Props:**
+- **Propriedades:**
 
   - `name` - `string` Used to automatically generate transition CSS class names. e.g. `name: 'fade'` will auto expand to `.fade-enter`, `.fade-enter-active`, etc.
   - `appear` - `boolean`, Whether to apply transition on initial render. Defaults to `false`.
@@ -50,7 +50,7 @@
   - `leave-active-class` - `string`
   - `appear-active-class` - `string`
 
-- **Events:**
+- **Eventos:**
 
   - `before-enter`
   - `before-leave`
@@ -64,7 +64,7 @@
   - `leave-cancelled` (`v-show` only)
   - `appear-cancelled`
 
-- **Usage:**
+- **Uso:**
 
   `<transition>` serve as transition effects for **single** element/component. The `<transition>` only applies the transition behavior to the wrapped content inside; it doesn't render an extra DOM element, or show up in the inspected component hierarchy.
 
@@ -101,21 +101,21 @@
   app.mount('#transition-demo')
   ```
 
-- **See also:** [Enter & Leave Transitions](/guide/transitions-enterleave.html#transitioning-single-elements-components)
+- **Ver também:** [Enter & Leave Transitions](/guide/transitions-enterleave.html#transitioning-single-elements-components)
 
 ## transition-group
 
-- **Props:**
+- **Propriedades:**
 
   - `tag` - `string`, defaults to `span`.
   - `move-class` - overwrite CSS class applied during moving transition.
   - exposes the same props as `<transition>` except `mode`.
 
-- **Events:**
+- **Eventos:**
 
   - exposes the same events as `<transition>`.
 
-- **Usage:**
+- **Uso:**
 
   `<transition-group>` serve as transition effects for **multiple** elements/components. The `<transition-group>` renders a real DOM element. By default it renders a `<span>`, and you can configure what element it should render via the `tag` attribute.
 
@@ -131,17 +131,17 @@
   </transition-group>
   ```
 
-- **See also:** [List Transitions](/guide/transitions-list.html)
+- **Ver também:** [List Transitions](/guide/transitions-list.html)
 
 ## keep-alive
 
-- **Props:**
+- **Propriedades:**
 
   - `include` - `string | RegExp | Array`. Only components with matching names will be cached.
   - `exclude` - `string | RegExp | Array`. Any component with a matching name will not be cached.
   - `max` - `number | string`. The maximum number of component instances to cache.
 
-- **Usage:**
+- **Uso:**
 
   When wrapped around a dynamic component, `<keep-alive>` caches the inactive component instances without destroying them. Similar to `<transition>`, `<keep-alive>` is an abstract component: it doesn't render a DOM element itself, and doesn't show up in the component parent chain.
 
@@ -208,25 +208,25 @@
   `<keep-alive>` does not work with functional components because they do not have instances to be cached.
   :::
 
-- **See also:** [Dynamic Components - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+- **Ver também:** [Dynamic Components - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 
 ## slot
 
-- **Props:**
+- **Propriedades:**
 
   - `name` - `string`, Used for named slot.
 
-- **Usage:**
+- **Uso:**
 
   `<slot>` serve as content distribution outlets in component templates. `<slot>` itself will be replaced.
 
   For detailed usage, see the guide section linked below.
 
-- **See also:** [Content Distribution with Slots](../guide/component-basics.html#content-distribution-with-slots)
+- **Ver também:** [Content Distribution with Slots](../guide/component-basics.html#content-distribution-with-slots)
 
 ## teleport
 
-- **Props:**
+- **Propriedades:**
 
   - `to` - `string`. Required prop, has to be a valid query selector, or an HTMLElement (if used in a browser environment). Specifies a target element where `<teleport>` content will be moved
 
@@ -251,4 +251,4 @@
 
   Notice that this will move the actual DOM nodes instead of being destroyed and recreated, and it will keep any component instances alive as well. All stateful HTML elements (i.e. a playing video) will keep their state.
 
-- **See also:** [Teleport component](../guide/teleport.html#teleport)
+- **Ver também:** [Teleport component](../guide/teleport.html#teleport)
