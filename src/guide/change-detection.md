@@ -106,8 +106,7 @@ Existem razões técnicas por tráz desta restrição - elas eliminam um conjunt
 
 No caso de você não ter notado ainda, Vue realiza atualizações na DOM de forma **assíncrona**. Sempre que uma mudança de dados é observada, é aberta uma fila e armazenado em *buffer* todas as alterações que ocorreram no mesmo ciclo (*event loop*). Se o mesmo observador é acionado muitas vezes, ele será inserido na fila apenas uma vez. Essa eliminação de duplicatas em *buffer* é importante para evitar cálculos e manipulações da DOM desnecessários. Então, no próximo ciclo *"tick"*, Vue limpla a fila e executa o trabalho atual (já desduplicado). Internamente Vue tenta utilizar nativamente `Promise.then`, `MutationObserver`, e `setImmediate` para a enfileiração e retorna para o `setTimeout(fn, 0)`.
 
-Por exemplo, quando você atribui `vm.someData = 'new value'`, o componente não irá renderizar novamente de imadiato.
-For example, when you set `vm.someData = 'new value'`, the component will not re-render immediately. It will update in the next "tick", when the queue is flushed. Most of the time we don't need to care about this, but it can be tricky when you want to do something that depends on the post-update DOM state. Although Vue.js generally encourages developers to think in a "data-driven" fashion and avoid touching the DOM directly, sometimes it might be necessary to get your hands dirty. In order to wait until Vue.js has finished updating the DOM after a data change, you can use `Vue.nextTick(callback)` immediately after the data is changed. The callback will be called after the DOM has been updated. For example:
+Por exemplo, quando você atribui `vm.someData = 'new value'`, o componente não irá renderizar novamente de imadiato. Ele irá atualizar no próximo *"tick"*, quando a fila for limpa. Na maioria dos casos nós não precisamos nos preocupar com isso, mas isto pode complicar quando você quer fazer algo que dependa da pós-atualização do estado da DOM (*post-update DOM state*). Contudo Vue.js geralmente encoraja os desenvolvedores a pensar de um modo *"data-driven"* e evitar tocar na DOM diretamente, em alguns casos pode ser necessário sujar as mãos. A fim de esperar até o Vue.js ter finalizado a atualização da DOM depois de uma mudança de *data*, você pode usar `Vue.nextTick(callback)` imediatamente depois da mudança de *data*. O *callback* irá ser chamado depois que a DOM for atualizada. Por exemplo: 
 
 ```html
 <div id="example">{{ message }}</div>
@@ -120,14 +119,14 @@ var vm = new Vue({
     message: '123'
   }
 })
-vm.message = 'new message' // change data
-vm.$el.textContent === 'new message' // false
+vm.message = 'new message' // altera data
+vm.$el.textContent === 'new message' // falso
 Vue.nextTick(function() {
-  vm.$el.textContent === 'new message' // true
+  vm.$el.textContent === 'new message' // verdadeiro
 })
 ```
 
-There is also the `vm.$nextTick()` instance method, which is especially handy inside components, because it doesn't need global `Vue` and its callback's `this` context will be automatically bound to the current component instance:
+Existe também o método da instância `vm.$nextTick()`, que é especialmente eficaz dentro de componentes, pois não precisa da global `Vue` e seus *calback's* e o contexto da variável `this`será automaticamente se limitar ao componente atual: 
 
 ```js
 Vue.component('example', {
@@ -140,24 +139,24 @@ Vue.component('example', {
   methods: {
     updateMessage: function() {
       this.message = 'updated'
-      console.log(this.$el.textContent) // => 'not updated'
+      console.log(this.$el.textContent) // => 'não atualizad'
       this.$nextTick(function() {
-        console.log(this.$el.textContent) // => 'updated'
+        console.log(this.$el.textContent) // => 'atualizado'
       })
     }
   }
 })
 ```
 
-Since `$nextTick()` returns a promise, you can achieve the same as the above using the new [ES2017 async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) syntax:
+Como `$nextTick()` retorna uma *promise*, você pode ter o mesmo efeito acima usando a nova sitaxe [ES2017 async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function): 
 
 ```js
   methods: {
     updateMessage: async function () {
       this.message = 'updated'
-      console.log(this.$el.textContent) // => 'not updated'
+      console.log(this.$el.textContent) // => 'não atualizado'
       await this.$nextTick()
-      console.log(this.$el.textContent) // => 'updated'
+      console.log(this.$el.textContent) // => 'atualizado'
     }
   }
 ```
