@@ -1,16 +1,17 @@
-# Entrar e sair das transições
+# Transições de Entrada e Saída
 
 O Vue fornece uma variedade de maneiras de aplicar efeitos de transição quando os itens são inseridos, atualizados ou removidos do DOM. Isso inclui ferramentas para:
 
 - aplicar classes automaticamente para transições e animações CSS
 - integrar bibliotecas de animação CSS de terceiros, como [Animate.css](https://animate.style/)
 - usar o JavaScript para manipular diretamente o DOM durante os hooks de transição
+- integrar bibliotecas de animação JavaScript de terceiros
 
-Nesta página, cobriremos apenas as transições de entrada, saída e lista, mas você pode ver a próxima seção para [gerenciamento de transições de estado](transitions-state.html).
+Nesta página, cobriremos apenas as transições de entrada, saída e listagem, mas você pode ver a próxima seção para [gerenciamento de transições de estado](transitions-state.html).
 
-## Transição de elementos / componentes únicos
+## Transição de Elementos/Componentes Únicos
 
-Vue fornece um componente wrapper chamado de `transition`, permitindo que você adicione transições de entrada/saída para qualquer elemento ou componente nos seguintes contextos:
+Vue fornece um componente _wrapper_ chamado de `transition`, permitindo que você adicione transições de entrada/saída para qualquer elemento ou componente nos seguintes contextos:
 
 - Renderização condicional (usando `v-if`)
 - Exibição condicional (usando `v-show`)
@@ -22,7 +23,7 @@ Este é um exemplo em ação:
 ```html
 <div id="demo">
   <button @click="show = !show">
-    Toggle
+    Alternar
   </button>
 
   <transition name="fade">
@@ -55,40 +56,40 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="3466d06fb252a53c5bc0a0edb0f1588a" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Simple Transition Component">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="3466d06fb252a53c5bc0a0edb0f1588a" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Componente de Transição Simples">
   <span>Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/3466d06fb252a53c5bc0a0edb0f1588a">
-  Componente de transição simples </a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Componente de Transição Simples</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Quando um elemento está envolvido em uma `transition` o componente é inserido ou removido, isto é o que acontece:
+Quando um elemento envolvido em um componente `transition` é inserido ou removido, isso acontece:
 
-1. O Vue detectará automaticamente se o elemento de destino tem transições CSS ou animações aplicadas. Em caso afirmativo, as classes de transição CSS serão adicionadas / removidas nos momentos apropriados
+1. O Vue detectará automaticamente se o elemento de destino tem transições CSS ou animações aplicadas. Em caso afirmativo, as classes de transição CSS serão adicionadas/removidas nos momentos apropriados
 
-2. Se o componente de transição fornecido [JavaScript hooks](#javascript-hooks), esses hooks serão chamados em momentos apropriados.
+2. Se o componente de transição fornece [gatilhos JavaScript](#gatilhos-javascript), esses gatilhos serão chamados em momentos apropriados.
 
-3. Se nenhuma transição/animação CSS for detectada e nenhum hooks JavaScript for fornecido, as operações DOM para inserção ou remoção serão executadas imediatamente no próximo quadro (Observação: este é um quadro de animação do navegador, diferente do conceito de Vue de `nextTick`).
+3. Se nenhuma transição/animação CSS for detectada e nenhum gatilho JavaScript for fornecido, as operações DOM para inserção e/ou remoção serão executadas imediatamente no próximo quadro (Observação: este é um quadro de animação do navegador, diferente do conceito do Vue de `nextTick`).
 
-### classes de transição
+### Classes de Transição
 
-Tem seis classes aplicado para entrar/sair de transições.
+Existem seis classes aplicadas em transições de entrada/saída.
 
-1. `v-enter-from`: Estado inicial para entrar. Adicionado antes do elemento ser inserido, removido um quadro após o elemento ser inserido.
+1. `v-enter-from`: Estado inicial para entrada. Adicionado antes do elemento ser inserido, removido um quadro após o elemento ser inserido.
 
-2. `v-enter-active`: Estado ativo para entrar. Aplicado durante toda a fase de entrada. Adicionado antes de o elemento ser inserido, removido quando a transição/animação termina. Esta classe pode ser usada para definir a duração, o atraso e a curva de atenuação para a transição de entrada.
+2. `v-enter-active`: Estado ativo da entrada. Aplicado durante toda a fase de entrada. Adicionado antes do elemento ser inserido, removido quando a transição/animação termina. Esta classe pode ser usada para definir a duração, atraso e a curva de atenuação para a transição de entrada.
 
-3. `v-enter-to`: Estado final para entrar. Adicionado um quadro após o elemento ser inserido (ao mesmo tempo `v-enter-from` é removido), removido quando a transição/animação termina.
+3. `v-enter-to`: Estado final da entrada. Adicionado um quadro após o elemento ser inserido (ao mesmo tempo que `v-enter-from` é removido), removido quando a transição/animação termina.
 
-4. `v-leave-from`: Estado inicial para licença. Adicionado imediatamente quando uma transição de saída é acionada, removido após um quadro.
+4. `v-leave-from`: Estado inicial da saída. Adicionado imediatamente quando uma transição de saída é acionada, removido após um quadro.
 
-5. `v-leave-active`: Estado ativo para licença. Aplicado durante toda a fase de saída. Adicionado imediatamente quando a transição de licença é acionada, removido quando a transição/animação termina. Esta classe pode ser usada para definir a duração, o atraso e a curva de atenuação para a transição de saída.
+5. `v-leave-active`: Estado ativo da saída. Aplicado durante toda a fase de saída. Adicionado imediatamente quando a transição de saída é acionada, removido quando a transição/animação termina. Esta classe pode ser usada para definir a duração, atraso e a curva de atenuação para a transição de saída.
 
-6. `v-leave-to`: Estado final para licença. Adicionado um quadro depois que uma transição de saída é acionada (ao mesmo tempo `v-leave-from` é removido), removido quando a transição/animação termina.
+6. `v-leave-to`: Estado final da saída. Adicionado um quadro depois que uma transição de saída é acionada (ao mesmo tempo que `v-leave-from` é removido), removido quando a transição/animação termina.
 
 ![Diagrama de Transição](/images/transitions.svg)
 
-Cada uma dessas classes será prefixada com o nome da transição. Aqui o `v-` prefixo é o padrão, quando você usa um `<transition>` elemento sem nome. Se você usar `<transition name="my-transition">` por exemplo, então o `v-enter-from` classe seria em vez disso `my-transition-enter-from`.
+Cada uma dessas classes será prefixada com o nome da transição. Aqui o prefixo `v-` é o padrão quando você usa um elemento `<transition>` sem nome. Se você usar `<transition name="my-transition">` por exemplo, então a classe `v-enter-from` seria `my-transition-enter-from`.
 
 O `v-enter-active` e `v-leave-active` oferecem a capacidade de especificar curvas de atenuação diferentes para transições de entrada/saída, das quais você verá um exemplo na seção a seguir.
 
@@ -99,7 +100,7 @@ Um dos tipos de transição mais comuns usa transições CSS. Aqui está um exem
 ```html
 <div id="demo">
   <button @click="show = !show">
-    Toggle render
+    Alternar renderização
   </button>
 
   <transition name="slide-fade">
@@ -121,8 +122,8 @@ Vue.createApp(Demo).mount('#demo')
 ```
 
 ```css
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
+/* Animações de entrada/saída podem usar diferentes */
+/* durações e funções de tempo */
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }
@@ -138,22 +139,22 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="css,result" data-user="Vue" data-slug-hash="0dfa7869450ef43d6f7bd99022bc53e2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Different Enter and Leave Transitions">
+<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="css,result" data-user="Vue" data-slug-hash="0dfa7869450ef43d6f7bd99022bc53e2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Diferentes Transições de Entrada e Saída">
   <span>Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/0dfa7869450ef43d6f7bd99022bc53e2">
-  Diferentes transições de entrada e saída </a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Diferentes Transições de Entrada e Saída</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-### CSS Animations
+### Animações CSS
 
-As animações CSS são aplicadas da mesma forma que as transições CSS, com a diferença de que `v-enter-from` não é removido imediatamente após o elemento ser inserido, mas em um `animationend` evento.
+As animações CSS são aplicadas da mesma forma que as transições CSS, com a diferença de que `v-enter-from` não é removido imediatamente após o elemento ser inserido, mas em um evento `animationend`.
 
 Aqui está um exemplo, omitindo regras CSS prefixadas por uma questão de brevidade:
 
 ```html
 <div id="demo">
-  <button @click="show = !show">Toggle show</button>
+  <button @click="show = !show">Alternar exibição</button>
   <transition name="bounce">
     <p v-if="show">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis
@@ -196,14 +197,14 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="html,result" data-user="Vue" data-slug-hash="8627c50c5514752acd73d19f5e33a781" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS Animation Transition Example">
+<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="html,result" data-user="Vue" data-slug-hash="8627c50c5514752acd73d19f5e33a781" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Exemplo de Transição de Animação CSS">
   <span>Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/8627c50c5514752acd73d19f5e33a781">
-  Exemplo de transição de animação CSS</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Exemplo de Transição de Animação CSS</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-### Classes de transição personalizadas
+### Classes de Transição Personalizadas
 
 Você também pode especificar classes de transição personalizadas, fornecendo os seguintes atributos:
 
@@ -227,7 +228,7 @@ Aqui está um exemplo:
 
 <div id="demo">
   <button @click="show = !show">
-    Toggle render
+    Alternar renderização
   </button>
 
   <transition
@@ -235,7 +236,7 @@ Aqui está um exemplo:
     enter-active-class="animate__animated animate__tada"
     leave-active-class="animate__animated animate__bounceOutRight"
   >
-    <p v-if="show">hello</p>
+    <p v-if="show">Olá</p>
   </transition>
 </div>
 ```
@@ -252,20 +253,20 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-### Usando transições e animações juntas
+### Usando Transições e Animações Juntas
 
 O Vue precisa anexar ouvintes de eventos para saber quando uma transição terminou. Pode ser `transitionend` ou `animationend`, 
 dependendo do tipo de regras CSS aplicadas. Se você estiver usando apenas um ou outro, o Vue pode detectar automaticamente o tipo correto.
 
-No entanto, em alguns casos, você pode querer ter ambos no mesmo elemento, por exemplo, ter uma animação CSS acionada por Vue, junto com um efeito de transição CSS ao passar o mouse. Nestes casos, você terá que declarar explicitamente o tipo que deseja que o Vue se preocupe em um `type` atributo, com um valor de qualquer `animation` ou `transition`.
+No entanto, em alguns casos, você pode querer ter ambos no mesmo elemento, por exemplo, ter uma animação CSS acionada pelo Vue, junto com um efeito de transição CSS ao passar o mouse. Nestes casos, você terá que declarar explicitamente o tipo que deseja que o Vue se preocupe em um atributo `type`, com um valor de `animation` ou `transition`.
 
-### Durações de transição explícitas
+### Durações de Transição Explícitas
 
 <!-- TODO: validar e fornecer um exemplo -->
 
-Na maioria dos casos, o Vue pode descobrir automaticamente quando a transição terminou. Por padrão, Vue espera pelo primeiro`transitionend` ou `animationend` evento no elemento de transição raiz. No entanto, isso pode não ser sempre desejado - por exemplo, podemos ter uma sequência de transição coreografada onde alguns elementos internos aninhados têm uma transição atrasada ou uma duração de transição mais longa do que o elemento de transição raiz.
+Na maioria dos casos, o Vue pode descobrir automaticamente quando a transição terminou. Por padrão, Vue espera pelo primeiro evento`transitionend` ou `animationend` no elemento de transição raiz. No entanto, isso pode não ser sempre o desejado - por exemplo, podemos ter uma sequência de transição coreografada onde alguns elementos internos aninhados têm uma transição atrasada ou uma duração de transição mais longa do que o elemento de transição raiz.
 
-Nesses casos, você pode especificar uma duração de transição explícita (em milissegundos) usando o `duration` suporte no componente `<transition>`:
+Nesses casos, você pode especificar uma duração de transição explícita (em milissegundos) usando a propriedade `duration` no componente `<transition>`:
 
 ```html
 <transition :duration="1000">...</transition>
@@ -277,9 +278,9 @@ Você também pode especificar valores separados para durações de entrada e sa
 <transition :duration="{ enter: 500, leave: 800 }">...</transition>
 ```
 
-### JavaScript Hooks
+### Gatilhos JavaScript
 
-Você também pode definir hooks de JavaScript em atributos:
+Você também pode definir gatilhos JavaScript em atributos:
 
 ```html
 <transition
@@ -307,7 +308,7 @@ methods: {
   beforeEnter(el) {
     // ...
   },
-  // o retorno de chamada feito é opcional quando
+  // o retorno de chamada 'done' é opcional quando
   // usado em combinação com CSS
   enter(el, done) {
     // ...
@@ -321,13 +322,13 @@ methods: {
   },
 
   // --------
-  // PARTINDO
+  // SAINDO
   // --------
 
   beforeLeave(el) {
     // ...
   },
-  // o retorno de chamada feito é opcional quando
+  // o retorno de chamada 'done' é opcional quando
   // usado em combinação com CSS
   leave(el, done) {
     // ...
@@ -336,16 +337,16 @@ methods: {
   afterLeave(el) {
     // ...
   },
-  // leaveCancelled Apenas disponível with v-show
+  // leaveCancelled apenas disponível with v-show
   leaveCancelled(el) {
     // ...
   }
 }
 ```
 
-Esses hooks podem ser usados ​​em combinação com transições / animações CSS ou sozinhos.
+Esses gatilhos podem ser usados ​​em combinação com transições/animações CSS ou sozinhos.
 
-Ao usar transições somente JavaScript, **o `done` retornos de chamada são necessários para o `enter` e `leave` hooks**. assim, os hooks serão chamados de forma síncrona e a transição terminará imediatamente. Adicionando `:css="false"` também informará ao Vue para pular a detecção de CSS. Além de ter um desempenho um pouco melhor, isso também evita que as regras de CSS interfiram acidentalmente na transição.
+Ao usar transições somente JavaScript, **os retornos de chamada `done` são necessários para os gatilhos `enter` e `leave`**. Caso contrário, os gatilhos serão chamados de forma síncrona e a transição terminará imediatamente. Adicionando `:css="false"` também informará ao Vue para pular a detecção de CSS. Além de ter um desempenho um pouco melhor, isso também evita que as regras de CSS interfiram acidentalmente na transição.
 
 Agora vamos examinar um exemplo. Aqui está uma transição de JavaScript usando [GreenSock](https://greensock.com/):
 
@@ -354,7 +355,7 @@ Agora vamos examinar um exemplo. Aqui está uma transição de JavaScript usando
 
 <div id="demo">
   <button @click="show = !show">
-    Toggle
+    Alternar
   </button>
 
   <transition
@@ -416,14 +417,14 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="js,result" data-user="Vue" data-slug-hash="68ce1b8c41d0a6e71ff58df80fd85ae5" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="JavaScript Hooks Transition">
+<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="js,result" data-user="Vue" data-slug-hash="68ce1b8c41d0a6e71ff58df80fd85ae5" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transição de Gatilhos JavaScript">
   <span> Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/68ce1b8c41d0a6e71ff58df80fd85ae5">
-  Transição de hooks de JavaScript</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Transição de Gatilhos JavaScript</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Transições na renderização inicial
+## Transições na Renderização Inicial
 
 Se você também deseja aplicar uma transição na renderização inicial de um nó, você pode adicionar o atributo `appear`:
 
@@ -433,9 +434,9 @@ Se você também deseja aplicar uma transição na renderização inicial de um 
 </transition>
 ```
 
-## Transição entre os elementos
+## Transição Entre Elementos
 
-Nós discutimos [transição entre componentes](#transitioning-between-components) mais tarde, mas você também pode fazer a transição entre os elementos brutos usando `v-if`/`v-else`. Uma das transições de dois elementos mais comuns é entre um contêiner de lista e uma mensagem que descreve uma lista vazia:
+Nós discutiremos [transição entre componentes](#transicao-entre-componentes) mais tarde, mas você também pode fazer a transição entre os elementos brutos usando `v-if`/`v-else`. Uma das transições de dois elementos mais comuns é entre um contêiner de lista e uma mensagem que descreve uma lista vazia:
 
 ```html
 <transition>
@@ -448,7 +449,7 @@ Nós discutimos [transição entre componentes](#transitioning-between-component
 
 Na verdade, é possível fazer a transição entre qualquer número de elementos, usando vários `v-if` ou vinculando um único elemento a uma propriedade dinâmica. Por exemplo:
 
-<!-- TODO: reescrever o exemplo e colocar no em codepen -->
+<!-- TODO: reescrever o exemplo e colocar no codepen -->
 
 ```html
 <transition>
@@ -479,74 +480,74 @@ Que também pode ser escrito como:
 computed: {
   buttonMessage() {
     switch (this.docState) {
-      case 'saved': return 'Edit'
-      case 'edited': return 'Save'
-      case 'editing': return 'Cancel'
+      case 'saved': return 'Editar'
+      case 'edited': return 'Salvar'
+      case 'editing': return 'Cancelar'
     }
   }
 }
 ```
 
-### Modos de transição
+### Modos de Transição
 
 Ainda há um problema. Experimente clicar no botão abaixo:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="Rwrqzpr" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Button Problem">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="Rwrqzpr" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Problema do Botão dos Modos de Transição">
   <span>Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/Rwrqzpr">
-  Problema do botão dos modos de transição Problema </a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Problema do Botão dos Modos de Transição</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-À medida que faz a transição entre o botão "ligar" e o botão "desligar", os dois botões são renderizados - um faz a transição para fora e o outro para dentro. Este é o comportamento padrão do `<transition>` - entrar e sair acontecem simultaneamente.
+À medida que faz a transição entre o botão "on" e o botão "off", os dois botões são renderizados - um faz a transição para fora e o outro para dentro. Este é o comportamento padrão do `<transition>` - entrada e saída acontecem simultaneamente.
 
-Às vezes, isso funciona muito bem, como quando os itens de transição são absolutamente posicionados um sobre o outro:
+Às vezes, isso funciona muito bem, como quando os itens em transição são absolutamente posicionados um sobre o outro:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abdQgLr" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Button Problem- positioning">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abdQgLr" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Problema do Botão dos Modos de Transição - Posicionamento">
   <span>Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/abdQgLr">
-  Problema do botão dos modos de transição - posicionamento </a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Problema do Botão dos Modos de Transição - Posicionamento </a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 Às vezes, isso não é uma opção, ou estamos lidando com um movimento mais complexo onde os estados de entrada e saída precisam ser coordenados, então o Vue oferece um utilitário extremamente útil chamado **modos de transição**:
 
-- `in-out`: As novas transições de elemento entram primeiro e, quando concluído, o elemento atual sai.
-- `out-in`: O elemento atual sai primeiro e, quando concluído, o novo elemento entra.
+- `in-out`: Primeiro o novo elemento transita entrando, quando concluído, o elemento atual transita pra fora.
+- `out-in`: Primeiro o elemento atual transita saindo, quando concluído, o novo elemento transita entrando.
 
-::: dica
-Você descobrirá muito rapidamente que `out-in` é o estado que você desejará na maior parte do tempo:)
+::: tip Dica
+Você descobrirá muito rapidamente que `out-in` é o estado que você desejará na maior parte do tempo :)
 :::
 
-Agora vamos atualizar a transição para nossos botões liga/desliga com `out-in`:
+Agora vamos atualizar a transição para nossos botões on/off com `out-in`:
 
 ```html
 <transition name="fade" mode="out-in">
-  <!-- ... the buttons ... -->
+  <!-- ... os botões ... -->
 </transition>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="ZEQmdvq" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Button Problem- solved">
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="ZEQmdvq" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Problema do Botão dos Modos de Transição - resolvido">
   <span>Veja um exemplo de <a href="https://codepen.io/team/Vue/pen/ZEQmdvq">
-  Problema do botão dos modos de transição - resolvido</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+  Problema do Botão dos Modos de Transição - resolvido</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 Com a adição de um atributo, corrigimos a transição original sem precisar adicionar nenhum estilo especial.
 
-Podemos usar isso para coordenar movimentos mais expressivos, como um cartão dobrável, conforme demonstrado a seguir. Na verdade, são dois elementos em transição entre si, mas como os estados inicial e final estão na mesma escala: horizontalmente para 0, parece um movimento fluido. Este tipo de toque leve pode ser muito útil para microinterações de IU realistas:
+Podemos usar isso para coordenar movimentos mais expressivos, como um cartão dobrável, conforme demonstrado a seguir. Na verdade, são dois elementos em transição entre si, mas como os estados inicial e final estão na mesma escala: horizontalmente para 0, parece um movimento fluido. Este tipo de prestidigitação pode ser muito útil para microinterações de IU realistas:
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="76e344bf057bd58b5936bba260b787a8" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Flip Cards">
-  <span>SVeja um exemplo de  <a href="https://codepen.io/team/Vue/pen/76e344bf057bd58b5936bba260b787a8">
-  Modos de transição Flip Cards</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="76e344bf057bd58b5936bba260b787a8" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Modos de Transição Flip Cards">
+  <span>Veja um exemplo de  <a href="https://codepen.io/team/Vue/pen/76e344bf057bd58b5936bba260b787a8">
+  Modos de Transição Flip Cards</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   no <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## Transição entre componentes
+## Transição Entre Componentes
 
-A transição entre componentes é ainda mais simples - nem precisamos do atributo `key`. Em vez disso, envolvemos um [componente dinâmico](component-basics.html#dynamic-components):
+A transição entre componentes é ainda mais simples - nem precisamos do atributo `key`. Em vez disso, envolvemos um [componente dinâmico](component-basics.html#componentes-dinamicos):
 
 ```html
 <div id="demo">
@@ -567,10 +568,10 @@ const Demo = {
   },
   components: {
     'v-a': {
-      template: '<div>Component A</div>'
+      template: '<div>Componente A</div>'
     },
     'v-b': {
-      template: '<div>Component B</div>'
+      template: '<div>Componente B</div>'
     }
   }
 }
@@ -590,9 +591,9 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="WNwVxZw" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transitioning between components">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/WNwVxZw">
-  Transitioning between components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
+<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="WNwVxZw" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transição Entre Componentes">
+  <span>Veja o exemplo <a href="https://codepen.io/team/Vue/pen/WNwVxZw">
+  Transição Entre Componentes</a> do Vue (<a href="https://codepen.io/Vue">@Vue</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
