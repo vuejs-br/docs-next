@@ -1,6 +1,6 @@
 # API de Composição
 
-> Esta seção usa a sintaxe  de [single-file component](../guide/single-file-component.html) como exemplos de códigos
+> Esta seção usa a sintaxe  de [Componentes Single File](../guide/single-file-component.html) como exemplos de códigos
 
 ## `setup`
 
@@ -59,7 +59,7 @@ Para obter a inferência de tipos para os argumentos passados para o `setup()`, 
   </script>
   ```
 
-  Com *render function*:
+  Com função de renderização:
 
   ```js
   // MyBook.vue
@@ -81,7 +81,7 @@ Para obter a inferência de tipos para os argumentos passados para o `setup()`, 
 ## Ciclos de vida
 
 <!-- Lifecycle hooks can be registered with directly-imported `onX` functions: -->
-Os ganchos de ciclos de vida podem ser registrados importando diretamente as funções `onX`:
+Os gatilhos de ciclos de vida podem ser registrados importando diretamente as funções `onX`:
 
 ```js
 import { onMounted, onUpdated, onUnmounted } from 'vue'
@@ -105,7 +105,7 @@ Essas funções de registro de ciclo de vida somente podem ser usadas  de forma 
 
 
 O contexto da instância também é definido durante a execução síncrona dos gatilhos de ciclo de vida.
-Como resultado, os observadores e as propriedades computadas criadas de forma síncrona dentro dos ganchos de ciclo de vida também são desativados quando o componente é desmontado.
+Como resultado, os observadores e os dados computados criados de forma síncrona dentro dos gatilhos de ciclo de vida também são desativados quando o componente é desmontado.
 
 - **Mapeamento dos ciclos de vida entre a API de opções e API de composição**
   - ~~`beforeCreate`~~ -> use `setup()`
@@ -177,9 +177,9 @@ const MyComponent = {
 }
 ```
 
-`getCurrentInstance` **apenas** funciona durante o [setup](#setup) ou [Ganchos de Ciclo de vida](#lifecycle-hooks)
+`getCurrentInstance` **apenas** funciona durante o [setup](#setup) ou [Gatilhos de Ciclo de vida](#lifecycle-hooks)
 
-> Quando usado fora do [setup](#setup) ou [Ganchos de Ciclo de vida](#lifecycle-hooks), chame o `getCurrentInstance()` no `setup` e use a instância em seu lugar.
+> Quando usado fora do [setup](#setup) ou [Gatilhos de Ciclo de vida](#lifecycle-hooks), chame o `getCurrentInstance()` no `setup` e use a instância em seu lugar.
 
 ```ts
 const MyComponent = {
