@@ -1,17 +1,17 @@
-# Composition API
+# API de Composição
 
-> This section uses [single-file component](../guide/single-file-component.html) syntax for code examples
+> Esta seção usa a sintaxe  de [single-file component](../guide/single-file-component.html) como exemplos de códigos
 
 ## `setup`
 
-A component option that is executed **before** the component is created, once the `props` are resolved, and serves as the entry point for composition API's
+Uma opção de componente que é executado **antes** do componente ser criado, uma vez que as `props` são resolvidas, e serve como um ponto de entrada para *API* de composição
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{Data} props`
   - `{SetupContext} context`
 
-- **Typing**:
+- **Tipagem**:
 
 ```ts
 interface Data {
@@ -27,13 +27,13 @@ interface SetupContext {
 function setup(props: Data, context: SetupContext): Data
 ```
 
-::: tip
-To get type inference for the arguments passed to `setup()`, the use of [defineComponent](global-api.html#definecomponent) is needed.
+::: tip Dica
+Para obter a inferência de tipos para os argumentos passados para o `setup()`, é necessário o uso do [defineComponent](global-api.html#definecomponent).
 :::
 
-- **Example**
+- **Exemplo**
 
-  With the template:
+  Com o template:
 
   ```vue-html
   <!-- MyBook.vue -->
@@ -47,9 +47,9 @@ To get type inference for the arguments passed to `setup()`, the use of [defineC
     export default {
       setup() {
         const readersNumber = ref(0)
-        const book = reactive({ title: 'Vue 3 Guide' })
+        const book = reactive({ title: 'Vue 3: o guia.' })
 
-        // expose to template
+        // Expõe para o template
         return {
           readersNumber,
           book
@@ -59,7 +59,7 @@ To get type inference for the arguments passed to `setup()`, the use of [defineC
   </script>
   ```
 
-  With render function:
+  Com *render function*:
 
   ```js
   // MyBook.vue
@@ -69,18 +69,19 @@ To get type inference for the arguments passed to `setup()`, the use of [defineC
   export default {
     setup() {
       const readersNumber = ref(0)
-      const book = reactive({ title: 'Vue 3 Guide' })
-      // Please note that we need to explicitly expose ref value here
+      const book = reactive({ title: 'Vue 3 O Guia' })
+      // Observe que precisamos expor explicitamente o valor de *ref* aqui.
       return () => h('div', [readersNumber.value, book.title])
     }
   }
   ```
 
-- **See also**: [Composition API `setup`](../guide/composition-api-setup.html)
+- **Veja também**: [API de Composição `setup`](../guide/composition-api-setup.html)
 
-## Lifecycle Hooks
+## Ciclos de vida
 
-Lifecycle hooks can be registered with directly-imported `onX` functions:
+<!-- Lifecycle hooks can be registered with directly-imported `onX` functions: -->
+Os ganchos de ciclos de vida podem ser registrados importando diretamente as funções `onX`:
 
 ```js
 import { onMounted, onUpdated, onUnmounted } from 'vue'
@@ -88,24 +89,25 @@ import { onMounted, onUpdated, onUnmounted } from 'vue'
 const MyComponent = {
   setup() {
     onMounted(() => {
-      console.log('mounted!')
+      console.log('Montado!')
     })
     onUpdated(() => {
-      console.log('updated!')
+      console.log('Atualizado!')
     })
     onUnmounted(() => {
-      console.log('unmounted!')
+      console.log('Desmontado!')
     })
   }
 }
 ```
 
-These lifecycle hook registration functions can only be used synchronously during [`setup()`](#setup), since they rely on internal global state to locate the current active instance (the component instance whose `setup()` is being called right now). Calling them without a current active instance will result in an error.
+Essas funções de registro de ciclo de vida somente podem ser usadas  de forma síncrona durante o [`setup`](#setup), já que eles dependem do estado global para localizar a instância ativa atual (A instância do componente cujo o `setup()` esta chamando agora). Chamá-los sem uma instância ativa vai resultar em um erro.
 
-The component instance context is also set during the synchronous execution of lifecycle hooks. As a result, watchers and computed properties created synchronously inside of lifecycle hooks are also automatically tore down when the component unmounts.
 
-- **Mapping between Options API Lifecycle Options and Composition API**
+O contexto da instância também é definido durante a execução síncrona dos gatilhos de ciclo de vida.
+Como resultado, os observadores e as propriedades computadas criadas de forma síncrona dentro dos ganchos de ciclo de vida também são desativados quando o componente é desmontado.
 
+- **Mapeamento dos ciclos de vida entre a API de opções e API de composição**
   - ~~`beforeCreate`~~ -> use `setup()`
   - ~~`created`~~ -> use `setup()`
   - `beforeMount` -> `onBeforeMount`
@@ -118,50 +120,50 @@ The component instance context is also set during the synchronous execution of l
   - `renderTracked` -> `onRenderTracked`
   - `renderTriggered` -> `onRenderTriggered`
 
-- **See also**: [Composition API lifecycle hooks](../guide/composition-api-lifecycle-hooks.html)
+- **Veja também**: [Gatilhos de ciclo de vida da API de composição](../guide/composition-api-lifecycle-hooks.html)
 
 ## Provide / Inject
 
-`provide` and `inject` enables dependency injection. Both can only be called during [`setup()`](#setup) with a current active instance.
+`provide` e `inject` ativam a injeção de dependência. Ambos só podem ser chamados durante o [`setup()`](#setup) com a instância atual ativa.
 
-- **Typing**:
+- **Tipagem**:
 
 ```ts
 interface InjectionKey<T> extends Symbol {}
 
 function provide<T>(key: InjectionKey<T> | string, value: T): void
 
-// without default value
+// Sem o valor padrão
 function inject<T>(key: InjectionKey<T> | string): T | undefined
-// with default value
+// Com o valor padrão
 function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
 ```
 
-Vue provides an `InjectionKey` interface which is a generic type that extends `Symbol`. It can be used to sync the type of the injected value between the provider and the consumer:
+O Vue fornece uma interface `InjectionKey` que é um tipo genérico que estende de `Symbol`. Isso pode ser usado para sincronizar  o tipo do valor injetado entre o fornecedor e consumidor:
 
 ```ts
 import { InjectionKey, provide, inject } from 'vue'
 
 const key: InjectionKey<string> = Symbol()
 
-provide(key, 'foo') // providing non-string value will result in error
+provide(key, 'foo') // Fornecer um valor diferente de string resultará em um erro.
 
 const foo = inject(key) // type of foo: string | undefined
 ```
 
-If using string keys or non-typed symbols, the type of the injected value will need to be explicitly declared:
+Se estiver usando chaves do tipo *string* ou *symbols* não tipados, o tipo do valor injetado precisará ser declarado explicitamente:
 
 ```ts
 const foo = inject<string>('foo') // string | undefined
 ```
 
-- **See also**:
+- **Veja também**:
   - [Provide / Inject](../guide/component-provide-inject.html)
-  - [Composition API Provide / Inject](../guide/composition-api-provide-inject.html)
+  - [API de Composição Provide / Inject](../guide/composition-api-provide-inject.html)
 
 ## `getCurrentInstance`
 
-`getCurrentInstance` enables access to an internal component instance useful for advanced usages or for library creators.
+O `getCurrentInstance` permite acesso a uma instância de componente interno, útil para usos mais avançados ou para criadores de bibliotecas.
 
 ```ts
 import { getCurrentInstance } from 'vue'
@@ -170,31 +172,31 @@ const MyComponent = {
   setup() {
     const internalInstance = getCurrentInstance()
 
-    internalInstance.appContext.config.globalProperties // access to globalProperties
+    internalInstance.appContext.config.globalProperties // acesso para globalProperties
   }
 }
 ```
 
-`getCurrentInstance` **only** works during [setup](#setup) or [Lifecycle Hooks](#lifecycle-hooks)
+`getCurrentInstance` **apenas** funciona durante o [setup](#setup) ou [Ganchos de Ciclo de vida](#lifecycle-hooks)
 
-> When using outside of [setup](#setup) or [Lifecycle Hooks](#lifecycle-hooks), please call `getCurrentInstance()` on `setup` and use the instance instead.
+> Quando usado fora do [setup](#setup) ou [Ganchos de Ciclo de vida](#lifecycle-hooks), chame o `getCurrentInstance()` no `setup` e use a instância em seu lugar.
 
 ```ts
 const MyComponent = {
   setup() {
-    const internalInstance = getCurrentInstance() // works
+    const internalInstance = getCurrentInstance() // Funciona
 
-    const id = useComponentId() // works
+    const id = useComponentId() // Funciona
 
     const handleClick = () => {
-      getCurrentInstance() // doesn't work
-      useComponentId() // doesn't work
+      getCurrentInstance() // Não funciona
+      useComponentId() // Não funciona
 
-      internalInstance // works
+      internalInstance // Funciona
     }
 
     onMounted(() => {
-      getCurrentInstance() // works
+      getCurrentInstance() // Funciona
     })
 
     return () =>
@@ -208,7 +210,7 @@ const MyComponent = {
   }
 }
 
-// also works if called on a composable
+// Também funciona se chamado em uma composição
 function useComponentId() {
   return getCurrentInstance().uid
 }
