@@ -1,4 +1,4 @@
-# *Refs* &nbsp;de template
+# *refs* &nbsp;de Template
 
 > Esta página assume que você já leu o [Básico de Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
