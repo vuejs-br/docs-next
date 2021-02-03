@@ -5,19 +5,19 @@ badges:
 
 # Filtros <MigrationBadges :badges="$frontmatter.badges" />
 
-## Visão geral
+## Visão Geral
 
-Filtros `filters` foram removidos do Vue 3.0 ae tambem não são mais suportados.
+Filtros foram removidos do Vue 3.0 e não são mais suportados.
 
-## 2.x Sintaxe
+## Sintaxe v2.x
 
-Na 2.x, desenvolvedores poderiam utilizar `filters` para aplicar formatações comuns em texto.
+Na v2.x, desenvolvedores poderiam utilizar `filters` para aplicar formatações comuns em texto.
 
 Por exemplo:
 
 ```html
 <template>
-  <h1>Saldo da conta bancária</h1>
+  <h1>Saldo da Conta Bancária</h1>
   <p>{{ accountBalance | currencyUSD }}</p>
 </template>
 
@@ -40,15 +40,15 @@ Por exemplo:
 
 Embora isso pareça ser uma conveniência, requer uma sintaxe personalizada que quebra a suposição de que as expressões entre chaves sejam "apenas JavaScript", o que tem custos de aprendizado e implementação.
 
-## 3.x Atualização
+## Atualização v3.x
 
-Na versão 3.x, `filters` foram removidos e não mais suportados. Ao invez disso, recomendamos utilizar chamadas à metodos ou propriedades computadas.
+Na v3.x, `filters` foram removidos e não mais suportados. Ao invés disso, recomendamos utilizar chamadas à metodos ou propriedades computadas.
 
-Utilizando o exemplo a cima, aqui está um exemplo de como isso pode ser implementado.
+Utilizando o exemplo acima, aqui está um exemplo de como isso pode ser implementado.
 
 ```html
 <template>
-  <h1>Saldo da conta bancária</h1>
+  <h1>Saldo da Conta Bancária</h1>
   <p>{{ accountInUSD }}</p>
 </template>
 
@@ -71,7 +71,7 @@ Utilizando o exemplo a cima, aqui está um exemplo de como isso pode ser impleme
 
 ## Estratégia de Migração
 
-Ao invez de utilizar `filters`, recomendamos substituir-los por propriedades computadas `computed` ou métodos `methods`.
+Ao invés de utilizar filtros, recomendamos substituí-los por propriedades computadas ou métodos.
 
 ### Filtros Globais
 
@@ -90,13 +90,13 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-Então você pode corrigir todos os modelos usando este objeto `$filters` como este:
+Então você pode corrigir todos os _templates_ usando este objeto `$filters` assim:
 
 ```html
 <template>
-  <h1>Saldo da conta bancária</h1>
+  <h1>Saldo da Conta Bancária</h1>
   <p>{{ $filters.currencyUSD(accountBalance) }}</p>
 </template>
 ```
 
-Observe que, com essa abordagem, você só pode usar métodos, não propriedades computadas, pois só fazem sentido quando definidas no contexto de um componente individual.
+Observe que, com essa abordagem, você só pode usar métodos, não propriedades computadas, quais só fazem sentido quando definidas no contexto de um componente individual.
