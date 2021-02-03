@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Events API <MigrationBadges :badges="$frontmatter.badges" />
+# API de Eventos <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Visão Geral
 
-`$on`, `$off` and `$once` instance methods are removed. Application instances no longer implement the event emitter interface.
+Os métodos `$on`, `$off` e `$once` foram retirados da instância. A instância da aplicação não implementa mais a interface de emissor de eventos.
 
-## 2.x Syntax
+## Sintaxe v2.x
 
-In 2.x, Vue instance could be used to trigger handlers attached imperatively via the event emitter API (`$on`, `$off` and `$once`). This was used to create _event hubs_ to create global event listeners used across the whole application:
+Na v2.x, a instância Vue pode ser usada para acionar manipuladores anexados imperativamente por meio da API do emissor de eventos (`$on`, `$off` e `$once`). Isso foi usado para criar _hubs de eventos_ para permitir a escuta de eventos globais usados em todo o aplicativo:
 
 ```js
 // eventHub.js
@@ -27,13 +27,13 @@ import eventHub from './eventHub'
 
 export default {
   mounted() {
-    // adding eventHub listener
+    // adicionando escutador eventHub
     eventHub.$on('custom-event', () => {
-      console.log('Custom event triggered!')
+      console.log('Evento customizado disparado!')
     })
   },
   beforeDestroy() {
-    // removing eventHub listener
+    // removendo o escutador eventHub
     eventHub.$off('custom-event')
   }
 }
@@ -46,18 +46,18 @@ import eventHub from './eventHub'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventHub.$emit('custom-event') // if ChildComponent is mounted, we will have a message in the console
+      eventHub.$emit('custom-event') // Quando o componente ChildComponent for montado, nós teremos uma mensagem no console
     }
   }
 }
 ```
 
-## 3.x Update
+## Atualização v3.x
 
-We removed `$on`, `$off` and `$once` methods from the instance completely. `$emit` is still a part of the existing API as it's used to trigger event handlers declaratively attached by a parent component
+Removemos os métodos `$on`, `$off` e `$once` da instância completamente. `$emit` ainda é uma parte da API existente, pois é usado para acionar manipuladores de eventos declarativamente anexados por um componente pai.
 
-## Migration Strategy
+## Estratégia de Migração
 
-Existing event hubs can be replaced by using an external library implementing the event emitter interface, for example [mitt](https://github.com/developit/mitt) or [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
+Os _hubs de eventos_ existentes podem ser substituídos usando uma biblioteca externa implementando a interface do emissor de eventos, por exemplo [mitt](https://github.com/developit/mitt) ou [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
 
-These methods can also be supported in compatibility builds.
+Esses métodos também podem ser suportados em compilações de compatibilidade.
