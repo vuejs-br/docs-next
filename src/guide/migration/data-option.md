@@ -1,20 +1,20 @@
 ---
-title: Data Option
+title: Opção Data
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Visão Geral
 
-- **BREAKING**: A declaração do componente `data` não aceita mais um `objeto` JavaScript e espera uma declaração de `função`.
+- **BREAKING**: A declaração da opção `data` do componente não aceita mais um `objeto` JavaScript e espera uma declaração de `função`.
 
-- **BREAKING**: Quando mesclando multiplos valores de retorno `data` de mixins ou extends, a mescla agora é superficial e não profunda (apenas propriedades de nivel raiz são mescladas).
+- **BREAKING**: Quando mesclando múltiplos valores de retorno do `data` de _mixins_ ou _extends_, a mescla agora é superficial e não profunda (apenas propriedades de nível raiz são mescladas).
 
-## Sintaxe da Versão 2.x
+## Sintaxe v2.x
 
-Na versão 2.x, os desenvolvedores poderiam definir a opção `data` como um `objeto` ou uma `função`.
+Na v2.x, os desenvolvedores poderiam definir a opção `data` como um `objeto` ou uma `função`.
 
 Por exemplo:
 
@@ -42,11 +42,11 @@ Por exemplo:
 
 Apesar de fornecer algumas conveniências em termos de instâncias raiz possuirem um estado compartilhado, isso gerou confusão devido ao fato de que só é possível na instância raiz.
 
-## Atualização 3.x
+## Atualização v3.x
 
-Na versão 3.x, a opção `data` foi padronizada para somente receber uma `função` que retorna um `objeto`.
+Na v3.x, a opção `data` foi padronizada para somente receber uma `função` que retorna um `objeto`.
 
-Usando o exemplo acima, só haveria uma forma possivel de implementar o código:
+Usando o exemplo acima, haveria apenas uma implementação possível do código:
 
 ```html
 <script>
@@ -62,9 +62,9 @@ Usando o exemplo acima, só haveria uma forma possivel de implementar o código:
 </script>
 ```
 
-## Mudança de Comportamento na Mescla de Mixin (Mixin Merge Behavior Change)
+## Mudança de Comportamento na Mescla de _Mixins_
 
-Além disso, quando a `data()` de um componente e seus mixins ou extends de base são mesclados, a mescla agora é feita *superficialmente*:
+Além disso, quando a `data()` de um componente e seus _mixins_ ou _extends_ de base são mesclados, a mescla agora é feita *superficialmente*:
 
 ```js
 const Mixin = {
@@ -101,7 +101,7 @@ No Vue 2.x, a `$data` resultante seria:
 }
 ```
 
-Na versão 3.0, o resultado será:
+Na v3.0, o resultado será:
 
 ```json
 {
@@ -115,7 +115,7 @@ Na versão 3.0, o resultado será:
 
 Para usuários que dependem da declaração em objeto, é recomendado:
 
-- Extrair a informação compartilhada em um objeto externo e usá-lo como propriedade em `data`
-- Reescrever as referencias a informação compartilhada para apontar a um novo objeto compartilhado
+- Extrair os dados compartilhados em um objeto externo e usá-los como propriedade em `data`
+- Reescrever as referências à informação compartilhada apontando para um novo objeto compartilhado
 
-Para usuários que dependem do comportamento de deep merge dos mixins, é recomendado refatorar seu código para evitar tal dependência completamente, já que deep merges de mixins são muito implicitos e podem fazer a lógica do código ser mais difícil de entender e depurar.
+Para usuários que dependem do comportamento de mesclagem profunda dos _mixins_, é recomendado refatorar seu código para evitar tal dependência completamente, já que mesclagens profundas de _mixins_ são muito implícitas e podem fazer a lógica do código ser mais difícil de entender e depurar.
