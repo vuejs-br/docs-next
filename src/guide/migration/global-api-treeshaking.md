@@ -3,119 +3,119 @@ badges:
   - breaking
 ---
 
-# Global API Treeshaking <MigrationBadges :badges="$frontmatter.badges" />
+# TreeShaking da API Global <MigrationBadges :badges="$frontmatter.badges" />
 
-## 2.x Syntax
+## Sintaxe v2.x
 
-If you’ve ever had to manually manipulate DOM in Vue, you might have come across this pattern:
+Se você já teve que manipular manualmente o DOM no Vue, pode ter encontrado este padrão:
 
 ```js
 import Vue from 'vue'
 
 Vue.nextTick(() => {
-  // something DOM-related
+  // algo relacionado ao DOM
 })
 ```
 
-Or, if you’ve been unit-testing an application involving [async components](/guide/component-dynamic-async.html), chances are you’ve written something like this:
+Ou, se você fez testes unitários em seu aplicativo envolvendo [componentes assíncronos](/guide/component-dynamic-async.html), provavelmente você escreveu algo assim:
 
 ```js
 import { shallowMount } from '@vue/test-utils'
 import { MyComponent } from './MyComponent.vue'
 
-test('an async feature', async () => {
+test('um recurso assíncrono', async () => {
   const wrapper = shallowMount(MyComponent)
 
-  // execute some DOM-related tasks
+  // execute alguma tarefa relacionada ao DOM
 
   await wrapper.vm.$nextTick()
 
-  // run your assertions
+  // execute suas asserções
 })
 ```
 
-`Vue.nextTick()` is a global API exposed directly on a single Vue object – in fact, the instance method `$nextTick()` is just a handy wrapper around `Vue.nextTick()` with the callback’s `this` context automatically bound to the current instance for convenience.
+`Vue.nextTick()` é uma API global exposta diretamente em um único objeto Vue - na verdade, o método de instância `$nextTick()` é apenas um *wrapper* em torno de `Vue.nextTick()` com o contexto `this` do retorno de chamada automaticamente vinculado à instância atual por conveniência.
 
-But what if you’ve never had to deal with manual DOM manipulation, nor are you using or testing async components in our app? Or, what if, for whatever reason, you prefer to use the good old `window.setTimeout()` instead? In such a case, the code for `nextTick()` will become dead code – that is, code that’s written but never used. And dead code is hardly a good thing, especially in our client-side context where every kilobyte matters.
+Mas e se você nunca teve que lidar com manipulação manual do DOM, nem está usando ou testando componentes assíncronos em nosso aplicativo? Ou, e se, por qualquer motivo, você preferir usar o bom e velho `window.setTimeout()` em vez disso? Nesse caso, o código para `nextTick()` se tornará um código morto - ou seja, o código que foi escrito, mas nunca usado. E código morto dificilmente é uma coisa boa, especialmente em nosso contexto do lado do cliente, onde cada kilobyte é importante.
 
-Module bundlers like [webpack](https://webpack.js.org/) support [tree-shaking](https://webpack.js.org/guides/tree-shaking/), which is a fancy term for “dead code elimination.” Unfortunately, due to how the code is written in previous Vue versions, global APIs like `Vue.nextTick()` are not tree-shakeable and will be included in the final bundle regardless of where they are actually used or not.
+Os empacotadores de módulo, como o [webpack](https://webpack.js.org/), oferecem suporte à [tree-shaking](https://webpack.js.org/guides/tree-shaking/), que é um termo sofisticado para “eliminação de código morto”. Infelizmente, devido à forma como o código é escrito nas versões anteriores do Vue, APIs globais como `Vue.nextTick()` não podem ser eliminadas com *tree-shaking* e serão incluídas no pacote final, independentemente de onde sejam realmente usadas ou não.
 
-## 3.x Syntax
+## Sintaxe v3.x
 
-In Vue 3, the global and internal APIs have been restructured with tree-shaking support in mind. As a result, the global APIs can now only be accessed as named exports for the ES Modules build. For example, our previous snippets should now look like this:
+No Vue 3, as APIs globais e internas foram reestruturadas tendo em mente o suporte à *tree-shaking*. Como resultado, as APIs globais agora podem ser acessadas apenas como exportações nomeadas para a construção de Módulos ES. Por exemplo, nossos blocos de códigos anteriores agora devem ser semelhantes a este:
 
 ```js
 import { nextTick } from 'vue'
 
 nextTick(() => {
-  // something DOM-related
+  // algo relacionado ao DOM
 })
 ```
 
-and
+e
 
 ```js
 import { shallowMount } from '@vue/test-utils'
 import { MyComponent } from './MyComponent.vue'
 import { nextTick } from 'vue'
 
-test('an async feature', async () => {
+test('um recurso assíncrono', async () => {
   const wrapper = shallowMount(MyComponent)
 
-  // execute some DOM-related tasks
+  // execute alguma tarefa relacionada ao DOM
 
   await nextTick()
 
-  // run your assertions
+  // execute suas asserções
 })
 ```
 
-Calling `Vue.nextTick()` directly will now result in the infamous `undefined is not a function` error.
+Chamar `Vue.nextTick()` diretamente agora resultará no abominável erro `undefined is not a function`.
 
-With this change, provided the module bundler supports tree-shaking, global APIs that are not used in a Vue application will be eliminated from the final bundle, resulting in an optimal file size.
+Com essa mudança, dado que o empacotador de módulos suporte *tree-shaking*, APIs globais que não são usadas em seu aplicativo Vue serão eliminadas do pacote final, resultando em um ótimo tamanho de arquivo.
 
-## Affected APIs
+## APIs Afetadas
 
-These global APIs in Vue 2.x are affected by this change:
+Essas APIs globais no Vue 2.x são afetadas por esta mudança:
 
 - `Vue.nextTick`
-- `Vue.observable` (replaced by `Vue.reactive`)
+- `Vue.observable` (substituído por `Vue.reactive`)
 - `Vue.version`
-- `Vue.compile` (only in full builds)
-- `Vue.set` (only in compat builds)
-- `Vue.delete` (only in compat builds)
+- `Vue.compile` (apenas em compilações completas)
+- `Vue.set` (apenas em compilações de compatibilidade)
+- `Vue.delete` (apenas em compilações de compatibilidade)
 
-## Internal Helpers
+## Ajudantes Internos
 
-In addition to public APIs, many of the internal components/helpers are now exported as named exports as well. This allows the compiler to output code that only imports features when they are used. For example the following template:
+Além das APIs públicas, muitos dos componentes/ajudantes internos agora também são exportados como exportações nomeadas. Isso permite que o compilador produza um código que importa apenas recursos quando eles são usados. Por exemplo, o seguinte template:
 
 ```html
 <transition>
-  <div v-show="ok">hello</div>
+  <div v-show="ok">olá</div>
 </transition>
 ```
 
-is compiled into something similar to the following:
+é compilado em algo semelhante ao seguinte:
 
 ```js
 import { h, Transition, withDirectives, vShow } from 'vue'
 
 export function render() {
-  return h(Transition, [withDirectives(h('div', 'hello'), [[vShow, this.ok]])])
+  return h(Transition, [withDirectives(h('div', 'olá'), [[vShow, this.ok]])])
 }
 ```
 
-This essentially means the `Transition` component only gets imported when the application actually makes use of it. In other words, if the application doesn’t have any `<transition>` component, the code supporting this feature will not be present in the final bundle.
+Isso significa essencialmente que o componente `Transition` só é importado quando o aplicativo realmente faz uso dele. Em outras palavras, se o aplicativo não tiver nenhum componente `<transition>`, o código que suporta esse recurso não estará presente no pacote final.
 
-With global tree-shaking, the user only “pay” for the features they actually use. Even better, knowing that optional features won't increase the bundle size for applications not using them, framework size has become much less a concern for additional core features in the future, if at all.
+Com o *tree-shaking* global, o usuário “paga” apenas pelos recursos que realmente usa. Melhor ainda, sabendo que os recursos opcionais não aumentarão o tamanho do pacote para aplicativos que não os utilizam, o tamanho do framework se tornou muito menos uma preocupação para recursos centrais adicionais no futuro, se é que o fará.
 
-::: warning Important
-The above only applies to the [ES Modules builds](/guide/installation.html#explanation-of-different-builds) for use with tree-shaking capable bundlers - the UMD build still includes all features and exposes everything on the Vue global variable (and the compiler will produce appropriate output to use APIs off the global instead of importing).
+::: warning Importante
+O que foi dito acima se aplica apenas as [Construções de Módulos ES](/guide/installation.html#explanation-of-different-builds) para uso com empacotadores capazes de aplicar *tree-shaking* - o construtor UMD ainda inclui todos os recursos e expõe tudo na variável global Vue (e o compilador produzirá a saída apropriada para usar APIs fora do global em vez de importar).
 :::
 
-## Usage in Plugins
+## Uso em Plugins
 
-If your plugin relies on an affected Vue 2.x global API, for instance:
+Se o seu plug-in depende de uma API global do Vue 2.x afetada, por exemplo:
 
 ```js
 const plugin = {
@@ -127,7 +127,7 @@ const plugin = {
 }
 ```
 
-In Vue 3, you’ll have to import it explicitly:
+No Vue 3, você terá que importá-lo explicitamente:
 
 ```js
 import { nextTick } from 'vue'
@@ -141,7 +141,7 @@ const plugin = {
 }
 ```
 
-If you use a module bundle like webpack, this may cause Vue’s source code to be bundled into the plugin, and more often than not that’s not what you'd expect. A common practice to prevent this from happening is to configure the module bundler to exclude Vue from the final bundle. In webpack's case, you can use the [`externals`](https://webpack.js.org/configuration/externals/) configuration option:
+Se você usar um empacotador de módulo como webpack, isso pode fazer com que o código-fonte do Vue seja agrupado no plug-in e, na maioria das vezes, não é o que você esperava. Uma prática comum para evitar que isso aconteça é configurar o empacotador de módulo para excluir Vue do pacote final. No caso do webpack, você pode usar a opção de configuração [`externals`](https://webpack.js.org/configuration/externals/):
 
 ```js
 // webpack.config.js
@@ -153,9 +153,9 @@ module.exports = {
 }
 ```
 
-This will tell webpack to treat the Vue module as an external library and not bundle it.
+Isso dirá ao webpack para tratar o módulo Vue como uma biblioteca externa e não empacotá-lo.
 
-If your module bundler of choice happens to be [Rollup](https://rollupjs.org/), you basically get the same effect for free, as by default Rollup will treat absolute module IDs (`'vue'` in our case) as external dependencies and not include them in the final bundle. During bundling though, it might emit a [“Treating vue as external dependency”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency) warning, which can be suppressed with the `external` option:
+Se o empacotador de módulo de sua escolha for [Rollup](https://rollupjs.org/), você basicamente obterá o mesmo efeito de graça, pois por padrão o Rollup tratará IDs de módulo absolutos (`'vue'` em nosso caso) como dependências externas e não incluí-las no pacote final. No entanto, durante o empacotamento, ele pode emitir um aviso [“Tratando vue como dependência externa”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency), que pode ser suprimido com a opção `external`:
 
 ```js
 // rollup.config.js
