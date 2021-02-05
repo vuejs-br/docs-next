@@ -3,63 +3,63 @@ badges:
   - breaking
 ---
 
-# Slots Unification <MigrationBadges :badges="$frontmatter.badges" />
+# Unificação de Slots <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Visão Geral
 
-This change unifies normal and scoped slots in 3.x.
+Esta modificação unifica _slots_ normais e _slots_ com escopo na v3.x.
 
-Here is a quick summary of what has changed:
+Aqui um pequeno sumário sobre o que mudou:
 
-- `this.$slots` now exposes slots as functions
-- **BREAKING**: `this.$scopedSlots` is removed
+- `this.$slots` agora exibe os _slots_ como funções
+- **QUEBRA**: `this.$scopedSlots` foi removido
 
-For more information, read on!
+Para mais informações, continue lendo!
 
-## 2.x Syntax
+## Sintaxe v2.x
 
-When using the render function, i.e., `h`, 2.x used to define the `slot` data property on the content nodes.
+Ao utilizar uma função de renderização, como `h`, a v2.x definia a propriedade `slot` nos nós do conteúdo.
 
 ```js
-// 2.x Syntax
+// Sintaxe v2.x
 h(LayoutComponent, [
   h('div', { slot: 'header' }, this.header),
   h('div', { slot: 'content' }, this.content)
 ])
 ```
 
-In addition, when referencing scoped slots, they could be referenced using the following syntax:
+Além disso, ao referenciar _slots_ com escopo definido, eles poderiam ser referenciados usando a seguinte sintaxe:
 
 ```js
-// 2.x Syntax
+// Sintaxe v2.x
 this.$scopedSlots.header
 ```
 
-## 3.x Syntax
+## Sintaxe v3.x
 
-In 3.x, slots are defined as children of the current node as an object:
+Na v3.x, os _slots_ são definidos como um objeto, filhos do nó atual:
 
 ```js
-// 3.x Syntax
+// Sintaxe v3.x
 h(LayoutComponent, {}, {
   header: () => h('div', this.header),
   content: () => h('div', this.content)
 })
 ```
 
-And when you need to reference scoped slots programmatically, they are now unified into the `$slots` option.
+E quando você precisar referenciar _slots_ com escopo programaticamente, estes agora estão unificados na opção `$slots`.
 
 ```js
-// 2.x Syntax
+// Sintaxe v2.x
 this.$scopedSlots.header
 
-// 3.x Syntax
+// Sintaxe v3.x
 this.$slots.header()
 ```
 
-## Migration Strategy
+## Estratégia de Migração
 
-A majority of the change has already been shipped in 2.6. As a result, the migration can happen in one step:
+A maioria das alterações já estão presentes na versão 2.6. Desta forma, a migração pode acontecer em uma etapa:
 
-1. Replace all `this.$scopedSlots` occurrences with `this.$slots` in 3.x.
-2. Replace all occurrences of `this.$slots.mySlot` with `this.$slots.mySlot()`
+1. Susbstitua todas as ocorrências de `this.$scopedSlots` por `this.$slots` na v3.x.
+2. Susbstitua todas as ocorrências de `this.$slots.mySlot` por `this.$slots.mySlot()`.
