@@ -1699,7 +1699,7 @@ export default {
 </script>
 ```
 </div>
-
+ 
 <style lang="scss" scoped>
 $color-bgr-good: #d7efd7;
 $color-bgr-bad: #f7e8e8;
