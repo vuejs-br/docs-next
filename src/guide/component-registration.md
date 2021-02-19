@@ -1,6 +1,6 @@
 # Registro de Componentes
 
-> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia ela primeiro se você for novo no assunto de componentização.
+> Esta página assume que você já leu o [Básico sobre Componentes](component-basics.md). Leia lá primeiro se você for novo no assunto de componentização.
 
 ## Nomes de Componentes
 
@@ -16,18 +16,18 @@ app.component('my-component-name', {
 
 O nome do componente é o primeiro argumento de `app.component`. No exemplo acima, o nome do componente é "my-component-name".
 
-O nome que você dá a um componente pode depender de onde você pretende usá-lo. Ao usar um componente diretamente no DOM (ao contrário de um template string ou [componente de arquivo único](../guide/single-file-component.html)), recomendamos seguir as [regras do W3C](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) para nomes de tags personalizadas:
+O nome que você dá a um componente pode depender de onde você pretende usá-lo. Ao usar um componente diretamente no DOM (ao contrário de em um template string ou [componente single file](../guide/single-file-component.html)), recomendamos seguir as [regras do W3C](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) para nomes de tags personalizadas:
 
-1. Todas as letras minúsculas; e
-2. Contém hífen (ou seja, tem várias palavras conectadas com o símbolo de hífen).
+1. Todas as letras minúsculas;
+2. Conter hífen (ou seja, ter várias palavras conectadas com o símbolo de hífen).
 
 Ao nomear dessa maneira, isso o ajudará a evitar conflitos com elementos HTML atuais e futuros.
 
 Você pode ver outras recomendações para nomes de componentes no [Guia de Estilo](../style-guide/#base-component-names-strongly-recommended).
 
-### Nomeação
+### Padrão de Nomeação
 
-Ao definir componentes em um template string ou um componente de arquivo único, você tem duas opções ao definir os nomes dos componentes:
+Ao definir componentes em um template string ou um componente single file, você tem duas opções ao definir os nomes dos componentes:
 
 #### Com kebab-case
 
@@ -47,7 +47,7 @@ app.component('MyComponentName', {
 })
 ```
 
-Ao definir um componente com PascalCase, você pode usar qualquer um dos casos ao fazer referência a seu elemento personalizado. Isso significa que `<my-component-name>` e `<MyComponent-name>` são aceitáveis. Observe, no entanto, que apenas os nomes kebab-case são válidos diretamente no DOM (ou seja, templates não-string).
+Ao definir um componente com PascalCase, você pode usar qualquer um dos padrões ao fazer referência a seu elemento personalizado. Isso significa que ambos`<my-component-name>` e `<MyComponentName>` são aceitáveis. Observe, no entanto, que apenas os nomes kebab-case são válidos diretamente no DOM (ou seja, templates não-string).
 
 ## Registro Global
 
@@ -89,7 +89,7 @@ Isso se aplica até mesmo a todos os subcomponentes, o que significa que estes t
 
 ## Registro Local
 
-O registro global geralmente não é o ideal. Por exemplo, se você estiver usando um sistema de empacotador de módulos como o Webpack, registrar globalmente todos os componentes significa que, mesmo se você parar de usar um componente, ele ainda poderá ser incluído em seu executável final. Isso aumenta desnecessariamente a quantidade de código JavaScript que seus usuários precisam fazer download.
+O registro global geralmente não é o ideal. Por exemplo, se você estiver usando um sistema de empacotador de módulos como o Webpack, registrar globalmente todos os componentes significa que, mesmo se você parar de usar um componente, ele ainda poderá ser incluído na sua distribuição final. Isso aumenta desnecessariamente a quantidade de código JavaScript que seus usuários precisam baixar.
 
 Nesses casos, você pode definir seus componentes como objetos JavaScript simples:
 
@@ -105,7 +105,7 @@ const ComponentC = {
 }
 ```
 
-Em seguida, defina os componentes que deseja usar na opção de `components`:
+Em seguida, defina os componentes que deseja usar na opção `components`:
 
 ```js
 const app = Vue.createApp({
@@ -146,7 +146,7 @@ export default {
 }
 ```
 
-Observe que em ES2015+, colocar um nome de variável como `ComponentA` dentro de um objeto é uma abreviação de `ComponentA: ComponentA`, o que significa que o nome da variável é tanto:
+Observe que na ES2015+, colocar um nome de variável como `ComponentA` dentro de um objeto é uma abreviação de `ComponentA: ComponentA`, o que significa que o nome da variável é tanto:
 
 - o nome do elemento personalizado para usar no modelo, quanto
 - o nome da variável que contém as opções do componente.
