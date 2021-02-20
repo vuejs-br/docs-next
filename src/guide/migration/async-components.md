@@ -3,13 +3,13 @@ badges:
   - new
 ---
 
-# Componentes Assíncronos (Async Components) <MigrationBadges :badges="$frontmatter.badges" />
+# Componentes Assíncronos <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Visão Geral
 
-Sobre o que mudou, em visão geral::
+Sobre o que mudou, em visão geral:
 
-- Novo metodo helper `defineAsyncComponent` que define explicitamente componentes assincronos
+- Novo método helper `defineAsyncComponent` que define explicitamente componentes assíncronos
 - Opção `component` renomeada para `loader`
 - Função Loader não recebe inerentemente os argumentos `resolve` e `reject` e deve retornar uma Promise
 
@@ -17,7 +17,7 @@ Para uma explicação mais aprofundada, continue lendo!
 
 ## Introdução
 
-Anteriormente, componentes assincronos eram criados simplesmente definindo um componente como uma função que retornava uma Promise, tal como:
+Anteriormente, componentes assíncronos eram criados simplesmente definindo um componente como uma função que retornava uma Promise, tal como:
 
 ```js
 const asyncPage = () => import('./NextPage.vue')
@@ -35,7 +35,7 @@ const asyncPage = {
 }
 ```
 
-## Sintaxe 3.x
+## Sintaxe v3.x
 
 Agora, no Vue 3, uma vez que os componentes funcionais são definidos como funções puras, as definições de componentes assíncronos precisam ser definidas explicitamente, envolvendo-o em um novo helper `defineAsyncComponent`:
 
@@ -44,10 +44,10 @@ import { defineAsyncComponent } from 'vue'
 import ErrorComponent from './components/ErrorComponent.vue'
 import LoadingComponent from './components/LoadingComponent.vue'
 
-// Componente Assincrono sem opções
+// Componente Assíncrono sem opções
 const asyncPage = defineAsyncComponent(() => import('./NextPage.vue'))
 
-// Componente Assincrono com opções
+// Componente Assíncrono com opções
 const asyncPageWithOptions = defineAsyncComponent({
   loader: () => import('./NextPage.vue'),
   delay: 200,
@@ -57,7 +57,7 @@ const asyncPageWithOptions = defineAsyncComponent({
 })
 ```
 
-Outra mudança em relação a versão 2.x é a de que a opção `component` foi renomeada para `loader` a fim de comunicar com precisão que uma definição de componente não pode ser fornecida diretamente.
+Outra mudança em relação a v2.x é a de que a opção `component` foi renomeada para `loader` a fim de comunicar com precisão que uma definição de componente não pode ser fornecida diretamente.
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
@@ -90,4 +90,4 @@ const asyncComponent = defineAsyncComponent(
 
 Para mais informações sobre o uso de componentes assincronos, leia:
 
-- [Guide: Dynamic & Async Components](/guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+- [Guia: Componentes Dinâmicos & Assíncronos](/guide/component-dynamic-async.html#componentes-dinamicos-com-keep-alive)
