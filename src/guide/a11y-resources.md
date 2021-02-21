@@ -4,7 +4,7 @@
 
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/)
-- [Aplicações Rich Internet Acessíveis (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
+- [Aplicações da Internet Rica Acessíveis (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Práticas de Autoria 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
 ## Tecnologias Assistivas
@@ -25,9 +25,9 @@
   - [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
   - [WAVE](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
 - Ferramentas de Cores
-  - [WebAim Contraste de Cores](https://webaim.org/resources/contrastchecker/)
-  - [WebAim Contraste de Cor de Links](https://webaim.org/resources/linkcontrastchecker)
-- Outras ferramentas úteis
+  - [Contraste de Cores WebAim](https://webaim.org/resources/contrastchecker/)
+  - [Contraste de Cor de Links WebAim](https://webaim.org/resources/linkcontrastchecker)
+- Outras Ferramentas Úteis
   - [HeadingMap](https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi?hl=en…)
   - [Color Oracle](https://colororacle.org)
   - [Focus Indicator](https://chrome.google.com/webstore/detail/focus-indicator/heeoeadndnhebmfebjccbhmccmaoedlf?hl=en-US…)
@@ -39,14 +39,12 @@ A Organização Mundial da Saúde estima que 15% da população mundial tem algu
 
 Há uma grande variedade de deficiências, que podem ser divididas, aproximadamente, em quatro categorias:
 
-
 - _[Visual](https://webaim.org/articles/visual/)_ - Estes usuários podem se beneficiar do uso de leitores de tela, ampliação de telas, controladores de contraste de tela ou telas de braille.
 - _[Auditiva](https://webaim.org/articles/auditory/)_ - Estes usuários podem se beneficiar de legendas, transcrições ou vídeo em linguagem de sinais.
-- _[Motora](https://webaim.org/articles/motor/)_ - Estes usuários podem se beneficar de uma variedade de [tecnologias assistivas para deficiências motoras](https://webaim.org/articles/motor/assistive): software de reconhecimento de voz, rastreamento ocular, acesso com botão único, varinha de cabeça, botão sip e puff, mouse trackball superdimensionado, teclado adaptável ou outras tecnologias assistivas.
+- _[Motora](https://webaim.org/articles/motor/)_ - Estes usuários podem se beneficar de uma variedade de [tecnologias assistivas para deficiências motoras](https://webaim.org/articles/motor/assistive): software de reconhecimento de voz, rastreamento ocular, acesso com botão único, varinha de cabeça, *switch* absorver e soprar, mouse *trackball* superdimensionado, teclado adaptável ou outras tecnologias assistivas.
 - _[Cognitiva](https://webaim.org/articles/cognitive/)_ - Estes usuários podem se beneficiar de mídias suplementares, organização estrutural do conteúdo, redação limpa e simples. 
 
+Confira os seguintes links do WebAim para entender o lado dos usuários:
 
-Confira os seguintes links do WebAim para entender os usuários:
-
-- [Perspectivas de acessibilidade na web: explore o impacto e os benefícios para todos](https://www.w3.org/WAI/perspective-videos/)
-- [Histórias de usuários da web](https://www.w3.org/WAI/people-use-web/user-stories/)
+- [Perspectivas de Acessibilidade na Web: Explore o Impacto e os Benefícios Para Todos](https://www.w3.org/WAI/perspective-videos/)
+- [Histórias de Usuários da Web](https://www.w3.org/WAI/people-use-web/user-stories/)
