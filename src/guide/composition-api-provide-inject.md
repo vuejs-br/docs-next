@@ -1,9 +1,8 @@
 # Prover e Injetar Dados
 
-> Este guia assume que você já leu as seções de [Prover e Injetar Dados](component-provide-inject.html), [Introdução a API de Composição](composition-api-introduction.html) e [Fundamentos de Reatividade](reactivity-fundamentals.html).
+> Este guia assume que você já leu as seções [Prover e Injetar Dados](component-provide-inject.html), [Introdução a API de Composição](composition-api-introduction.html) e [Fundamentos de Reatividade](reactivity-fundamentals.html).
 
-Podemos [prover / injetar dados](component-provide-inject.html) com a API de Composição também. Ambos só podem ser chamados durante [`setup()`](composition-api-setup.html) 
-com uma instância ativa atual.
+Podemos [prover e injetar dados](component-provide-inject.html) com a API de Composição também. Ambos só podem ser chamados durante [`setup()`](composition-api-setup.html) com uma instância ativa atual.
 
 ## Exemplo de Cenário
 
@@ -44,7 +43,7 @@ export default {
 
 ## Usando Provide
 
-Ao usar `provide` em `setup()`, começamos importando explicitamente o método de `vue`. Isso nos permite definir cada propriedade com sua própria invocação de `provide`.
+Ao usar `provide` no `setup()`, começamos importando explicitamente o método de `vue`. Isso nos permite definir cada propriedade com sua própria invocação de `provide`.
 
 A função `provide` permite definir a propriedade por meio de dois parâmetros:
 
@@ -80,7 +79,7 @@ export default {
 
 ## Usando Inject
 
-Ao usar `inject` em `setup()`, também precisamos importá-lo explicitamente de `vue`. Assim que fizermos isso, isso nos permitirá invocá-lo para definir como queremos expô-lo ao nosso componente.
+Ao usar `inject` no `setup()`, também precisamos importá-lo explicitamente de `vue`. Assim que fizermos isso, isso nos permitirá invocá-lo para definir como queremos expô-lo ao nosso componente.
 
 A função `inject` leva dois parâmetros:
 
@@ -112,7 +111,7 @@ export default {
 
 ### Adicionando Reatividade
 
-Para adicionar reatividade entre os valores providos e injetados, podemos usar uma [ref](reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs) ou [reactive](reactivity-fundamentals.html#declaring-reactive-state) ao prover um valor.
+Para adicionar reatividade entre os valores providos e injetados, podemos usar uma [ref](reactivity-fundamentals.html#criacao-de-valores-reativos-avulsos-como-refs) ou [reactive](reactivity-fundamentals.html#declarando-estado-reativo) ao prover um valor.
 
 Usando nosso componente `MyMap`, nosso código pode ser atualizado da seguinte forma:
 
@@ -146,9 +145,9 @@ export default {
 
 Agora, se alguma coisa mudar em qualquer uma das propriedades, o componente `MyMarker` também será atualizado automaticamente!
 
-### Propriedades de Mutação Reativas
+### Mutando Propriedades Reativas
 
-Ao usar dados providos / injetados reativos, **é recomendado manter quaisquer mutações nas propriedades reativas dentro do _provider_ sempre que possível**.
+Ao usar dados providos e injetados reativos, **é recomendado manter quaisquer mutações nas propriedades reativas dentro do _provider_ sempre que possível**.
 
 Por exemplo, no caso de precisarmos alterar a localização do usuário, o ideal seria fazer isso dentro de nosso componente `MyMap`.
 
@@ -189,7 +188,7 @@ export default {
 </script>
 ```
 
-No entanto, há momentos em que precisamos atualizar os dados dentro do componente onde os dados são injetados. Nesse cenário, recomendamos prover um método que seja responsável por transformar a propriedade reativa.
+No entanto, há momentos em que precisamos atualizar os dados dentro do componente onde os dados são injetados. Nesse cenário, recomendamos prover um método que seja responsável por mutar a propriedade reativa.
 
 ```vue{21-23,27}
 <!-- src/components/MyMap.vue -->
