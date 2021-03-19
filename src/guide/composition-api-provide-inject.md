@@ -1,12 +1,12 @@
-# Provide / Inject
+# Prover e Injetar Dados
 
-> This guide assumes that you have already read [Provide / Inject](component-provide-inject.html), [Composition API Introduction](composition-api-introduction.html), and [Reactivity Fundamentals](reactivity-fundamentals.html).
+> Este guia assume que você já leu as seções [Prover e Injetar Dados](component-provide-inject.html), [Introdução a API de Composição](composition-api-introduction.html) e [Fundamentos de Reatividade](reactivity-fundamentals.html).
 
-We can use [provide / inject](component-provide-inject.html) with the Composition API as well. Both can only be called during [`setup()`](composition-api-setup.html) with a current active instance.
+Podemos [prover e injetar dados](component-provide-inject.html) com a API de Composição também. Ambos só podem ser chamados durante [`setup()`](composition-api-setup.html) com uma instância ativa atual.
 
-## Scenario Background
+## Exemplo de Cenário
 
-Let's assume that we want to rewrite the following code, which contains a `MyMap` component that provides a `MyMarker` component with the user's location, using the Composition API.
+Vamos supor que queremos reescrever o código a seguir, que contém um componente `MyMap` que provê um componente `MyMarker` com a localização do usuário, usando a API de Composição.
 
 ```vue
 <!-- src/components/MyMap.vue -->
@@ -22,7 +22,7 @@ export default {
     MyMarker
   },
   provide: {
-    location: 'North Pole',
+    location: 'Polo Norte',
     geolocation: {
       longitude: 90,
       latitude: 135
@@ -41,16 +41,16 @@ export default {
 </script>
 ```
 
-## Using Provide
+## Usando Provide
 
-When using `provide` in `setup()`, we start by explicitly importing the method from `vue`. This allows us to define each property with its own invocation of `provide`.
+Ao usar `provide` no `setup()`, começamos importando explicitamente o método de `vue`. Isso nos permite definir cada propriedade com sua própria invocação de `provide`.
 
-The `provide` function allows you to define the property through two parameters:
+A função `provide` permite definir a propriedade por meio de dois parâmetros:
 
-1. The property's name (`<String>` type)
-2. The property's value
+1. O nome da propriedade (do tipo `<String>`); e
+2. O valor da propriedade.
 
-Using our `MyMap` component, our provided values can be refactored as the following:
+Usando nosso componente `MyMap`, nossos valores providos podem ser refatorados da seguinte forma:
 
 ```vue{7,14-20}
 <!-- src/components/MyMap.vue -->
@@ -67,7 +67,7 @@ export default {
     MyMarker
   },
   setup() {
-    provide('location', 'North Pole')
+    provide('location', 'Polo Norte')
     provide('geolocation', {
       longitude: 90,
       latitude: 135
@@ -77,16 +77,16 @@ export default {
 </script>
 ```
 
-## Using Inject
+## Usando Inject
 
-When using `inject` in `setup()`, we also need to explicitly import it from `vue`. Once we do so, this allows us to invoke it to define how we want to expose it to our component.
+Ao usar `inject` no `setup()`, também precisamos importá-lo explicitamente de `vue`. Assim que fizermos isso, isso nos permitirá invocá-lo para definir como queremos expô-lo ao nosso componente.
 
-The `inject` function takes two parameters:
+A função `inject` leva dois parâmetros:
 
-1. The name of the property to inject
-2. A default value (**Optional**)
+1. O nome da propriedade a injetar; e
+2. Um valor padrão (**Opcional**).
 
-Using our `MyMarker` component, we can refactor it with the following code:
+Usando nosso componente `MyMarker`, podemos refatorá-lo com o seguinte código:
 
 ```vue{3,6-14}
 <!-- src/components/MyMarker.vue -->
@@ -95,7 +95,7 @@ import { inject } from 'vue'
 
 export default {
   setup() {
-    const userLocation = inject('location', 'The Universe')
+    const userLocation = inject('location', 'O Universo')
     const userGeolocation = inject('geolocation')
 
     return {
@@ -107,13 +107,13 @@ export default {
 </script>
 ```
 
-## Reactivity
+## Reatividade
 
-### Adding Reactivity
+### Adicionando Reatividade
 
-To add reactivity between provided and injected values, we can use a [ref](reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs) or [reactive](reactivity-fundamentals.html#declaring-reactive-state) when providing a value.
+Para adicionar reatividade entre os valores providos e injetados, podemos usar uma [ref](reactivity-fundamentals.html#criacao-de-valores-reativos-avulsos-como-refs) ou [reactive](reactivity-fundamentals.html#declarando-estado-reativo) ao prover um valor.
 
-Using our `MyMap` component, our code can be updated as follows:
+Usando nosso componente `MyMap`, nosso código pode ser atualizado da seguinte forma:
 
 ```vue{7,15-22}
 <!-- src/components/MyMap.vue -->
@@ -130,7 +130,7 @@ export default {
     MyMarker
   },
   setup() {
-    const location = ref('North Pole')
+    const location = ref('Polo Norte')
     const geolocation = reactive({
       longitude: 90,
       latitude: 135
@@ -143,13 +143,13 @@ export default {
 </script>
 ```
 
-Now, if anything changes in either property, the `MyMarker` component will automatically be updated as well!
+Agora, se alguma coisa mudar em qualquer uma das propriedades, o componente `MyMarker` também será atualizado automaticamente!
 
-### Mutating Reactive Properties
+### Mutando Propriedades Reativas
 
-When using reactive provide / inject values, **it is recommended to keep any mutations to reactive properties inside of the _provider_ whenever possible**.
+Ao usar dados providos e injetados reativos, **é recomendado manter quaisquer mutações nas propriedades reativas dentro do _provider_ sempre que possível**.
 
-For example, in the event we needed to change the user's location, we would ideally do this inside of our `MyMap` component.
+Por exemplo, no caso de precisarmos alterar a localização do usuário, o ideal seria fazer isso dentro de nosso componente `MyMap`.
 
 ```vue{28-32}
 <!-- src/components/MyMap.vue -->
@@ -166,7 +166,7 @@ export default {
     MyMarker
   },
   setup() {
-    const location = ref('North Pole')
+    const location = ref('Polo Norte')
     const geolocation = reactive({
       longitude: 90,
       latitude: 135
@@ -181,14 +181,14 @@ export default {
   },
   methods: {
     updateLocation() {
-      this.location = 'South Pole'
+      this.location = 'Polo Sul'
     }
   }
 }
 </script>
 ```
 
-However, there are times where we need to update the data inside of the component where the data is injected. In this scenario, we recommend providing a method that is responsible for mutating the reactive property.
+No entanto, há momentos em que precisamos atualizar os dados dentro do componente onde os dados são injetados. Nesse cenário, recomendamos prover um método que seja responsável por mutar a propriedade reativa.
 
 ```vue{21-23,27}
 <!-- src/components/MyMap.vue -->
@@ -205,14 +205,14 @@ export default {
     MyMarker
   },
   setup() {
-    const location = ref('North Pole')
+    const location = ref('Polo Norte')
     const geolocation = reactive({
       longitude: 90,
       latitude: 135
     })
 
     const updateLocation = () => {
-      location.value = 'South Pole'
+      location.value = 'Polo Sul'
     }
 
     provide('location', location)
@@ -230,7 +230,7 @@ import { inject } from 'vue'
 
 export default {
   setup() {
-    const userLocation = inject('location', 'The Universe')
+    const userLocation = inject('location', 'O Universo')
     const userGeolocation = inject('geolocation')
     const updateUserLocation = inject('updateLocation')
 
@@ -244,7 +244,7 @@ export default {
 </script>
 ```
 
-Finally, we recommend using `readonly` on provided property if you want to ensure that the data passed through `provide` cannot be mutated by the injected component.
+Por fim, recomendamos o uso de `readonly` na propriedade provida, se você quiser garantir que os dados passados por `provide` não possam sofrer mutação pelo componente injetado.
 
 ```vue{7,25-26}
 <!-- src/components/MyMap.vue -->
@@ -261,14 +261,14 @@ export default {
     MyMarker
   },
   setup() {
-    const location = ref('North Pole')
+    const location = ref('Polo Norte')
     const geolocation = reactive({
       longitude: 90,
       latitude: 135
     })
 
     const updateLocation = () => {
-      location.value = 'South Pole'
+      location.value = 'Polo Sul'
     }
 
     provide('location', readonly(location))
