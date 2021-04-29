@@ -1,7 +1,7 @@
 # Gatilhos de Ciclo de vida
 
-:::Dica
-Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamente à instância, de forma que você pode acessar dados, propriedades computadas e métodos. Isso significa que **você não deve usar uma _arrow function_ para definir um método de ciclo de vida** (exemplo: `created: () => this.fetchTodos()`). A justificativa é que _arrow functions_ vinculam o contexto pai, então o `this` não será a instância que você espera e o `this.fetchTodos` será `undefined`.
+:::tip Dica
+Todos os gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamente à instância, de forma que você pode acessar dados, dados computados e métodos. Isso significa que **você não deve usar uma _arrow function_ para definir um método de ciclo de vida** (exemplo: `created: () => this.fetchTodos()`). A justificativa é que _arrow functions_ vinculam o contexto pai, então o `this` não será a instância que você espera e o `this.fetchTodos` será `undefined`.
 :::
 
 ## beforeCreate
@@ -10,9 +10,9 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
 - **Detalhes:**
 
-  Invocado sincronamente logo após a instância ser inicializada e antes da observação dos dados e configuração de eventos e observadores.
+  Invocado sincronamente logo após a instância ser inicializada, antes da observação dos dados e configuração de eventos/observadores.
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## created
 
@@ -20,9 +20,9 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
 - **Detalhes:**
 
-  Invocado sincronamente após a instância ser criada. Nesse estágio, a instância finalizou o processamento das opções, o que significa que a observação de dados, propriedades computadas, métodos e _callbacks_ de observação e eventos foram inicializados. Entretanto, a fase de montagem não foi iniciada, e a propriedade `$el` não estará disponível ainda.
+  Invocado sincronamente após a instância ser criada. Nesse estágio, a instância finalizou o processamento das opções, o que significa que a observação de dados, dados computados, métodos e _callbacks_ de observadores/eventos foram inicializados. Entretanto, a fase de montagem não foi iniciada, e a propriedade `$el` não estará disponível ainda.
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## beforeMount
 
@@ -34,7 +34,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## mounted
 
@@ -44,7 +44,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   Invocado após a instância ser montada, onde `el`, passado para o `Vue.createApp({}).mount()`, é substituído pelo recém criado `vm.$el`. Se a instância raiz for montada em um elemento presente no documento, `vm.$el` também estará no documento quando o `mounted` for invocado.
 
-  Perceba que o `mounted` **não** garante que todos componentes filhos foram também montados. Se você quiser esperar até que toda a _view_ tenha sido renderizada, você pode usar o [vm.\$nextTick](../api/instance-methods.html#nexttick) dentro do `mounted`:
+  Perceba que o `mounted` **não** garante que todos componentes filhos também foram montados. Se você quiser esperar até que toda a _view_ tenha sido renderizada, você pode usar o [vm.\$nextTick](../api/instance-methods.html#nexttick) dentro do `mounted`:
 
   ```js
   mounted() {
@@ -57,7 +57,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## beforeUpdate
 
@@ -69,7 +69,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   **Esse gatilho não é invocado durante a renderização do lado do servidor, porque apenas a renderização inicial é realizada do lado do servidor.**
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## updated
 
@@ -79,7 +79,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   Invocado após uma mudança nos dados causar uma re-renderização do DOM.
 
-  O DOM do componente terá sido atualizado quando esse gatilho for invocado, de forma que você pode realizar operações dependentes do DOM neste gatilho. Entretanto, na maioria dos casos você deve evitar mudanças de estado dentro do gatilho. Para reagir à mudanças de estado, normalmente é melhor usar uma [propriedade computada](./options-data.html#computed) ou um [observador](./options-data.html#watch).
+  O DOM do componente terá sido atualizado quando esse gatilho for invocado, de forma que você pode realizar operações dependentes do DOM neste gatilho. Entretanto, na maioria dos casos você deve evitar mudanças de estado dentro do gatilho. Para reagir à mudanças de estado, normalmente é melhor usar uma [dado computado](./options-data.html#computed) ou um [observador](./options-data.html#watch).
 
   Perceba que o `updated` **não** garante que todos componentes filhos foram também re-renderizados. Se você quiser esperar até que toda _view_ tenha sido re-renderizada, você pode usar o [vm.\$nextTick](../api/instance-methods.html#nexttick) dentro do `updated`:
 
@@ -94,7 +94,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## activated
 
@@ -107,7 +107,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
 - **Ver também:**
-  - [Componentes dinâmicos - _keep-alive_](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+  - [Componentes dinâmicos - _keep-alive_](../guide/component-dynamic-async.html#componentes-dinamicos-com-keep-alive)
 
 ## deactivated
 
@@ -120,7 +120,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
 - **Ver também:**
-  - [Componentes dinâmicos - _keep-alive_](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+  - [Componentes dinâmicos - _keep-alive_](../guide/component-dynamic-async.html#componentes-dinamicos-com-keep-alive)
 
 ## beforeUnmount
 
@@ -132,7 +132,7 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## unmounted
 
@@ -140,11 +140,11 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
 - **Detalhes:**
 
-  Invocada após uma instância ser desmontada. Quando esse gatilho é invocado, todas diretivas da instância já foram desligadas, todas escutas de evento foram removidas e todos componentes filhos também foram desmontados.
+  Invocada após uma instância ser desmontada. Quando esse gatilho é invocado, todas as diretivas da instância já foram desligadas, todas escutas de evento foram removidas e todos componentes filhos também foram desmontados.
 
   **Esse gatilho não é invocado durante a renderização do lado do servidor.**
 
-- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#lifecycle-diagram)
+- **Ver também:** [Diagrama de ciclo de vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## errorCaptured
 
@@ -154,15 +154,15 @@ Todos gatilhos de ciclo de vida têm seu contexto `this` vinculado automaticamen
 
   Invocada quando um erro de qualquer componente descendente foi capturado. O gatilho recebe três argumentos: o erro, a instância que desencadeou o erro e uma _string_ contendo informações sobre onde o erro foi capturado. O gatilho pode retornar `false` para impedir que o erro continue a ser propagado.
 
-  :::Dica
-  Você pode modificar o estado de um componente nesse gatilho. Entretanto, é importante possuir condicionais em seu template ou função `render` que bloqueiem outras mudanças quando um erro for capturado; caso contrário, o componente pode entrar em um loop de renderização infinito.
+  :::tip Dica
+  Você pode modificar o estado de um componente nesse gatilho. Entretanto, é importante possuir condicionais em seu template ou função `render` que bloqueiem outras mudanças quando um erro for capturado; caso contrário, o componente entrará em um loop de renderização infinito.
   :::
 
-  **Regras de propagação de erro**
+  **Regras de Propagação de Erro**
 
-  - Por padrão, todos erros são enviados ao `config.errorHandler` global caso esteja definido, de forma que esses erros possam ainda ser reportados para um serviço de _analytics_ em um lugar só.
+  - Por padrão, todos os erros são enviados ao `config.errorHandler` global caso esteja definido, de forma que esses erros possam ainda ser reportados para um serviço de _analytics_ em um lugar só.
 
-  - Caso existam vários gatilhos `errorCaptured` em uma cadeia de herança de um componente ou na cadeia do componente pai, todos eles serão invocados para o mesmo erro.
+  - Caso existam vários gatilhos `errorCaptured` na cadeia de herança de um componente ou na cadeia do componente pai, todos eles serão invocados no mesmo erro.
 
   - Caso o próprio gatilho `errorCaptured` lance um erro, tanto este erro quanto o que foi capturado originalmente serão enviados ao `config.errorHandler`.
 
