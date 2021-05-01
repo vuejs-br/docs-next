@@ -1,6 +1,6 @@
-# Application API
+# API de Aplicação
 
-In Vue 3, APIs that globally mutate Vue's behavior are now moved to application instances created by the new `createApp` method. In addition, their effects are now scoped to that specific application's instance:
+No Vue 3, APIs que modificam globalmente o comportamento do Vue agora se tornaram instâncias da aplicação, criadas pelo novo método `createApp`. Além disso, seus efeitos agora têm como escopo a instância dessa aplicação específica:
 
 ```js
 import { createApp } from 'vue'
@@ -8,51 +8,51 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-Calling `createApp` returns an application instance. This instance provides an application context. The entire component tree mounted by the application instance share the same context, which provides the configurations that were previously "global" in Vue 2.x.
+Chamar `createApp` retorna uma instância da aplicação. Esta instância fornece um contexto da aplicação. Toda a árvore de componentes montada pela instância da aplicação compartilha o mesmo contexto, fornecendo as configurações que eram "globais" anteriormente no Vue 2.x.
 
-In addition, since the `createApp` method returns the application instance itself, you can chain other methods after it which can be found in the following sections.
+Além disso, uma vez que o método `createApp` retorna a própria instância da aplicação, você pode encadear outros métodos após ele, que podem ser encontrados nas seções seguintes.
 
 ## component
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{string} name`
-  - `{Function | Object} definition (optional)`
+  - `{Function | Object} definition (opcional)`
 
-- **Returns:**
+- **Retorna:**
 
-  - The application instance if a `definition` argument was passed
-  - The component definition if a `definition` argument was not passed 
+  - A instância da aplicação se o argumento `definition` é passado
+  - A definição da diretiva se o argumento `definition` não é passado
 
-- **Usage:**
+- **Uso:**
 
-  Register or retrieve a global component. Registration also automatically sets the component's `name` with the given `name` parameter.
+  Registrar ou recuperar um componente global. O registro também atribui automaticamente o `name` do componente com o parâmetro `name` fornecido. 
 
-- **Example:**
+- **Exemplo:**
 
 ```js
 import { createApp } from 'vue'
 
 const app = createApp({})
 
-// register an options object
+// registrar um objeto de opções
 app.component('my-component', {
   /* ... */
 })
 
-// retrieve a registered component
+// recuperar um componente registrado
 const MyComponent = app.component('my-component')
 ```
 
-- **See also:** [Components](../guide/component-basics.html)
+- **Ver também:** [Componentes](../guide/component-basics.html#exemplo-base)
 
 ## config
 
-- **Usage:**
+- **Uso:**
 
-An object containing application configurations.
+Um objeto contendo configurações da aplicação.
 
-- **Example:**
+- **Exemplo:**
 
 ```js
 import { createApp } from 'vue'
@@ -61,72 +61,72 @@ const app = createApp({})
 app.config = {...}
 ```
 
-- **See also:** [Application Config](./application-config.html)
+- **Ver também:** [Config da Aplicação](./application-config.html)
 
 ## directive
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{string} name`
-  - `{Function | Object} definition (optional)`
+  - `{Function | Object} definition (opcional)`
 
-- **Returns:**
+- **Retorna:**
 
-  - The application instance if a `definition` argument was passed
-  - The directive definition if a `definition` argument was not passed 
+  - A instância da aplicação se o argumento `definition` é passado
+  - A definição da diretiva se o argumento `definition` não é passado
 
-- **Usage:**
+- **Uso:**
 
-  Register or retrieve a global directive.
+  Registrar ou recuperar uma diretiva global.
 
-- **Example:**
+- **Exemplo:**
 
 ```js
 import { createApp } from 'vue'
 const app = createApp({})
 
-// register
+// registro
 app.directive('my-directive', {
-  // Directive has a set of lifecycle hooks:
-  // called before bound element's parent component is mounted
+  // A diretiva tem um conjunto de hooks de ciclo de vida:
+  // chamado antes que o componente pai do elemento vinculado (bound) seja montado
   beforeMount() {},
-  // called when bound element's parent component is mounted
+  // chamado quando o componente pai do elemento vinculado é montado
   mounted() {},
-  // called before the containing component's VNode is updated
+  // chamado antes que o VNode do componente contido seja atualizado
   beforeUpdate() {},
-  // called after the containing component's VNode and the VNodes of its children // have updated
+  // chamado depois que o VNode do componente contido e VNodes de seus filhos 
+  // foram atualizados
   updated() {},
-  // called before the bound element's parent component is unmounted
+  // chamado antes que o componete pai do elemento vinculado seja desmontado
   beforeUnmount() {},
-  // called when the bound element's parent component is unmounted
+  // chamado quando o componente pai do elemento vinculado é desmontado
   unmounted() {}
 })
 
-// register (function directive)
+// registro (função diretiva)
 app.directive('my-directive', () => {
-  // this will be called as `mounted` and `updated`
+  // isso será chamado como `mounted` e `updated`
 })
 
-// getter, return the directive definition if registered
+// getter, retorna a definição da diretiva se registrada
 const myDirective = app.directive('my-directive')
 ```
-
-Directive hooks are passed these arguments:
+Os hooks de diretiva recebem estes argumentos:
 
 #### el
 
-The element the directive is bound to. This can be used to directly manipulate the DOM.
+O elemento ao qual a diretiva está vinculada. Pode ser usado para manipular diretamente o DOM.
 
 #### binding
 
-An object containing the following properties.
+Um objeto contendo as seguintes propriedades.
 
-- `instance`: The instance of the component where directive is used.
-- `value`: The value passed to the directive. For example in `v-my-directive="1 + 1"`, the value would be `2`.
-- `oldValue`: The previous value, only available in `beforeUpdate` and `updated`. It is available whether or not the value has changed.
-- `arg`: The argument passed to the directive, if any. For example in `v-my-directive:foo`, the arg would be `"foo"`.
-- `modifiers`: An object containing modifiers, if any. For example in `v-my-directive.foo.bar`, the modifiers object would be `{ foo: true, bar: true }`.
-- `dir`: an object, passed as a parameter when directive is registered. For example, in the directive
+- `instance`: A instância do componente onde a diretiva é usada.
+- `value`:  O valor passado para a diretiva. Por exemplo em `v-my-directive="1 + 1"`, o valor seria `2`.
+- `oldValue`: O valor anterior, disponível somente em `beforeUpdate` e `updated`. Está disponível se o valor foi alterado ou não.
+- `arg`: O argumento passado para a diretiva, se houver. Por exemplo em `v-my-directive:foo`, o arg seria `"foo"`.
+- `modifiers`: Um objeto contendo modificadores, se houver. Por exemplo em `v-my-directive.foo.bar`, o objeto `modifiers` seria `{ foo: true, bar: true }`.
+- `dir`: um objeto, passado como um parâmetro quando a diretiva é registrada. Por exemplo, na diretiva:
 
 ```js
 app.directive('focus', {
@@ -136,7 +136,7 @@ app.directive('focus', {
 })
 ```
 
-`dir` would be the following object:
+`dir` seria o seguinte objeto:
 
 ```js
 {
@@ -148,50 +148,50 @@ app.directive('focus', {
 
 #### vnode
 
-A blueprint of the real DOM element received as el argument above.
+Um blueprint do elemento DOM real recebido como o argumento `el` acima.
 
 #### prevNode
 
-The previous virtual node, only available in the `beforeUpdate` and `updated` hooks.
+O node virtual anterior, somente disponível nos hooks `beforeUpdate` e `updated`.
 
-:::tip Note
-Apart from `el`, you should treat these arguments as read-only and never modify them. If you need to share information across hooks, it is recommended to do so through element's [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset).
+:::tip Nota
+Além de `el`, você deve tratar esses argumentos como somente leitura e nunca modificá-los. Se você precisar compartilhar informações entre hooks, é recomendado fazê-lo por meio do elemento [dataset](https://developer.mozilla.org/pt-BR/docs/Web/API/HTMLOrForeignElement/dataset).
 :::
 
-- **See also:** [Custom Directives](../guide/custom-directive.html)
+- **Ver também:** [Diretivas Personalizadas](../guide/custom-directive.html)
 
 ## mixin
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{Object} mixin`
 
-- **Returns:**
+- **Retorna:**
 
-  - The application instance 
+  - A instância da aplicação
 
-- **Usage:**
+- **Uso:**
 
-  Apply a mixin in the whole application scope. Once registered they can be used in the template of any component within the current application. This can be used by plugin authors to inject custom behavior into components. **Not recommended in application code**.
+  Aplicar um mixin em todo o escopo da aplicação. Uma vez registrado eles podem ser usados no modelo de qualquer componente da aplicação atual. Pode ser usado por autores de plugins para injetar comportamento personalizado nos componentes. **Não recomendado no código da aplicação**.
 
-- **See also:** [Global Mixin](../guide/mixins.html#global-mixin)
+- **Ver também:** [Mixin Global](../guide/mixins.html#mixin-global)
 
 ## mount
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{Element | string} rootContainer`
-  - `{boolean} isHydrate (optional)`
+  - `{boolean} isHydrate (opcional)`
 
-- **Returns:**
+- **Retorna:**
 
-  - The root component instance
+  - A instância do componente raiz
 
-- **Usage:**
+- **Uso:**
 
-  Mounts a root component of the application instance on the provided DOM element.
+  Monta um componente raiz da instância da aplicação no elemento DOM fornecido.
 
-- **Example:**
+- **Exemplo:**
 
 ```html
 <body>
@@ -203,41 +203,41 @@ Apart from `el`, you should treat these arguments as read-only and never modify 
 import { createApp } from 'vue'
 
 const app = createApp({})
-// do some necessary preparations
+// faça alguns preparativos necessários
 app.mount('#my-app')
 ```
 
-- **See also:**
-  - [Lifecycle Diagram](../guide/instance.html#lifecycle-diagram)
+- **Ver também:**
+  - [Diagrama do Ciclo de Vida](../guide/instance.html#diagrama-do-ciclo-de-vida)
 
 ## provide
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{string | Symbol} key`
   - `value`
 
-- **Returns:**
+- **Retorna:**
 
-  - The application instance
+  - A instância da aplicação
 
-- **Usage:**
+- **Uso:**
 
-  Sets a value that can be injected into all components within the application. Components should use `inject` to receive the provided values.
+  Define um valor que pode ser injetado em todos componentes dentro da aplicação. Componentes devem usar `inject` para receber os valores fornecidos.
    
-  From a `provide`/`inject` perspective, the application can be thought of as the root-level ancestor, with the root component as its only child.
+  De uma perspectiva `provide`/`inject`, a aplicação pode ser considerada como um ancestral do nível raiz, com o componente raiz como seu filho único.
 
-  This method should not be confused with the [provide component option](options-composition.html#provide-inject) or the [provide function](composition-api.html#provide-inject) in the composition API. While those are also part of the same `provide`/`inject` mechanism, they are used to configure values provided by a component rather than an application. 
+  Este método não pode ser confundido com o  [componente de opção provide](options-composition.html#provide-inject) ou a [função provide](composition-api.html#provide-inject) da API de composição. Embora também façam parte do mesmo mecanismo  `provide`/`inject`, eles são usados para configurar valores fornecidos por um componente ao invés da aplicação.
 
-  Providing values via the application is especially useful when writing plugins, as plugins typically wouldn't be able to provide values using components. It is an alternative to using [globalProperties](application-config.html#globalproperties).
+  Fornecer valores por meio da aplicação é especialmente útil quando ao escrever plugins, pois os plugins normalmente não seriam capazes de fornecer valores usando componentes. É uma alternativa ao uso de [globalProperties](application-config.html#globalproperties).
 
-  :::tip Note
-  The `provide` and `inject` bindings are NOT reactive. This is intentional. However, if you pass down an observed object, properties on that object do remain reactive.
+  :::tip Nota
+  Os bindings `provide` e `inject` NÃO são reativos. Isto é intencional. No entanto, se você passar um objeto observado, as propriedades desse objeto permanecerão reativas. 
   :::
 
-- **Example:**
+- **Exemplo:**
 
-  Injecting a property into the root component, with a value provided by the application:
+  Injetando uma propriedade no componente raiz, com um valor fornecido pela aplicação:
 
 ```js
 import { createApp } from 'vue'
@@ -254,20 +254,20 @@ const app = createApp({
 app.provide('user', 'administrator')
 ```
 
-- **See also:**
-  - [Provide / Inject](../guide/component-provide-inject.md)
+- **Ver também:**
+  - [Prover / Injetar](../guide/component-provide-inject.md)
 
 ## unmount
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{Element | string} rootContainer`
 
-- **Usage:**
+- **Uso:**
 
-  Unmounts a root component of the application instance on the provided DOM element.
+  Desmonta um componente raiz da instância da aplicação no elemento DOM fornecido.
 
-- **Example:**
+- **Exemplo:**
 
 ```html
 <body>
@@ -279,30 +279,30 @@ app.provide('user', 'administrator')
 import { createApp } from 'vue'
 
 const app = createApp({})
-// do some necessary preparations
+// faça algumas preparações necessárias
 app.mount('#my-app')
 
-// Application will be unmounted 5 seconds after mount
+// Aplicação será desmontada 5 segundos após a montagem
 setTimeout(() => app.unmount('#my-app'), 5000)
 ```
 
 ## use
 
-- **Arguments:**
+- **Argumentos:**
 
   - `{Object | Function} plugin`
-  - `...options (optional)`
+  - `...options (opcional)`
 
-- **Returns:**
+- **Retorna:**
 
-  - The application instance
+  - A instância da aplicação
 
-- **Usage:**
+- **Uso:**
 
-  Install a Vue.js plugin. If the plugin is an Object, it must expose an `install` method. If it is a function itself, it will be treated as the install method.
+  Instalar um Vue.js plugin. Se o plugin é um objeto, deve expor um método `install`. Se for uma função em si, será tratado como método de instalação.
   
-  The install method will be called with the application as its first argument. Any `options` passed to `use` will be passed on in subsequent arguments.
+  O método de instalação será chamado com a aplicação como seu primeiro argumento. Quaisquer `options` passadas para `use` serão passadas em argumentos subsequentes.
 
-  When this method is called on the same plugin multiple times, the plugin will be installed only once.
+  Quando esse método é chamado no mesmo plugin várias vezes, o plugin será instalado apenas uma vez.
 
-- **See also:** [Plugins](../guide/plugins.html)
+- **Ver também:** [Plugins](../guide/plugins.html)
