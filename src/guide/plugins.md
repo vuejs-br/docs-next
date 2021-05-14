@@ -1,39 +1,39 @@
 ﻿# Plugins
 
-Plugins are self-contained code that usually add global-level functionality to Vue. It is either an `object` that exposes an `install()` method, or a `function`.
+_Plugins_ são códigos autocontidos que geralmente adicionam funcionalidade de nível global ao Vue. É um `object` que expõe um método `install()` ou uma `function`.
 
-There is no strictly defined scope for a plugin, but common scenarios where plugins are useful include:
+Não há escopo estritamente definido para um _plugin_, mas os cenários comuns em que os _plugins_ são úteis incluem:
 
-1. Add some global methods or properties, e.g. [vue-custom-element](https://github.com/karol-f/vue-custom-element).
+1. Adicionar alguns métodos e propriedades globais (Ex.: [vue-custom-element](https://github.com/karol-f/vue-custom-element)).
 
-2. Add one or more global assets: directives/filters/transitions etc. (e.g. [vue-touch](https://github.com/vuejs/vue-touch)).
+2. Adicionar um ou mais recursos globais: diretivas/filtros/transições etc. (Ex.: [vue-touch](https://github.com/vuejs/vue-touch)).
 
-3. Add some component options by global mixin (e.g. [vue-router](https://github.com/vuejs/vue-router)).
+3. Adicionar algumas opções de componente via _mixin_ global. (Ex.: [vue-router](https://github.com/vuejs/vue-router)).
 
-4. Add some global instance methods by attaching them to `config.globalProperties`.
+4. Adicionar alguns métodos de instância globais, anexando-os a `config.globalProperties`.
 
-5. A library that provides an API of its own, while at the same time injecting some combination of the above (e.g. [vue-router](https://github.com/vuejs/vue-router)).
+5. Uma biblioteca com uma API própria, que ao mesmo tempo injeta alguma combinação dos anteriores. (Ex.: [vue-router](https://github.com/vuejs/vue-router)).
 
-## Writing a Plugin
+## Escrevendo um Plugin
 
-In order to better understand how to create your own Vue.js plugins, we will create a very simplified version of a plugin that displays `i18n` ready strings.
+Para entender melhor como criar seus próprios _plugins_ Vue.js, criaremos uma versão muito simplificada de um _plugin_ que exibe strings prontas para `i18n`.
 
-Whenever this plugin is added to an application, the `install` method will be called if it is an object. If it is a `function`, the function itself will be called. In both cases, it will receive two parameters - the `app` object resulting from Vue's `createApp`, and the options passed in by the user.
+Sempre que este plugin é adicionado a uma aplicação, o método `install` será chamado se for um objeto. Se for uma `function`, a própria função será chamada. Em ambos os casos, ele receberá dois parâmetros - o objeto `app` resultante do `createApp` do Vue, e as opções passadas pelo usuário.
 
-Let's begin by setting up the plugin object. It is recommended to create it in a separate file and export it, as shown below to keep the logic contained and separate.
+Vamos começar configurando o objeto de _plugin_. Recomenda-se criá-lo em um arquivo separado e exportá-lo, conforme mostrado a seguir, para manter a lógica contida e separada.
 
 ```js
 // plugins/i18n.js
 export default {
   install: (app, options) => {
-    // Plugin code goes here
+    // O código do plugin vai aqui
   }
 }
 ```
 
-We want to make a function to translate keys available to the whole application, so we will expose it using `app.config.globalProperties`.
+Queremos fazer uma função para traduzir as chaves disponíveis para toda a aplicação, então vamos expô-la usando `app.config.globalProperties`.
 
-This function will receive a `key` string, which we will use to look up the translated string in the user-provided options.
+Esta função receberá uma _string_ `key`, que usaremos para pesquisar a _string_ traduzida nas opções fornecidas pelo usuário.
 
 ```js
 // plugins/i18n.js
@@ -48,9 +48,9 @@ export default {
 }
 ```
 
-We will assume that our users will pass in an object containing the translated keys in the `options` parameter when they use the plugin. Our `$translate` function will take a string such as `greetings.hello`, look inside the user provided configuration and return the translated value - in this case, `Bonjour!`
+Assumiremos que nossos usuários passarão um objeto contendo as chaves traduzidas no parâmetro `options` quando usarem o _plugin_. Nossa função `$translate` pegará uma _string_ como `greetings.hello`, olhará dentro da configuração fornecida pelo usuário e vai retornar o valor traduzido - neste caso, `Bonjour!`
 
-Ex:
+Ex.:
 
 ```js
 greetings: {
@@ -58,7 +58,7 @@ greetings: {
 }
 ```
 
-Plugins also allow us to use `inject` to provide a function or attribute to the plugin's users. For example, we can allow the application to have access to the `options` parameter to be able to use the translations object.
+Os _plugins_ também nos permitem usar `inject` para fornecer uma função ou atributo aos usuários do _plugin_. Por exemplo, podemos permitir que a aplicação tenha acesso ao parâmetro `options` para poder usar o objeto de traduções.
 
 ```js
 // plugins/i18n.js
@@ -75,9 +75,9 @@ export default {
 }
 ```
 
-Plugin users will now be able to `inject['i18n']` into their components and access the object.
+Os usuários do `plugin` agora serão capazes de fazer `inject['i18n']` em seus componentes e acessar o objeto.
 
-Additionally, since we have access to the `app` object, all other capabilities like using `mixin` and `directive` are available to the plugin. To learn more about `createApp` and the application instance, check out the [Application API documentation](/api/application-api.html).
+Além disso, como temos acesso ao objeto `app`, todos os outros recursos como o uso de `mixin` e `directive` estão disponíveis para o _plugin_. Para aprender mais sobre `createApp` e a instância do aplicativo, verifique a [documentação da Referência da API](/api/application-api.html).
 
 ```js
 // plugins/i18n.js
@@ -92,14 +92,14 @@ export default {
 
     app.directive('my-directive', {
       mounted (el, binding, vnode, oldVnode) {
-        // some logic ...
+        // alguma lógica...
       }
       ...
     })
 
     app.mixin({
       created() {
-        // some logic ...
+        // alguma lógica...
       }
       ...
     })
@@ -107,20 +107,20 @@ export default {
 }
 ```
 
-## Using a Plugin
+## Usando um Plugin
 
-After a Vue app has been initialized with `createApp()`, you can add a plugin to your application by calling the `use()` method.
+Depois que um aplicativo Vue foi inicializado com `createApp()`, você pode adicionar um _plugin_ ao seu aplicativo chamando o método `use()`.
 
-We will use the `i18nPlugin` we created in the [Writing a Plugin](#writing-a-plugin) section for demo purposes.
+Usaremos o `i18nPlugin` que criamos na seção [Escrevendo um Plugin](#escrevendo-um-plugin) para fins de demonstração.
 
-The `use()` method takes two parameters. The first one is the plugin to be installed, in this case `i18nPlugin`.
+O método `use()` recebe dois parâmetros. O primeiro é o `plugin` a ser instalado, neste caso `i18nPlugin`.
 
-It also automatically prevents you from using the same plugin more than once, so calling it multiple times on the same plugin will install the plugin only once.
+Ele também impede automaticamente que você use o mesmo _plugin_ mais de uma vez, portanto, chamá-lo várias vezes no mesmo _plugin_ instalará o _plugin_ apenas uma vez.
 
-The second parameter is optional, and depends on each particular plugin. In the case of the demo `i18nPlugin`, it is an object with the translated strings.
+O segundo parâmetro é opcional e depende de cada _plugin_ específico. No caso do demo `i18nPlugin`, é um objeto com as _strings_ traduzidas.
 
 :::info
-If you are using third party plugins such as `Vuex` or `Vue Router`, always check the documentation to know what that particular plugin expects to receive as a second parameter.
+Se você estiver usando _plugins_ de terceiros, como `Vuex` ou `Vue Router`, sempre verifique a documentação para saber o que aquele _plugin_ específico espera receber como um segundo parâmetro.
 :::
 
 ```js
@@ -139,4 +139,4 @@ app.use(i18nPlugin, i18nStrings)
 app.mount('#app')
 ```
 
-Checkout [awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries) for a huge collection of community-contributed plugins and libraries.
+Verifique [awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries) para uma enorme coleção de _plugins_ e bibliotecas disponibilizados pela comunidade.
