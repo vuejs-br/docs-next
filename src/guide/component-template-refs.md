@@ -1,4 +1,4 @@
-# _refs_ de Template
+# *refs* &nbsp;de Template
 
 > Esta página assume que você já leu o [Básico de Componentes](component-basics.md). Leia lá primeiro se você for novo em componentes.
 
@@ -38,7 +38,7 @@ Além disso, você pode adicionar outro `ref` ao próprio componente e usá-lo p
 this.$refs.usernameInput.focusInput()
 ```
 
-::: warning
+::: warning Atenção
 `$refs` é preenchido apenas após o componente ter sido renderizado. Isso serve apenas como uma saída de emergência para a manipulação direta de elementos filhos - você deve evitar acessar `$refs` de dentro de _templates_ ou dados computados.
 :::
 
