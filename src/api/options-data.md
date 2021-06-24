@@ -1,26 +1,26 @@
-# Data
+# Dados
 
 ## data
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
-- **Details:**
+- **Detalhes:**
 
-  The function that returns a data object for the component instance. In `data`, we don't recommend to observe objects with their own stateful behavior like browser API objects and prototype properties. A good idea would be to have here just a plain object that represents component data.
+  A função que retorna um objeto de dados para a instância do componente. Em `data`, não recomendamos observar objetos com seu próprio comportamento com estado, como objetos de API do navegador e propriedades de protótipo. Uma boa ideia seria ter aqui apenas um objeto simples que representa os dados do componente.
 
-  Once observed, you can no longer add reactive properties to the root data object. It is therefore recommended to declare all root-level reactive properties upfront, before creating the instance.
+  Uma vez observado, você não pode mais adicionar propriedades reativas ao objeto de dados raiz. Portanto, é recomendável declarar antecipadamente todas as propriedades reativas de nível raiz, antes da criação da instância.
 
-  After the instance is created, the original data object can be accessed as `vm.$data`. The component instance also proxies all the properties found on the data object, so `vm.a` will be equivalent to `vm.$data.a`.
+  Depois da instância ser criada, o objeto de dados original pode ser acessado como `vm.$data`. A instância do componente também faz proxy de todas as propriedades encontradas no objeto de dados, então `vm.a` será equivalente a `vm.$data.a`.
 
-  Properties that start with `_` or `$` will **not** be proxied on the component instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `vm.$data._property`.
+  Propriedades que comecem com `_` ou `$` **não** será feito proxy na instância do componente porque eles podem entrar em conflito com as propriedades internas do Vue ou métodos de API. Você terá que acessá-las como `vm.$data._property`.
 
-- **Example:**
+- **Exemplo:**
 
   ```js
-  // direct instance creation
+  // Criação direta de instância
   const data = { a: 1 }
 
-  // The object is added to a component instance
+  // O objeto é adicionado a uma instância do componente
   const vm = Vue.createApp({
     data() {
       return data
@@ -30,48 +30,48 @@
   console.log(vm.a) // => 1
   ```
 
-  Note that if you use an arrow function with the `data` property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+  Note que se usar uma *arrow function* com a propriedade `data`,` this` não será a instância do componente, mas você poderá continuar tendo acesso à instância através do argumento da função:
 
   ```js
   data: vm => ({ a: vm.myProp })
   ```
 
-- **See also:** [Reactivity in Depth](../guide/reactivity.html)
+- **Ver também:** [Reatividade em profundidade](../guide/reactivity.html)
 
 ## props
 
-- **Type:** `Array<string> | Object`
+- **Tipo:** `Array<string> | Object`
 
-- **Details:**
+- **Detalhes:**
 
-  A list/hash of attributes that are exposed to accept data from the parent component. It has an Array-based simple syntax and an alternative Object-based syntax that allows advanced configurations such as type checking, custom validation and default values.
+  Uma lista/*hash* de atributos que são expostos para aceitar dados do componente pai. Possui tanto uma sintaxe simples baseada em Array como, alternativamente, uma sintaxe baseada em Object, que permite configurações avançadas como verificação de tipos, validações personalizadas e valores padrão.
 
-  With Object-based syntax, you can use following options:
+  Com a sintaxe baseada em Object, você pode usar as seguintes opções:
 
-  - `type`: can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. Will check if a prop has a given type, and will throw a warning if it doesn't. [More information](../guide/component-props.html#prop-types) on prop types.
+  - `type`: pode ser um dos seguintes construtores nativos: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, qualquer função construtora personalizada ou um array delas. Irá verificar se um prop tem um determinado tipo, e irá lançar um aviso se não tiver. [Mais informação](../guide/component-props.html#prop-types) em tipos de props.
   - `default`: `any`
-    Specifies a default value for the prop. If the prop is not passed, this value will be used instead. Object or array defaults must be returned from a factory function.
+    Especifica um valor padrão para o prop. Se o prop não é passado, este valor será usado em seu lugar. Valores padrão de tipo Object ou Array devem ser retornados de uma função *factory*.
   - `required`: `Boolean`
-    Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+    Define se o prop é necessário. Em ambiente de não-produção, um aviso de console será lançado se esse valor for verdadeiro e o prop não for passado.
   - `validator`: `Function`
-    Custom validator function that takes the prop value as the sole argument. In a non-production environment, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails). You can read more about prop validation [here](../guide/component-props.html#prop-validation).
+    Função validadora personalizada que usa o valor do prop como único argumento. Exceto em ambiente de produção, um aviso de console será lançado se essa função retornar um valor falso (ou seja, a validação falhar). Pode ler mais sobre validação de prop [aqui](../guide/component-props.html#prop-validation).
 
-- **Example:**
+- **Exemplo:**
 
   ```js
   const app = Vue.createApp({})
 
-  // simple syntax
+  // sintaxe simples
   app.component('props-demo-simple', {
     props: ['size', 'myMessage']
   })
 
-  // object syntax with validation
+  // sintaxe de objeto com validação
   app.component('props-demo-advanced', {
     props: {
-      // type check
+      // verificação de tipo
       height: Number,
-      // type check plus other validations
+      // verificação de tipo com outras validações
       age: {
         type: Number,
         default: 0,
@@ -84,17 +84,17 @@
   })
   ```
 
-- **See also:** [Props](../guide/component-props.html)
+- **Ver também:** [Propriedades](../guide/component-props.html)
 
 ## computed
 
-- **Type:** `{ [key: string]: Function | { get: Function, set: Function } }`
+- **Tipo:** `{ [key: string]: Function | { get: Function, set: Function } }`
 
-- **Details:**
+- **Detalhes:**
 
-  Computed properties to be mixed into the component instance. All getters and setters have their `this` context automatically bound to the component instance.
+  Propriedades computadas a serem combinadas na instância do componente. Todos os getters e setters tem o seu contexto `this` vinculado automaticamente à instância do componente.
 
-  Note that if you use an arrow function with a computed property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+  Note que se usar *arrow function* com uma propriedade computada, `this` não será a instância do componente, mas você poderá ter acesso a instância através do primeiro argumento da função:
 
   ```js
   computed: {
@@ -102,9 +102,9 @@
   }
   ```
 
-  Computed properties are cached, and only re-computed on reactive dependency changes. Note that if a certain dependency is out of the instance's scope (i.e. not reactive), the computed property will **not** be updated.
+  Propriedades computadas são cacheadas, e apenas recalculados quando dependências reativas mudam. Note que se uma certa dependência está fora do escopo da instância (ex.: não reativa), o dado computado **não** será atualizado.
 
-- **Example:**
+- **Exemplo:**
 
   ```js
   const app = Vue.createApp({
@@ -112,11 +112,11 @@
       return { a: 1 }
     },
     computed: {
-      // get only
+      // apenas get
       aDouble() {
         return this.a * 2
       },
-      // both get and set
+      // ambos get e set
       aPlus: {
         get() {
           return this.a + 1
@@ -135,21 +135,21 @@
   console.log(vm.aDouble) // => 4
   ```
 
-- **See also:** [Computed Properties](../guide/computed.html)
+- **Ver também:** [Dados Computados](../guide/computed.html)
 
 ## methods
 
-- **Type:** `{ [key: string]: Function }`
+- **Tipo:** `{ [key: string]: Function }`
 
-- **Details:**
+- **Detalhes:**
 
-  Methods to be mixed into the component instance. You can access these methods directly on the VM instance, or use them in directive expressions. All methods will have their `this` context automatically bound to the component instance.
+  Métodos a serem combinados na instância do componente. Você pode acessar esses métodos diretamente na instância VM ou usá-los em expressões de diretiva. Todos os métodos terão o seu contexto `this` automaticamente vinculado à instância do componente.
 
   :::tip Note
-  Note that **you should not use an arrow function to define a method** (e.g. `plus: () => this.a++`). The reason is arrow functions bind the parent context, so `this` will not be the component instance as you expect and `this.a` will be undefined.
+  Note que **você não deve usar *arrow function* para definir um método** (ex. `plus: () => this.a++`). A razão é que *arrow functions* fazem bind do contexto pai, então `this` não será a instância Vue como você está esperando e `this.a` será undefined.
   :::
 
-- **Example:**
+- **Exemplo:**
 
   ```js
   const app = Vue.createApp({
@@ -169,17 +169,17 @@
   console.log(vm.a) // => 2
   ```
 
-- **See also:** [Event Handling](../guide/events.html)
+- **Ver também:** [Manipulação de Eventos](../guide/events.html)
 
 ## watch
 
-- **Type:** `{ [key: string]: string | Function | Object | Array}`
+- **Tipo:** `{ [key: string]: string | Function | Object | Array}`
 
-- **Details:**
+- **Detalhes:**
 
-  An object where keys are expressions to watch and values are the corresponding callbacks. The value can also be a string of a method name, or an Object that contains additional options. The component instance will call `$watch()` for each entry in the object at instantiation. See [$watch](instance-methods.html#watch) for more information about the `deep`, `immediate` and `flush` options.
+  Um objeto onde as chaves são expressões para observar e os valores são os callbacks correspondentes. O valor também pode ser uma string de um nome de método ou um Object que contém opções adicionais. A instância do componente chamará `$watch()` para cada entrada no objeto na inicialização. Veja [$watch](instance-methods.html#watch) para mais informações sobre as opções `deep`, `immediate` e `flush`.
 
-- **Example:**
+- **Exemplo:**
 
   ```js
   const app = Vue.createApp({
@@ -190,7 +190,7 @@
         c: {
           d: 4
         },
-        e: 'test',
+        e: 'teste',
         f: 5
       }
     },
@@ -198,31 +198,32 @@
       a(val, oldVal) {
         console.log(`new: ${val}, old: ${oldVal}`)
       },
-      // string method name
+      // nome do método como string
       b: 'someMethod',
-      // the callback will be called whenever any of the watched object properties change regardless of their nested depth
+      // o callback será chamado sempre que qualquer uma das propriedades do objeto observado mudar,
+      // independentemente de sua profundidade aninhada
       c: {
         handler(val, oldVal) {
-          console.log('c changed')
+          console.log('c mudou')
         },
         deep: true
       },
-      // the callback will be called immediately after the start of the observation
+      // o callback será chamado imediatamente após o início da observação
       e: {
         handler(val, oldVal) {
-          console.log('e changed')
+          console.log('e mudou')
         },
         immediate: true
       },
-      // you can pass array of callbacks, they will be called one-by-one
+      // você pode passar uma array de callbacks, eles serão chamados um por um
       f: [
         'handle1',
         function handle2(val, oldVal) {
-          console.log('handle2 triggered')
+          console.log('handle2 acionado')
         },
         {
           handler: function handle3(val, oldVal) {
-            console.log('handle3 triggered')
+            console.log('handle3 acionado')
           }
           /* ... */
         }
@@ -230,10 +231,10 @@
     },
     methods: {
       someMethod() {
-        console.log('b changed')
+        console.log('b mudou')
       },
       handle1() {
-        console.log('handle 1 triggered')
+        console.log('handle1 acionado')
       }
     }
   })
@@ -244,27 +245,27 @@
   ```
 
   ::: tip Note
-  Note that _you should not use an arrow function to define a watcher_ (e.g. `searchQuery: newValue => this.updateAutocomplete(newValue)`). The reason is arrow functions bind the parent context, so `this` will not be the component instance as you expect and `this.updateAutocomplete` will be undefined.
+  Note que _você não deve usar arrow function para definir um observador_ (ex. `searchQuery: newValue => this.updateAutocomplete(newValue)`). A razão é que *arrow functions* fazem bind do contexto pai, então `this` não será a instância do componente como você espera e `this.updateAutocomplete` será undefined.
   :::
 
-- **See also:** [Watchers](../guide/computed.html#watchers)
+- **Ver também:** [Observadores](../guide/computed.html#watchers)
 
 ## emits
 
-- **Type:** `Array<string> | Object`
+- **Tipo:** `Array<string> | Object`
 
-- **Details:**
+- **Detalhes:**
 
-  A list/hash of custom events that can be emitted from the component. It has an Array-based simple syntax and an alternative Object-based syntax that allows to configure an event validation.
+  Uma lista/*hash* de eventos personalizados pode ser emitida do componente. Possui tanto uma sintaxe simples baseada em Array como, alternativamente, uma sintaxe baseada em Object que permite configurar uma validação de evento.
 
-  In Object-based syntax, the value of each property can either be `null` or a validator function. The validation function will receive the additional arguments passed to the `$emit` call. For example, if `this.$emit('foo', 1)` is called, the corresponding validator for `foo` will receive the argument `1`. The validator function should return a boolean to indicate whether the event arguments are valid.
+  Na sintaxe baseada em Object, o valor de cada propriedade pode ser `null` ou uma função validadora. A função de validação receberá os argumentos adicionais passados para a chamada `$emit`. Por exemplo, se `this.$emit('foo', 1)` for chamado, o validador correspondente para `foo` receberá o argumento `1`. A função validadora deve retornar um booleano para indicar se os argumentos do evento são válidos.
 
-- **Usage:**
+- **Uso:**
 
   ```js
   const app = Vue.createApp({})
 
-  // Array syntax
+  // Sintaxe de Array
   app.component('todo-item', {
     emits: ['check'],
     created() {
@@ -272,18 +273,18 @@
     }
   })
 
-  // Object syntax
+  // Sintaxe de Object
   app.component('reply-form', {
     emits: {
-      // no validation
+      // sem validação
       click: null,
 
-      // with validation
+      // com validação
       submit: payload => {
         if (payload.email && payload.password) {
           return true
         } else {
-          console.warn(`Invalid submit event payload!`)
+          console.warn(`Evento de envio payload inválido!`)
           return false
         }
       }
@@ -292,7 +293,7 @@
   ```
 
   ::: tip Note
-  Events listed in the `emits` option **will not** be inherited by the root element of the component and also will be excluded from the `$attrs` property.
+  Os eventos listados na opção `emits` **não** serão herdados pelo elemento raiz do componente e também serão excluídos da propriedade `$attrs`.
   :::
 
-* **See also:** [Attribute Inheritance](../guide/component-attrs.html#attribute-inheritance)
+* **Ver também:** [Herança de Atributo](../guide/component-attrs.html#attribute-inheritance)
