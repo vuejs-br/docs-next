@@ -1,14 +1,14 @@
-# Assets
+# Recursos
 
 ## directives
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
-- **Details:**
+- **Detalhes:**
 
-  A hash of directives to be made available to the component instance.
+  Um conjunto de diretivas que será disponibilizado para a instância do componente.
 
-- **Usage:**
+- **Exemplo:**
   ```js
   const app = Vue.createApp({})
   
@@ -24,17 +24,17 @@
   })
   ```
 
-- **See also:** [Custom Directives](../guide/custom-directive.html)
+- **Ver também:** [Diretivas Personalizadas](../guide/custom-directive.html)
 
 ## components
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
-- **Details:**
+- **Detalhes:**
 
-  A hash of components to be made available to the component instance.
+  Um conjunto de componentes que será disponibilizado para a instância do componente.
 
-- **Usage:**
+- **Exemplo:**
   ```js
   const Foo = {
     template: `<div>Foo</div>`
@@ -48,4 +48,4 @@
   })
   ```
 
-- **See also:** [Components](../guide/component-basics.html)
+- **Ver também:** [Componentes](../guide/component-basics.html)
